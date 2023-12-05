@@ -1,8 +1,8 @@
 {
-	"author": ["TBR Development"],
-	"install_msg": "Thank you for installing our repo! If you need support ping, feel free to create an issue on Github."
-	"name": "BackRoomCogs",
-	"short": "Cogs for Red DiscordBot",
-	"description": "A collection of cogs for Red DiscordBot",
-	"tags": ["fun", "image", "nsfw", "utility", "functionalities"]
+ "author": ["TBR Development"],
+ "install_msg": "Thank you for installing our repo! If you need support ping, feel free to create an issue on Github."
+ "name": "BackRoomCogs",
+ "short": "Cogs for Red DiscordBot",
+ "description": "A collection of cogs for Red DiscordBot",
+ "tags": ["fun", "image", "nsfw", "utility", "functionalities"]
 }
