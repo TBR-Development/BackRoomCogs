@@ -4,7 +4,7 @@ import  discord
 
 class Waifu(commands.Cog):
 	"""Waifu images commands using Waifu.im API"""
-	def __init__(self.bot):
+	def __init__(self, bot):
 		self.bot = bot
 		if ctx.invoked_subcommand is None:
 			await ctx.send('Please specify a subcommand.')
