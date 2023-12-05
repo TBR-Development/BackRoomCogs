@@ -2,7 +2,7 @@ from redbot.core import commands
 import requests
 import  discord
 
-class Waifu(commands.Cog);
+class Waifu(commands.Cog):
 	"""Waifu images commands using Waifu.im API"""
 	def __init__(self.bot):
 		self.bot = bot
