@@ -11,7 +11,7 @@ class Waifu(commands.Cog):
 
 	@commands.group()
 	@commands.is_nsfw()
-	async def waifu(self, ctx)
+	async def waifu(self, ctx):
 		"""Waifu images using Waifu.im API"""
 		"""Usage: []waifu [option]"""
 		"""Options: waifu, maid, uniform, oppai, mori_calliope, raiden_shogun, marin_kitagawa, selfies, uniform, ass, milf, paizuri, hentai, oral, ecchi, ero"""
@@ -25,7 +25,7 @@ class Waifu(commands.Cog):
 			ctx.send(embed=msg)
 
 		@waifu.command()
-		async def maid(self, ctx)
+		async def maid(self, ctx):
 			"""Get a random maid image from Waifu.im"""
 			"""Usage: [p]waifu maid"""
 			url = 'https://api.waifu.im/search'
@@ -44,7 +44,7 @@ class Waifu(commands.Cog):
 			await ctx.send(response)
 
 		@waifu.command()
-                async def waifu(self, ctx)
+                async def waifu(self, ctx):
                         """Get a random waifu image from Waifu.im"""
 			"""Usage: [p]waifu waifu"""
                         url = 'https://api.waifu.im/search'
@@ -63,7 +63,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def hentai(self, ctx)
+                async def hentai(self, ctx):
                         """Get a random hentai image from Waifu.im"""
 			"""Usage: [p]waifu hentai"""
                         url = 'https://api.waifu.im/search'
@@ -82,7 +82,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def oppai(self, ctx)
+                async def oppai(self, ctx):
                         """Get a random oppai image from Waifu.im"""
 			"""Usage: [p]waifu oppai"""
                         url = 'https://api.waifu.im/search'
@@ -101,7 +101,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def selfies(self, ctx)
+                async def selfies(self, ctx):
                         """Get a random selfie image from Waifu.im"""
 			"""Usage: [p]waifu selfies"""
                         url = 'https://api.waifu.im/search'
@@ -120,7 +120,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def mori_calliope(self, ctx)
+                async def mori_calliope(self, ctx):
                         """Get a random Mori Calliope image from Waifu.im"""
 			"""Usage: [p]waifu mori_calliope"""
                         url = 'https://api.waifu.im/search'
@@ -139,7 +139,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def raiden_shogun(self, ctx)
+                async def raiden_shogun(self, ctx):
                         """Get a random Raiden Shogun image from Waifu.im"""
 			"""Usage: [p]waifu raiden_shogun"""
                         url = 'https://api.waifu.im/search'
@@ -158,7 +158,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def marin_kitagawa()
+                async def marin_kitagawa(self, ctx):
                         """Get a random Marin Kitagawa image from Waifu.im"""
 			"""Usage: [p]waifu marin_kitagawa"""
                         url = 'https://api.waifu.im/search'
@@ -177,7 +177,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def ass(self, ctx)
+                async def ass(self, ctx):
                         """Get a random ass image from Waifu.im"""
 			"""Usage: [p]waifu ass"""
                         url = 'https://api.waifu.im/search'
@@ -196,7 +196,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def milf(self, ctx)
+                async def milf(self, ctx):
                         """Get a random milf image from Waifu.im"""
 			"""Usage: [p]waifu milf"""
                         url = 'https://api.waifu.im/search'
@@ -215,7 +215,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def oral(self, ctx)
+                async def oral(self, ctx):
                         """Get a random oral image from Waifu.im"""
 			"""Usage: [p]waifu oral"""
                         url = 'https://api.waifu.im/search'
@@ -234,7 +234,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def ecchi(self, ctx)
+                async def ecchi(self, ctx):
                         """Get a random ecchi image from Waifu.im"""
 			"""Usage: [p]waifu ecchi"""
                         url = 'https://api.waifu.im/search'
@@ -253,7 +253,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def ero(self, ctx)
+                async def ero(self, ctx):
                         """Get a random ero image from Waifu.im"""
 			"""Usage: [p]waifu ero"""
                         url = 'https://api.waifu.im/search'
@@ -272,7 +272,7 @@ class Waifu(commands.Cog):
                         await ctx.send(response)
 
 		@waifu.command()
-                async def uniform(self, ctx)
+                async def uniform(self, ctx):
                         """Get a random uniform image from Waifu.im"""
 			"""Usage: [p]waifu uniform"""
                         url = 'https://api.waifu.im/search'
@@ -291,7 +291,7 @@ class Waifu(commands.Cog):
                         return await ctx.send(response)
 
 		@waifu.command()
-                async def paizuri(self, ctx)
+                async def paizuri(self, ctx):
                         """Get a random paizuri image from Waifu.im"""
 			"""Usage: [p]waifu paizuri"""
                         url = 'https://api.waifu.im/search'
@@ -311,7 +311,7 @@ class Waifu(commands.Cog):
 
 
 	@commands.Cog.listener()
-	async def on_command_error(self, ctx)
+	async def on_command_error(self, ctx):
 		if isinstance(error, commands.errors.NSFWChannelRequired):
 
 		const msg = new discord.Embed():
