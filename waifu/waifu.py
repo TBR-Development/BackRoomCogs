@@ -1,6 +1,5 @@
 from redbot.core import commands
 import requests
-import  discord
 
 class Waifu(commands.Cog):
 	"""Waifu images commands using Waifu.im API"""
@@ -16,8 +15,6 @@ class Waifu(commands.Cog):
 		"""Usage: []waifu [option]"""
 		"""Options: waifu, maid, uniform, oppai, mori_calliope, raiden_shogun, marin_kitagawa, selfies, uniform, ass, milf, paizuri, hentai, oral, ecchi, ero"""
 		if ctx.invoked_subcommand is None:
-
-			const msg = new discord.Embed():
 
 			msg.title = 'Whoops!'
 			msg.description =  "You didn't provide an option. Please provide a valid option."
@@ -313,8 +310,6 @@ class Waifu(commands.Cog):
 	@commands.Cog.listener()
 	async def on_command_error(self, ctx):
 		if isinstance(error, commands.errors.NSFWChannelRequired):
-
-		const msg = new discord.Embed():
 
 		msg.title = "NSFW Command"
 		msg.description = error.args[0]
