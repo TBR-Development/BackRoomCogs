@@ -1,4 +1,4 @@
-from .Waifu import Waifu
+from .waifu import Waifu
 
 async def setup(bot):
 	await bot.add(Waifu(bot))
