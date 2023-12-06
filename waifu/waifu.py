@@ -108,4 +108,4 @@ class Waifu(commands.Cog):
                 @commands.Cog.listener()
                 async def on_command_error(self, ctx, error):
                         if isinstance(error, commands.errors.NSFWChannelRequired):
-                                await ctx.send(f"Hey! {ctx.author.mention}, sorry but I can't submit nsfw content outside an nsfw channel.")
+                                await ctx.send(f"Hey! {ctx.author.mention}, sorry but I can't submit nsfw content outside nsfw channels.")
