@@ -1,6 +1,7 @@
 from redbot.core import commands
 
 import requests
+import aiohttp
 
 class Waifu(commands.Cog):
         """
@@ -12,6 +13,10 @@ class Waifu(commands.Cog):
 
                 @commands.command()
                 async def waifu(self, ctx):
+                        """
+                        Description: Get a random SFW image
+                        Usage: [p]waifu
+                        """
                         # retrieve image url from API URL
                         # ... need to figure out how to convert from requests to aiohttp
 
@@ -19,7 +24,7 @@ class Waifu(commands.Cog):
                                 'is_nasfw': 'false',
                                 'gif': 'false'
                         }
-                        
+
                         response = requests.get('https://api.waifu.im/search', params=params)
 
                         if response.status_code == 200:
@@ -32,6 +37,10 @@ class Waifu(commands.Cog):
                 @commands.command()
                 @commands.is_nsfw()
                 async def lewds(self, ctx):
+                        """
+                        Description: Get a random NSFW image
+                        Usage: [p]lewds
+                        """
                         # retrieve image url from API URL
                         # ... need to figure out how to convert from requests to aiohttp
 
@@ -51,6 +60,10 @@ class Waifu(commands.Cog):
                 
                 @commands.command()
                 async def aniwaifu(self, ctx):
+                        """
+                        Description: Get a random SFW gif
+                        Usage: [p]aniwaifu
+                        """
                         # retrieve image url from API URL
                         # ... need to figure out how to convert from requests to aiohttp
 
@@ -71,6 +84,10 @@ class Waifu(commands.Cog):
                 @commands.command()
                 @commands.is_nsfw()
                 async def anilewds(self, ctx):
+                        """
+                        Description: Get a random NSFW gif
+                        Usage: [p]anilewds
+                        """
                         # retrieve image url from API URL
                         # ... need to figure out how to convert from requests to aiohttp
 
