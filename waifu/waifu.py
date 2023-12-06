@@ -14,16 +14,16 @@ class Waifu(commands.Cog):
 
                 @commands.command()
                 @commands.is_nsfw()
-                async def nwaifu(self, ctx):
+                async def lewds(self, ctx):
                         await ctx.send('https://api.waifu.im/search?is_nsfw=true')
                 
                 @commands.command()
-                async def gif(self, ctx):
+                async def aniwaifu(self, ctx):
                         await ctx.send('https://api.waifu.im/search?gif=true')
                 
                 @commands.command()
                 @commands.is_nsfw()
-                async def ngif(self, ctx):
+                async def anilewds(self, ctx):
                         await ctx.send('https://api.waifu.im/search?is_nsfw=true&gif=true')
                 
                 @commands.Cog.listener()
