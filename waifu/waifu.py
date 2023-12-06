@@ -1,6 +1,7 @@
 from redbot.core import commands
 
 import requests
+import discord
 # import aiohttp
 
 class Waifu(commands.Cog):
@@ -108,4 +109,14 @@ class Waifu(commands.Cog):
                 @commands.Cog.listener()
                 async def on_command_error(self, ctx, error):
                         if isinstance(error, commands.errors.NSFWChannelRequired):
-                                await ctx.send(f"Hey! {ctx.author.mention}, sorry but I can't submit nsfw content outside nsfw channels.")
+                                embed = discord.Embed(
+                                        title = "NSFW Command",
+                                        description = "I am unable to post NSFW content in this channel.\nPlease move to an NSFW channel and try again."
+                                        )
+                                await ctx.send(embed=embed)
+                        else:
+                                embed = discord.Embed(
+                                        title = "Command Error",
+                                        description = error.args[0]
+                                        )
+                                await ctx.send(embed=embed)
