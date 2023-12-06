@@ -1,7 +1,7 @@
 from redbot.core import commands
 
 import requests
-import aiohttp
+# import aiohttp
 
 class Waifu(commands.Cog):
         """
