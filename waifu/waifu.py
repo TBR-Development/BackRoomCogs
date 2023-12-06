@@ -12,13 +12,15 @@ class Waifu(commands.Cog):
 
                 @commands.command()
                 async def waifu(self, ctx):
-                        # API URL
-                        url = 'https://api.waifu.im/search'
-
                         # retrieve image url from API URL
                         # ... need to figure out how to convert from requests to aiohttp
 
-                        response = requests.get('https://api.waifu.im/search')
+                        params = {
+                                'is_nasfw': 'false',
+                                'gif': 'false'
+                        }
+                        
+                        response = requests.get('https://api.waifu.im/search', params=params)
 
                         if response.status_code == 200:
                                 data = response.json()
@@ -34,7 +36,8 @@ class Waifu(commands.Cog):
                         # ... need to figure out how to convert from requests to aiohttp
 
                         params = {
-                                'is_nsfw': 'true'
+                                'is_nsfw': 'true',
+                                'gif': 'false'
                         }
 
                         response = requests.get('https://api.waifu.im/search', params=params)
@@ -52,6 +55,7 @@ class Waifu(commands.Cog):
                         # ... need to figure out how to convert from requests to aiohttp
 
                         params = {
+                                'is_nasf': 'false',
                                 'gif': 'true'
                         }
 
