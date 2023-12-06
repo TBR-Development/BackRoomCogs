@@ -1,9 +1,9 @@
 {
- "author": ["TBR Development"],
- "install_msg": "Thank you for installing our repo! If you need support ping, feel free to create an issue on Github.",
+ "author": "TBR Development",
+ "install_msg": "Thank you for installing our repo! If you need support, feel free to create an issue on Github.",
  "name": "BackRoomCogs",
  "short": "Cogs for Red DiscordBot",
  "description": "A collection of cogs for Red DiscordBot",
- "requirements": ["git+https://github.com/aio-libs/aiohttp"],
+ "requirements": "",
  "tags": ["fun", "image", "nsfw", "utility", "functionalities"]
 }

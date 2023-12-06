@@ -1,6 +1,10 @@
 from redbot.core import commands
 
-import json
+# import aiohttp
+# import asyncio
+# import discord
+# import json
+# from io imort BytesIO
 
 class Waifu(commands.Cog):
         """
@@ -12,39 +16,35 @@ class Waifu(commands.Cog):
 
                 @commands.command()
                 async def waifu(self, ctx):
-                        u = 'https://api.waifu.im/search'
+                        url = 'https://api.waifu.im/search'
 
-                        data = json.loads(u.json())[0]
-                        resp = data[0]['url']
+                        # Implement code for retreiving the image url from the response
 
                         await ctx.send(resp)
 
                 @commands.command()
                 @commands.is_nsfw()
                 async def lewds(self, ctx):
-                        u = 'https://api.waifu.im/search?is_nsfw=true'
+                        url = 'https://api.waifu.im/search?is_nsfw=true'
 
-                        data = json.loads(u.json())[0]
-                        resp = data[0]['url']
+                        # Implement code for retreiving the image url from the response
 
                         await ctx.send(resp)
                 
                 @commands.command()
                 async def aniwaifu(self, ctx):
-                        u = 'https://api.waifu.im/search?gif=true'
+                        url = 'https://api.waifu.im/search?gif=true'
 
-                        data = json.loads(u.json())[0]
-                        resp = data[0]['url']
+                        # Implement code for retreiving the image url from the response
 
                         await ctx.send(resp)
                 
                 @commands.command()
                 @commands.is_nsfw()
                 async def anilewds(self, ctx):
-                        u = 'https://api.waifu.im/search?is_nsfw=true&gif=true'
+                        url = 'https://api.waifu.im/search?is_nsfw=true&gif=true'
 
-                        data = json.loads(u.json())[0]
-                        resp = data[0]['url']
+                        # Implement code for retreiving the image url from the response
 
                         await ctx.send(resp)
                 

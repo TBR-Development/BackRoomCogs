@@ -22,24 +22,14 @@ To install a cog, use this command, replacing <cog> with the name of the cog you
 
 ## Available Cogs
 
-**Waifu**:
-A cog to get waifu images by tag from Waifu.IM API.
-Available tags are: `waifu`, `maid`, `uniform`, `selfies`, `marin_kitagawa`, `raiden_shogun`, `mori_calliope`, `oppai`, `ass`, `milf`, `hentai`, `ecchi`, `paizuri`, `oral`, `ero`.
-For obvious reasons the commands in this cog will only work in NSFW channels.
+| Name | Description | Author |
+| --- | --- | --- |
+| Waifu | Get images from waifu.im API | [PhantomNimbi][PHANTOMNIMBI] |
 
 
 ## Contribution
 
 If you have any ideas, feel free to clone the repo and open a PR. I'm happy to add new cogs in.
 
-## LICENSE
 
-This repository and it's cogs are protected under the MIT License.
-
-For further information, please click [here][LICENSE].
-
-
-[LICENSE]: ./LICENSE
-
-
-
+[PHANTOMNIMBI]: https://github.com/PhantomNimbi

@@ -1,14 +1,10 @@
 {
-	"author": ["PhantomNimbi"],
+	"author": "PhantomNimbi",
 	"name": "Waifu",
 	"install_msg": "Thank you for installing this cog!\nDo `[p]help CogName` to get the list of commands and their description.",
 	"short": "Get waifu images by tag from Waifu.IM API",
 	"description": "get waifu images by tag from Waifu.IM API",
-	"tags": [
-		"fun",
-		"images",
-		"nsfw"
-	],
+	"tags": ["images", "nsfw"],
 	"main_bot_version": "3.5.0",
 	"end_user_data_statement": "This cog does not persistantly store data or metadata about users."
 }
