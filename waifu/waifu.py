@@ -10,70 +10,216 @@ class Waifu(commands.Cog):
         def __init__(self, bot):
                 self.bot = bot
                
+
                 @commands.command()
                 async def waifu(self, ctx):
-                        url = 'https://api.waifu.im/search'
+                        tags = ['waifu']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
 
-                        params = {
-                                'gif': False,
-                                'is_nsfw': False
-                                }
+                        embed = discord.Embed()
 
-                        async with aiohttp.ClientSession() as session:
-                                async with session.get(url, params=params) as resp:
-                                        img = await resp.read()
-                                        with io.BytesIO(img) as file:
-                                                await ctx.send(file=discord.File(file, img))
-                        
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+
+                                        await ctx.send(embed=embed)
+                
+                @commands.command()
+                async def maid(self, ctx):
+                        tags = ['maid']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+                @commands.command()
+                async def uniform(self, ctx):
+                        tags = ['uniform']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+                
+                @commands.command()
+                async def mori_calliope(self, ctx):
+                        tags = ['mori-calliope']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+                @commands.command()
+                async def marin_kitagawa(self, ctx):
+                        tags = ['marin-kitagawa']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+                
+                @commands.command()
+                async def raiden_shogun(self, ctx):
+                        tags = ['raiden-shogun']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
                 @commands.command()
                 @commands.is_nsfw()
-                async def nwaifu(self, ctx):
-                        url = 'https://api.waifu.im/search'
+                async def oppai(self, ctx):
+                        tags = ['oppai']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
 
-                        params = {
-                                'gif': False,
-                                'is_nsfw': True
-                                }
+                        embed = discord.Embed()
 
-                        async with aiohttp.ClientSession() as session:
-                                async with session.get(url, params=params) as resp:
-                                        img = await resp.read()
-                                        with io.BytesIO(img) as file:
-                                                await ctx.send(file=discord.File(file, img))
-
-                @commands.command()
-                async def gif(self, ctx):
-                        url = 'https://api.waifu.im/search'
-
-                        params = {
-                                'gif': True,
-                                'is_nsfw': False
-                        }
-
-                        async with aiohttp.ClientSession() as session:
-                                async with session.get(url, params=params) as resp:
-                                        img = await resp.read()
-                                        with io.BytesIO(img) as file:
-                                                await ctx.send(file=discord.File(file, img))
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
 
                 @commands.command()
-                async def ngif(self, ctx):
-                        url = 'https://api.waifu.im/search'
+                @commands.is_nsfw()
+                async def ass(self, ctx):
+                        tags = ['ass']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
 
-                        params = {
-                                'gif': True,
-                                'is_nsfw': True
-                        }
+                        embed = discord.Embed()
 
-                        async with aiohttp.ClientSession() as session:
-                                async with session.get(url, params=params) as resp:
-                                        img = await resp.read()
-                                        with io.BytesIO(img) as file:
-                                                await ctx.send(file=discord.File(file, img))
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+                @commands.command()
+                @commands.is_nsfw()
+                async def milf(self, ctx):
+                        tags = ['milf']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+
+                @commands.command()
+                @commands.is_nsfw()
+                async def hentai(self, ctx):
+                        tags = ['hentai']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+                @commands.command()
+                @commands.is_nsfw()
+                async def oral(self, ctx):
+                        tags = ['oral']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+                @commands.command()
+                @commands.is_nsfw()
+                async def paizuri(self, ctx):
+                        tags = ['paizuri']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+                @commands.command()
+                @commands.is_nsfw()
+                async def ecchi(self, ctx):
+                        tags = ['ecchi']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+                @commands.command()
+                @commands.is_nsfw()
+                async def ero(self, ctx):
+                        tags = ['ero']
+                        url = f'https://api.waifu.im/search?included_tags={tags}'
+
+                        embed = discord.Embed()
+
+                        async with aiohttp.ClientSession() as cs:
+                                async with cs.get(url) as r:
+                                        res = await r.json()
+                                        embed.set_image(url=res['data'][0]['url'])
+                                        
+                                        await ctx.send(embed=embed)
+
+
+                        
 
                 @commands.Cog.listener()
-                async def on_command_error(self, ctx):
+                async def on_command_error(self, ctx, error):
                         if isinstance(error, commands.errors.NSFWChannelRequired):
-                                msg.title = "NSFW Command"
-                                msg.description = error.args[0]
-                                return await ctx.send(embed=msg)
+                                await ctx.send(f"Hey! {ctx.author.mention}, sorry but I can't submit nsfw content outside an nsfw channel.")
