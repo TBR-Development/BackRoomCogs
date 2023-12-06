@@ -1,115 +1,79 @@
 from redbot.core import commands
-
+import aiohttp
+import discord
 
 class Waifu(commands.Cog):
-        """Waifu images commands using Waifu.im API"""
+        """
+        Get images from Waifu.IM API
+        """
+
         def __init__(self, bot):
+                self.bot = bot
                
-                @commands.Command()
-                @commands.is_nsfw()
+                @commands.command()
                 async def waifu(self, ctx):
-                        tag = 'waifu'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                        url = 'https://api.waifu.im/search'
 
-                @commands.Command()
+                        params = {
+                                'gif': False,
+                                'is_nsfw': False
+                                }
+
+                        async with aiohttp.ClientSession() as session:
+                                async with session.get(url, params=params) as resp:
+                                        img = await resp.read()
+                                        with io.BytesIO(img) as file:
+                                                await ctx.send(file=discord.File(file, img))
+                        
+                @commands.command()
                 @commands.is_nsfw()
-                async def uniform(self, ctx):
-                        tag = 'uniform'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
-                
-                @commands.Command()
-                @commands.is_nsfw()
-                async def maid(self, ctx):
-                        tag = 'maid'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                async def nwaifu(self, ctx):
+                        url = 'https://api.waifu.im/search'
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def marin(self, ctx):
-                        tag = 'marin-kitagawa'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
-                
-                @commands.Command()
-                @commands.is_nsfw()
-                async def raiden(self, ctx):
-                        tag = 'raiden-shogun'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                        params = {
+                                'gif': False,
+                                'is_nsfw': True
+                                }
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def mori(self, ctx):
-                        tag = 'mori-calliope'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                        async with aiohttp.ClientSession() as session:
+                                async with session.get(url, params=params) as resp:
+                                        img = await resp.read()
+                                        with io.BytesIO(img) as file:
+                                                await ctx.send(file=discord.File(file, img))
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def oppai(self, ctx):
-                        tag = 'oppai'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                @commands.command()
+                async def gif(self, ctx):
+                        url = 'https://api.waifu.im/search'
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def ass(self, ctx):
-                        tag = 'ass'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                        params = {
+                                'gif': True,
+                                'is_nsfw': False
+                        }
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def milf(self, ctx):
-                        tag = 'milf'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                        async with aiohttp.ClientSession() as session:
+                                async with session.get(url, params=params) as resp:
+                                        img = await resp.read()
+                                        with io.BytesIO(img) as file:
+                                                await ctx.send(file=discord.File(file, img))
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def hentai(self, ctx):
-                        tag = 'hentai'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                @commands.command()
+                async def ngif(self, ctx):
+                        url = 'https://api.waifu.im/search'
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def oral(self, ctx):
-                        tag = 'oral'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                        params = {
+                                'gif': True,
+                                'is_nsfw': True
+                        }
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def paizuri(self, ctx):
-                        tag = 'paizuri'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                        async with aiohttp.ClientSession() as session:
+                                async with session.get(url, params=params) as resp:
+                                        img = await resp.read()
+                                        with io.BytesIO(img) as file:
+                                                await ctx.send(file=discord.File(file, img))
 
-                @commands.Command()
-                @commands.is_nsfw()
-                async def ecchi(self, ctx):
-                        tag = 'ecchi'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
-
-                @commands.Command()
-                @commands.is_nsfw()
-                async def ero(self, ctx):
-                        tag = 'ero'
-        
-                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
-
-
-	        @commands.Cog.listener()
-	        async def on_command_error(self, ctx):
-
+                @commands.Cog.listener()
+                async def on_command_error(self, ctx):
                         if isinstance(error, commands.errors.NSFWChannelRequired):
-
-		        msg.title = 'NSFW Command'
-		        msg.description = 'This command must be run in and NSFW channel.'
-
-		        return await ctx.send(embed=msg) 
+                                msg.title = "NSFW Command"
+                                msg.description = error.args[0]
+                                return await ctx.send(embed=msg)
