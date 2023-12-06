@@ -1,5 +1,7 @@
 from redbot.core import commands
 
+import json
+
 class Waifu(commands.Cog):
         """
         Get images from Waifu.IM API
@@ -10,21 +12,41 @@ class Waifu(commands.Cog):
 
                 @commands.command()
                 async def waifu(self, ctx):
-                        await ctx.send('https://api.waifu.im/search')
+                        u = 'https://api.waifu.im/search'
+
+                        data = json.loads(u.json())[0]
+                        resp = data[0]['url']
+
+                        await ctx.send(resp)
 
                 @commands.command()
                 @commands.is_nsfw()
                 async def lewds(self, ctx):
-                        await ctx.send('https://api.waifu.im/search?is_nsfw=true')
+                        u = 'https://api.waifu.im/search?is_nsfw=true'
+
+                        data = json.loads(u.json())[0]
+                        resp = data[0]['url']
+
+                        await ctx.send(resp)
                 
                 @commands.command()
                 async def aniwaifu(self, ctx):
-                        await ctx.send('https://api.waifu.im/search?gif=true')
+                        u = 'https://api.waifu.im/search?gif=true'
+
+                        data = json.loads(u.json())[0]
+                        resp = data[0]['url']
+
+                        await ctx.send(resp)
                 
                 @commands.command()
                 @commands.is_nsfw()
                 async def anilewds(self, ctx):
-                        await ctx.send('https://api.waifu.im/search?is_nsfw=true&gif=true')
+                        u = 'https://api.waifu.im/search?is_nsfw=true&gif=true'
+
+                        data = json.loads(u.json())[0]
+                        resp = data[0]['url']
+
+                        await ctx.send(resp)
                 
                 @commands.Cog.listener()
                 async def on_command_error(self, ctx, error):
