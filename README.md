@@ -20,7 +20,7 @@ To install a cog, use this command, replacing <cog> with the name of the cog you
 [p]cog install BackRoomCogs <cog>
 ```
 
-## Available Cogs
+## Cogs List
 
 | Name | Description | Author | Status |
 | --- | --- | --- | --- |
