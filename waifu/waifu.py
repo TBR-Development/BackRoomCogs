@@ -1,10 +1,6 @@
 from redbot.core import commands
 
-# import aiohttp
-# import asyncio
-# import discord
-# import json
-# from io imort BytesIO
+import requests
 
 class Waifu(commands.Cog):
         """
@@ -16,37 +12,77 @@ class Waifu(commands.Cog):
 
                 @commands.command()
                 async def waifu(self, ctx):
+                        # API URL
                         url = 'https://api.waifu.im/search'
 
-                        # Implement code for retreiving the image url from the response
+                        # retrieve image url from API URL
+                        # ... need to figure out how to convert from requests to aiohttp
 
-                        await ctx.send(resp)
+                        response = requests.get('https://api.waifu.im/search')
+
+                        if response.status_code == 200:
+                                data = response.json()
+                        else:
+                                print('Request failed with status code:', response.status_code)
+                        
+                        await ctx.send(data['url'])
 
                 @commands.command()
                 @commands.is_nsfw()
                 async def lewds(self, ctx):
-                        url = 'https://api.waifu.im/search?is_nsfw=true'
+                        # retrieve image url from API URL
+                        # ... need to figure out how to convert from requests to aiohttp
 
-                        # Implement code for retreiving the image url from the response
+                        params = {
+                                'is_nsfw': 'true'
+                        }
 
-                        await ctx.send(resp)
+                        response = requests.get('https://api.waifu.im/search', params=params)
+
+                        if response.status_code == 200:
+                                data = response.json()
+                        else:
+                                print('Request failed with status code:', response.status_code)
+                        
+                        await ctx.send(data['url'])
                 
                 @commands.command()
                 async def aniwaifu(self, ctx):
-                        url = 'https://api.waifu.im/search?gif=true'
+                        # retrieve image url from API URL
+                        # ... need to figure out how to convert from requests to aiohttp
 
-                        # Implement code for retreiving the image url from the response
+                        params = {
+                                'gif': 'true'
+                        }
 
-                        await ctx.send(resp)
+                        response = requests.get('https://api.waifu.im/search', params=params)
+
+                        if response.status_code == 200:
+                                data = response.json()
+                        else:
+                                print('Request failed with status code:', response.status_code)
+                        
+                        await ctx.send(data['url'])
                 
                 @commands.command()
                 @commands.is_nsfw()
                 async def anilewds(self, ctx):
-                        url = 'https://api.waifu.im/search?is_nsfw=true&gif=true'
+                        # retrieve image url from API URL
+                        # ... need to figure out how to convert from requests to aiohttp
 
-                        # Implement code for retreiving the image url from the response
+                        params = {
+                                'is_nsfw': 'true',
+                                'gif': 'true'
+                        }
 
-                        await ctx.send(resp)
+                        response = requests.get('https://api.waifu.im/search', params=params)
+
+                        if response.status_code == 200:
+                                data = response.json()
+                        else:
+                                print('Request failed with status code:', response.status_code)
+                        
+                        await ctx.send(data['url'])
                 
                 @commands.Cog.listener()
                 async def on_command_error(self, ctx, error):
