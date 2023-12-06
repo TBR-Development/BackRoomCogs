@@ -1,202 +1,107 @@
 from redbot.core import commands
-from aiohttp import ClientSession
+
 
 class Waifu(commands.Cog):
         """Waifu images commands using Waifu.im API"""
         def __init__(self, bot):
-
-                        
-                @commands.group()
+               
+                @commands.Command()
                 @commands.is_nsfw()
                 async def waifu(self, ctx):
-                        """Waifu images using Waifu.im API"""
-                        """Usage: []waifu [option]"""
-                        """Options: waifu, maid, uniform, oppai, mori_calliope, raiden_shogun, marin_kitagawa, selfies, uniform, ass, milf, paizuri, hentai, oral, ecchi, ero"""
-                        if ctx.invoked_subcommand is None:
-                                msg.title = 'Whoops!'
-                                msg.description =  "You didn't provide an option. Please provide a valid option."
-                                ctx.send(embed=msg)
-                
-                @waifu.command()
-                async def maid(self, ctx):
+                        tag = 'waifu'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
 
-                        async with ClientSession() as session:
-                                url = 'https://api.waifu.im/search'
-                                params = {'included_tags': ['maid'], 'height': '>=2000'}
-
-                                async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-                @waifu.command()
-                async def waifu(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['waifu'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-        	@waifu.command()
-                async def hentai(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['hentai'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-        	@waifu.command()
-                async def oppai(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['oppai'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-		@waifu.command()
-                async def selfies(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['selfies'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-        	@waifu.command()
-                async def mori_calliope(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['mori-calliope'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-	        @waifu.command()
-                async def raiden_shogun(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['raiden-shogun'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-        	@waifu.command()
-                async def marin_kitagawa(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['marin-kitagawa'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-        	@waifu.command()
-                async def ass(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['ass'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-        	@waifu.command()
-                async def milf(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['milf'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-        	@waifu.command()
-                async def oral(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['oral'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
-
-        	@waifu.command()
-                async def ecchi(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['ecchi'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                               await ctx.send(response)
-
-        	@waifu.command()
-                async def ero(self, ctx):
-
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['ero'], 'height': '>=2000'}
-
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                               await ctx.send(response)
-
-        	@waifu.command()
+                @commands.Command()
+                @commands.is_nsfw()
                 async def uniform(self, ctx):
+                        tag = 'uniform'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                
+                @commands.Command()
+                @commands.is_nsfw()
+                async def maid(self, ctx):
+                        tag = 'maid'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
 
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['uniform'], 'height': '>=2000'}
+                @commands.Command()
+                @commands.is_nsfw()
+                async def marin(self, ctx):
+                        tag = 'marin-kitagawa'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+                
+                @commands.Command()
+                @commands.is_nsfw()
+                async def raiden(self, ctx):
+                        tag = 'raiden-shogun'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
 
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                                await ctx.send(response)
+                @commands.Command()
+                @commands.is_nsfw()
+                async def mori(self, ctx):
+                        tag = 'mori-calliope'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
 
-        	@waifu.command()
+                @commands.Command()
+                @commands.is_nsfw()
+                async def oppai(self, ctx):
+                        tag = 'oppai'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+
+                @commands.Command()
+                @commands.is_nsfw()
+                async def ass(self, ctx):
+                        tag = 'ass'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+
+                @commands.Command()
+                @commands.is_nsfw()
+                async def milf(self, ctx):
+                        tag = 'milf'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+
+                @commands.Command()
+                @commands.is_nsfw()
+                async def hentai(self, ctx):
+                        tag = 'hentai'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+
+                @commands.Command()
+                @commands.is_nsfw()
+                async def oral(self, ctx):
+                        tag = 'oral'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
+
+                @commands.Command()
+                @commands.is_nsfw()
                 async def paizuri(self, ctx):
+                        tag = 'paizuri'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
 
-                        url = 'https://api.waifu.im/search'
-                        params = {'included_tags': ['paizuri'], 'height': '>=2000'}
+                @commands.Command()
+                @commands.is_nsfw()
+                async def ecchi(self, ctx):
+                        tag = 'ecchi'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
 
-                        async with ClientSession() as session:
-                                        async with session.get(url, params) as response:
-                                                response = requests.get(url, parames=params)
-                                                
-                                               await ctx.send(response)
+                @commands.Command()
+                @commands.is_nsfw()
+                async def ero(self, ctx):
+                        tag = 'ero'
+        
+                        await ctx.send('https://api.waifu.im/search?included_tags={tag}')
 
 
 	        @commands.Cog.listener()
@@ -204,7 +109,7 @@ class Waifu(commands.Cog):
 
                         if isinstance(error, commands.errors.NSFWChannelRequired):
 
-		        msg.title = "NSFW Command"
-		        msg.description = error.args[0]
+		        msg.title = 'NSFW Command'
+		        msg.description = 'This command must be run in and NSFW channel.'
 
 		        return await ctx.send(embed=msg) 
