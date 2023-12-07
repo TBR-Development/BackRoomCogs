@@ -5,7 +5,7 @@ Get waifu images from waifu.im API.
 
 | Name | Description | Usage |
 | --- | --- | --- |
-| waifu | Get a random SFW waifu image | `[p]waifu` |
+| waif | Get a random SFW waifu image | `[p]waif` |
 | lewds | Get a random NSFW waifu image | `[p]lewds` |
-| aniwaifu | Get a random SFW waifu gif | `[p]aniwaifu` |
+| aniwaif | Get a random SFW waifu gif | `[p]aniwaif` |
 | anilewds | Get a random NSFW waifu gif | `[p]anilewds` |
