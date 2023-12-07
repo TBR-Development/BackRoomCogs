@@ -24,8 +24,7 @@ class Waifu(commands.Cog):
 
                                                 image_url = image['url']
                                                 
-                                                embed = Embed()
-                                                embed.description(f'**Direct Link**: [waifu.im]({image_url})')
+                                                embed = Embed(description = f"**Direct Link**: [waifu.im]({image_url})")
                                                 embed.set_image(url = image_url)
                                                 
                                                 await ctx.send(embed=embed)
@@ -44,8 +43,7 @@ class Waifu(commands.Cog):
 
                                                 image_url = image['url']
                                                 
-                                                embed = Embed()
-                                                embed.description(f'**Direct Link**: [waifu.im]({image_url})')
+                                                embed = Embed(description = f"**Direct Link**: [waifu.im]({image_url})")
                                                 embed.set_image(url = image_url)
                                                 
                                                 await ctx.send(embed=embed)
@@ -65,8 +63,7 @@ class Waifu(commands.Cog):
 
                                                 image_url = image['url']
                                                 
-                                                embed = Embed()
-                                                embed.description(f'**Direct Link**: [waifu.im]({image_url})')
+                                                embed = Embed(description = f"**Direct Link**: [waifu.im]({image_url})")
                                                 embed.set_image(url = image_url)
                                                 
                                                 await ctx.send(embed=embed)
@@ -86,8 +83,7 @@ class Waifu(commands.Cog):
 
                                                 image_url = image['url']
                                                 
-                                                embed = Embed()
-                                                embed.description(f'**Direct Link**: [waifu.im]({image_url})')
+                                                embed = Embed(description = f"**Direct Link**: [waifu.im]({image_url})")
                                                 embed.set_image(url = image_url)
                                                 
                                                 await ctx.send(embed=embed)
