@@ -12,7 +12,7 @@ class Waifus(commands.Cog):
 
 
         @commands.command()
-        async def waifu(self, ctx):
+        async def waif(self, ctx):
                 """
                 Get a random waifu image
                 """
@@ -37,7 +37,7 @@ class Waifus(commands.Cog):
 
 
         @commands.command()
-        async def aniwaifu(self, ctx):
+        async def aniwaif(self, ctx):
                 """
                 Get a random waifu gif
                 """
