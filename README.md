@@ -24,7 +24,7 @@ To install a cog, use this command, replacing <cog> with the name of the cog you
 
 | Name | Description | Author | Status |
 | --- | --- | --- | --- |
-| Waifu | Get images from waifu.im API | [PhantomNimbi][PHANTOMNIMBI] | W.I.P |
+| Waifu | Get images from waifu.im API | [PhantomNimbi][PHANTOMNIMBI] | Functional |
 
 
 ## Contribution
