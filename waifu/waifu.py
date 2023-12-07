@@ -11,85 +11,85 @@ class Waifu(commands.Cog):
                 self.bot = bot
 
 
-                @commands.command()
-                async def waifu(self, ctx):
-                        url = 'https://api.waifu.im/search'
-                        params = {'is_nsfw': 'false', 'gif': 'false'}
+        @commands.command()
+        async def waifu(self, ctx):
+                url = 'https://api.waifu.im/search'
+                params = {'is_nsfw': 'false', 'gif': 'false'}
 
-                        async with ClientSession() as cs:
-                                async with cs.get(url, params=params) as response:
-                                        if response.status == 200:
-                                                data = await response.json()
+                async with ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                if response.status == 200:
+                                        data = await response.json()
 
-                                                for image in data['images']:
-                                                        image_url = image['url']
-                                                        image_name = image['name']
-                                                        image_description = image['description']
+                                        for image in data['images']:
+                                                image_url = image['url']
+                                                image_name = image['name']
+                                                image_description = image['description']
 
-                                                        embed = Embed(title = image_name, description = image_description)
-                                                        embed.set_image(url = image_url)
+                                                embed = Embed(title = image_name, description = image_description)
+                                                embed.set_image(url = image_url)
                                                 
-                                                        await ctx.send(embed=embed)
+                                                await ctx.send(embed=embed)
 
-                @commands.command()
-                async def aniwaifu(self, ctx):
-                        url = 'https://api.waifu.im/search'
-                        params = {'is_nsfw': 'false', 'gif': 'true'}
+        @commands.command()
+        async def aniwaifu(self, ctx):
+                url = 'https://api.waifu.im/search'
+                params = {'is_nsfw': 'false', 'gif': 'true'}
 
-                        async with ClientSession() as cs:
-                                async with cs.get(url, params=params) as response:
-                                        if response.status == 200:
-                                                data = await response.json()
+                async with ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                if response.status == 200:
+                                        data = await response.json()
 
-                                                for image in data['images']:
-                                                        image_url = image['url']
-                                                        image_name = image['name']
-                                                        image_description = image['description']
+                                        for image in data['images']:
+                                                image_url = image['url']
+                                                image_name = image['name']
+                                                image_description = image['description']
 
-                                                        embed = Embed(title = image_name, description = image_description)
-                                                        embed.set_image(url = image_url)
+                                                embed = Embed(title = image_name, description = image_description)
+                                                embed.set_image(url = image_url)
                                                 
-                                                        await ctx.send(embed=embed)
+                                                await ctx.send(embed=embed)
 
 
-                @commands.command()
-                @commands.is_nsfw()
-                async def lewds(self, ctx):
-                        url = 'https://api.waifu.im/search'
-                        params = {'is_nsfw': 'true', 'gif': 'false'}
+        @commands.command()
+        @commands.is_nsfw()
+        async def lewds(self, ctx):
+                url = 'https://api.waifu.im/search'
+                params = {'is_nsfw': 'true', 'gif': 'false'}
 
-                        async with ClientSession() as cs:
-                                async with cs.get(url, params=params) as response:
-                                        if response.status == 200:
-                                                data = await response.json()
+                async with ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                if response.status == 200:
+                                        data = await response.json()
 
-                                                for image in data['images']:
-                                                        image_url = image['url']
-                                                        image_name = image['name']
-                                                        image_description = image['description']
+                                        for image in data['images']:
+                                                image_url = image['url']
+                                                image_name = image['name']
+                                                image_description = image['description']
 
-                                                        embed = Embed(title = image_name, description = image_description)
-                                                        embed.set_image(url = image_url)
+                                                embed = Embed(title = image_name, description = image_description)
+                                                embed.set_image(url = image_url)
                                                 
-                                                        await ctx.send(embed=embed)
+                                                await ctx.send(embed=embed)
 
-                @commands.command()
-                @commands.is_nsfw()
-                async def anilewds(self, ctx):
-                        url = 'https://api.waifu.im/search'
-                        params = {'is_nsfw': 'true', 'gif': 'true'}
+        @commands.command()
+        @commands.is_nsfw()
+        async def anilewds(self, ctx):
+                url = 'https://api.waifu.im/search'
+                params = {'is_nsfw': 'true', 'gif': 'true'}
 
-                        async with ClientSession() as cs:
-                                async with cs.get(url, params=params) as response:
-                                        if response.status == 200:
-                                                data = await response.json()
+                async with ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                if response.status == 200:
+                                        data = await response.json()
 
-                                                for image in data['images']:
-                                                        image_url = image['url']
-                                                        image_name = image['name']
-                                                        image_description = image['description']
+                                        for image in data['images']:
+                                                image_url = image['url']
+                                                image_name = image['name']
+                                                image_description = image['description']
 
-                                                        embed = Embed(title = image_name, description = image_description)
-                                                        embed.set_image(url = image_url)
+                                                embed = Embed(title = image_name, description = image_description)
+                                                embed.set_image(url = image_url)
                                                 
-                                                        await ctx.send(embed=embed)
+                                                await ctx.send(embed=embed)
