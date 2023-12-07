@@ -2,7 +2,7 @@ from redbot.core import commands, app_commands
 from aiohttp import ClientSession
 from discord import Embed
 
-class Waifu(commands.Cog):
+class Waifus(commands.Cog):
         """
         Get images from Waifu.IM API
         """
