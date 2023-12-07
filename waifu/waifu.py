@@ -22,9 +22,9 @@ class Waifu(commands.Cog):
                                         data = await response.json()
 
                                         for image in data['images']:
-                                                # image_url = image['url']
+                                                image_url = image['url']
                                                 # image_name = image['name']
-                                                image_description = image['description']
+                                                # image_description = image['description']
 
                                                 # embed = Embed(title = image_name, description = image_description)
                                                 embed = Embed()
@@ -43,9 +43,9 @@ class Waifu(commands.Cog):
                                         data = await response.json()
 
                                         for image in data['images']:
-                                                # image_url = image['url']
+                                                image_url = image['url']
                                                 # image_name = image['name']
-                                                image_description = image['description']
+                                                # image_description = image['description']
 
                                                 # embed = Embed(title = image_name, description = image_description)
                                                 embed = Embed()
@@ -66,9 +66,9 @@ class Waifu(commands.Cog):
                                         data = await response.json()
 
                                         for image in data['images']:
-                                                # image_url = image['url']
+                                                image_url = image['url']
                                                 # image_name = image['name']
-                                                image_description = image['description']
+                                                # image_description = image['description']
 
                                                 # embed = Embed(title = image_name, description = image_description)
                                                 embed = Embed()
@@ -88,9 +88,9 @@ class Waifu(commands.Cog):
                                         data = await response.json()
 
                                         for image in data['images']:
-                                                # image_url = image['url']
+                                                image_url = image['url']
                                                 # image_name = image['name']
-                                                image_description = image['description']
+                                                # image_description = image['description']
 
                                                 # embed = Embed(title = image_name, description = image_description)
                                                 embed = Embed()
