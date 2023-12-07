@@ -21,7 +21,7 @@ class Waifu(commands.Cog):
                                 if response.status == 200:
                                         data = await response.json()
 
-                                        for image in data['images']['tags']:
+                                        for image in data['images', 'tags']:
                                                 image_url = image['url']
                                                 image_name = image['name']
                                                 image_description = image['description']
@@ -42,7 +42,7 @@ class Waifu(commands.Cog):
                                 if response.status == 200:
                                         data = await response.json()
 
-                                        for image in data['images']['tags']:
+                                        for image in data['images', 'tags']:
                                                 image_url = image['url']
                                                 image_name = image['name']
                                                 image_description = image['description']
@@ -65,7 +65,7 @@ class Waifu(commands.Cog):
                                 if response.status == 200:
                                         data = await response.json()
 
-                                        for image in data['images']['tags']:
+                                        for image in data['images', 'tags']:
                                                 image_url = image['url']
                                                 image_name = image['name']
                                                 image_description = image['description']
@@ -87,7 +87,7 @@ class Waifu(commands.Cog):
                                 if response.status == 200:
                                         data = await response.json()
 
-                                        for image in data['images']['tags']:
+                                        for image in data['images', 'tags']:
                                                 image_url = image['url']
                                                 image_name = image['name']
                                                 image_description = image['description']
