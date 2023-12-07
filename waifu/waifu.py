@@ -23,13 +23,11 @@ class Waifu(commands.Cog):
                                         for image in data['images']:
 
                                                 image_url = image['url']
-                                                preview_url = image['preview_url']
                                                 
                                                 embed = Embed()
                                                 # embed.title(image_name)
                                                 # embed.description(image_description)
                                                 embed.set_image(url = image_url)
-                                                embed.set_thumbnail(url = preview_url)
                                                 
                                                 await ctx.send(embed=embed)
 
@@ -46,13 +44,11 @@ class Waifu(commands.Cog):
                                         for image in data['images']:
 
                                                 image_url = image['url']
-                                                preview_url = image['preview_url']
                                                 
                                                 embed = Embed()
                                                 # embed.title(image_name)
                                                 # embed.description(image_description)
                                                 embed.set_image(url = image_url)
-                                                embed.set_thumbnail(url = preview_url)
                                                 
                                                 await ctx.send(embed=embed)
 
@@ -70,13 +66,11 @@ class Waifu(commands.Cog):
                                         for image in data['images']:
 
                                                 image_url = image['url']
-                                                preview_url = image['preview_url']
                                                 
                                                 embed = Embed()
                                                 # embed.title(image_name)
                                                 # embed.description(image_description)
                                                 embed.set_image(url = image_url)
-                                                embed.set_thumbnail(url = preview_url)
                                                 
                                                 await ctx.send(embed=embed)
 
@@ -94,12 +88,10 @@ class Waifu(commands.Cog):
                                         for image in data['images']:
 
                                                 image_url = image['url']
-                                                preview_url = image['preview_url']
                                                 
                                                 embed = Embed()
                                                 # embed.title(image_name)
                                                 # embed.description(image_description)
                                                 embed.set_image(url = image_url)
-                                                embed.set_thumbnail(url = preview_url)
                                                 
                                                 await ctx.send(embed=embed)
