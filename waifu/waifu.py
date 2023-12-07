@@ -22,11 +22,12 @@ class Waifu(commands.Cog):
                                         data = await response.json()
 
                                         for image in data['images']:
-                                                image_url = image['url']
-                                                image_name = image['name']
+                                                # image_url = image['url']
+                                                # image_name = image['name']
                                                 image_description = image['description']
 
-                                                embed = Embed(title = image_name, description = image_description)
+                                                # embed = Embed(title = image_name, description = image_description)
+                                                embed = Embed()
                                                 embed.set_image(url = image_url)
                                                 
                                                 await ctx.send(embed=embed)
@@ -42,11 +43,12 @@ class Waifu(commands.Cog):
                                         data = await response.json()
 
                                         for image in data['images']:
-                                                image_url = image['url']
-                                                image_name = image['name']
+                                                # image_url = image['url']
+                                                # image_name = image['name']
                                                 image_description = image['description']
 
-                                                embed = Embed(title = image_name, description = image_description)
+                                                # embed = Embed(title = image_name, description = image_description)
+                                                embed = Embed()
                                                 embed.set_image(url = image_url)
                                                 
                                                 await ctx.send(embed=embed)
@@ -64,11 +66,12 @@ class Waifu(commands.Cog):
                                         data = await response.json()
 
                                         for image in data['images']:
-                                                image_url = image['url']
-                                                image_name = image['name']
+                                                # image_url = image['url']
+                                                # image_name = image['name']
                                                 image_description = image['description']
 
-                                                embed = Embed(title = image_name, description = image_description)
+                                                # embed = Embed(title = image_name, description = image_description)
+                                                embed = Embed()
                                                 embed.set_image(url = image_url)
                                                 
                                                 await ctx.send(embed=embed)
@@ -85,11 +88,12 @@ class Waifu(commands.Cog):
                                         data = await response.json()
 
                                         for image in data['images']:
-                                                image_url = image['url']
-                                                image_name = image['name']
+                                                # image_url = image['url']
+                                                # image_name = image['name']
                                                 image_description = image['description']
 
-                                                embed = Embed(title = image_name, description = image_description)
+                                                # embed = Embed(title = image_name, description = image_description)
+                                                embed = Embed()
                                                 embed.set_image(url = image_url)
                                                 
                                                 await ctx.send(embed=embed)
