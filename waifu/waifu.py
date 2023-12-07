@@ -21,16 +21,17 @@ class Waifu(commands.Cog):
                                 if response.status == 200:
                                         data = await response.json()
 
-                                        for image in data['images', 'tags']:
-                                                image_url = image['url']
-                                                image_name = image['name']
-                                                image_description = image['description']
+                                        for tag in data['tags']:
+                                                tag_name = tag['name']
+                                                tag_description = tag['description']
 
-                                                embed = Embed(title = image_name, description = image_description)
-                                                # embed = Embed()
-                                                embed.set_image(url = image_url)
-                                                
-                                                await ctx.send(embed=embed)
+                                                for image in data['images']:
+                                                        image_url = image['url']
+                                                        embed = Embed(title = tag_name, description = tag_description)
+                                                        # embed = Embed()
+                                                        embed.set_image(url = image_url)
+                                                        await ctx.send(embed=embed)
+
 
         @commands.command()
         async def aniwaifu(self, ctx):
@@ -42,16 +43,16 @@ class Waifu(commands.Cog):
                                 if response.status == 200:
                                         data = await response.json()
 
-                                        for image in data['images', 'tags']:
-                                                image_url = image['url']
-                                                image_name = image['name']
-                                                image_description = image['description']
+                                        for tag in data['tags']:
+                                                tag_name = tag['name']
+                                                tag_description = tag['description']
 
-                                                embed = Embed(title = image_name, description = image_description)
-                                                # embed = Embed()
-                                                embed.set_image(url = image_url)
-                                                
-                                                await ctx.send(embed=embed)
+                                                for image in data['images']:
+                                                        image_url = image['url']
+                                                        embed = Embed(title = tag_name, description = tag_description)
+                                                        # embed = Embed()
+                                                        embed.set_image(url = image_url)
+                                                        await ctx.send(embed=embed)
 
 
         @commands.command()
@@ -65,16 +66,17 @@ class Waifu(commands.Cog):
                                 if response.status == 200:
                                         data = await response.json()
 
-                                        for image in data['images', 'tags']:
-                                                image_url = image['url']
-                                                image_name = image['name']
-                                                image_description = image['description']
+                                        for tag in data['tags']:
+                                                tag_name = tag['name']
+                                                tag_description = tag['description']
 
-                                                embed = Embed(title = image_name, description = image_description)
-                                                # embed = Embed()
-                                                embed.set_image(url = image_url)
-                                                
-                                                await ctx.send(embed=embed)
+                                                for image in data['images']:
+                                                        image_url = image['url']
+                                                        embed = Embed(title = tag_name, description = tag_description)
+                                                        # embed = Embed()
+                                                        embed.set_image(url = image_url)
+                                                        await ctx.send(embed=embed)
+
 
         @commands.command()
         @commands.is_nsfw()
@@ -87,13 +89,13 @@ class Waifu(commands.Cog):
                                 if response.status == 200:
                                         data = await response.json()
 
-                                        for image in data['images', 'tags']:
-                                                image_url = image['url']
-                                                image_name = image['name']
-                                                image_description = image['description']
+                                        for tag in data['tags']:
+                                                tag_name = tag['name']
+                                                tag_description = tag['description']
 
-                                                embed = Embed(title = image_name, description = image_description)
-                                                # embed = Embed()
-                                                embed.set_image(url = image_url)
-                                                
-                                                await ctx.send(embed=embed)
+                                                for image in data['images']:
+                                                        image_url = image['url']
+                                                        embed = Embed(title = tag_name, description = tag_description)
+                                                        # embed = Embed()
+                                                        embed.set_image(url = image_url)
+                                                        await ctx.send(embed=embed)
