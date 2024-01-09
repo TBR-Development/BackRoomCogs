@@ -1,4 +1,4 @@
-from typing import Any, Dict, Final, Optional
+from typing import Any, Final, Optional
 
 import aiohttp
 import discord
@@ -11,54 +11,32 @@ WAIFU_IM: Final[str] = "https://api.waifu.im/search"
 ICON: Final[str] = "https://avatars.githubusercontent.com/u/91619079?s=200&v=4"
 
 async def api_call(
-                self, ctx, endpoint: str
-) -> Optional[Dict[str, Any]]:
+                self, ctx
+):
         await ctx.typing()
-        async with self.session.get(WAIFU_IM + endpoint) as response:
+        async with self.session.get(WAIFU_IM) as response:
                 if response.status != 200:
                         await ctx.send(
                                 "Something went wrong while trying to contact the API."
                         )
                         return
-                data = await response.read()
-                url = orjson.loads(data)
-                return url
+                data = await response.json()
+                for image in data['images']:
+                        image = image['url']
 
-async def embedgen(
-                ctx, url: Dict[str, Any], endpoint: str
-) -> None:
-        result = url["results"][0]
-        artist_name = result["artist_name"]
-        source_url = result["source_url"]
-        artist_href = result["artist_href"]
-        image = result["url"]
+async def embedgen(ctx) -> None:
 
-        embed = discord.Embed(
-                title=f"Here's a picture of a {endpoint}",
-                description=f"**Artist:** [{artist_name}]({artist_href})\n**Source:** {source_url}",
-                )
+        embed = discord.Embed()
         embed.colour = await ctx.embed_color()
         embed.set_image(url=image)
-        embed.set_footer(text="Powered byWaifu.IM", icon_url=ICON)
+        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
         view = discord.ui.View()
         style = discord.ButtonStyle.grey
-        artist = discord.ui.Button(
-                style=style,
-                label="Artist",
-                url=artist_href,
-                )
-        source = discord.ui.Button(
-                style=style,
-                label="Source",
-                url=source_url,
-                )
         image = discord.ui.Button(
                 style=style,
                 label="Open Image",
                 url=image,
                 )
-        view.add_item(item=artist)
-        view.add_item(item=source)
         view.add_item(item=image)
         await ctx.send(embed=embed, view=view)
 
