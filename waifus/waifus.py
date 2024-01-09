@@ -17,7 +17,7 @@ class Waifus(commands.Cog):
 
         __version__: Final[str] = "0.1.20"
         __author__: Final[str] = "TBR Development"
-        __repo__: Final[str] = "TBR-Development/BackRoomCogs"
+        __repo__: Final[str] = "BackRoomCogs"
 
         def __init__(self, bot):
                 self.bot = bot
