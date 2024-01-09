@@ -1,7 +1,7 @@
 {
 	"author": ["TBR Development", "PhantomNimbi"],
-	"name": "Waifus",
-	"install_msg": "Thank you for installing this cog!\nDo `[p]help Waifus` to get the list of commands and their description.",
+	"name": "WaifuIM",
+	"install_msg": "Thank you for installing this cog!\nDo `[p]help WaifuIM` to get the list of commands and their description.",
 	"short": "Get random waifu images and gifs.",
 	"description": "Get random waifu images and gifs using waifu.im api.",
 	"tags": ["images", "nsfw", "sfw"],
