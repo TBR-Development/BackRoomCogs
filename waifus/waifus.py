@@ -43,7 +43,7 @@ class Waifus(commands.Cog):
                 embed = discord.Embed(
                         title="Cog Information",
                         description=box(
-                                f"{'Cog Author':<11}: {author}\n{'Cog Version':<11}: {version}\n{'Cog Repo':<11}: {self.__repo__}",
+                                f"{'Cog Author':<15}: {author}\n{'Cog Version':<15}: {version}\n{'Cog Repo':<15}: {self.__repo__}",
                                 lang="yaml",
                         ),
                         color=await ctx.embed_color(),
