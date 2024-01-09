@@ -1,11 +1,21 @@
-# Waifu
-Get waifu images from waifu.im API.
+# WaifuIM
+Get waifu images by tag from waifu.im API
+Use `[p]slash enable cog waifuim` to enable all commands in this cog as slash commands
 
 ## Commands
 
-| Name | Description | Usage |
-| --- | --- | --- |
-| waif | Get a random SFW waifu image | `[p]waif` |
-| lewds | Get a random NSFW waifu image | `[p]lewds` |
-| aniwaif | Get a random SFW waifu gif | `[p]aniwaif` |
-| anilewds | Get a random NSFW waifu gif | `[p]anilewds` |
+- waifu
+- maid
+- mori
+- marin
+- raiden
+- oppai
+- selfies
+- uniform
+- ero
+- ass
+- hentai
+- milf
+- oral
+- paizuri
+- ecchi
