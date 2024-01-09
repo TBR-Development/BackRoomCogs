@@ -4,7 +4,7 @@ import aiohttp
 import discord
 import orjson
 from redbot.core import commands
-from redbot.core.bot imort Red
+from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
         
 WAIFU_IM: Final[str] = "https://api.waifu.im/search"
