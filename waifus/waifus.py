@@ -1,9 +1,10 @@
-from typing import Final
+from typing import Any, Final
 
 import aiohttp
 import discord
-import orjson
+
 from redbot.core import commands
+from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
 
 ICON: Final[str] = "https://avatars.githubusercontent.com/u/91619079?s=200&v=4"
