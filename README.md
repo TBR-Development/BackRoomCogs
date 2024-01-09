@@ -22,10 +22,7 @@ To install a cog, use this command, replacing `<cog>` with the name of the cog y
 
 ## Cogs List
 
-| Name | Description | Author |
-| --- | --- | --- |
-| waifuim | Get random images from waifu.im | [PhantomNimbi][PHANTOMNIMBI] |
-
+- **waifuim**: Get random images from waifu.im
 
 ## Contribution
 
