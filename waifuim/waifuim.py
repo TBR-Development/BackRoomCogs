@@ -10,7 +10,7 @@ from redbot.core.utils.chat_formatting import box
 ICON: Final[str] = "https://avatars.githubusercontent.com/u/91619079?s=200&v=4"
 
 
-class Waifus(commands.Cog):
+class WaifuIM(commands.Cog):
         """
         Sends random images by tag from Waifu.IM
         """
@@ -34,8 +34,8 @@ class Waifus(commands.Cog):
                 return
 
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.command(name="waifusversion", aliases=["waifusv"], hidden=True)
-        async def waifus_version(self, ctx) -> None:
+        @commands.command(name="waifuimversion", aliases=["waifuimv"], hidden=True)
+        async def waifuim_version(self, ctx) -> None:
                 """Shows the version of the cog"""
                 version = self.__version__
                 author = self.__author__
