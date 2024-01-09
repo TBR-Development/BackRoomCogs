@@ -26,19 +26,7 @@ async def api_call(
 
 async def embedgen(ctx) -> None:
 
-        embed = discord.Embed()
-        embed.colour = await ctx.embed_color()
-        embed.set_image(url=image)
-        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
-        view = discord.ui.View()
-        style = discord.ButtonStyle.grey
-        image = discord.ui.Button(
-                style=style,
-                label="Open Image",
-                url=image,
-                )
-        view.add_item(item=image)
-        await ctx.send(embed=embed, view=view)
+        
 
 
 class Waifus(commands.Cog):
@@ -85,10 +73,28 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def waifu(self, ctx):
                 """Send a random waifu image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'waifu'}
 
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
         @commands.hybrid_command()
@@ -96,20 +102,56 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def maid(self, ctx):
                 """Send a random maid image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'maid'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
         @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def marin(self, ctx):
                 """Send a random marin kitagawa image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'marin-kiyagawa'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
         @commands.hybrid_command()
@@ -117,20 +159,56 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def mori(self, ctx):
                 """Send a random mori calliope image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'mori-calliope'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
         @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def raiden(self, ctx):
                 """Send a random raiden shogun image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'raiden-shogun'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
         @commands.hybrid_command()
@@ -138,10 +216,28 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def oppai(self, ctx):
                 """Send a random oppai image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'oppai'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
         @commands.hybrid_command()
@@ -149,20 +245,56 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def selfies(self, ctx):
                 """Send a random selfies image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'selfies'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
         @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def uniform(self, ctx):
                 """Send a random uniform image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'uniform'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
         @commands.hybrid_command()
@@ -170,10 +302,28 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def gif(self, ctx):
                 """Send a random gif"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'gif': 'true'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
 
@@ -182,10 +332,29 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def ass(self, ctx):
                 """Send a random ass image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'ass'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
 
 
         @commands.hybrid_command()
@@ -193,10 +362,28 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def hentai(self, ctx):
                 """Send a random hentai image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'hentai'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
 
@@ -205,10 +392,28 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def milf(self, ctx):
                 """Send a random milf image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'milf'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
 
@@ -217,20 +422,56 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def oral(self, ctx):
                 """Send a random oral image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'oral'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
         @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def paizuri(self, ctx):
                 """Send a random paizuri image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'paizuri'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
 
@@ -239,10 +480,28 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def ecchi(self, ctx):
                 """Send a random ecchi image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'ecchi'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
 
 
 
@@ -251,7 +510,25 @@ class Waifus(commands.Cog):
         @commands.is_nsfw()
         async def ero(self, ctx):
                 """Send a random ero image"""
+                url = WAIFU_IM
                 params = {'is_nsfw': 'true', 'included_tags': 'ero'}
-
-                url = await api_call(self, ctx, params)
-                await embedgen(ctx, url, params)
+                
+                async with self.session as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.colour = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text="Powered by waifu.im", icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
