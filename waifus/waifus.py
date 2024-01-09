@@ -17,6 +17,7 @@ class Waifus(commands.Cog):
 
         __version__: Final[str] = "0.1.20"
         __author__: Final[str] = "TBR Development"
+        __repo__: Final[str] = "TBR-Development/BackRoomCogs"
 
         def __init__(self, bot):
                 self.bot = bot
@@ -27,7 +28,7 @@ class Waifus(commands.Cog):
 
         def format_help_for_context(self, ctx) -> str:
                 pre_processed = super().format_help_for_context(ctx)
-                return f"{pre_processed}\n\nAuthor: {self.__author__}\nCog Version: {self.__version__}"
+                return f"{pre_processed}\n\nAuthor: {self.__author__}\nCog Version: {self.__version__}\nRepo: {self.__repo__}"
                 
         async def red_delete_data_for_user(self, **kwargs: Any) -> None:
                 return
