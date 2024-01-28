@@ -4,6 +4,6 @@
  "name": "BackRoomCogs",
  "short": "Cogs for Red DiscordBot",
  "description": "A collection of Cogs for Red DiscordBot built by members of the TBR Development community.",
- "requirements": "",
+ "requirements": [],
  "tags": ["fun", "image", "nsfw", "utility", "functionalities"]
 }
