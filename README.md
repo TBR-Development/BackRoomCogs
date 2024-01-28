@@ -27,7 +27,9 @@ To install a cog, use this command, replacing `<cog>` with the name of the cog y
 
 ## Contribution
 
-If you have any ideas, feel free to clone the repo and open a PR. I'm happy to add new cogs in. We will add contributors into our contributors list and credit them for any additions and/or changes made.
+If you have any ideas, feel free to clone the repo and open a PR. I'm happy to add new cogs in.
+
+We will add contributors into our contributors list and credit them for any additions and/or changes made.
 
 
 ### Contributors
