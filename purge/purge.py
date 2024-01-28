@@ -44,18 +44,10 @@ class Purge(commands.Cog):
                 embed.color = await ctx.embed_color()
                 await ctx.send(embed=embed)
 
+        
         @commands.hybrid_command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def purge(self, ctx):
-                """
-                """
-
-                if ctx.subcommand_passed is None:
-                        await ctx.send_help(ctx.hybrid_command)
-        
-        @purge.hybrid_command()
-        @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def amount(self, ctx, num_messages: int):
+        async def purge(self, ctx, num_messages: int):
                 """
                 """
 
@@ -65,9 +57,9 @@ class Purge(commands.Cog):
                 await channel.purge(limit=num_messages)
                 return True
         
-        @purge.hybrid_command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def until(self, ctx, message_id: int):
+        async def purge_until(self, ctx, message_id: int):
                 """
                 """
 
@@ -82,9 +74,9 @@ class Purge(commands.Cog):
                 await channel.purge(after=message)
                 return True
 
-        @purge.hybrid_command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def user(self, ctx, User: User, num_minutes: Optional[int] = 5):
+        async def purge_user(self, ctx, User: User, num_minutes: Optional[int] = 5):
                 """
                 """
 
