@@ -1,5 +1,5 @@
 
-from aiohttp import ClientSession
+
 from typing import Any, Final, Optional
 from datetime import datetime, timedelta
 from discord import errors, User, Forbidden, TextChannel, Embed
@@ -18,10 +18,6 @@ class Purge(commands.Cog):
 
         def __init__(self, bot):
                 self.bot = bot
-                self.session: ClientSession = ClientSession()
-
-        async def cog_unload(self) -> None:
-                self.session.close()
 
         def format_help_for_context(self, ctx) -> str:
                 pre_processed = super().format_help_for_context(ctx)
