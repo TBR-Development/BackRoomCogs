@@ -30,6 +30,7 @@ class Purge(commands.Cog):
         @commands.Group(invoke_without_commands=True)
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def purge(self, ctx):
+                """Purge command group"""
 
                 if ctx.subcommand_passed is None:
                         await ctx.send_help(ctx.command)
@@ -40,6 +41,7 @@ class Purge(commands.Cog):
         @purge.command(hidden=True)
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def version(self, ctx):
+                """Get the version of the cog"""
 
                 version = self.__version__
                 author = self.__author__
@@ -53,6 +55,7 @@ class Purge(commands.Cog):
         @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def amount(self, ctx, num_messages: int):
+                """Purge <n> amount of messages from the current channel"""
 
                 channel = ctx.message.channel
 
@@ -63,6 +66,7 @@ class Purge(commands.Cog):
         @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def until(self, ctx, message_id: int):
+                """Purge messages from a channel until the specified message id"""
 
                 channel = ctx.message.channel
 
@@ -78,6 +82,7 @@ class Purge(commands.Cog):
         @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def user(self, ctx, User: User, num_minutes: Optional[int] = 5):
+                """Purge messages by a user from all channels"""
 
                 after = ctx.message.created_at - timedelta(minutes=num_minutes)
 
