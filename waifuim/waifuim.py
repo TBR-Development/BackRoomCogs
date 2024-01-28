@@ -88,7 +88,7 @@ class Waifu(commands.Cog):
                 """Get a random Marin Kitagawa image"""
                 
                 url = "https://api.waifu.im/search"
-                params = {'included_tags': 'marin-kiyagawa'}
+                params = {'included_tags': 'marin-kitagawa'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
