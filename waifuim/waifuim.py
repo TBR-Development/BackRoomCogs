@@ -1,10 +1,8 @@
-from typing import Any, Final
+from typing import Final
 
 import aiohttp
 import discord
-import datetime
 
-from datetime import datetime
 from redbot.core import commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
@@ -42,7 +40,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -72,7 +69,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -101,7 +97,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -131,7 +126,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -160,7 +154,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -191,7 +184,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -220,7 +212,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -250,7 +241,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -282,7 +272,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -314,7 +303,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -346,7 +334,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -378,7 +365,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -408,7 +394,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -440,7 +425,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -471,7 +455,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -501,7 +484,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -532,7 +514,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -562,7 +543,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
@@ -592,7 +572,6 @@ class Waifu(commands.Cog):
                                 for image in data['images']:
                                         image = image['url']
                                         embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
                                         embed.color = await ctx.embed_color()
                                         embed.set_image(url=image)
                                         embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
