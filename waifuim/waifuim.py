@@ -11,7 +11,7 @@ from redbot.core.utils.chat_formatting import box
 
 ICON: Final[str] = "https://avatars.githubusercontent.com/u/91619079?s=200&v=4"
 
-FOOTER_TEXT = "Powered by waifuim.IM API"
+FOOTER_TEXT = "Powered by commands.IM API"
 
 class Waifu(commands.Cog):
         """
@@ -28,47 +28,16 @@ class Waifu(commands.Cog):
 
         async def cog_unload(self) -> None:
                 self.session.close()
-
-        def format_help_for_context(self, ctx) -> str:
-                pre_processed = super().format_help_for_context(ctx)
-                return f"{pre_processed}\n\nAuthor: {self.__author__}\nCog Version: {self.__version__}\nRepo: {self.__repo__}"
-                
-        async def red_delete_data_for_user(self, **kwargs: Any) -> None:
-                return
         
-        @commands.Group(invoke_without_subcommand=True)
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
-        async def waifuim(self, ctx):
-                """waifuim command group"""
-                if ctx.subcommand_passed is None:
-                        await ctx.send_help(ctx.command)
-                elif ctx.invoked_subcommand is None:
-                        await ctx.send(f"The subcommand {ctx.subcommand_passed} does not exist.")
-        
-        @waifuim.command(hidden=True)
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
-        async def version(self, ctx) -> None:
-                """"Get the cog's version info"""
-                
-                version = self.__version__
-                author = self.__author__
-
-                embed = discord.Embed(title="Cog Information", description=box(f"{'Cog Author':<15}: {author}\n{'Cog Version':<15}: {version}\n{'Cog Repo':<15}: {self.__repo__}", lang="yaml"))
-                embed.timestamp = datetime.now()
-                embed.color = await ctx.embed_color()
-                embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
-                await ctx.send(embed=embed)
 
                            
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def waifu(self, ctx):
                 """Get a random waifu image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'waifu'}
 
                 async with aiohttp.ClientSession() as cs:
@@ -93,13 +62,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def maid(self, ctx):
                 """Get a random maid image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'maid'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -123,13 +92,13 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def marin(self, ctx):
                 """Get a random Marin Kitagawa image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'marin-kiyagawa'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -154,13 +123,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def mori(self, ctx):
                 """Get a random Mori Calliope image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'mori-calliope'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -184,13 +153,13 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def raiden(self, ctx):
                 """Get a random Raiden Shogun image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'raiden-shogun'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -215,13 +184,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def oppai(self, ctx):
                 """Get a random oppai image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'oppai'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -246,13 +215,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def selfies(self, ctx):
                 """Get a random selfies image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'selfies'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -276,13 +245,13 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def uniform(self, ctx):
                 """Get a random uniform image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'uniform'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -307,13 +276,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def gif(self, ctx):
                 """Get a random gif image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'gif': 'true'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -339,13 +308,13 @@ class Waifu(commands.Cog):
 
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ass(self, ctx):
                 """Get a random ass image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'ass'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -371,13 +340,13 @@ class Waifu(commands.Cog):
                 await ctx.send(embed=embed, view=view)
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def hentai(self, ctx):
                 """Get a random hentai image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'hentai'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -403,13 +372,13 @@ class Waifu(commands.Cog):
 
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def milf(self, ctx):
                 """Get a random milf image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'milf'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -435,13 +404,13 @@ class Waifu(commands.Cog):
 
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def oral(self, ctx):
                 """Get a random oral image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'oral'}
                 
                 async with aiohttp.ClientSession()as cs:
@@ -465,13 +434,13 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def paizuri(self, ctx):
                 """Get a random paizuri image"""
                 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'paizuri'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -497,13 +466,13 @@ class Waifu(commands.Cog):
 
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ecchi(self, ctx):
                 """Get a random ecchi image"""
 
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'ecchi'}
                 
                 async with aiohttp.ClientSession() as cs:
@@ -529,12 +498,12 @@ class Waifu(commands.Cog):
 
 
 
-        @waifuim.command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ero(self, ctx):
                 """Get a random ero image"""
-                url = "https://api.waifuim.im/search"
+                url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'ero'}
                 
                 async with aiohttp.ClientSession() as cs:
