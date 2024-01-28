@@ -52,7 +52,7 @@ class Purge(commands.Cog):
         
         @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def purge(self, ctx, num_messages: int):
+        async def amount(self, ctx, num_messages: int):
 
                 channel = ctx.message.channel
 
@@ -62,7 +62,7 @@ class Purge(commands.Cog):
         
         @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def purge_until(self, ctx, message_id: int):
+        async def until(self, ctx, message_id: int):
 
                 channel = ctx.message.channel
 
@@ -77,7 +77,7 @@ class Purge(commands.Cog):
 
         @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def purge_user(self, ctx, User: User, num_minutes: Optional[int] = 5):
+        async def user(self, ctx, User: User, num_minutes: Optional[int] = 5):
 
                 after = ctx.message.created_at - timedelta(minutes=num_minutes)
 
