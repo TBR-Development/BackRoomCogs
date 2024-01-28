@@ -18,10 +18,6 @@ class Waifu(commands.Cog):
         Get images from Waifu.IM API
         """
 
-        __version__: Final[str] = "0.1.21"
-        __author__: Final[str] = "PhantomNimbi"
-        __repo__: Final[str] = "BackRoomCogs"
-
         def __init__(self, bot):
                 self.bot = bot
                 self.session: aiohttp.ClientSession = aiohttp.ClientSession()
@@ -31,14 +27,13 @@ class Waifu(commands.Cog):
         
 
                            
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
         async def waifu(self, ctx):
                 """Get a random waifu image"""
                 
                 url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'included_tags': 'waifu'}
+                params = {'included_tags': 'waifu'}
 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
@@ -62,14 +57,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
         async def maid(self, ctx):
                 """Get a random maid image"""
                 
                 url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'included_tags': 'maid'}
+                params = {'included_tags': 'maid'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
@@ -92,14 +86,13 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
         async def marin(self, ctx):
                 """Get a random Marin Kitagawa image"""
                 
                 url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'included_tags': 'marin-kiyagawa'}
+                params = {'included_tags': 'marin-kiyagawa'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
@@ -123,14 +116,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
         async def mori(self, ctx):
                 """Get a random Mori Calliope image"""
                 
                 url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'included_tags': 'mori-calliope'}
+                params = {'included_tags': 'mori-calliope'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
@@ -153,14 +145,13 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
         async def raiden(self, ctx):
                 """Get a random Raiden Shogun image"""
                 
                 url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'included_tags': 'raiden-shogun'}
+                params = {'included_tags': 'raiden-shogun'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
@@ -184,7 +175,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def oppai(self, ctx):
@@ -215,14 +206,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
         async def selfies(self, ctx):
                 """Get a random selfies image"""
                 
                 url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'included_tags': 'selfies'}
+                params = {'included_tags': 'selfies'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
@@ -245,14 +235,13 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
         async def uniform(self, ctx):
                 """Get a random uniform image"""
                 
                 url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'included_tags': 'uniform'}
+                params = {'included_tags': 'uniform'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
@@ -276,14 +265,13 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
         async def gif(self, ctx):
                 """Get a random gif image"""
                 
                 url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'gif': 'true'}
+                params = {'gif': 'true'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
@@ -308,7 +296,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ass(self, ctx):
@@ -340,7 +328,7 @@ class Waifu(commands.Cog):
                 await ctx.send(embed=embed, view=view)
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def hentai(self, ctx):
@@ -372,7 +360,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def milf(self, ctx):
@@ -404,7 +392,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def oral(self, ctx):
@@ -434,7 +422,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def paizuri(self, ctx):
@@ -466,7 +454,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ecchi(self, ctx):
@@ -498,13 +486,104 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.hybrid_command()
+        @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ero(self, ctx):
                 """Get a random ero image"""
                 url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'ero'}
+                
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.timestamp = datetime.now()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+
+        @commands.command()
+        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @commands.is_nsfw()
+        async def nwaifu(self, ctx):
+                """Get a random nsfw waifu image"""
+                
+                url = "https://api.commands.im/search"
+                params = {'is_nsfw': 'true', 'included_tags': 'waifu'}
+
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.timestamp = datetime.now()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+
+
+        @commands.command()
+        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @commands.is_nsfw()
+        async def nmaid(self, ctx):
+                """Get a random nsfw maid image"""
+                
+                url = "https://api.commands.im/search"
+                params = {'is_nsfw': 'true', 'included_tags': 'maid'}
+                
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.timestamp = datetime.now()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+
+        @commands.command()
+        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @commands.is_nsfw()
+        async def ngif(self, ctx):
+                """Get a random  nsfw gif"""
+                
+                url = "https://api.commands.im/search"
+                params = {'is_nsfw': 'true', 'included_tags': 'gif'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
