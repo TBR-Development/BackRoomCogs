@@ -1,4 +1,5 @@
 
+
 from typing import Any, Final, Optional
 from datetime import datetime, timedelta
 from discord import errors, User, Forbidden, TextChannel, Embed
@@ -9,7 +10,6 @@ from redbot.core.utils.chat_formatting import box
 
 class Purge(commands.Cog):
         """
-        ...
         """
 
         __version__: Final[str] = "0.0.1"
@@ -26,12 +26,20 @@ class Purge(commands.Cog):
         async def red_delete_data_for_user(self, **kwargs: Any) -> None:
                 return
         
-        @commands.command(hidden=True)
+
+        @commands.Group(invoke_without_commands=True)
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def purge_version(self, ctx):
-                """
-                ...
-                """
+        async def purge(self, ctx):
+
+                if ctx.subcommand_passed is None:
+                        await ctx.send_help(ctx.command)
+                elif ctx.invoked_subcommand is None:
+                        await ctx.send(f"The subcommand {ctx.subcommand_passed} does not exist.")
+
+        
+        @purge.command(hidden=True)
+        @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
+        async def version(self, ctx):
 
                 version = self.__version__
                 author = self.__author__
@@ -42,12 +50,9 @@ class Purge(commands.Cog):
                 await ctx.send(embed=embed)
 
         
-        @commands.hybrid_command()
+        @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def purge_amount(self, ctx, num_messages: int):
-                """
-                ...
-                """
+        async def purge(self, ctx, num_messages: int):
 
                 channel = ctx.message.channel
 
@@ -55,12 +60,9 @@ class Purge(commands.Cog):
                 await channel.purge(limit=num_messages)
                 return True
         
-        @commands.hybrid_command()
+        @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def purge_until(self, ctx, message_id: int):
-                """
-                ...
-                """
 
                 channel = ctx.message.channel
 
@@ -73,12 +75,9 @@ class Purge(commands.Cog):
                 await channel.purge(after=message)
                 return True
 
-        @commands.hybrid_command()
+        @purge.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def purge_user(self, ctx, User: User, num_minutes: Optional[int] = 5):
-                """
-                ...
-                """
 
                 after = ctx.message.created_at - timedelta(minutes=num_minutes)
 
