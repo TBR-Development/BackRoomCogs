@@ -584,3 +584,61 @@ class Waifu(commands.Cog):
                                         )
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
+
+        @commands.command()
+        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @commands.is_nsfw()
+        async def nselfies(self, ctx):
+                """Get a random  nsfw selfies image"""
+                
+                url = "https://api.waifu.im/search"
+                params = {'is_nsfw': 'true', 'included_tags': 'selfies'}
+                
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+
+        @commands.command()
+        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @commands.is_nsfw()
+        async def nuniform(self, ctx):
+                """Get a random  nsfw uniform image"""
+                
+                url = "https://api.waifu.im/search"
+                params = {'is_nsfw': 'true', 'included_tags': 'uniform'}
+                
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
