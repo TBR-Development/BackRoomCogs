@@ -31,7 +31,7 @@ class Waifu(commands.Cog):
         
 
                            
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def waifu(self, ctx):
@@ -62,7 +62,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def maid(self, ctx):
@@ -92,7 +92,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def marin(self, ctx):
@@ -123,7 +123,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def mori(self, ctx):
@@ -153,7 +153,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def raiden(self, ctx):
@@ -184,7 +184,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def oppai(self, ctx):
@@ -215,7 +215,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def selfies(self, ctx):
@@ -245,7 +245,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def uniform(self, ctx):
@@ -276,7 +276,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def gif(self, ctx):
@@ -308,7 +308,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ass(self, ctx):
@@ -340,7 +340,7 @@ class Waifu(commands.Cog):
                 await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def hentai(self, ctx):
@@ -372,7 +372,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def milf(self, ctx):
@@ -404,7 +404,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def oral(self, ctx):
@@ -434,7 +434,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def paizuri(self, ctx):
@@ -466,7 +466,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ecchi(self, ctx):
@@ -498,7 +498,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
+        @commands.hybrid_command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ero(self, ctx):
