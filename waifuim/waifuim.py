@@ -34,10 +34,8 @@ class WaifuIM(commands.Cog):
                 
         async def red_delete_data_for_user(self, **kwargs: Any) -> None:
                 return
-
-
         
-        @commands.hybrid_command(hidden=True)
+        @commands.command(hidden=True)
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def waifu_version(self, ctx) -> None:

@@ -1,5 +1,4 @@
 
-
 from typing import Any, Final, Optional
 from datetime import datetime, timedelta
 from discord import errors, User, Forbidden, TextChannel, Embed
@@ -26,7 +25,7 @@ class Purge(commands.Cog):
         async def red_delete_data_for_user(self, **kwargs: Any) -> None:
                 return
         
-        @commands.hybrid_command(hidden=True)
+        @commands.command(hidden=True)
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def purge_version(self, ctx):
                 """
