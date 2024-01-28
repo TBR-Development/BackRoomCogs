@@ -13,7 +13,7 @@ class Purge(commands.Cog):
         """
 
         __version__: Final[str] = "0.0.1"
-        __author__: Final[str] = "TBR Development"
+        __author__: Final[str] = "PhantomNimbi"
         __repo__: Final[str] = "BackRoomCogs"
 
         def __init__(self, bot):
