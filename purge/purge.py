@@ -8,7 +8,7 @@ from redbot.core.utils.chat_formatting import box
 
 class Purge(commands.Cog):
         """
-        Purge command
+        Simple purge command for Red DiscordBot
         """
 
         def __init__(self, bot):
