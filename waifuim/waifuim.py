@@ -9,7 +9,7 @@ from redbot.core.utils.chat_formatting import box
 
 ICON: Final[str] = "https://avatars.githubusercontent.com/u/91619079?s=200&v=4"
 
-FOOTER_TEXT = "Powered by commands.IM API"
+FOOTER_TEXT = "Powered by Waifu.IM API"
 
 class Waifu(commands.Cog):
         """
