@@ -15,7 +15,7 @@ FOOTER_TEXT = "Powered by commands.IM API"
 
 class Waifu(commands.Cog):
         """
-        ...
+        Get images from Waifu.IM API
         """
 
         __version__: Final[str] = "0.1.21"
