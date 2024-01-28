@@ -1,6 +1,6 @@
 # WaifuIM
 Get waifu images by tag from waifu.im API
-Use `[p]slash enable cog waifuim` to enable all commands in this cog as slash commands
+Use `[p]slash enablecog waifuim` to enable all commands in this cog as slash commands
 
 ## Commands
 
