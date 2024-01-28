@@ -175,36 +175,6 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
-        @commands.is_nsfw()
-        async def oppai(self, ctx):
-                """Get a random oppai image"""
-                
-                url = "https://api.commands.im/search"
-                params = {'is_nsfw': 'true', 'included_tags': 'oppai'}
-                
-                async with aiohttp.ClientSession() as cs:
-                        async with cs.get(url, params=params) as response:
-                                
-                                data = await response.json()
-                                for image in data['images']:
-                                        image = image['url']
-                                        embed = discord.Embed()
-                                        embed.timestamp = datetime.now()
-                                        embed.color = await ctx.embed_color()
-                                        embed.set_image(url=image)
-                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
-                                        view = discord.ui.View()
-                                        style = discord.ButtonStyle.grey
-                                        image = discord.ui.Button(
-                                                style=style,
-                                                label="Open Image",
-                                                url=image,
-                                        )
-                                        view.add_item(item=image)
-                                        await ctx.send(embed=embed, view=view)
-
 
         @commands.command()
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
@@ -584,6 +554,36 @@ class Waifu(commands.Cog):
                 
                 url = "https://api.commands.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'gif'}
+                
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.timestamp = datetime.now()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+
+        @commands.command()
+        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @commands.is_nsfw()
+        async def oppai(self, ctx):
+                """Get a random oppai image"""
+                
+                url = "https://api.commands.im/search"
+                params = {'is_nsfw': 'true', 'included_tags': 'oppai'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
