@@ -1,4 +1,4 @@
-from .waifuim import WaifuIM
+from .waifuim import Waifu
 
 async def setup(bot):
-	await bot.add_cog(WaifuIM(bot))
+	await bot.add_cog(Waifu(bot))

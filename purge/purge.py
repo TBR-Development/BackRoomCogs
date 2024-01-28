@@ -42,7 +42,7 @@ class Purge(commands.Cog):
         
         @commands.hybrid_command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
-        async def purge(self, ctx, num_messages: int):
+        async def purge_amount(self, ctx, num_messages: int):
                 """
                 """
 

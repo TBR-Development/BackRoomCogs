@@ -13,7 +13,7 @@ ICON: Final[str] = "https://avatars.githubusercontent.com/u/91619079?s=200&v=4"
 
 FOOTER_TEXT = "Powered by Waifu.IM API"
 
-class WaifuIM(commands.Cog):
+class Waifu(commands.Cog):
         """
         """
 
