@@ -18,6 +18,7 @@ class Purge(commands.Cog):
         
         @commands.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True)
+        @commands.has_permissions(manage_messages=True)
         async def purge(self, ctx, num_messages: int):
                 """Purge <n> amount of messages from the current channel"""
 
