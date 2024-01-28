@@ -1,5 +1,5 @@
 # WaifuIM
-Get waifu images by tag from waifu.im API
+Get waifu images by tag from Waifu.IM API
 
 ## SFW Commands
 
