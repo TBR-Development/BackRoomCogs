@@ -22,11 +22,17 @@ To install a cog, use this command, replacing `<cog>` with the name of the cog y
 
 ## Cogs List
 
-- **waifuim**: Get random images from waifu.im
+- **waifuim**: Get random images by tag from Waifu.IM API
+- **purge**: Simple purge command for Red DiscordBot
 
 ## Contribution
 
-If you have any ideas, feel free to clone the repo and open a PR. I'm happy to add new cogs in.
+If you have any ideas, feel free to clone the repo and open a PR. I'm happy to add new cogs in. We will add contributors into our contributors list and credit them for any additions and/or changes made.
+
+
+### Contributors
+
+- **PhantomNimbi**: `waifuim`, `purge`
 
 
 [PHANTOMNIMBI]: https://github.com/PhantomNimbi
