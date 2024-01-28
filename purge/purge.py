@@ -9,6 +9,7 @@ from redbot.core.utils.chat_formatting import box
 
 class Purge(commands.Cog):
         """
+        ...
         """
 
         __version__: Final[str] = "0.0.1"
@@ -29,6 +30,7 @@ class Purge(commands.Cog):
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def purge_version(self, ctx):
                 """
+                ...
                 """
 
                 version = self.__version__
@@ -44,6 +46,7 @@ class Purge(commands.Cog):
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def purge_amount(self, ctx, num_messages: int):
                 """
+                ...
                 """
 
                 channel = ctx.message.channel
@@ -56,6 +59,7 @@ class Purge(commands.Cog):
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def purge_until(self, ctx, message_id: int):
                 """
+                ...
                 """
 
                 channel = ctx.message.channel
@@ -73,6 +77,7 @@ class Purge(commands.Cog):
         @commands.bot_has_permissions(manage_messages=True, send_messages=True, embed_links=True)
         async def purge_user(self, ctx, User: User, num_minutes: Optional[int] = 5):
                 """
+                ...
                 """
 
                 after = ctx.message.created_at - timedelta(minutes=num_minutes)

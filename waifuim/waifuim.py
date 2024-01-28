@@ -15,6 +15,7 @@ FOOTER_TEXT = "Powered by Waifu.IM API"
 
 class Waifu(commands.Cog):
         """
+        ...
         """
 
         __version__: Final[str] = "0.1.21"
@@ -40,6 +41,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def waifu_version(self, ctx) -> None:
                 """
+                ...
                 """
                 version = self.__version__
                 author = self.__author__
@@ -56,6 +58,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def waifu(self, ctx):
                 """ 
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'waifu'}
@@ -87,6 +90,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def maid(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'maid'}
@@ -117,6 +121,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def marin(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'marin-kiyagawa'}
@@ -148,6 +153,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def mori(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'mori-calliope'}
@@ -178,6 +184,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def raiden(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'raiden-shogun'}
@@ -209,6 +216,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def oppai(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'oppai'}
@@ -240,6 +248,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def selfies(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'selfies'}
@@ -270,6 +279,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def uniform(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'uniform'}
@@ -301,6 +311,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def gif(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'gif': 'true'}
@@ -333,6 +344,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def ass(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'ass'}
@@ -365,6 +377,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def hentai(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'hentai'}
@@ -397,6 +410,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def milf(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'milf'}
@@ -429,6 +443,7 @@ class Waifu(commands.Cog):
         @commands.is_nsfw()
         async def oral(self, ctx):
                 """
+                ...
                 """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'oral'}
@@ -458,7 +473,9 @@ class Waifu(commands.Cog):
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def paizuri(self, ctx):
-                """Send a random paizuri image"""
+                """
+                ...
+                """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'paizuri'}
                 
@@ -489,7 +506,9 @@ class Waifu(commands.Cog):
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ecchi(self, ctx):
-                """Send a random ecchi image"""
+                """
+                ...
+                """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'ecchi'}
                 
@@ -520,7 +539,9 @@ class Waifu(commands.Cog):
         @commands.bot_has_permissions(embed_links=True, send_messages=True)
         @commands.is_nsfw()
         async def ero(self, ctx):
-                """Send a random ero image"""
+                """
+                ...
+                """
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'ero'}
                 
