@@ -14,7 +14,7 @@ Next, let's add the repo to your instance.
 [p]repo add BackRoomCogs https://github.com/TBR-Development/BackRoomCogs
 ```
 
-To install a cog, use this command, replacing `<cog>` with the name of the cog you wish to install:
+To install a cog, use this command, replacing `<cog>` with the cog you wish to install:
 
 ```py
 [p]cog install BackRoomCogs <cog>
