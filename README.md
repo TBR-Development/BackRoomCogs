@@ -1,5 +1,5 @@
 # BackRoomCogs 
-Cogs for RedBot v3
+A collection of cogs for RedBot v3
 
 ## Installation
 Primarily make sure you have downloader loaded.
