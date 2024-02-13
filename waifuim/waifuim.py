@@ -24,9 +24,15 @@ class Waifu(commands.Cog):
                 self.session.close()
         
 
-                           
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+
+        @commands.group(alias=['waifus'])
+        @commands.bot_has_permissions(send_messages=True, embed_links=True)
+        async def waifuim(self, ctx):
+          if ctx.invoked_subcommand is None:
+            help_cmd = self.bot.get_command('hwlp')
+            await ctx.invoke(help_cmd, command='waifuim')
+        
+        @waifuim.command()
         async def waifu(self, ctx):
                 """Get a random waifu image"""
                 
@@ -54,8 +60,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         async def maid(self, ctx):
                 """Get a random maid image"""
                 
@@ -82,8 +87,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         async def marin(self, ctx):
                 """Get a random Marin Kitagawa image"""
                 
@@ -111,8 +115,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         async def mori(self, ctx):
                 """Get a random Mori Calliope image"""
                 
@@ -139,8 +142,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         async def raiden(self, ctx):
                 """Get a random Raiden Shogun image"""
                 
@@ -169,8 +171,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         async def selfies(self, ctx):
                 """Get a random selfies image"""
                 
@@ -197,8 +198,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         async def uniform(self, ctx):
                 """Get a random uniform image"""
                 
@@ -226,8 +226,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         async def gif(self, ctx):
                 """Get a random gif image"""
                 
@@ -256,8 +255,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def ass(self, ctx):
                 """Get a random ass image"""
@@ -287,8 +285,7 @@ class Waifu(commands.Cog):
                 await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def hentai(self, ctx):
                 """Get a random hentai image"""
@@ -318,8 +315,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def milf(self, ctx):
                 """Get a random milf image"""
@@ -349,8 +345,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def oral(self, ctx):
                 """Get a random oral image"""
@@ -378,8 +373,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def paizuri(self, ctx):
                 """Get a random paizuri image"""
@@ -409,8 +403,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def ecchi(self, ctx):
                 """Get a random ecchi image"""
@@ -440,8 +433,7 @@ class Waifu(commands.Cog):
 
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def ero(self, ctx):
                 """Get a random ero image"""
@@ -468,8 +460,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def nwaifu(self, ctx):
                 """Get a random nsfw waifu image"""
@@ -498,8 +489,7 @@ class Waifu(commands.Cog):
                                         await ctx.send(embed=embed, view=view)
 
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def nmaid(self, ctx):
                 """Get a random nsfw maid image"""
@@ -527,8 +517,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def ngif(self, ctx):
                 """Get a random  nsfw gif"""
@@ -556,8 +545,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def oppai(self, ctx):
                 """Get a random oppai image"""
@@ -585,8 +573,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def nselfies(self, ctx):
                 """Get a random  nsfw selfies image"""
@@ -614,8 +601,7 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-        @commands.command()
-        @commands.bot_has_permissions(embed_links=True, send_messages=True)
+        @waifuim.command()
         @commands.is_nsfw()
         async def nuniform(self, ctx):
                 """Get a random  nsfw uniform image"""
