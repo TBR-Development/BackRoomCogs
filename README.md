@@ -33,9 +33,7 @@ We will add contributors into our contributors list and credit them for any addi
 
 ### Contributors
 
-```yaml
-PhantomNimbi: waifuim, purge
-```
+- [PhantomNimbi][PHANTOMNIMBI]
 
 
 [PHANTOMNIMBI]: https://github.com/PhantomNimbi
