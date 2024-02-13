@@ -22,7 +22,9 @@ To install a cog, use this command, replacing `<cog>` with the name of the cog y
 
 ## Cogs List
 
-- **waifuim**: Get random images by tag from Waifu.IM API
+| Name | Description | Usage |
+| --- | --- | --- |
+| waifuim | Get random images by tag from Waifu.IM API | `[p]waifuim <subcommand>` |
 
 ## Contribution
 
