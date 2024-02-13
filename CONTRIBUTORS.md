@@ -1,4 +1,4 @@
-| Name | Cogs |
+| Contributor | Contributions |
 | --- | --- |
 | [PhantomNimbi][PHANTOMNIMBI] | `waifuim` |
 
