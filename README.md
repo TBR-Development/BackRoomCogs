@@ -20,7 +20,7 @@ To install a cog, use this command, replacing `<cog>` with the cog you wish to i
 [p]cog install BackRoomCogs <cog>
 ```
 
-To load the installed cog, use this command, replacing `<cog>` with the installed cog:
+To load the installed cog, use this command, replacing `<cog>` with the installed cog you wish to load:
 
 ```py
 [p]load <cog>
