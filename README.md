@@ -1,5 +1,5 @@
-# Redbot cogs for Red-DiscordBot authored by TBR Development
-This is our cog repo for the redbot, a miltifunctional Discord bot!
+# BackRoomCogs 
+Cogs for RedBot v3
 
 ## Installation
 Primarily make sure you have downloader loaded.
