@@ -19,13 +19,13 @@ class Purge(commands.Cog):
         @commands.command()
         @commands.bot_has_permissions(manage_messages=True, send_messages=True)
         @commands.has_permissions(manage_messages=True)
-        async def purge(self, ctx, num_messages: int):
+        async def purge(self, ctx, num: int):
                 """
                 Purge <n> amount of messages from the current channel
                 """
                 
                 channel = ctx.message.channel
-                messages = await channel.purge(limit=num_messages)
+                messages = await ctx.channel.purge(limit=num)
                 total_deleted = len(messages)
                 
                 embed = new discord.Embed()
@@ -35,5 +35,5 @@ class Purge(commands.Cog):
                   
 
                 await ctx.message.delete()
-                await channel.purge(limit=num_messages)
+                await channel.purge(limit=num)
                 return await ctx.send(embed=embed)
