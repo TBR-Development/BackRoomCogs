@@ -1,5 +1,3 @@
-| Contributor | Contributions |
-| --- | --- |
-| [PhantomNimbi][PHANTOMNIMBI] | WaifuIM Cog |
+- [PhantomNimbi][PHANTOMNIMBI]: waifuim command
 
 [PHANTOMNIMBI]: https://github.com/PhantomNimbi
