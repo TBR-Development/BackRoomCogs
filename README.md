@@ -24,7 +24,7 @@ To install a cog, use this command, replacing `<cog>` with the name of the cog y
 
 | Name | Description | Usage |
 | --- | --- | --- |
-| waifuim | Get random images by tag from Waifu.IM API. <br /> Contains bot SFW and NSFW subcommands. The NSFW subcommands can only be used in NSFW channels. | [p]waifuim [subcommand] <br /> - or - <br /> [p]waifus [subcommand] |
+| waifuim | Get random images by tag from Waifu.IM API. <br /><br /> Contains SFW and NSFW subcommands. The NSFW subcommands can only be used in NSFW channels. | [p]waifuim [subcommand] <br /> - or - <br /> [p]waifus [subcommand] |
 
 ## Contribution
 
