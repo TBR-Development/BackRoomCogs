@@ -1,7 +1,6 @@
 
 
 import discord
-import asyncio
 
 from redbot.core import commands
 from redbot.core.bot import Red
@@ -28,19 +27,13 @@ class Purge(commands.Cog):
                 channel = ctx.message.channel
                 messages = await channel.purge(limit=num_messages)
                 total_deleted = len(messages)
-#                bot_deleted = await
-#                user_deleted = await 
                 
                 embed = new discord.Embed()
                 embed.title('Success')
-                embed.description(f'**Messsges Deleted**: {total_deleted}')
-                embed.add_field(name='Total', value: len(messages), inline=True)
-#                embed.add_field(name='Bot', value=len(bot_deleted), inline=True)
-#                embed.add_field(name='User', value=len(user_deleted), inline=True)
+                embed.description('Purge completed successfully'.')
+                embed.add_field(name='Total', value=f'{total_deleted}'', inline=True)
                   
 
                 await ctx.message.delete()
-                await asyncio.sleep(1)
                 await channel.purge(limit=num_messages)
-                await asyncio.sleep(2)
                 return await ctx.send(embed=embed)
