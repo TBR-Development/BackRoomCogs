@@ -2,25 +2,25 @@
 A collection of cogs for RedBot v3
 
 ## Installation
-Primarily make sure you have downloader loaded.
+- Make sure you have downloader loaded.
 
 ```py
 [p]load downloader
 ```
 
-Next, let's add the repo to your instance.
+- Add the repo to your instance.
 
 ```py
 [p]repo add BackRoomCogs https://github.com/TBR-Development/BackRoomCogs
 ```
 
-To install a cog, use this command, replacing `<cog>` with the cog you wish to install:
+- Install a cog with this command, replacing `<cog>` with the cog you wish to install:
 
 ```py
 [p]cog install BackRoomCogs <cog>
 ```
 
-To load the installed cog, use this command, replacing `<cog>` with the installed cog you wish to load:
+- Load the installed cog with this command, replacing `<cog>` with the installed cog you wish to load:
 
 ```py
 [p]load <cog>
