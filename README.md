@@ -28,12 +28,6 @@ To install a cog, use this command, replacing `<cog>` with the name of the cog y
 
 If you have any ideas, feel free to clone the repo and open a PR.
 
-We will add contributors into our contributors list and credit them for any additions and/or changes made.
+We will add contributors into our [contributors][CONTRIBUTORS] page and credit them for any additions and/or changes made.
 
-
-### Contributors
-
-- [PhantomNimbi][PHANTOMNIMBI]
-
-
-[PHANTOMNIMBI]: https://github.com/PhantomNimbi
+[CONTRIBUTORS]: ./CONTRIBUTORS.md
