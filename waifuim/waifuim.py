@@ -25,11 +25,11 @@ class Waifu(commands.Cog):
         
 
 
-        @commands.group(alias=['waifus'])
+        @commands.group()
         @commands.bot_has_permissions(send_messages=True, embed_links=True)
         async def waifuim(self, ctx):
           if ctx.invoked_subcommand is None:
-            help_cmd = self.bot.get_command('hwlp')
+            help_cmd = self.bot.get_command('help')
             await ctx.invoke(help_cmd, command='waifuim')
         
         @waifuim.command()
