@@ -28,16 +28,7 @@ class Waifu(commands.Cog):
         @commands.group()
         @commands.bot_has_permissions(send_messages=True, embed_links=True)
         async def waifuim(self, ctx):
-          if ctx.invoked_subcommand is None:
-            
-            embed = new discord.Embed()
-            embed.title('WaifuIM')
-            embed.description('Get waifu images from Waifu.IM API.')
-            embed.add_field(name='waifu, maid, marin, mori, raiden, selfies, uniform, gif', value=SFW_COMMANDS, inline=False)
-            embed.add_field(name='nwaifu, nmaid, nmarin, nmori, nraiden, nselfies, nuniform, ngif, ass, hentai, milf, oral, paizuri, ecchi, ero, oppai', value=NSFW_COMMANDS, inline=False)
-            embed.color = await ctx.embed_color()
-            embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
-            await ctx.send(embed=embed)
+          return await ctx.invoke(command='help waifuim')
 
         @waifuim.command()
         async def waifu(self, ctx):
