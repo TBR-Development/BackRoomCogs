@@ -9,13 +9,7 @@ from redbot.core.utils.chat_formatting import box
 
 ICON: Final[str] = "https://avatars.githubusercontent.com/u/91619079?s=200&v=4"
 
-BANNER: Final[str] = "https://www.waifu.im/preview/7892/"
-
 FOOTER_TEXT = "Powered by Waifu.IM API"
-
-SFW_COMMANDS: Final[str] = "waifu, maid, marin, mori, raiden, selfies, uniform, gif"
-  
-NSFW_COMMANDS: Final[str] = "nwaifu, nmaid, nmarin, nmori, nraiden, nselfies, nuniform, ngif, ass, hentai, milf, oral, paizuri, ecchi, ero, oppai"
 
 class Waifu(commands.Cog):
         """
@@ -39,10 +33,8 @@ class Waifu(commands.Cog):
             embed = new discord.Embed()
             embed.title('WaifuIM')
             embed.description('Get waifu images from Waifu.IM API.')
-            embed.add_field(name='SFW Commands', value=SFW_COMMANDS, inline=False)
-            embed.add_field(name='NSFW Commands', value=NSFW_COMMANDS, inline=False)
-            embed.set_thumbnail(url=ICON)
-            embed.set_image(url=BANNER)
+            embed.add_field(name='waifu, maid, marin, mori, raiden, selfies, uniform, gif', value=SFW_COMMANDS, inline=False)
+            embed.add_field(name='nwaifu, nmaid, nmarin, nmori, nraiden, nselfies, nuniform, ngif, ass, hentai, milf, oral, paizuri, ecchi, ero, oppai', value=NSFW_COMMANDS, inline=False)
             embed.color = await ctx.embed_color()
             embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
             await ctx.send(embed=embed)
