@@ -328,8 +328,6 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-
-
         @waifuim.command()
         @commands.is_nsfw()
         async def milf(self, ctx):
@@ -357,8 +355,6 @@ class Waifu(commands.Cog):
                                         )
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
-
-
 
         @waifuim.command()
         @commands.is_nsfw()
@@ -416,8 +412,6 @@ class Waifu(commands.Cog):
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
 
-
-
         @waifuim.command()
         @commands.is_nsfw()
         async def ecchi(self, ctx):
@@ -445,8 +439,6 @@ class Waifu(commands.Cog):
                                         )
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
-
-
 
         @waifuim.command()
         @commands.is_nsfw()
@@ -502,7 +494,6 @@ class Waifu(commands.Cog):
                                         )
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
-
 
         @waifuim.command()
         @commands.is_nsfw()
@@ -700,10 +691,7 @@ class Waifu(commands.Cog):
                                         )
                                         view.add_item(item=image)
                                         await ctx.send(embed=embed, view=view)
-                                        
-                                        
-                                                @waifuim.command()
-                                                
+
         @waifuim.command()
         @commands.is_nsfw()
         async def nraiden(self, ctx):
