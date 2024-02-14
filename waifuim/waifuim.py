@@ -28,7 +28,6 @@ class Waifu(commands.Cog):
         @commands.group()
         @commands.bot_has_permissions(send_messages=True, embed_links=True)
         async def waifuim(self, ctx):
-          return await ctx.invoke(command='help waifuim')
 
         @waifuim.command()
         async def waifu(self, ctx):
