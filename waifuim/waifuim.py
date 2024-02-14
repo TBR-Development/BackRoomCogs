@@ -9,7 +9,13 @@ from redbot.core.utils.chat_formatting import box
 
 ICON: Final[str] = "https://avatars.githubusercontent.com/u/91619079?s=200&v=4"
 
+BANNER: Final[str] = "https://www.waifu.im/preview/7892/"
+
 FOOTER_TEXT = "Powered by Waifu.IM API"
+
+SFW_COMMANDS: Final[str] = "waifu, maid, marin, mori, raiden, selfies, uniform, gif"
+  
+NSFW_COMMANDS: Final[str] = "nwaifu, nmaid, nmarin, nmori, nraiden, nselfies, nuniform, ngif, ass, hentai, milf, oral, paizuri, ecchi, ero, oppai"
 
 class Waifu(commands.Cog):
         """
@@ -29,9 +35,18 @@ class Waifu(commands.Cog):
         @commands.bot_has_permissions(send_messages=True, embed_links=True)
         async def waifuim(self, ctx):
           if ctx.invoked_subcommand is None:
-            help_cmd = self.bot.get_command('help')
-            await ctx.invoke(help_cmd, command='waifuim')
-        
+            
+            embed = new discord.Embed()
+            embed.title('WaifuIM')
+            embed.description('Get waifu images from Waifu.IM API.')
+            embed.add_field(name='SFW Commands', value=SFW_COMMANDS, inline=False)
+            embed.add_field(name='NSFW Commands', value=NSFW_COMMANDS, inline=False)
+            embed.set_thumbnail(url=ICON)
+            embed.set_image(url=BANNER)
+            embed.color = await ctx.embed_color()
+            embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+            await ctx.send(embed=embed)
+
         @waifuim.command()
         async def waifu(self, ctx):
                 """Get a random waifu image"""
@@ -608,6 +623,94 @@ class Waifu(commands.Cog):
                 
                 url = "https://api.waifu.im/search"
                 params = {'is_nsfw': 'true', 'included_tags': 'uniform'}
+                
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+                                        
+                                        
+        @waifuim.command()
+        @commands.is_nsfw()
+        async def nmarin(self, ctx):
+                """Get a random NSFW Marin Kitagawa image"""
+                
+                url = "https://api.waifu.im/search"
+                params = {'included_tags': 'marin-kitagawa', 'is_nsfw': 'true'}
+                
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+                                        
+        @waifuim.command()
+        @commands.is_nsfw()
+        async def nmori(self, ctx):
+                """Get a random NSFW Mori Calliope image"""
+                
+                url = "https://api.waifu.im/search"
+                params = {'included_tags': 'mori-calliope', 'is_nsfw': 'true'}
+                
+                async with aiohttp.ClientSession() as cs:
+                        async with cs.get(url, params=params) as response:
+                                
+                                data = await response.json()
+                                for image in data['images']:
+                                        image = image['url']
+                                        embed = discord.Embed()
+                                        embed.color = await ctx.embed_color()
+                                        embed.set_image(url=image)
+                                        embed.set_footer(text=FOOTER_TEXT, icon_url=ICON)
+                                        view = discord.ui.View()
+                                        style = discord.ButtonStyle.grey
+                                        image = discord.ui.Button(
+                                                style=style,
+                                                label="Open Image",
+                                                url=image,
+                                        )
+                                        view.add_item(item=image)
+                                        await ctx.send(embed=embed, view=view)
+                                        
+                                        
+                                                @waifuim.command()
+                                                
+        @waifuim.command()
+        @commands.is_nsfw()
+        async def nraiden(self, ctx):
+                """Get a random NSFW Raiden Shogun image"""
+                
+                url = "https://api.waifu.im/search"
+                params = {'included_tags': 'raiden-shogun', 'is_nsfw': 'true'}
                 
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(url, params=params) as response:
