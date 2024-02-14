@@ -1,5 +1,5 @@
 # BackRoomCogs 
-A collection of cogs for RedBot v3
+A collection of cogs for Red-DiscordBot
 
 ## Installation
 For these instructions `[p]` represents the bot prefix and `[cog]` represents the name of the desired cog.
