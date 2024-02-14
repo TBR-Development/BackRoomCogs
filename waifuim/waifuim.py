@@ -25,7 +25,7 @@ class Waifu(commands.Cog):
         
 
 
-        @commands.group(alias=['waifus'])
+        @commands.group()
         @commands.bot_has_permissions(send_messages=True, embed_links=True)
         async def waifuim(self, ctx):
           if ctx.invoked_subcommand is None:

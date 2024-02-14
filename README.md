@@ -33,7 +33,7 @@ For these instructions `[p]` represents the bot prefix and `[cog]` represents th
 
 | Name | Description | Usage |
 | --- | --- | --- |
-| waifuim | Get random images by tag from Waifu.IM API. <br /><br /> Contains SFW and NSFW subcommands. <br /> The NSFW subcommands can only be used in NSFW channels. | [p]waifuim [subcommand] <br /> - or - <br /> [p]waifus [subcommand] |
+| waifuim | Get random images by tag from Waifu.IM API. <br /><br /> Contains SFW and NSFW subcommands. <br /> The NSFW subcommands can only be used in NSFW channels. | [p]waifuim [subcommand] |
 
 ## Contribution
 
