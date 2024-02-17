@@ -59,7 +59,7 @@ class Waifu(commands.Cog):
 
         @waifuim.command()
         async def dump(self, ctx):
-                """Get a random waifu image"""
+                """Dump a bunch of waifu images"""
                 
                 url = "https://api.waifu.im/search"
                 params = {'many': 'true', 'gif': 'false', 'is_nsfw': 'false'}
@@ -758,7 +758,7 @@ class Waifu(commands.Cog):
         @waifuim.command()
         @commands.is_nsfw()
         async def ndump(self, ctx):
-                """Get a random waifu image"""
+                """Dump a bunch of NSFW waifu images"""
                 
                 url = "https://api.waifu.im/search"
                 params = {'many': 'true', 'is_nsfw': 'true', 'gif': 'false'}
