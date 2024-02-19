@@ -54,7 +54,7 @@ class Logger(commands.Cog):
         e.add_field(name='Guild Name', value=guild.name, inline=True),
         e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
         e.add_field(name='Join Date', value=join_date, inline=False)
-        e.color(discord.Color.blue())
+        e.color('{}'.format(discord.Color.blue()))
         e.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         await logger_channel.send(embed=e)
         
