@@ -2,6 +2,7 @@ import discord
 import traceback
 
 from redbot.core import Config, commands
+from redbot.core.utils.chat_formatting import box
 
 from datetime import datetime
 
@@ -37,23 +38,16 @@ class Logger(commands.Cog):
         await self.config.guilds_channel.set(channel.id)
         
         await ctx.send('Successfully set Guild Logs Channel') 
-        
     
     @logger.command(name='errorschannel')
     async def errors_channel(self, ctx, channel: discord.TextChannel):
         """
         Set the logging channel to send the error logs to
-        
-        Notes:
-        
-        This feature is a work in progress. As such the Erro Handler is still not ready and won't trigger
-        This command has been set in place so that it will be ready once the Error Handler has been completed.
         """
         
         await self.config.errors_channel.set(channel.id)
         
         await ctx.send('Successfully set Error Logs Channel') 
-        
         
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
@@ -96,6 +90,10 @@ class Logger(commands.Cog):
     async def on_error(self, guild):
         """
         Log error events
+        
+        Notes:
+        
+        This feature is a work in progress. As such, it might not trigger a response
         """
         date = datetime.now()
         
@@ -106,7 +104,7 @@ class Logger(commands.Cog):
         e = discord.Embed(title='Logger', description='An error has been logged', timestamp=date, color=discord.Color.red())
         e.add_field(name='Guild Name', value=guild.name, inline=True)
         e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
-        e.add_field(name='Error Stack', value='```ts\n{}\n```'.format(traceback.format_exc()), inline=False)
+        e.add_field(name='Error Stack', value=box(traceback.format_exc()), inline=False)
         e.add_field(name='Error Date', value=leave_date, inline=False)
         e.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         await logs_channel.send(embed=e)
