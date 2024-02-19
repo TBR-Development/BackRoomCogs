@@ -1,5 +1,3 @@
-**Available Commands**
-
 Type `[p]help logger` for information on how to use this cog.
 
 | Command | Description | Usage |
