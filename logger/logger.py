@@ -28,8 +28,8 @@ class Logger(commands.Cog):
         """
         pass
     
-    @logger.command(name='guildlogs')
-    async def guildlogs_channel(self, ctx, channel: discord.TextChannel):
+    @logger.command(name='guildschannel')
+    async def guilds_channel(self, ctx, channel: discord.TextChannel):
         """
         Set the logging channel to send the guild logs to
         """
@@ -39,8 +39,8 @@ class Logger(commands.Cog):
         await ctx.send('Successfully set Guild Logs Channel') 
         
     
-    @logger.command(name='errorlogs')
-    async def errorlogs_channel(self, ctx, channel: discord.TextChannel):
+    @logger.command(name='errorschannel')
+    async def errors_channel(self, ctx, channel: discord.TextChannel):
         """
         Set the logging channel to send the error logs to
         
