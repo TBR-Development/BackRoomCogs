@@ -31,10 +31,8 @@ For these instructions `[p]` represents the bot prefix and `[cog]` represents th
 
 ## Cogs List
 
-| Name | Description | Usage |
-| --- | --- | --- |
-| waifuim | Get random images by tag from Waifu.IM API. <br /><br /> Contains SFW and NSFW subcommands. <br /> The NSFW subcommands can only be used in NSFW channels. | [p]waifuim [subcommand] |
-| logger | Logging cog for bot owners | [p]loggerset [subcommand] [option] |
+* **waifuim**: Get random images by tag from Waifu.IM API. Contains SFW and NSFW subcommands. The NSFW subcommands can only be used in NSFW channels.
+* **logger**: Logging cog for bot owners
 
 ## Contribution
 
