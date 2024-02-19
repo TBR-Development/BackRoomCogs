@@ -93,7 +93,8 @@ class Logger(commands.Cog):
         
         Notes:
         
-        This feature is a work in progress. As such, it might not trigger a response
+        - This feature is a work in progress
+        - It might not trigger a response in it's current state
         """
         date = datetime.now()
         
