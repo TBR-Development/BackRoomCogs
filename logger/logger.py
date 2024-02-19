@@ -43,13 +43,12 @@ class Logger(commands.Cog):
         """
         Log guild join events to the logger channel if it is set
         """
-        join_date: Final[str] = datetime.strftime('%a %d %b %Y - %I:%M %p')
+        
         logger_channel = self.bot.get_channel(await self.config.logger_channel())
             
         e = discord.Embed(title='Logger', description='The bot has been added to a new guild.', timestamp=datetime.now())
         e.add_field(name='Guild Name', value=guild.name, inline=True),
         e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
-        e.add_field(name="Joined At", value=join_date, inline=False)
         e.set_footer(text='Powered by Red-DiscordBot', icon_url=self.bot.user.display_avatar.url)
         await logger_channel.send(embed=e)
         
