@@ -1,3 +1,3 @@
-- [PhantomNimbi][PHANTOMNIMBI]: waifuim command
+- [PhantomNimbi][PHANTOMNIMBI]: waifuim, logger
 
 [PHANTOMNIMBI]: https://github.com/PhantomNimbi
