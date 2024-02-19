@@ -3,7 +3,6 @@ import discord
 from redbot.core import Config, commands
 
 from datetime import datetime
-from typing import Final
 
 class Logger(commands.Cog):
     """
@@ -92,4 +91,21 @@ class Logger(commands.Cog):
         e.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         await logs_channel.send(embed=e)
         
-            
+    @commands.Cog.listener()
+    async def on_command_error(self, guild, error):
+        """
+        Log error events
+        """
+        date = datetime.now()
+        
+        leave_date = date.strftime('%a %d %b %Y, %I:%M %p')
+        
+        logs_channel = self.bot.get_channel(await self.config.errors_channel())
+        
+        e = discord.Embed(title='Logger', description='An error has been logged', timestamp=date, color=discord.Color.red())
+        e.add_field(name='Guild Name', value=guild.name, inline=True)
+        e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
+        e.add_field(name='Error Stack', value='```ts\n{}\n```'.format(error.stack), inline=False)
+        e.add_field(name='Error Date', value=leave_date, inline=False)
+        e.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+        await logs_channel.send(embed=e)
