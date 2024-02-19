@@ -1,7 +1,7 @@
 import discord
+import datetime
 
 from redbot.core import Config, commands
-from datetime import datetime
 class Logger(commands.Cog):
     """
     Logger cog for logging events to a specified channel
@@ -43,7 +43,7 @@ class Logger(commands.Cog):
         
         logger_channel = self.bot.get_channel(await self.config.logger_channel())
             
-        e = discord.Embed(title='Logger', description='The bot has been added to a new guild.', timestamp=datetime.now())
+        e = discord.Embed(title='Logger', description='The bot has been added to a new guild.', timestamp=datetime.datetime.now())
         e.add_field(name='Guild Name', value=guild.name, inline=True),
         e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
         e.add_field(name="Joined At", value=datetime.strftime('%a %d %b %Y - %I:%M %p'), inline=False)
