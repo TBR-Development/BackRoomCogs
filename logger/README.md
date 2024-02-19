@@ -1,5 +1,3 @@
-Type `[p]help logger` for information on how to use this cog.
-
 ## Commands
 
 * **loggerset**: Base command for setting up the logger cog
