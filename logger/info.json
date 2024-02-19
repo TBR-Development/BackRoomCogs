@@ -1,0 +1,11 @@
+{
+	"author": ["TBR-Development"],
+	"name": "Logger",
+	"install_msg": "Thank you for installing this cog!\nDo `[p]help Logger` to get the list of commands and how to use them.",
+	"short": "Logging cog to log events to a specified channel",
+	"description": "Logging cog to log events to a specified channel",
+	"permissions": ["send_messages", "manage_channels"],
+	"tags": ["debugging", "logging", "events", "info"],
+	"min_bot_version": "3.5.0",
+	"end_user_data_statement": "This cog does not persistantly store data or metadata about users."
+}
