@@ -21,9 +21,9 @@ class Logger(commands.Cog):
         )
         
     
-    @commands.group()
+    @commands.group(name='loggerset')
     @commands.is_owner()
-    async def logger(self, ctx):
+    async def logger_set(self, ctx):
         """
         Logger setup command
         """

@@ -3,7 +3,7 @@ Type `[p]`help logger` for information on how to use this cog.
 
 | Command | Description | Usage |
 | --- | --- | --- |
-| logger | Setup command for the logger cog | [p]logger <subcommand> <channel> |
+| loggerset | Setup command for the logger cog | [p]loggerset <subcommand> <channel> |
 
 
 **Event Logs**
