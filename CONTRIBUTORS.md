@@ -1,5 +1,5 @@
 - [PhantomNimbi][PHANTOMNIMBI]: waifuim, logger
-- [YamiKaitou][YAHIKAITOU]: logger
+- [YamiKaitou][YAMIKAITOU]: logger
 - [Flame422][FLAME422]: logger
 
 [PHANTOMNIMBI]: https://github.com/PhantomNimbi
