@@ -1,20 +1,17 @@
 **Available Commands**
+Type `[p]`help logger` for information on how to use this cog.
 
-| Command | Description | Usage |
-| --- | --- | --- |
-| logger | Setup command for the logger cog | [p]logger [command] [option] |
+| Command | Description |
+| --- | --- |
+| logger | Setup command for the logger cog |
 
 
 **Event Logs**
 
-| Events | Description |
-| --- | --- |
-| Guild Join | Log when the bot join's a guild |
-| Guild Leave | Log when the bot leaves a guild |
+
+ * **Guild Logs**: Log guild join and leave events to the logger channel
 
 
-**Planned Event Logs**
+**Planned Features**
 
-| Events | Description |
-| --- | --- |
-| Global Errors | Global error handler for use with debugging and support |
+ * **Global Error Handler**: log console errors to the logger channel
