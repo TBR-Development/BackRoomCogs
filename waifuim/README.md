@@ -1,6 +1,3 @@
-# WaifuIM
-Get waifu images by tag from Waifu.IM API
-
 ## Commands
 
 
