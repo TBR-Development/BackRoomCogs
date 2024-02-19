@@ -1,9 +1,7 @@
 import discord
-import datetime
 
 from redbot.core import Config, commands
-from redbot.core.utils.chat_formatting import box, warning
-
+from datetime import datetime
 class Logger(commands.Cog):
     """
     Logger cog for logging events to a specified channel
@@ -22,20 +20,16 @@ class Logger(commands.Cog):
     @commands.is_owner()
     async def logger(self, ctx):
         """
-        Logger setup command.
-                
-        Usage: [p]logger [command] [option]
+        Logger setup command
         """
         pass
     
     @logger.command(name='channel')
     async def set_channel(self, ctx, channel: discord.TextChannel):
         """
-        Set the logging channel to send the logs to.
-        
-        Usage: [p]logger channel [#channel]
+        Set the logging channel to send the logs to
         """
-
+        
         await self.config.logger_channel.set(channel.id)
         
         await ctx.send('Successfully enabled logger') 
@@ -49,9 +43,10 @@ class Logger(commands.Cog):
         
         logger_channel = self.bot.get_channel(await self.config.logger_channel())
             
-        e = discord.Embed(title='Logger', description='The bot has been added to a new guild.')
-        e.add_field(name='Guild Name', value=box(guild.name), inline=True),
-        e.add_field(name='Guild ID', value=box(guild.id), inline=True)
+        e = discord.Embed(title='Logger', description='The bot has been added to a new guild.', timestamp=datetime.now())
+        e.add_field(name='Guild Name', value=guild.name, inline=True),
+        e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
+        e.add_field(name="Joined At", value=datetime.strftime('%a %d %b %Y - %I:%M %p'), inline=False)
         e.set_footer(text='Powered by Red-DiscordBot', icon_url=self.bot.user.display_avatar.url)
         await logger_channel.send(embed=e)
         
