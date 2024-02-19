@@ -2,7 +2,7 @@ Type `[p]help logger` for information on how to use this cog.
 
 ### Commands
 
-* loggerset: Setup command for the logger cog
+* **loggerset**: Base command for setting the log channels
 
 
 ### Logs
