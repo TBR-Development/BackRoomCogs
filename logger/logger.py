@@ -44,11 +44,16 @@ class Logger(commands.Cog):
         Log guild join events to the logger channel if it is set
         """
         
+        date = datetime.now()
+        
+        join_date = date.strftime('%a %d %b %Y, %I:%M %p')
+        
         logger_channel = self.bot.get_channel(await self.config.logger_channel())
             
-        e = discord.Embed(title='Logger', description='The bot has been added to a new guild.', timestamp=datetime.now())
+        e = discord.Embed(title='Logger', description='The bot has been added to a new guild.', timestamp=date)
         e.add_field(name='Guild Name', value=guild.name, inline=True),
         e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
+        e.add_field(name='Join Date', value=join_date, inline=False)
         e.set_footer(text='\u200b', icon_url=self.bot.user.display_avatar.url)
         await logger_channel.send(embed=e)
         
