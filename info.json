@@ -5,5 +5,5 @@
  "short": "Cogs for Red-DiscordBot",
  "description": "A collection of Cogs for Red-DiscordBot.",
  "requirements": [],
- "tags": ["fun", "image", "nsfw", "utility", "functionalities"]
+ "tags": ["fun", "image", "utility", "logging"]
 }
