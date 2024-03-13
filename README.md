@@ -13,7 +13,7 @@ For these instructions `[p]` represents the bot prefix and `[cog]` represents th
 - Add the repo to your instance.
 
 ```py
-[p]repo add ShitShowCogs https://github.com/ShitShowDevelopment/BackRoomCogs
+[p]repo add ShitShowCogs https://github.com/ShitShowDevelopment/ShitShowCogs
 ```
 
 - Install a cog with this command:
