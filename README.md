@@ -19,7 +19,7 @@ For these instructions `[p]` represents the bot prefix and `[cog]` represents th
 - Install a cog with this command:
 
 ```py
-[p]cog install BackRoomCogs [cog]
+[p]cog install ShitShowCogs [cog]
 ```
 
 - Load the installed cog with this command:
