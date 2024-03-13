@@ -39,7 +39,7 @@ class Logger(commands.Cog):
         
         await ctx.send('Successfully set Guild Logs Channel') 
     
-    @logger_set.command(name='errorschannel')
+    @logger_set.command(name='errorschannel', hidden=True)
     async def errors_channel(self, ctx, channel: discord.TextChannel):
         """
         Set the logging channel to send the error logs to
