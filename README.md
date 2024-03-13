@@ -1,4 +1,3 @@
-# BackRoomCogs 
 A collection of cogs for Red-DiscordBot
 
 ## Installation
@@ -14,7 +13,7 @@ For these instructions `[p]` represents the bot prefix and `[cog]` represents th
 - Add the repo to your instance.
 
 ```py
-[p]repo add BackRoomCogs https://github.com/TBR-Development/BackRoomCogs
+[p]repo add ShitShowCogs https://github.com/ShitShowDevelopment/BackRoomCogs
 ```
 
 - Install a cog with this command:
