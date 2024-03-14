@@ -44,7 +44,7 @@ class WaifuIM(commands.Cog):
                 date = datetime.fromisoformat(uploaded_at).date()
                 time = datetime.fromisoformat(uploaded_at).time()
                 
-                date_time = '{} - {}'.format(date, time)
+                date_time = '{} {}'.format(date, time)
                 upload_date = date_time
                 
                 embed = discord.Embed()
@@ -97,7 +97,7 @@ class WaifuIM(commands.Cog):
                 date = datetime.fromisoformat(uploaded_at).date()
                 time = datetime.fromisoformat(uploaded_at).time()
                 
-                date_time = '{} - {}'.format(date, time)
+                date_time = '{} {}'.format(date, time)
                 upload_date = date_time
                 
                 embed = discord.Embed()
@@ -137,7 +137,7 @@ class WaifuIM(commands.Cog):
                 date = datetime.fromisoformat(uploaded_at).date()
                 time = datetime.fromisoformat(uploaded_at).time()
                 
-                date_time = '{} - {}'.format(date, time)
+                date_time = '{} {}'.format(date, time)
                 upload_date = date_time
                 
                 embed = discord.Embed()
@@ -177,7 +177,7 @@ class WaifuIM(commands.Cog):
                 date = datetime.fromisoformat(uploaded_at).date()
                 time = datetime.fromisoformat(uploaded_at).time()
                 
-                date_time = '{} - {}'.format(date, time)
+                date_time = '{} {}'.format(date, time)
                 upload_date = date_time
                 
                 embed = discord.Embed()
@@ -218,7 +218,7 @@ class WaifuIM(commands.Cog):
                 date = datetime.fromisoformat(uploaded_at).date()
                 time = datetime.fromisoformat(uploaded_at).time()
                 
-                date_time = '{} - {}'.format(date, time)
+                date_time = '{} {}'.format(date, time)
                 upload_date = date_time
                 
                 embed = discord.Embed()
@@ -278,7 +278,7 @@ class WaifuIM(commands.Cog):
                 date = datetime.fromisoformat(uploaded_at).date()
                 time = datetime.fromisoformat(uploaded_at).time()
                 
-                date_time = '{} - {}'.format(date, time)
+                date_time = '{} {}'.format(date, time)
                 upload_date = date_time
                 
                 embed = discord.Embed()
@@ -319,7 +319,7 @@ class WaifuIM(commands.Cog):
                 date = datetime.fromisoformat(uploaded_at).date()
                 time = datetime.fromisoformat(uploaded_at).time()
                 
-                date_time = '{} - {}'.format(date, time)
+                date_time = '{} {}'.format(date, time)
                 upload_date = date_time
                 
                 embed = discord.Embed()
@@ -360,7 +360,7 @@ class WaifuIM(commands.Cog):
                 date = datetime.fromisoformat(uploaded_at).date()
                 time = datetime.fromisoformat(uploaded_at).time()
                 
-                date_time = '{} - {}'.format(date, time)
+                date_time = '{} {}'.format(date, time)
                 upload_date = date_time
                 
                 embed = discord.Embed()
