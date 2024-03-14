@@ -42,8 +42,8 @@ class WaifuIM(commands.Cog):
                             tags = tag['name']
                             description = tag['description']
 
-                    for artist in data['images'][0]['artist']:
-                            name = artist['name']
+                    for author in data['images'][0]['artist']:
+                            name = author['name']
                             
                     embed = discord.Embed(description=description)
                     embed.add_field(name='Tag', value=tags, inline=True)
