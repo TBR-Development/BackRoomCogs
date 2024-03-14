@@ -260,7 +260,7 @@ class WaifuIM(commands.Cog):
             """
             
             url = 'https://api.waifu.im/search'
-            params = {'many': 'true', 'is_nsfw': 'frue'}
+            params = {'many': 'true', 'is_nsfw': 'true'}
             
             async with self.session.get(url, params=params) as response:
                     
