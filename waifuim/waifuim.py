@@ -98,8 +98,13 @@ class WaifuIM(commands.Cog):
                 date= '{}'.format(raw)
                 upload_date = date
                 
+                if artist_name == None:
+                        author = 'null'
+                else:
+                        author = artist_name
+                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=author, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -137,8 +142,13 @@ class WaifuIM(commands.Cog):
                 date= '{}'.format(raw)
                 upload_date = date
                 
+                if artist_name == None:
+                        author = 'null'
+                else:
+                        author = artist_name
+                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=author, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -176,8 +186,13 @@ class WaifuIM(commands.Cog):
                 date= '{}'.format(raw)
                 upload_date = date
                 
+                if artist_name == None:
+                        author = 'null'
+                else:
+                        author = artist_name
+                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=author, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -216,8 +231,13 @@ class WaifuIM(commands.Cog):
                 date= '{}'.format(raw)
                 upload_date = date
                 
+                if artist_name == None:
+                        author = 'null'
+                else:
+                        author = artist_name
+                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=author, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -275,8 +295,13 @@ class WaifuIM(commands.Cog):
                 date= '{}'.format(raw)
                 upload_date = date
                 
+                if artist_name == None:
+                        author = 'null'
+                else:
+                        author = artist_name
+                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=author, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -315,8 +340,13 @@ class WaifuIM(commands.Cog):
                 date= '{}'.format(raw)
                 upload_date = date
                 
+                if artist_name == None:
+                        author = 'null'
+                else:
+                        author = artist_name
+                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=author, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -355,8 +385,13 @@ class WaifuIM(commands.Cog):
                 date= '{}'.format(raw)
                 upload_date = date
                 
+                if artist_name == None:
+                        author = 'null'
+                else:
+                        author = artist_name
+                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=author, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
