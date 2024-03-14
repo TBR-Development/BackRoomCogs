@@ -46,7 +46,7 @@ class WaifuIM(commands.Cog):
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                embed.add_field(name='Image Source', value=source_url, inline=True)
+                embed.add_field(name='Image Source', value='[Link]({})'.format(source_url), inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
                 embed.color = await ctx.embed_color()
