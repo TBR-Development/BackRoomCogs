@@ -39,9 +39,7 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-                            
-                for author in data['artist']:
-                        artist_name = author['name']
+                        artist_name = image['artist']['name']
                         
                 upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
