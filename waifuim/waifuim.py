@@ -77,9 +77,8 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
-                          for image in data['images']:
-                            image = image['url']
-                            source = image['source']
+                          image = image['url']
+                          source = image['source']
                             
                     embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
@@ -106,9 +105,8 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
-                          for image in data['images']:
-                            image = image['url']
-                            source = image['source']
+                          image = image['url']
+                          source = image['source']
                             
                     embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
@@ -135,9 +133,8 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
-                          for image in data['images']:
-                            image = image['url']
-                            source = image['source']
+                          image = image['url']
+                          source = image['source']
                             
                     embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
@@ -165,7 +162,6 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
-                            imafor image in data['images']:
                             image = image['url']
                             source = image['source']
                             
@@ -214,9 +210,8 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
-                          for image in data['images']:
-                            image = image['url']
-                            source = image['source']
+                          image = image['url']
+                          source = image['source']
                             
                     embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
@@ -244,8 +239,7 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
-                          for image in data['images']:
-                            image = image['url']
+                          image = image['url']
                             source = image['source']
                             
                     embed = discord.Embed(description='[Image Source][{}]'.format(source))
