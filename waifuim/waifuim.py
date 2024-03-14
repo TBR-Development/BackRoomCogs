@@ -56,15 +56,15 @@ class WaifuIM(commands.Cog):
             Get a random waifu image by tag
             Available tags:
             
-                - waifu
-                - maid
-                - marin-kitagawa
-                - mori-calliope
-                - raiden-shogun
-                - oppai
-                - selfies
-                - uniform
-                - kamisato-ayaka
+            - waifu
+            - maid
+            - marin-kitagawa
+            - mori-calliope
+            - raiden-shogun
+            - oppai
+            - selfies
+            - uniform
+            - kamisato-ayaka
             """
             
             
@@ -183,22 +183,22 @@ class WaifuIM(commands.Cog):
             
             Available tags:
             
-                - waifu
-                - maid
-                - marin-kitagawa
-                - mori-calliope
-                - raiden-shogun
-                - oppai
-                - selfies
-                - uniform
-                - kamisato-ayaka
-                - ero
-                - ass
-                - hentai
-                - milf
-                - oral
-                - paizuri
-                - ecchi
+            - waifu
+            - maid
+            - marin-kitagawa
+            - mori-calliope
+            - raiden-shogun
+            - oppai
+            - selfies
+            - uniform
+            - kamisato-ayaka
+            - ero
+            - ass
+            - hentai
+            - milf
+            - oral
+            - paizuri
+            - ecchi
             """
             
             url = 'https://api.waifu.im/search'
