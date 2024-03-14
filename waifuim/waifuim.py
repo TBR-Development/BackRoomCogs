@@ -41,10 +41,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date = datetime.fromisoformat(uploaded_at).date().strftime("%c")
-                time = datetime.fromisoformat(uploaded_at).time().strftime("%c")
+                raw = datetime.fromisoformat(uploaded_at).strftime("%c")
                 
-                date_time = '{} {}'.format(date, time)
+                date_time = '{}'.format(raw)
                 upload_date = date_time
                 
                 embed = discord.Embed()
