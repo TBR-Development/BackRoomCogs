@@ -36,10 +36,9 @@ class WaifuIM(commands.Cog):
                     data = await response.json()
                 
                     for image in data['images']:
-                            image = image['url']
-                            source = image['source']
+                        image = image['url']
                             
-                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
+                    embed = discord.Embed()
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -76,11 +75,11 @@ class WaifuIM(commands.Cog):
             async with self.session.get(url, params=params) as response:
                     
                     data = await response.json()
+                
                     for image in data['images']:
-                          image = image['url']
-                          source = image['source']
+                        image = image['url']
                             
-                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
+                    embed = discord.Embed()
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -104,11 +103,11 @@ class WaifuIM(commands.Cog):
             async with self.session.get(url, params=params) as response:
                     
                     data = await response.json()
+                
                     for image in data['images']:
-                          image = image['url']
-                          source = image['source']
+                        image = image['url']
                             
-                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
+                    embed = discord.Embed()
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -132,11 +131,11 @@ class WaifuIM(commands.Cog):
             async with self.session.get(url, params=params) as response:
                     
                     data = await response.json()
+                
                     for image in data['images']:
-                          image = image['url']
-                          source = image['source']
+                        image = image['url']
                             
-                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
+                    embed = discord.Embed()
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -161,11 +160,11 @@ class WaifuIM(commands.Cog):
             async with self.session.get(url, params=params) as response:
                     
                     data = await response.json()
+                
                     for image in data['images']:
-                            image = image['url']
-                            source = image['source']
+                        image = image['url']
                             
-                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
+                    embed = discord.Embed()
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -209,11 +208,11 @@ class WaifuIM(commands.Cog):
             async with self.session.get(url, params=params) as response:
                     
                     data = await response.json()
+                
                     for image in data['images']:
-                          image = image['url']
-                          source = image['source']
+                        image = image['url']
                             
-                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
+                    embed = discord.Embed()
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -238,11 +237,11 @@ class WaifuIM(commands.Cog):
             async with self.session.get(url, params=params) as response:
                     
                     data = await response.json()
+                
                     for image in data['images']:
-                          image = image['url']
-                            source = image['source']
+                        image = image['url']
                             
-                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
+                    embed = discord.Embed()
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -267,11 +266,11 @@ class WaifuIM(commands.Cog):
             async with self.session.get(url, params=params) as response:
                     
                     data = await response.json()
+                
                     for image in data['images']:
-                            image = image['url']
-                            source = image['source']
+                        image = image['url']
                             
-                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
+                    embed = discord.Embed()
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
