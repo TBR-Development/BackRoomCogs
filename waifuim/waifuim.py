@@ -46,10 +46,8 @@ class WaifuIM(commands.Cog):
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                author = '{}'.format(artist_name)
-                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=author, inline=True)
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -100,10 +98,8 @@ class WaifuIM(commands.Cog):
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                author = '{}'.format(artist_name)
-                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=author, inline=True)
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -141,10 +137,8 @@ class WaifuIM(commands.Cog):
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                author = '{}'.format(artist_name)
-                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=author, inline=True)
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -182,10 +176,8 @@ class WaifuIM(commands.Cog):
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                author = '{}'.format(artist_name)
-                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=author, inline=True)
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -217,17 +209,15 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-                        artist_name = image['artist']['name']
+#                        artist_name = image['artist']['name']
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                author = '{}'.format(artist_name)
-                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=author, inline=True)
+#                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -278,17 +268,15 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-                        artist_name = image['artist']['name']
+#                        artist_name = image['artist']['name']
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                author = '{}'.format(artist_name)
-                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=author, inline=True)
+#                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -320,17 +308,15 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-                        artist_name = image['artist']['name']
+#                        artist_name = image['artist']['name']
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                author = '{}'.format(artist_name)
-                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=author, inline=True)
+#                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -362,17 +348,15 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-                        artist_name = image['artist']['name']
+#                        artist_name = image['artist']['name']
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                author = '{}'.format(artist_name)
-                
                 embed = discord.Embed()
-                embed.add_field(name='Artist Name', value=author, inline=True)
+#                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
