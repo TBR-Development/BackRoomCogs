@@ -37,13 +37,9 @@ class WaifuIM(commands.Cog):
                 
                     for image in data['images']:
                             image = image['url']
-
-                    for tag in data['images'][0]['tags']:
-                            tags = tag['name']
-                            description = tag['description']
+                            source = image['source']
                             
-                    embed = discord.Embed(description=description)
-                    embed.add_field(name='Tag', value=tags, inline=True)
+                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -81,14 +77,11 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
+                          for image in data['images']:
                             image = image['url']
-
-                    for tag in data['images'][0]['tags']:
-                            tags = tag['name']
-                            description = tag['description']
+                            source = image['source']
                             
-                    embed = discord.Embed(description=description)
-                    embed.add_field(name='Tag', value=tags, inline=True)
+                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -98,7 +91,7 @@ class WaifuIM(commands.Cog):
                     view.add_item(item=button)
                             
                     await ctx.send(embed=embed, view=view)
-                
+                               
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def gif(self, ctx):
@@ -113,14 +106,11 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
+                          for image in data['images']:
                             image = image['url']
-
-                    for tag in data['images'][0]['tags']:
-                            tags = tag['name']
-                            description = tag['description']
+                            source = image['source']
                             
-                    embed = discord.Embed(description=description)
-                    embed.add_field(name='Tag', value=tags, inline=True)
+                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -130,7 +120,7 @@ class WaifuIM(commands.Cog):
                     view.add_item(item=button)
                             
                     await ctx.send(embed=embed, view=view)
-                
+                               
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def dump(self, ctx):
@@ -145,14 +135,11 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
+                          for image in data['images']:
                             image = image['url']
-
-                    for tag in data['images'][0]['tags']:
-                            tags = tag['name']
-                            description = tag['description']
+                            source = image['source']
                             
-                    embed = discord.Embed(description=description)
-                    embed.add_field(name='Tag', value=tags, inline=True)
+                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -162,7 +149,7 @@ class WaifuIM(commands.Cog):
                     view.add_item(item=button)
                             
                     await ctx.send(embed=embed, view=view)
-                
+                               
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     @commands.is_nsfw()
@@ -178,14 +165,11 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
+                            imafor image in data['images']:
                             image = image['url']
-
-                    for tag in data['images'][0]['tags']:
-                            tags = tag['name']
-                            description = tag['description']
+                            source = image['source']
                             
-                    embed = discord.Embed(description=description)
-                    embed.add_field(name='Tag', value=tags, inline=True)
+                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -230,14 +214,11 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
+                          for image in data['images']:
                             image = image['url']
-
-                    for tag in data['images'][0]['tags']:
-                            tags = tag['name']
-                            description = tag['description']
+                            source = image['source']
                             
-                    embed = discord.Embed(description=description)
-                    embed.add_field(name='Tag', value=tags, inline=True)
+                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -247,7 +228,7 @@ class WaifuIM(commands.Cog):
                     view.add_item(item=button)
                             
                     await ctx.send(embed=embed, view=view)
-                
+                               
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     @commands.is_nsfw()
@@ -263,14 +244,11 @@ class WaifuIM(commands.Cog):
                     
                     data = await response.json()
                     for image in data['images']:
+                          for image in data['images']:
                             image = image['url']
-
-                    for tag in data['images'][0]['tags']:
-                            tags = tag['name']
-                            description = tag['description']
+                            source = image['source']
                             
-                    embed = discord.Embed(description=description)
-                    embed.add_field(name='Tag', value=tags, inline=True)
+                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -280,7 +258,7 @@ class WaifuIM(commands.Cog):
                     view.add_item(item=button)
                             
                     await ctx.send(embed=embed, view=view)
-                
+                               
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     @commands.is_nsfw()
@@ -297,13 +275,9 @@ class WaifuIM(commands.Cog):
                     data = await response.json()
                     for image in data['images']:
                             image = image['url']
-
-                    for tag in data['images'][0]['tags']:
-                            tags = tag['name']
-                            description = tag['description']
+                            source = image['source']
                             
-                    embed = discord.Embed(description=description)
-                    embed.add_field(name='Tag', value=tags, inline=True)
+                    embed = discord.Embed(description='[Image Source][{}]'.format(source))
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
@@ -313,3 +287,4 @@ class WaifuIM(commands.Cog):
                     view.add_item(item=button)
                             
                     await ctx.send(embed=embed, view=view)
+                               
