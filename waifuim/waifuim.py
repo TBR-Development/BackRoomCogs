@@ -36,8 +36,8 @@ class WaifuIM(commands.Cog):
                     data = await response.json()
                     for image in data['images']:
                             image = image['url']
-                            tags = image['tags'][0]['name']
-                            description = image['tags'][0]['description']
+                            tags = image['tags']['name']
+                            description = image['tags']['description']
                             date = image['uploaded_at']
                             
                             embed = discord.Embed(description=description)
