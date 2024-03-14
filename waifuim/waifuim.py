@@ -41,9 +41,13 @@ class WaifuIM(commands.Cog):
                     for tag in data['images'][0]['tags']:
                             tags = tag['name']
                             description = tag['description']
+
+                    for artist in data['imGes'][0]['artist']:
+                            name = artist['name']
                             
                     embed = discord.Embed(description=description)
                     embed.add_field(name='Tag', value=tags, inline=True)
+                    embed.add_field(name='Artist', value=name, inline=True)
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
