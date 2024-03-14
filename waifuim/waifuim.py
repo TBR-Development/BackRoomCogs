@@ -55,8 +55,11 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                            
-                await ctx.send(embed=embed, view=view)
+                
+                if response.status_code == 200:
+                        await ctx.send(embed=embed, view=view)
+                else:
+                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
                                 
         
     @commands.hybrid_command()
@@ -104,8 +107,11 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                            
-                await ctx.send(embed=embed, view=view)
+                
+                if response.status_code == 200:
+                        await ctx.send(embed=embed, view=view)
+                else:
+                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -140,8 +146,11 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                            
-                await ctx.send(embed=embed, view=view)
+                
+                if response.status_code == 200:
+                        await ctx.send(embed=embed, view=view)
+                else:
+                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -176,8 +185,11 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                            
-                await ctx.send(embed=embed, view=view)
+                
+                if response.status_code == 200:
+                        await ctx.send(embed=embed, view=view)
+                else:
+                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -213,8 +225,11 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                            
-                await ctx.send(embed=embed, view=view)
+                
+                if response.status_code == 200:
+                        await ctx.send(embed=embed, view=view)
+                else:
+                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
                                 
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -269,8 +284,11 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                            
-                await ctx.send(embed=embed, view=view)
+                
+                if response.status_code == 200:
+                        await ctx.send(embed=embed, view=view)
+                else:
+                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -306,8 +324,11 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                            
-                await ctx.send(embed=embed, view=view)
+                
+                if response.status_code == 200:
+                        await ctx.send(embed=embed, view=view)
+                else:
+                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -343,6 +364,9 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                            
-                await ctx.send(embed=embed, view=view)
+                
+                if response.status_code == 200:
+                        await ctx.send(embed=embed, view=view)
+                else:
+                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
                                
