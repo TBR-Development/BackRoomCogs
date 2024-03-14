@@ -37,7 +37,6 @@ class WaifuIM(commands.Cog):
                 
                     for image in data['images']:
                             image = image['url']
-                            date = image['uploaded_at']
 
                     for tag in data['images'][0]['tags']:
                             tags = tag['name']
@@ -46,7 +45,6 @@ class WaifuIM(commands.Cog):
                     embed = discord.Embed()
                     embed.description(description)
                     embed.add_field(name='Tag', value=tags, inline=True)
-                    embed.add_field(name='Uploaded', value=date, inline=True)
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
                     embed.color = await ctx.embed_color()
