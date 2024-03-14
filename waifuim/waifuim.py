@@ -42,7 +42,7 @@ class WaifuIM(commands.Cog):
                             tags = tag['name']
                             description = tag['description']
 
-                    for artist in data['imGes'][0]['artist']:
+                    for artist in data['images'][0]['artist']:
                             name = artist['name']
                             
                     embed = discord.Embed(description=description)
