@@ -32,22 +32,31 @@ class WaifuIM(commands.Cog):
             params = {'is_nsfw': 'false'}
             
             async with self.session.get(url, params=params) as response:
+                data = await response.json()
                     
-                    data = await response.json()
+                for image in data['images']:
+                        image_url = image['url']
+                        source_url = image['source']
+                        uploaded_at = image['uploaded_at']
+                            
+                for author in data['images']['artist']:
+                        artist_name = author['name']
+                        
+                upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
-                    for image in data['images']:
-                        image = image['url']
+                embed = discord.Embed()
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                embed.add_field(name='Image Source', value=source_url, inline=True)
+                embed.set_image(url=image_url)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                view = discord.ui.View()
+                style = discord.ButtonStyle.grey
+                button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                view.add_item(item=button)
                             
-                    embed = discord.Embed()
-                    embed.set_image(url=image)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    button = discord.ui.Button(style=style, label='Open Image', url=image)
-                    view.add_item(item=button)
-                            
-                    await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
                                 
         
     @commands.hybrid_command()
