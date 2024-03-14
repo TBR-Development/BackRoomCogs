@@ -2,6 +2,7 @@ from typing import Final
 
 import discord
 import aiohttp
+import datetime
 
 from redbot.core import commands
 from redbot.core.bot import Red
@@ -39,7 +40,7 @@ class WaifuIM(commands.Cog):
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
                             
-                for author in data['images']['artist']:
+                for author in data['artist']:
                         artist_name = author['name']
                         
                 upload_date = datetime.datetime.fromisoformat(uploaded_at)
