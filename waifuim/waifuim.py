@@ -36,8 +36,13 @@ class WaifuIM(commands.Cog):
                     data = await response.json()
                     for image in data['images']:
                             image = image['url']
+                            tags = image['tags'][0]['name']
+                            description = image['tags'][0]['description']
+                            date = image['uploaded_at']
                             
-                            embed = discord.Embed()
+                            embed = discord.Embed(description=description)
+                            embed.add_field(name='Tag', value=tags, inline=True)
+                            embed.add_field(name='Uploaded', value=date, inline=True)
                             embed.set_image(url=image)
                             embed.set_footer(text=footer_text, icon_url=footer_icon)
                             embed.color = await ctx.embed_color()
