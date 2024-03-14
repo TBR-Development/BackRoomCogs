@@ -82,22 +82,30 @@ class WaifuIM(commands.Cog):
             params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'false'}
             
             async with self.session.get(url, params=params) as response:
+                data = await response.json()
                     
-                    data = await response.json()
+                for image in data['images']:
+                        image_url = image['url']
+                        source_url = image['source']
+                        uploaded_at = image['uploaded_at']
+                        artist_name = image['artist']['name']
+                        
+                upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
-                    for image in data['images']:
-                        image = image['url']
+                embed = discord.Embed()
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                embed.set_image(url=image_url)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                view = discord.ui.View()
+                style = discord.ButtonStyle.grey
+                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                view.add_item(item=image_button)
+                view.add_item(item=source_button)
                             
-                    embed = discord.Embed()
-                    embed.set_image(url=image)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    button = discord.ui.Button(style=style, label='Open Image', url=image)
-                    view.add_item(item=button)
-                            
-                    await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -110,22 +118,30 @@ class WaifuIM(commands.Cog):
             params = {'gif': 'true', 'is_nsfw': 'false'}
             
             async with self.session.get(url, params=params) as response:
+                data = await response.json()
                     
-                    data = await response.json()
+                for image in data['images']:
+                        image_url = image['url']
+                        source_url = image['source']
+                        uploaded_at = image['uploaded_at']
+                        artist_name = image['artist']['name']
+                        
+                upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
-                    for image in data['images']:
-                        image = image['url']
+                embed = discord.Embed()
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                embed.set_image(url=image_url)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                view = discord.ui.View()
+                style = discord.ButtonStyle.grey
+                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                view.add_item(item=image_button)
+                view.add_item(item=source_button)
                             
-                    embed = discord.Embed()
-                    embed.set_image(url=image)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    button = discord.ui.Button(style=style, label='Open Image', url=image)
-                    view.add_item(item=button)
-                            
-                    await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -138,22 +154,30 @@ class WaifuIM(commands.Cog):
             params = {'many': 'true', 'is_nsfw': 'false'}
             
             async with self.session.get(url, params=params) as response:
+                data = await response.json()
                     
-                    data = await response.json()
+                for image in data['images']:
+                        image_url = image['url']
+                        source_url = image['source']
+                        uploaded_at = image['uploaded_at']
+                        artist_name = image['artist']['name']
+                        
+                upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
-                    for image in data['images']:
-                        image = image['url']
+                embed = discord.Embed()
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                embed.set_image(url=image_url)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                view = discord.ui.View()
+                style = discord.ButtonStyle.grey
+                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                view.add_item(item=image_button)
+                view.add_item(item=source_button)
                             
-                    embed = discord.Embed()
-                    embed.set_image(url=image)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    button = discord.ui.Button(style=style, label='Open Image', url=image)
-                    view.add_item(item=button)
-                            
-                    await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -167,22 +191,30 @@ class WaifuIM(commands.Cog):
             params = {'is_nsfw': 'true'}
             
             async with self.session.get(url, params=params) as response:
+                data = await response.json()
                     
-                    data = await response.json()
+                for image in data['images']:
+                        image_url = image['url']
+                        source_url = image['source']
+                        uploaded_at = image['uploaded_at']
+                        artist_name = image['artist']['name']
+                        
+                upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
-                    for image in data['images']:
-                        image = image['url']
+                embed = discord.Embed()
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                embed.set_image(url=image_url)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                view = discord.ui.View()
+                style = discord.ButtonStyle.grey
+                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                view.add_item(item=image_button)
+                view.add_item(item=source_button)
                             
-                    embed = discord.Embed()
-                    embed.set_image(url=image)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    button = discord.ui.Button(style=style, label='Open Image', url=image)
-                    view.add_item(item=button)
-                            
-                    await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
                                 
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -215,22 +247,30 @@ class WaifuIM(commands.Cog):
             params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'true'}
             
             async with self.session.get(url, params=params) as response:
+                data = await response.json()
                     
-                    data = await response.json()
+                for image in data['images']:
+                        image_url = image['url']
+                        source_url = image['source']
+                        uploaded_at = image['uploaded_at']
+                        artist_name = image['artist']['name']
+                        
+                upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
-                    for image in data['images']:
-                        image = image['url']
+                embed = discord.Embed()
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                embed.set_image(url=image_url)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                view = discord.ui.View()
+                style = discord.ButtonStyle.grey
+                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                view.add_item(item=image_button)
+                view.add_item(item=source_button)
                             
-                    embed = discord.Embed()
-                    embed.set_image(url=image)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    button = discord.ui.Button(style=style, label='Open Image', url=image)
-                    view.add_item(item=button)
-                            
-                    await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -244,22 +284,30 @@ class WaifuIM(commands.Cog):
             params = {'gif': 'true', 'is_nsfw': 'true'}
             
             async with self.session.get(url, params=params) as response:
+                data = await response.json()
                     
-                    data = await response.json()
+                for image in data['images']:
+                        image_url = image['url']
+                        source_url = image['source']
+                        uploaded_at = image['uploaded_at']
+                        artist_name = image['artist']['name']
+                        
+                upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
-                    for image in data['images']:
-                        image = image['url']
+                embed = discord.Embed()
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                embed.set_image(url=image_url)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                view = discord.ui.View()
+                style = discord.ButtonStyle.grey
+                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                view.add_item(item=image_button)
+                view.add_item(item=source_button)
                             
-                    embed = discord.Embed()
-                    embed.set_image(url=image)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    button = discord.ui.Button(style=style, label='Open Image', url=image)
-                    view.add_item(item=button)
-                            
-                    await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -273,20 +321,28 @@ class WaifuIM(commands.Cog):
             params = {'many': 'true', 'is_nsfw': 'true'}
             
             async with self.session.get(url, params=params) as response:
+                data = await response.json()
                     
-                    data = await response.json()
+                for image in data['images']:
+                        image_url = image['url']
+                        source_url = image['source']
+                        uploaded_at = image['uploaded_at']
+                        artist_name = image['artist']['name']
+                        
+                upload_date = datetime.datetime.fromisoformat(uploaded_at)
                 
-                    for image in data['images']:
-                        image = image['url']
+                embed = discord.Embed()
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                embed.set_image(url=image_url)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                view = discord.ui.View()
+                style = discord.ButtonStyle.grey
+                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                view.add_item(item=image_button)
+                view.add_item(item=source_button)
                             
-                    embed = discord.Embed()
-                    embed.set_image(url=image)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    button = discord.ui.Button(style=style, label='Open Image', url=image)
-                    view.add_item(item=button)
-                            
-                    await ctx.send(embed=embed, view=view)
+                await ctx.send(embed=embed, view=view)
                                
