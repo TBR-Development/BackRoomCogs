@@ -41,7 +41,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                raw = datetime.fromisoformat(uploaded_at).strftime("%c")
+                raw = datetime.fromisoformat(uploaded_at).timestamp().strftime("%c")
                 
                 date_time = '{}'.format(raw)
                 upload_date = date_time
