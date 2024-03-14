@@ -46,14 +46,15 @@ class WaifuIM(commands.Cog):
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                embed.add_field(name='Image Source', value='[Link]({})'.format(source_url), inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
                 embed.color = await ctx.embed_color()
                 view = discord.ui.View()
                 style = discord.ButtonStyle.grey
-                button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                view.add_item(item=button)
+                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                view.add_item(item=image_button)
+                view.add_item(item=source_button)
                             
                 await ctx.send(embed=embed, view=view)
                                 
