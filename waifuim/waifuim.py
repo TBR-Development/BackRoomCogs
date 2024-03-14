@@ -42,8 +42,7 @@ class WaifuIM(commands.Cog):
                             tags = tag['name']
                             description = tag['description']
                             
-                    embed = discord.Embed()
-                    embed.description(description)
+                    embed = discord.Embed(description=description)
                     embed.add_field(name='Tag', value=tags, inline=True)
                     embed.set_image(url=image)
                     embed.set_footer(text=footer_text, icon_url=footer_icon)
