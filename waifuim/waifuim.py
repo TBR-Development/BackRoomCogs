@@ -41,7 +41,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                upload_date = datetime.fromisoformat(uploaded_at).date()
+                        
+                dt = datetime.fromisoformat(uploaded_at)
+                upload_date = dt.strftime('%c')
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -56,10 +58,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status_code == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
+                await ctx.send(embed=embed, view=view)
                                 
         
     @commands.hybrid_command()
@@ -93,7 +92,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                upload_date = datetime.fromisoformat(uploaded_at).date()
+                        
+                dt = datetime.fromisoformat(uploaded_at)
+                upload_date = dt.strftime('%c')
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -108,10 +109,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status_code == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -132,7 +130,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                upload_date = datetime.fromisoformat(uploaded_at).date()
+                        
+                dt = datetime.fromisoformat(uploaded_at)
+                upload_date = dt.strftime('%c')
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -147,10 +147,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status_code == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -171,7 +168,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                upload_date = datetime.fromisoformat(uploaded_at).date()
+                        
+                dt = datetime.fromisoformat(uploaded_at)
+                upload_date = dt.strftime('%c')
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -186,10 +185,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status_code == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -211,7 +207,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                upload_date = datetime.fromisoformat(uploaded_at).date()
+                        
+                dt = datetime.fromisoformat(uploaded_at)
+                upload_date = dt.strftime('%c')
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -226,10 +224,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status_code == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
+                await ctx.send(embed=embed, view=view)
                                 
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -270,7 +265,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                upload_date = datetime.fromisoformat(uploaded_at).date()
+                        
+                dt = datetime.fromisoformat(uploaded_at)
+                upload_date = dt.strftime('%c')
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -285,10 +282,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status_code == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -310,7 +304,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                upload_date = datetime.fromisoformat(uploaded_at).date()
+                        
+                dt = datetime.fromisoformat(uploaded_at)
+                upload_date = dt.strftime('%c')
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -325,10 +321,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status_code == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -350,7 +343,9 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                upload_date = datetime.fromisoformat(uploaded_at).date()
+                        
+                dt = datetime.fromisoformat(uploaded_at)
+                upload_date = dt.strftime('%c')
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -365,8 +360,5 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status_code == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send('\:x: Request failed with status code: ', response.status_code)
+                await ctx.send(embed=embed, view=view)
                                
