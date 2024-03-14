@@ -42,8 +42,7 @@ class WaifuIM(commands.Cog):
                         artist_name = image['artist']['name']
                         
                 raw_date = datetime.fromisoformat(uploaded_at).date()
-                raw_time =datetime.fromisoformat(uploaded_at).time()
-                upload_date = '{} {}'.format(raw_date, raw_time)
+                upload_date = '{} {}'.format(raw_date)
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -93,8 +92,7 @@ class WaifuIM(commands.Cog):
                         artist_name = image['artist']['name']
                         
                 raw_date = datetime.fromisoformat(uploaded_at).date()
-                raw_time =datetime.fromisoformat(uploaded_at).time()
-                upload_date = '{} {}'.format(raw_date, raw_time)
+                upload_date = '{} {}'.format(raw_date)
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -130,9 +128,8 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                raw_date = datetime.fromisoformat(uploaded_at).date
-                raw_time =datetime.fromisoformat(uploaded_at).time
-                upload_date = '{} {}'.format(raw_date, raw_time)
+                raw_date = datetime.fromisoformat(uploaded_at).date()
+                upload_date = '{} {}'.format(raw_date)
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -168,9 +165,8 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                raw_date = datetime.fromisoformat(uploaded_at).date
-                raw_time =datetime.fromisoformat(uploaded_at).time
-                upload_date = '{} {}'.format(raw_date, raw_time)
+                raw_date = datetime.fromisoformat(uploaded_at).date()
+                upload_date = '{} {}'.format(raw_date)
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -207,9 +203,8 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                raw_date = datetime.fromisoformat(uploaded_at).date
-                raw_time =datetime.fromisoformat(uploaded_at).time
-                upload_date = '{} {}'.format(raw_date, raw_time)
+                raw_date = datetime.fromisoformat(uploaded_at).date()
+                upload_date = '{} {}'.format(raw_date)
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -223,9 +218,8 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                        
-                raw_date = datetime.fromisoformat(uploaded_at)
-                upload_date = datetime.timestamp(raw_date)
+                            
+                await ctx.send(embed=embed, view=view)
                                 
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -266,9 +260,8 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                raw_date = datetime.fromisoformat(uploaded_at).date
-                raw_time =datetime.fromisoformat(uploaded_at).time
-                upload_date = '{} {}'.format(raw_date, raw_time)
+                raw_date = datetime.fromisoformat(uploaded_at).date()
+                upload_date = '{} {}'.format(raw_date)
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -282,9 +275,8 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                        
-                raw_date = datetime.fromisoformat(uploaded_at)
-                upload_date = datetime.timestamp(raw_date)
+                            
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -306,9 +298,8 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                raw_date = datetime.fromisoformat(uploaded_at).date
-                raw_time =datetime.fromisoformat(uploaded_at).time
-                upload_date = '{} {}'.format(raw_date, raw_time)
+                raw_date = datetime.fromisoformat(uploaded_at).date()
+                upload_date = '{} {}'.format(raw_date)
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -322,9 +313,8 @@ class WaifuIM(commands.Cog):
                 source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
-                        
-                raw_date = datetime.fromisoformat(uploaded_at)
-                upload_date = datetime.timestamp(raw_date)
+                            
+                await ctx.send(embed=embed, view=view)
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -346,9 +336,8 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                raw_date = datetime.fromisoformat(uploaded_at).date
-                raw_time =datetime.fromisoformat(uploaded_at).time
-                upload_date = '{} {}'.format(raw_date, raw_time)
+                raw_date = datetime.fromisoformat(uploaded_at).date()
+                upload_date = '{} {}'.format(raw_date)
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
