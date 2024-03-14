@@ -41,8 +41,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date_time = datetime.fromisoformat(uploaded_at)
-                upload_date = date_time.strftime("%B %d, %Y - %H:%M %Z")
+                upload_date = datetime.fromisoformat(uploaded_at).strftime("%B %d, %Y - %H:%M %Z")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -91,8 +90,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date_time = datetime.fromisoformat(uploaded_at)
-                upload_date = date_time.strftime("%B %d, %Y - %H:%M %Z")
+                upload_date = datetime.fromisoformat(uploaded_at).strftime("%B %d, %Y - %H:%M %Z")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -128,8 +126,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date_time = datetime.fromisoformat(uploaded_at)
-                upload_date = date_time.strftime("%B %d, %Y - %H:%M %Z")
+                upload_date = datetime.fromisoformat(uploaded_at).strftime("%B %d, %Y - %H:%M %Z")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -165,8 +162,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date_time = datetime.fromisoformat(uploaded_at)
-                upload_date = date_time.strftime("%B %d, %Y - %H:%M %Z")
+                upload_date = datetime.fromisoformat(uploaded_at).strftime("%B %d, %Y - %H:%M %Z")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -203,8 +199,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date_time = datetime.fromisoformat(uploaded_at)
-                upload_date = date_time.strftime("%B %d, %Y - %H:%M %Z")
+                upload_date = datetime.fromisoformat(uploaded_at).strftime("%B %d, %Y - %H:%M %Z")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -260,8 +255,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date_time = datetime.fromisoformat(uploaded_at)
-                upload_date = date_time.strftime("%B %d, %Y - %H:%M %Z")
+                upload_date = datetime.fromisoformat(uploaded_at).strftime("%B %d, %Y - %H:%M %Z")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -298,8 +292,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date_time = datetime.fromisoformat(uploaded_at)
-                upload_date = date_time.strftime("%B %d, %Y - %H:%M %Z")
+                upload_date = datetime.fromisoformat(uploaded_at).strftime("%B %d, %Y - %H:%M %Z")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
@@ -336,8 +329,7 @@ class WaifuIM(commands.Cog):
                         uploaded_at = image['uploaded_at']
                         artist_name = image['artist']['name']
                         
-                date_time = datetime.fromisoformat(uploaded_at)
-                upload_date = date_time.strftime("%B %d, %Y - %H:%M %Z")
+                upload_date = datetime.fromisoformat(uploaded_at).strftime("%B %d, %Y - %H:%M %Z")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Artist Name', value=artist_name, inline=True)
