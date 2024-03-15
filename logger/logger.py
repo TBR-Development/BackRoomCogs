@@ -17,24 +17,54 @@ class Logger(commands.Cog):
         self.config = Config.get_conf(self, identifier=465228604721201158)
         
         self.config.register_global(
-            logger_channel=''
+            logger_channel=str
         )
-        
-    
-    @commands.hybrid_command()
+                
+    @commands.hybrid_group()
     @commands.is_owner()
-    async def loggerchannel(self, ctx, option: Literal['set', 'remove'], channel: discord.TextChannel=None):
+    async def logger(self, ctx):
         """
-        Set the channel to send the logs to
+        Base command for the Logger cog
+        """
+        return
+    
+    @logger.hybrid_command()
+    async def enable(self, ctx, channel: discord.TextChannel):
+        """
+        Set the channel to send logs to
         """
         
-        if option == 'set':
-            await self.config.logger_channel.set(channel.id)
-            await ctx.send('The logger channel has been set to: <#{}>.'.format(channel.id))
+        await self.config.logger_channel.set(channel.id)
+        await ctx.send('The logger channel has been set to: <#{}>.'.format(channel.id))
+        
+    @logger.hybrid_command()
+    async def disable(self, ctx):
+        """
+        Remove the logger channel
+        """
+        
+        await self.config.logger_channel.clear()
+        await ctx.send('The logger channel has been removed.')
+        
+    @logger.hybrid_command()
+    async def settings(self, ctx):
+        """
+        Remove the logger channel
+        """
+        
+        if self.config.logger_channel == None:
+            logs_channel = 'No channel set'
+            logger_enabled='True'
         else:
-            if option == 'remove':
-                await self.config.logger_channel.clear()
-                await ctx.send('The logger channel has been removed.')
+            logs_channel = self.bot.get_channel(await self.config.logger_channel())
+            logger_enabled='False'
+            
+        embed = discord.Embed(title='Logger Settings')
+        embed.color = await ctx.embed_color()
+        embed.add_field(name='Enabled', value=logger_enabled, inline=True)
+        embed.add_field(name='Channel', value='<#{}>'.format(logs_channel), inline=True)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+        await ctx.send(embed=embed)
                 
         
     @commands.Cog.listener()
@@ -49,7 +79,7 @@ class Logger(commands.Cog):
         
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
             
-        embed = discord.Embed(title='Logger', description='{} has been added to a guild.'.format(self.bot.user.name), timestamp=date, color=discord.Color.blue())
+        embed = discord.Embed(description='{} has been added to a guild.'.format(self.bot.user.name), timestamp=date, color=discord.Color.blue())
         embed.add_field(name='Guild', value='{} ({})'.format(guild.name, guild.id), inline=True),
         embed.add_field(name='Date Added', value=join_date, inline=False)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
@@ -67,7 +97,7 @@ class Logger(commands.Cog):
         
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
             
-        embed = discord.Embed(title='Logger', description='{} has been removed from a guild.'.format(self.bot.user.name), timestamp=date, color=discord.Color.blue())
+        embed = discord.Embed(description='{} has been removed from a guild.'.format(self.bot.user.name), timestamp=date, color=discord.Color.blue())
         embed.add_field(name='Guild Name', value=guild.name, inline=True),
         embed.add_field(name='Date Removed', value=leave_date, inline=False)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
