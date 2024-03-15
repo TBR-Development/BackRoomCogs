@@ -35,8 +35,10 @@ class WaifuIM(commands.Cog):
             async with self.session.get(url) as response:
                 data = await response.json()
                     
-                versatile_tags = data['versatile']
-                nsfw_tags = data['nsfw']
+                versatile = data['versatile']
+                nsfw = data['nsfw']
+                
+                versatile_tags = versatile.strip("[","]","'")
                 
                 embed = discord.Embed()
                 embed.add_field(name='Versatile Tags', value=versatile_tags, inline=True)
