@@ -45,7 +45,7 @@ class WaifuIM(commands.Cog):
                 sfw_tags = '{}'.format(versatile_array)
                 nsfw_tags = '{}, {}'.format(versatile_array, nsfw_array)
                 
-                embed = discord.Embed(title='Tag Help')
+                embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.')
                 embed.color = await ctx.embed_color()
                 embed.add_field(name='Usage', value=box('[p]tag [tag]', '[p]ntag [tag]'))
                 embed.add_field(name='SFW Tags', value=box(sfw_tags))
