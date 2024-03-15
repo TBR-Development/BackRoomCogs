@@ -22,7 +22,7 @@ class WaifuIM(commands.Cog):
             self.session = aiohttp.ClientSession()
                      
     async def cog_unload(self):
-            self.session.close()
+            await self.session.close()
             
             
     @commands.hybrid_group()
