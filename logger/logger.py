@@ -54,10 +54,10 @@ class Logger(commands.Cog):
         
         if self.config.logger_channel == None:
             logs_channel = 'No channel set'
-            logger_enabled='True'
+            logger_enabled='False'
         else:
             logs_channel = self.bot.get_channel(await self.config.logger_channel())
-            logger_enabled='False'
+            logger_enabled='True'
             
         embed = discord.Embed(title='Logger Settings')
         embed.color = await ctx.embed_color()
