@@ -20,7 +20,7 @@ class Logger(commands.Cog):
             logger_channel=str
         )
                 
-    @commands.hybrid_group()
+    @commands.group()
     @commands.is_owner()
     async def logger(self, ctx):
         """
@@ -28,7 +28,7 @@ class Logger(commands.Cog):
         """
         return
     
-    @logger.hybrid_command()
+    @logger.command()
     async def enable(self, ctx, channel: discord.TextChannel):
         """
         Set the channel to send logs to
@@ -37,7 +37,7 @@ class Logger(commands.Cog):
         await self.config.logger_channel.set(channel.id)
         await ctx.send('The logger channel has been set to: <#{}>.'.format(channel.id))
         
-    @logger.hybrid_command()
+    @logger.command()
     async def disable(self, ctx):
         """
         Remove the logger channel
@@ -46,7 +46,7 @@ class Logger(commands.Cog):
         await self.config.logger_channel.clear()
         await ctx.send('The logger channel has been removed.')
         
-    @logger.hybrid_command()
+    @logger.command()
     async def settings(self, ctx):
         """
         Remove the logger channel
