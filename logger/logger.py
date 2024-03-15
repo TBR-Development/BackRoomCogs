@@ -20,7 +20,7 @@ class Logger(commands.Cog):
             logger_channel=str
         )
                 
-    @commands.group()
+    @commands.command_group()
     @commands.is_owner()
     async def logger(self, ctx):
         """
