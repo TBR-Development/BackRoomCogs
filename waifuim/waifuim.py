@@ -56,7 +56,7 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)   
+                        await ctx.send(':x: Request failed with status: ', response.status)   
         
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -98,7 +98,7 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)     
+                        await ctx.send(':x: Request failed with status: ', response.status)     
                                 
         
     @commands.hybrid_command()
@@ -145,7 +145,7 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)     
+                        await ctx.send(':x: Request failed with status: ', response.status)     
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -187,7 +187,7 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)     
+                        await ctx.send(':x: Request failed with status: ', response.status)     
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -229,7 +229,7 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)     
+                        await ctx.send(':x: Request failed with status: ', response.status)     
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -272,7 +272,7 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)     
+                        await ctx.send(':x: Request failed with status: ', response.status)     
                                 
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -317,7 +317,7 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)     
+                        await ctx.send(':x: Request failed with status: ', response.status)     
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -360,7 +360,7 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)     
+                        await ctx.send(':x: Request failed with status: ', response.status)     
                                
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -403,4 +403,4 @@ class WaifuIM(commands.Cog):
                 if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send('\:x: Request failed with status: ', response.status)       
+                        await ctx.send(':x: Request failed with status: ', response.status)       
