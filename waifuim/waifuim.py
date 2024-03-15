@@ -29,13 +29,13 @@ class WaifuIM(commands.Cog):
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def waifuim(self, ctx):
             """
-            WaifuIM command group
+            Get waifu images from waifu.im api.
             """
             return
     
             
     @waifuim.command()
-    async def taghelp(self, ctx):
+    async def help(self, ctx):
             """
             Get a list of available tags for use with WaifuIM.
             """
@@ -54,9 +54,8 @@ class WaifuIM(commands.Cog):
                 sfw_tags = '{}'.format(versatile_array)
                 nsfw_tags = '{}, {}'.format(versatile_array, nsfw_array)
                 
-                embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.')
+                embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.')
                 embed.color = await ctx.embed_color()
-                embed.add_field(name='Usage', value=box('[p]tag [tag]', '[p]ntag [tag]'))
                 embed.add_field(name='SFW Tags', value=box(sfw_tags))
                 embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
