@@ -22,7 +22,7 @@ class Logger(commands.Cog):
         
     
     @commands.hybrid_command()
-    async def loggerchannel(self, ctx, option: Literal['set', 'remove'], channel: input.Optional):
+    async def loggerchannel(self, ctx, *, option: Literal['set', 'remove']):
         """
         Set the channel to send the logs to
         """
