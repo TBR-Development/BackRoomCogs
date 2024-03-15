@@ -1,10 +1,10 @@
-- [PhantomNimbi][phantomnimbi]: WaifuIM Cog, Logger Cog
-- [YamiKaitou][yamikaitou]: Bug fixes, Code formatting
-- [Flame422][flame442]: Bug fixes, Code formatting
-- [zephyrkul][zephyrkul]: Bug fixes, Code formatting
-- [Twentysix][twentysix]: Bug fixes, Code formatting
-- [Aikaterna][aikaterna]: Bug fixes, Code formatting
-- [Tentysix][twentysix]: Bug fixes, Code formatting
+- [PhantomNimbi][phantomnimbi]: :star: WaifuIM Cog, :star: Logger Cog
+- [YamiKaitou][yamikaitou]: :wrench: Bug fixes, :recycle: Code formatting
+- [Flame422][flame442]: :wrench: Bug fixes, :recycle: Code formatting
+- [zephyrkul][zephyrkul]: :wrench: Bug fixes, :recycle: Code formatting
+- [Twentysix][twentysix]: :wrench: Bug fixes, :recycle: Code formatting
+- [Aikaterna][aikaterna]: :wrench: Bug fixes, :recycle: Code formatting
+- [Tentysix][twentysix]: :wrench: Bug fixes, :recycle: Code formatting
 
 [phantomnimbi]: https://github.com/PhantomNimbi
 [yamikaitou]: https://github.com/yamikaitou
