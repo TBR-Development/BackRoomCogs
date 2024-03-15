@@ -27,7 +27,7 @@ class Logger(commands.Cog):
         Set the channel to send the logs to
         """
         
-        channel = ctx.author.channel
+        channel = ctx.channel
         
         if option == 'set':
             await self.config.logger_channel.set(channel.id)
