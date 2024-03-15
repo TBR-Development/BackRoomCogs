@@ -32,12 +32,12 @@ class WaifuIM(commands.Cog):
             
             url = 'https://api.waifu.im/tags'
             
-            with open(url, 'r') as file:
-                data = loads(file)
-                
+            async with self.session.get(url) as response:
+                data = await response.json()
+                    
                 versatile_tags = data['versatile']
                 nsfw_tags = data['nsfw']
-                    
+                
                 embed = discord.Embed()
                 embed.add_field(name='Versatile Tags', value=versatile_tags, inline=True)
                 embed.add_field(name='NSFW Tags', value=nsfw_tags, inline=True)
