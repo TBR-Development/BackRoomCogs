@@ -1,12 +1,14 @@
-- [PhantomNimbi][PhantomNimbi]: WaifuIM Cog, Logger Cog
-- [YamiKaitou][yamikaitou]: Helped with bug fixes and code formatting
-- [Flame422][Flame442]: Helped with bug fixes and code formatting
-- [zephyrkul][zephyrkul]: Helped with bug fixes and code formatting
-- [Twentysix][Twentysix]: Helped with bug fixes and code formatting
-- [Aikaterna][aikaterna]: Helped with bug fixes and code formatting
+- [PhantomNimbi][phantomnimbi]: WaifuIM Cog, Logger Cog
+- [YamiKaitou][yamikaitou]: Bug fixes, Code formatting
+- [Flame422][flame442]: Bug fixes, Code formatting
+- [zephyrkul][zephyrkul]: Bug fixes, Code formatting
+- [Twentysix][twentysix]: Bug fixes, Code formatting
+- [Aikaterna][aikaterna]: Bug fixes, Code formatting
+- [Tentysix][twentysix]: Bug fixes, Code formatting
 
-[PhantomNimbi]: https://github.com/PhantomNimbi
+[phantomnimbi]: https://github.com/PhantomNimbi
 [yamikaitou]: https://github.com/yamikaitou
-[Flame442]: https://github.com/Flame442
+[flame442]: https://github.com/Flame442
 [zephyrkul]: https://github.com/zephyrkul
 [aikaterna]: https://github.com/aikaterna
+[twentysix]: https://github.com/Twentysix26
