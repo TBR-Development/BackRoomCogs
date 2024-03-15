@@ -142,7 +142,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.statuse == 200:
+                if response.status == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
                         await ctx.send('\:x: Request failed with status: ', response.status)     
