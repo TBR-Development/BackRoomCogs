@@ -40,13 +40,13 @@ class WaifuIM(commands.Cog):
                 nsfw = data['nsfw']
                 
                 versatile_tags = ', '.join(versatile)
-                nsfw_tags = ', '.join(nsfw)
+                nsfw_tags = ', '.join(nsfw, versatile)
                 
                 embed = discord.Embed(title='Tag Help')
                 embed.color = await ctx.embed_color()
                 embed.add_field(name='Usage Examples', value=box('[p]tag [tag]', '[p]ntag [tag]'))
                 embed.add_field(name='SFW Tags', value=box(versatile_tags))
-                embed.add_field(name='NSFW Tags', value=box(versatile_tags, nsfw_tags))
+                embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
                 embed.color = await ctx.embed_color()
                 
