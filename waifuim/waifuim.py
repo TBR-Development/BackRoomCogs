@@ -113,7 +113,7 @@ class WaifuIM(commands.Cog):
             """
             Get a random waifu image by tag.
             
-            See [p]taghelp for a list of available tags.
+            See [p]waifuim help for a list of available tags.
             """
             
             
@@ -283,7 +283,7 @@ class WaifuIM(commands.Cog):
             """
             Get a random nsfw waifu image by tag.
             
-            See [p]taghelp for a list of available tags.
+            See [p]waifuim help for a list of available tags.
             """
             
             url = 'https://api.waifu.im/search'
