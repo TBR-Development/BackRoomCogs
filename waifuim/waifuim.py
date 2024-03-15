@@ -1,5 +1,6 @@
 from typing import Final
 from datetime import datetime
+from json import loads
 
 import discord
 import aiohttp
@@ -87,6 +88,7 @@ class WaifuIM(commands.Cog):
             url = 'https://api.waifu.im/search'
             params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'false'}
             
+            
             async with self.session.get(url, params=params) as response:
                 data = await response.json()
                     
@@ -114,7 +116,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status == 200:
+                if response.statuse == 200:
                         await ctx.send(embed=embed, view=view)
                 else:
                         await ctx.send('\:x: Request failed with status: ', response.status)     
