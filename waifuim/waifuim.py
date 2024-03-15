@@ -42,9 +42,9 @@ class WaifuIM(commands.Cog):
                 versatile_tags = ', '.join(versatile)
                 nsfw_tags = ', '.join(nsfw)
                 
-                embed = discord.Embed(title='Tag Help', description='Versatile tags can be used in both the `[p]tag` and `[p]ntag` commands.\nNSFW tags can only be used in the `[p]ntag` command.')
+                embed = discord.Embed(title='Tag Help')
                 embed.color = await ctx.embed_color()
-                embed.add_field(name='Usage Examples', value=box('[p]tag waifu\n[p]ntag waifu'))
+                embed.add_field(name='Usage Examples', value=box('[p]tag [versatile_tag]', '[p]ntag [versatile_tag|nsfw_tag]'))
                 embed.add_field(name='Versatile Tags', value=box(versatile_tags))
                 embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
