@@ -54,7 +54,7 @@ class WaifuIM(commands.Cog):
                 sfw_tags = '{}'.format(versatile_array)
                 nsfw_tags = '{}, {}'.format(versatile_array, nsfw_array)
                 
-                embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.')
+                embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.', timestamp=datetime.now())
                 embed.color = await ctx.embed_color()
                 embed.add_field(name='SFW Tags', value=box(sfw_tags))
                 embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
@@ -89,7 +89,7 @@ class WaifuIM(commands.Cog):
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                embed = discord.Embed()
+                embed = discord.Embed(timestamp=datetime.now())
 #                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
@@ -135,7 +135,7 @@ class WaifuIM(commands.Cog):
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                embed = discord.Embed()
+                embed = discord.Embed(timestamp=datetime.now())
 #                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
