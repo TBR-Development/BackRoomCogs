@@ -82,7 +82,7 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-#                        artist_name = image['artist']['name']
+                        artist_name = image['artist']['name']
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
@@ -90,7 +90,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-#                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
@@ -128,7 +128,7 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-#                        artist_name = image['artist']['name']
+                        artist_name = image['artist']['name']
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
@@ -136,7 +136,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-#                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
@@ -169,7 +169,7 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-#                        artist_name = image['artist']['name']
+                        artist_name = image['artist']['name']
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
@@ -177,7 +177,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-#                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
@@ -210,7 +210,7 @@ class WaifuIM(commands.Cog):
                         image_url = image['url']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-#                        artist_name = image['artist']['name']
+                        artist_name = image['artist']['name']
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
@@ -218,7 +218,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-#                embed.add_field(name='Artist Name', value=artist_name, inline=True)
+                embed.add_field(name='Artist Name', value=artist_name, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
