@@ -1,3 +1,5 @@
+from typing import Literal
+
 import discord
 import traceback
 
@@ -18,14 +20,20 @@ class Logger(commands.Cog):
     
     
     @commands.hybrid_command()
-    async def loggerset(self, ctx, channel: discord.TextChannel):
+    async def logger(self, ctx, args: Literal['set-channel', 'remove-channel'], channel: discord.TextChannel):
         """
         Set the channel to send the logs to
         """
+        args = ['set-channel', 'remove-channel']
         
-        await self.config.logger_channel.set(channel.id)
-        
-        await ctx.send('Successfully set Guild Logs Channel')
+        if args == 'set-channel':
+            await self.config.logger_channel.set(channel.id)
+            await ctx.send('Logger will now log events to <#{}>.'.format(channel.id))
+        else:
+            if args == 'remove-channel':
+                await self.config.logger_channel.remove(channel.id)
+                await ctx.send('Logger has stopped logging events to <#{}>.'.format(channel.id))
+                
         
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
