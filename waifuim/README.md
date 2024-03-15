@@ -1,33 +1,112 @@
 ## Commands
 
-
-- **mori**: Get a random SFW Mori Calliope image
-- **marin**: Get a random SFW Marin Kitagawa image
-- **raiden**: Get a random SFW Raiden Shogun image
-- **waifu**: Get a random SFW waifu image
-- **maid**: Get a random SFW maid image
-- **selfies**: Get a random SFW selfies image
-- **uniform**: Get a random SFW uniform image
-- **oppai**: Get a random SFW oppai image
-- **gif**: Get a random SFW gif
-- **dump** : dump a bunch of SFW waifu images
+- **random**
+- **tag**
+- **gif**
+- **dump**
 
 ## NSFW Commands
 
-- **ero**: Get a random ero image
-- **ass**: Get a random ass image
-- **hentai**: Get a random hentai image
-- **milf**: Get a random milf image
-- **oral**: Get a random oral image
-- **oppai**: Get a random NSFW oppai image
-- **paizuri**: Get a random paizuri image
-- **ecchi**: Get a random ecchi image
-- **nmori**: Get a random NSFW Mori Calliope image
-- **nmarin**: Get a random NSFW Marin Kitagawa image
-- **nraiden**: Get a random NSFW Raiden Shogun image
-- **nwaifu**: Get a random NSFW waifu image
-- **nmaid**: Get a random NSFW maid image
-- **nselfies**: Get a random NSFW selfies image
-- **nuniform**: Get a random NSFW uniform image
-- **ngif**: Get a random NSFW gif
-- **ndump**: Dump a bunch of NSFW images
+- **nrandom**
+- **ntag**
+- **ngif**
+- **ndump**
+
+
+## Developer Notes
+ - The artist name is only callable for SFW images, as such NSFW images don't have the option to display the artist name. For this reason I have commited the artist name out of the embeds. If you wish to enable them yourself simply fork this repo and use your own personal fork with your instance.
+
+ - Here are some examples of the current json structure for the waifu.im api:
+
+### **NSFW Structure**
+
+```js
+{
+  "images": [
+    {
+      "signature": "",
+      "extension": "",
+      "image_id": 0000,
+      "favorites": 0,
+      "dominant_color": "#000000",
+      "source": "",
+      "artist": null,
+      "uploaded_at": "",
+      "liked_at": null,
+      "is_nsfw": true,
+      "width": ,
+      "height": 1080,
+      "byte_size": 0000000,
+      "url": "",
+      "preview_url": "",
+      "tags": [
+        {
+          "tag_id": 0,
+          "name": "",
+          "description": "",
+          "is_nsfw": true
+        },
+        {
+          "tag_id": 0,
+          "name": "",
+          "description": "",
+          "is_nsfw": true
+        },
+        {
+          "tag_id": 0,
+          "name": "",
+          "description": "",
+          "is_nsfw": false
+        },
+        {
+          "tag_id": 0,
+          "name": "",
+          "description": "",
+          "is_nsfw": false
+        }
+      ]
+    }
+  ]
+}
+```
+
+### **SFW Structure**
+
+```js
+{
+  "images": [
+    {
+      "signature": "",
+      "extension": "",
+      "image_id": 0000,
+      "favorites": 0,
+      "dominant_color": "#000000",
+      "source": "",
+      "artist": {
+        "artist_id": 00,
+        "name": "",
+        "patreon": null,
+        "pixiv": "",
+        "twitter": "",
+        "deviant_art": null
+      },
+      "uploaded_at": "",
+      "liked_at": null,
+      "is_nsfw": false,
+      "width": 1273,
+      "height": 1800,
+      "byte_size": 0000000,
+      "url": "",
+      "preview_url": "",
+      "tags": [
+        {
+          "tag_id": 0,
+          "name": "",
+          "description": "",
+          "is_nsfw": false
+        }
+      ]
+    }
+  ]
+}
+```
