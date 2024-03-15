@@ -56,7 +56,8 @@ class Logger(commands.Cog):
             logs_channel = 'No channel set'
             logger_enabled='False'
         else:
-            logs_channel = self.bot.get_channel(await self.config.logger_channel())
+            c = self.bot.get_channel(await self.config.logger_channel())
+            logs_channel = '{} ({})'.format(c, c.id)
             logger_enabled='True'
             
         embed = discord.Embed(title='Logger Settings')
