@@ -16,8 +16,7 @@ class Logger(commands.Cog):
         self.config = Config.get_conf(self, identifier=465228604721201158)
         
         self.config.register_global(
-            guilds_channel=True,
-            errors_channel=True
+            guilds_channel=True
         )
         
     
@@ -37,17 +36,7 @@ class Logger(commands.Cog):
         
         await self.config.guilds_channel.set(channel.id)
         
-        await ctx.send('Successfully set Guild Logs Channel') 
-    
-    @logger_set.command(name='errorschannel', hidden=True)
-    async def errors_channel(self, ctx, channel: discord.TextChannel):
-        """
-        Set the logging channel to send the error logs to
-        """
-        
-        await self.config.errors_channel.set(channel.id)
-        
-        await ctx.send('Successfully set Error Logs Channel') 
+        await ctx.send('Successfully set Guild Logs Channel')
         
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
@@ -86,26 +75,3 @@ class Logger(commands.Cog):
         e.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         await logs_channel.send(embed=e)
         
-    @commands.Cog.listener()
-    async def on_error(self, guild):
-        """
-        Log error events
-        
-        Notes:
-        
-        - This feature is a work in progress
-        - It might not trigger a response in it's current state
-        """
-        date = datetime.now()
-        
-        leave_date = date.strftime('%a %d %b %Y, %I:%M %p')
-        
-        logs_channel = self.bot.get_channel(await self.config.errors_channel())
-        
-        e = discord.Embed(title='Logger', description='An error has been logged', timestamp=date, color=discord.Color.red())
-        e.add_field(name='Guild Name', value=guild.name, inline=True)
-        e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
-        e.add_field(name='Error Stack', value=box(traceback.format_exc()), inline=False)
-        e.add_field(name='Error Date', value=leave_date, inline=False)
-        e.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-        await logs_channel.send(embed=e)

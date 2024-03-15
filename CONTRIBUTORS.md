@@ -1,7 +1,12 @@
-- [PhantomNimbi][PHANTOMNIMBI]: waifuim, logger
-- [YamiKaitou][YAMIKAITOU]: logger
-- [Flame422][FLAME422]: logger
+- [PhantomNimbi][PhantomNimbi]: WaifuIM Cog, Logger Cog
+- [YamiKaitou][yamikaitou]: Helped with bug fixes and code formatting
+- [Flame422][Flame442]: Helped with bug fixes and code formatting
+- [zephyrkul][zephyrkul]: Helped with bug fixes and code formatting
+- [Twentysix][Twentysix]: Helped with bug fixes and code formatting
+- [Aikaterna][aikaterna]: Helped with bug fixes and code formatting
 
-[PHANTOMNIMBI]: https://github.com/PhantomNimbi
-[YAMIKAITOU]: https://github.com/yamikaitou
-[FLAME422]: https://github.com/Flame442
+[PhantomNimbi]: https://github.com/PhantomNimbi
+[yamikaitou]: https://github.com/yamikaitou
+[Flame442]: https://github.com/Flame442
+[zephyrkul]: https://github.com/zephyrkul
+[aikaterna]: https://github.com/aikaterna
