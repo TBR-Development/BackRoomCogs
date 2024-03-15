@@ -35,7 +35,7 @@ class Logger(commands.Cog):
         """
         
         await self.config.logger_channel.set(channel.id)
-        await ctx.send('The logger channel has been set to: <#{}>.'.format(channel.id))
+        await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
         
     @logger.command()
     async def disable(self, ctx):
@@ -44,7 +44,7 @@ class Logger(commands.Cog):
         """
         
         await self.config.logger_channel.clear()
-        await ctx.send('The logger channel has been removed.')
+        await ctx.send('Logger has been disabled.')
         
     @logger.command()
     async def settings(self, ctx):
@@ -62,8 +62,9 @@ class Logger(commands.Cog):
         embed = discord.Embed(title='Logger Settings')
         embed.color = await ctx.embed_color()
         embed.add_field(name='Enabled', value=logger_enabled, inline=True)
-        embed.add_field(name='Channel', value='<#{}>'.format(logs_channel), inline=True)
+        embed.add_field(name='Channel', value=logs_channel, inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+        
         await ctx.send(embed=embed)
                 
         
