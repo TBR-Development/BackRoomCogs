@@ -22,17 +22,17 @@ class Logger(commands.Cog):
         
     
     @commands.hybrid_command()
-    async def logger(self, ctx, option: Literal['set-channel', 'remove-channel'], channel: discord.TextChannel):
+    async def loggerchannel(self, ctx, option: Literal['set', 'remove'], channel: discord.TextChannel):
         """
         Set the channel to send the logs to
         """
         
-        if option == 'set-channel':
+        if option == 'set':
             await self.config.logger_channel.set(channel.id)
             await ctx.send('Logger will now log events to <#{}>.'.format(channel.id))
         else:
-            if option == 'remove-channel':
-                await self.config.logger_channel.remove(channel.id)
+            if option == 'remove':
+                await self.config.logger_channel.clear(channel.id)
                 await ctx.send('Logger has stopped logging events to <#{}>.'.format(channel.id))
                 
         
