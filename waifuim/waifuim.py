@@ -7,6 +7,7 @@ import aiohttp
 
 from redbot.core import commands
 from redbot.core.bot import Red
+from redbot.core.utils.chat_formatting import box
 
 footer_icon: Final[str] = 'https://avatars.githubusercontent.com/u/91619079?s=200&v=4'
 footer_text = 'Powered by Waifu.IM API'
@@ -41,7 +42,12 @@ class WaifuIM(commands.Cog):
                 versatile_tags = ', '.join(versatile)
                 nsfw_tags = ', '.join(nsfw)
                 
-                embed = discord.Embed()
+                embed = discord.Embed(description=box[
+                        'Usage Examples:',
+                        '\n',
+                        '[p]tag waifu',
+                        '[p]ntag waifu'
+                ])
                 embed.add_field(name='Versatile Tags', value=versatile_tags, inline=True)
                 embed.add_field(name='NSFW Tags', value=nsfw_tags, inline=True)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
@@ -99,18 +105,9 @@ class WaifuIM(commands.Cog):
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def tag(self, ctx, tag):
             """
-            Get a random waifu image by tag
-            Available tags:
+            Get a random waifu image by tag.
             
-            - waifu
-            - maid
-            - marin-kitagawa
-            - mori-calliope
-            - raiden-shogun
-            - oppai
-            - selfies
-            - uniform
-            - kamisato-ayaka
+            See [p]taghelp for a list of available tags.
             """
             
             
@@ -282,26 +279,9 @@ class WaifuIM(commands.Cog):
     @commands.is_nsfw()
     async def ntag(self, ctx, tag):
             """
-            Get a random nsfw waifu image by tag
+            Get a random nsfw waifu image by tag.
             
-            Available tags:
-            
-            - waifu
-            - maid
-            - marin-kitagawa
-            - mori-calliope
-            - raiden-shogun
-            - oppai
-            - selfies
-            - uniform
-            - kamisato-ayaka
-            - ero
-            - ass
-            - hentai
-            - milf
-            - oral
-            - paizuri
-            - ecchi
+            See [p]taghelp for a list of available tags.
             """
             
             url = 'https://api.waifu.im/search'
