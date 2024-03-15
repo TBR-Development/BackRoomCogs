@@ -22,6 +22,33 @@ class WaifuIM(commands.Cog):
                      
     async def cog_unload(self):
             self.session.close()
+            
+    @commands.hybrid_command()
+    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    async def taghelp(self, ctx):
+            """
+            Get a list of available tags for use with WaifuIM.
+            """
+            
+            url = 'https://api.waifu.im/tags'
+            
+            async with self.session.get(url) as response:
+                data = await response.json()
+                    
+                for tags in data:
+                        versatile_tags = tags['versatile']
+                        nsfw_tags = tags['nsfw']
+                
+                embed = discord.Embed()
+                embed.add_field(name='Versatile Tags', value=versatile_tags, inline=True)
+                embed.add_field(name='NSFW Tags', value=nsfw_tags, inline=True)
+                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.color = await ctx.embed_color()
+                
+                if response.status == 200:
+                        await ctx.send(embed=embed)
+                else:
+                        await ctx.send('\:x: Request failed with status: ', response.status)   
         
     @commands.hybrid_command()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
