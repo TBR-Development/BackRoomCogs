@@ -24,8 +24,17 @@ class WaifuIM(commands.Cog):
     async def cog_unload(self):
             self.session.close()
             
-    @commands.hybrid_command()
+            
+    @commands.hybrid_group()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    async def waifuim(self, ctx):
+            """
+            WaifuIM command group
+            """
+            return
+    
+            
+    @waifuim.command()
     async def taghelp(self, ctx):
             """
             Get a list of available tags for use with WaifuIM.
@@ -58,8 +67,7 @@ class WaifuIM(commands.Cog):
                 else:
                         await ctx.send(':x: Request failed with status: ', response.status)   
         
-    @commands.hybrid_command()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @waifuim.command()
     async def random(self, ctx):
             """
             Get a random waifu image
@@ -101,8 +109,7 @@ class WaifuIM(commands.Cog):
                         await ctx.send(':x: Request failed with status: ', response.status)     
                                 
         
-    @commands.hybrid_command()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @waifuim.command()
     async def tag(self, ctx, tag):
             """
             Get a random waifu image by tag.
@@ -147,8 +154,7 @@ class WaifuIM(commands.Cog):
                 else:
                         await ctx.send(':x: Request failed with status: ', response.status)     
                                
-    @commands.hybrid_command()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @waifuim.command()
     async def gif(self, ctx):
             """
             Get a random waifu gif
@@ -189,8 +195,7 @@ class WaifuIM(commands.Cog):
                 else:
                         await ctx.send(':x: Request failed with status: ', response.status)     
                                
-    @commands.hybrid_command()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @waifuim.command()
     async def dump(self, ctx):
             """
             Dump a bunch of random waifu images
@@ -231,8 +236,7 @@ class WaifuIM(commands.Cog):
                 else:
                         await ctx.send(':x: Request failed with status: ', response.status)     
                                
-    @commands.hybrid_command()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @waifuim.command()
     @commands.is_nsfw()
     async def nrandom(self, ctx):
             """
@@ -274,8 +278,7 @@ class WaifuIM(commands.Cog):
                 else:
                         await ctx.send(':x: Request failed with status: ', response.status)     
                                 
-    @commands.hybrid_command()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @waifuim.command()
     @commands.is_nsfw()
     async def ntag(self, ctx, tag):
             """
@@ -319,8 +322,7 @@ class WaifuIM(commands.Cog):
                 else:
                         await ctx.send(':x: Request failed with status: ', response.status)     
                                
-    @commands.hybrid_command()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @waifuim.command()
     @commands.is_nsfw()
     async def ngif(self, ctx):
             """
@@ -362,8 +364,7 @@ class WaifuIM(commands.Cog):
                 else:
                         await ctx.send(':x: Request failed with status: ', response.status)     
                                
-    @commands.hybrid_command()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @waifuim.command()
     @commands.is_nsfw()
     async def ndump(self, ctx):
             """

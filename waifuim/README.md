@@ -1,18 +1,3 @@
-## Commands
-
-- **random**
-- **tag**
-- **gif**
-- **dump**
-
-## NSFW Commands
-
-- **nrandom**
-- **ntag**
-- **ngif**
-- **ndump**
-
-
 ## Developer Notes
  - The artist name is only callable for SFW images, as such NSFW images don't have the option to display the artist name. For this reason I have commited the artist name out of the embeds. If you wish to enable them yourself simply fork this repo and use your own personal fork with your instance.
 
