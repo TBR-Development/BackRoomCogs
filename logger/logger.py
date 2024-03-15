@@ -1,7 +1,6 @@
 from typing import Literal
 
 import discord
-import traceback
 
 from redbot.core import Config, commands
 from redbot.core.utils.chat_formatting import box
@@ -17,7 +16,10 @@ class Logger(commands.Cog):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=465228604721201158)
         
-    
+        self.config.register_global(
+            logger_channel=True
+        )
+        
     
     @commands.hybrid_command()
     async def logger(self, ctx, args: Literal['set-channel', 'remove-channel'], channel: discord.TextChannel):
