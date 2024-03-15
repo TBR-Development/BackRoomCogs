@@ -42,7 +42,7 @@ class WaifuIM(commands.Cog):
                 versatile_tags = ', '.join(versatile)
                 nsfw_tags = ', '.join(nsfw)
                 
-                embed = discord.Embed(description='```\nUsage examples:\n\n[p]tag waifu\n[p]ntag waifu\n```')
+                embed = discord.Embed(description='**Usage examples**:\n```py\n[p]tag waifu\n[p]ntag waifu\n```')
                 embed.add_field(name='Versatile Tags', value=versatile_tags, inline=True)
                 embed.add_field(name='NSFW Tags', value=nsfw_tags, inline=True)
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
