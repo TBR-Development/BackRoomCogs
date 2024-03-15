@@ -15,26 +15,15 @@ class Logger(commands.Cog):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=465228604721201158)
         
-        self.config.register_global(
-            guilds_channel=True
-        )
-        
     
-    @commands.group(name='loggerset')
-    @commands.is_owner()
-    async def logger_set(self, ctx):
-        """
-        Logger setup command
-        """
-        pass
     
-    @logger_set.command(name='guildschannel')
-    async def guilds_channel(self, ctx, channel: discord.TextChannel):
+    @commands.hybrid_command()
+    async def loggerset(self, ctx, channel: discord.TextChannel):
         """
-        Set the logging channel to send the guild logs to
+        Set the channel to send the logs to
         """
         
-        await self.config.guilds_channel.set(channel.id)
+        await self.config.logger_channel.set(channel.id)
         
         await ctx.send('Successfully set Guild Logs Channel')
         
@@ -46,16 +35,15 @@ class Logger(commands.Cog):
         
         date = datetime.now()
         
-        join_date = date.strftime('%a %d %b %Y, %I:%M %p')
+        join_date = date.strftime('%B %d, %Y - %H:%M')
         
-        logs_channel = self.bot.get_channel(await self.config.guilds_channel())
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
             
-        e = discord.Embed(title='Logger', description='{} has been added to a guild.'.format(self.bot.user.name), timestamp=date, color=discord.Color.blue())
-        e.add_field(name='Guild Name', value=guild.name, inline=True),
-        e.add_field(name='Guild ID', value='||{}||'.format(guild.id), inline=True)
-        e.add_field(name='Date Added', value=join_date, inline=False)
-        e.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-        await logs_channel.send(embed=e)
+        embed = discord.Embed(title='Logger', description='{} has been added to a guild.'.format(self.bot.user.name), timestamp=date, color=discord.Color.blue())
+        embed.add_field(name='Guild', value='{} ({})'.format(guild.name, guild.id), inline=True),
+        embed.add_field(name='Date Added', value=join_date, inline=False)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+        await logs_channel.send(embed=embed)
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
@@ -65,13 +53,13 @@ class Logger(commands.Cog):
         
         date = datetime.now()
         
-        leave_date = date.strftime('%a %d %b %Y, %I:%M %p')
+        leave_date = date.strftime('%B %d, %Y - %H:%M')
         
-        logs_channel = self.bot.get_channel(await self.config.guilds_channel())
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
             
-        e = discord.Embed(title='Logger', description='{} has been removed from a guild.'.format(self.bot.user.name), timestamp=date, color=discord.Color.blue())
-        e.add_field(name='Guild Name', value=guild.name, inline=True),
-        e.add_field(name='Date Removed', value=leave_date, inline=False)
-        e.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-        await logs_channel.send(embed=e)
+        embed = discord.Embed(title='Logger', description='{} has been removed from a guild.'.format(self.bot.user.name), timestamp=date, color=discord.Color.blue())
+        embed.add_field(name='Guild Name', value=guild.name, inline=True),
+        embed.add_field(name='Date Removed', value=leave_date, inline=False)
+        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+        await logs_channel.send(embed=embed)
         
