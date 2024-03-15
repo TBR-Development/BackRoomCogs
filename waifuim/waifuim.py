@@ -47,7 +47,7 @@ class WaifuIM(commands.Cog):
                 
                 embed = discord.Embed(title='Tag Help')
                 embed.color = await ctx.embed_color()
-                embed.add_field(name='Usage Examples', value=box('[p]tag [tag]', '[p]ntag [tag]'))
+                embed.add_field(name='Usage', value=box('[p]tag [tag]', '[p]ntag [tag]'))
                 embed.add_field(name='SFW Tags', value=box(sfw_tags))
                 embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
                 embed.set_footer(text=footer_text, icon_url=footer_icon)
