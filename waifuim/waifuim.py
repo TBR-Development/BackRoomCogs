@@ -4,7 +4,7 @@ from datetime import datetime
 import discord
 import aiohttp
 
-from redbot.core import commands
+from redbot.core import Config, commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
 
@@ -19,6 +19,10 @@ class WaifuIM(commands.Cog):
     def __init__(self, bot):
             self.bot = bot
             self.session = aiohttp.ClientSession()
+            self.config = Config.get_conf(self, identifier=465228604721201158)
+            waifuim_api =  ''
+            
+            self.config.register_global(waifuim_api)
                      
     async def cog_unload(self):
             await self.session.close()
@@ -64,7 +68,118 @@ class WaifuIM(commands.Cog):
             view.add_item(item=website_button)
             
             await ctx.send(embed=embed, view=view)   
-        
+
+    @waifuim.command()
+    @commands.has_permissions(administrator=True)
+    async def settoken(self, ctx, token):
+            """
+            Set the authorization bearer token.
+            
+            Your bearer token can be found at:
+            
+            - https://www.waifu.im/dashboard
+            """
+            
+            await self.config.logger_channel.set(token)
+            await ctx.send(':white_check_mark: The token has been set.')
+    
+    
+    @waifuim.command()
+    @commands.has_permission(administrator=True)
+    async def addfav(self, ctx, id):
+            """
+            """
+            
+            token = self.bot.get_channel(await self.config.waifuim.api())
+            favorites_endpoint = 'https://api.waifu.im/fav/delete'
+            headers = {
+                    'Accept-Version': 'v5',
+                    'Autorization': f'Bearer {token}',
+                    'Content-Type': 'application/json'
+            }
+            
+            data = {
+                    'image_id': id
+            }
+
+            if token != None:
+                    async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
+                            data = await response.json()
+                            
+                    await ctx.send('Image removed from guild favorites')
+            else:
+                    await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
+                    
+    @waifuim.command()
+    @commands.has_permission(administrator=True)
+    async def addfav(self, ctx, id):
+            """
+            """
+            
+            token = self.bot.get_channel(await self.config.waifuim.api())
+            favorites_endpoint = 'https://api.waifu.im/fav/insert'
+            headers = {
+                    'Accept-Version': 'v5',
+                    'Autorization': f'Bearer {token}',
+                    'Content-Type': 'application/json'
+            }
+            
+            data = {
+                    'image_id': id
+            }
+
+            if token != None:
+                    async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
+                            data = await response.json()
+                            
+                    await ctx.send('Image added to guild favorites')
+            else:
+                    await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
+                    
+                    
+                    
+    @waifuim.command()
+    async def fav(self, ctx):
+            """
+            Get a random image from the guild's favorites.
+            """
+            token = self.bot.get_channel(await self.config.waifuim.api())
+            favorites_endpoint = 'https://api.waifu.im/fav'
+            headers = {
+                    'Accept-Version': 'v5',
+                    'Autorization': f'Bearer {token}'
+            }
+            
+            if token != None:
+                    async with self.session.get(favorites_endpoint, headers=headers) as response:
+                            data = await response.json()
+                    
+                    for image in data['images']:
+                            image_url = image['url']
+                            source_url = image['source']
+                            uploaded_at = image['uploaded_at']
+                
+                    raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+                    
+                    date = '{}'.format(raw)
+                    upload_date = date
+                
+                    embed = discord.Embed(timestamp=datetime.now())
+                    embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                    embed.set_image(url=image_url)
+                    embed.set_footer(text=footer_text, icon_url=embed_icon)
+                    embed.color = await ctx.embed_color()
+                    view = discord.ui.View()
+                    style = discord.ButtonStyle.grey
+                    image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                    source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                    view.add_item(item=image_button)
+                    view.add_item(item=source_button)
+                    
+                    await ctx.send(embed=embed, view=view)
+            else:
+                    await ctx.send('Authorization token not found. If you are an admin, please use `[p]waifuim settoken [token]` to use this command.')
+                    
     @waifuim.command()
     async def random(self, ctx):
             """
@@ -72,15 +187,15 @@ class WaifuIM(commands.Cog):
             """
             search_endpoint = 'https://api.waifu.im/search'
             params = {'is_nsfw': 'false'}
-            
+                        
             async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
                     
                 for image in data['images']:
                         image_url = image['url']
+                        image_id = image['image_id']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-                        
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
@@ -126,6 +241,7 @@ class WaifuIM(commands.Cog):
                     
                     for image in data['images']:
                             image_url = image['url']
+                            image_id = image['image_id']
                             source_url = image['source']
                             uploaded_at = image['uploaded_at']
                         
@@ -135,6 +251,7 @@ class WaifuIM(commands.Cog):
                     upload_date = date
                 
                     embed = discord.Embed(timestamp=datetime.now())
+                    embed.add_field(name='Image Id', value=image_id, inline=True)
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
                     embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -165,6 +282,7 @@ class WaifuIM(commands.Cog):
                     
                 for image in data['images']:
                         image_url = image['url']
+                        image_id = image['image_id']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
                         
@@ -175,6 +293,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
+                embed.add_field(name='Image Id', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -202,6 +321,7 @@ class WaifuIM(commands.Cog):
                     
                 for image in data['images']:
                         image_url = image['url']
+                        image_id = image['image_id']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
                         
@@ -212,6 +332,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
+                embed.add_field(name='Image Id', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -240,6 +361,7 @@ class WaifuIM(commands.Cog):
                     
                 for image in data['images']:
                         image_url = image['url']
+                        image_id = image['image_id']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
 #                        
@@ -250,6 +372,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
+                embed.add_field(name='Image Id', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -289,6 +412,7 @@ class WaifuIM(commands.Cog):
                     
                     for image in data['images']:
                             image_url = image['url']
+                            image_id = image['image_id']
                             source_url = image['source']
                             uploaded_at = image['uploaded_at']
                         
@@ -298,6 +422,7 @@ class WaifuIM(commands.Cog):
                     upload_date = date
                 
                     embed = discord.Embed(timestamp=datetime.now())
+                    embed.add_field(name='Image Id', value=image_id, inline=True)
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
                     embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -318,6 +443,7 @@ class WaifuIM(commands.Cog):
                     
                     for image in data['images']:
                             image_url = image['url']
+                            image_id = image['image_id']
                             source_url = image['source']
                             uploaded_at = image['uploaded_at']
                         
@@ -327,6 +453,7 @@ class WaifuIM(commands.Cog):
                     upload_date = date
                 
                     embed = discord.Embed(timestamp=datetime.now())
+                    embed.add_field(name='Image Id', value=image_id, inline=True)
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
                     embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -358,6 +485,7 @@ class WaifuIM(commands.Cog):
                     
                 for image in data['images']:
                         image_url = image['url']
+                        image_id = image['image_id']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
 #                        
@@ -369,6 +497,7 @@ class WaifuIM(commands.Cog):
                 
                 
                 embed = discord.Embed(timestamp=datetime.now())
+                embed.add_field(name='Image Id', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -398,6 +527,7 @@ class WaifuIM(commands.Cog):
                     
                 for image in data['images']:
                         image_url = image['url']
+                        image_id = image['image_id']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
 #                        
@@ -408,6 +538,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
+                embed.add_field(name='Image Id', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
