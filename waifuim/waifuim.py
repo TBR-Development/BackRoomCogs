@@ -29,7 +29,7 @@ class WaifuIM(commands.Cog):
             
             
     @commands.hybrid_group()
-    @commands.bot_has_permissions(send_messages=True, embed_links=True)
+    @commands.bot_has_permissionss(send_messages=True, embed_links=True)
     async def waifuim(self, ctx):
             """
             Get waifu images from waifu.im api.
@@ -70,7 +70,7 @@ class WaifuIM(commands.Cog):
             await ctx.send(embed=embed, view=view)   
 
     @waifuim.command()
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissionss(administrator=True)
     async def settoken(self, ctx, token):
             """
             Set the authorization bearer token.
@@ -85,9 +85,10 @@ class WaifuIM(commands.Cog):
     
     
     @waifuim.command()
-    @commands.has_permission(administrator=True)
-    async def addfav(self, ctx, id):
+    @commands.has_permissions(administrator=True)
+    async def delfav(self, ctx, id):
             """
+            Remove an image by id from the guild's favorites
             """
             
             token = self.bot.get_channel(await self.config.waifuim.api())
@@ -111,9 +112,10 @@ class WaifuIM(commands.Cog):
                     await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
                     
     @waifuim.command()
-    @commands.has_permission(administrator=True)
+    @commands.has_permissions(administrator=True)
     async def addfav(self, ctx, id):
             """
+            Add an image by id to the guild's favorites
             """
             
             token = self.bot.get_channel(await self.config.waifuim.api())
