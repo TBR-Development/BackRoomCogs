@@ -56,7 +56,7 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
     
-        if logs_channel == 'x:
+        if logs_channel == '':
             logs_channel = 'No channel set'
             logger_enabled='False'
         else:
