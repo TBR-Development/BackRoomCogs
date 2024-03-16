@@ -87,7 +87,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image Id', value=image_id, inline=True)
+                embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -136,7 +136,7 @@ class WaifuIM(commands.Cog):
                     upload_date = date
                 
                     embed = discord.Embed(timestamp=datetime.now())
-                    embed.add_field(name='Image Id', value=image_id, inline=True)
+                    embed.add_field(name='Image ID', value=image_id, inline=True)
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
                     embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -178,7 +178,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image Id', value=image_id, inline=True)
+                embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -217,7 +217,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image Id', value=image_id, inline=True)
+                embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -257,7 +257,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image Id', value=image_id, inline=True)
+                embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -307,7 +307,7 @@ class WaifuIM(commands.Cog):
                     upload_date = date
                 
                     embed = discord.Embed(timestamp=datetime.now())
-                    embed.add_field(name='Image Id', value=image_id, inline=True)
+                    embed.add_field(name='Image ID', value=image_id, inline=True)
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
                     embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -338,7 +338,7 @@ class WaifuIM(commands.Cog):
                     upload_date = date
                 
                     embed = discord.Embed(timestamp=datetime.now())
-                    embed.add_field(name='Image Id', value=image_id, inline=True)
+                    embed.add_field(name='Image ID', value=image_id, inline=True)
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
                     embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -382,7 +382,7 @@ class WaifuIM(commands.Cog):
                 
                 
                 embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image Id', value=image_id, inline=True)
+                embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -423,7 +423,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image Id', value=image_id, inline=True)
+                embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
