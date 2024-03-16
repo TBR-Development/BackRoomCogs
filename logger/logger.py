@@ -121,7 +121,9 @@ class Logger(commands.Cog):
             return
         else:
             logs_channel = self.bot.get_channel(await self.config.logger_channel())
-            await logs_channel.send(str(error))
+            embed = discord.Embed(title=f'Error encountered in command: {ctx.command}', description=str(error))
+            embed.color = await ctx.embed_color()
+            await logs_channel.send(embed=embed)
             await logs_channel.send(box(traceback.format_exc(), 'py'))
         
     @commands.Cog.listener()
@@ -133,5 +135,7 @@ class Logger(commands.Cog):
             return
         else:
             logs_channel = self.bot.get_channel(await self.config.logger_channel())
-            await logs_channel.send(str(error))
+            embed = discord.Embed(title=f'Error encountered in slash command: {interaction.command}', description=str(error))
+            embed.color = await ctx.embed_color()
+            await logs_channel.send(embed=embed)
             await logs_channel.send(box(traceback.format_exc(), 'py'))
