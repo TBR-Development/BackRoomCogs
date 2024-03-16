@@ -119,8 +119,8 @@ class Logger(commands.Cog):
         Command error event 
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        await ctx.send(str(error))
         t=traceback.format_exc()
         
+        await logs_channel.send(str(error))
         await logs_channel.send('```py\n{}```'.format(t))
         
