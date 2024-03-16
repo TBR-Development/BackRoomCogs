@@ -10,7 +10,6 @@ from redbot.core.utils.chat_formatting import box
 
 footer_icon: Final[str] = 'https://avatars.githubusercontent.com/u/91619079?s=200&v=4'
 footer_text = 'Powered by Waifu.IM API'
-banner_image = 'https://www.waifu.im/preview/7892'
 
 class WaifuIM(commands.Cog):
     """
@@ -62,7 +61,7 @@ class WaifuIM(commands.Cog):
             embed.color = await ctx.embed_color()
             embed.add_field(name='SFW Tags', value=box(versatile_tags))
             embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
-            embed.set_image(url=banner_image)
+            embed.set_image(url='https://cdn.waifu.im/7892.jpg')
             embed.set_footer(text=footer_text, icon_url=footer_icon)
             view = discord.ui.View()
             style = discord.ButtonStyle.grey
