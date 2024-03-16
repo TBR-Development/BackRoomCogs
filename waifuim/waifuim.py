@@ -83,7 +83,6 @@ class WaifuIM(commands.Cog):
             await ctx.message.delete()
             
             await ctx.send('The token has been set.')
-            await ctx.message.add_reaction('✅')
     
     @waifuim.command()
     async def deltoken(self, ctx):
@@ -95,7 +94,6 @@ class WaifuIM(commands.Cog):
             await ctx.message.delete()
             
             await ctx.send('The token has been removed.')
-            await ctx.message.add_reaction('✅')
             
     @waifuim.command()
     async def delfav(self, ctx, id):
@@ -120,7 +118,6 @@ class WaifuIM(commands.Cog):
                             data = await response.json()
                     
                     await ctx.send('Image added to guild favorites')
-                    await ctx.message.add_reaction('✅')
             else:
                     await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
                     
@@ -148,7 +145,6 @@ class WaifuIM(commands.Cog):
                             data = await response.json()
                     
                     await ctx.send('Image added to guild favorites')
-                    await ctx.message.add_reaction('✅')
             else:
                     await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
                     
