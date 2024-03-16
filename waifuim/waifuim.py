@@ -152,7 +152,7 @@ class WaifuIM(commands.Cog):
             }
             
             if token != None:
-                    async with self.session.get(favorites_endpoint, headers=headers) as response:
+                    async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
                             data = await response.json()
                     
                     for image in data['images']:
