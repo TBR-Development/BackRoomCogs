@@ -1,5 +1,5 @@
 {
-	"author": ["ShitShowDevelopment"],
+	"author": ["ShitShowDevelopment", "Flame422", "twentysix26", "aikaterna", "zephyrkul", "yamikaito"],
 	"name": "Logger",
 	"install_msg": "Thank you for installing this cog!\n\nFeatures are currently a tad limited. We plan to add more to this over time. If you have any feedback, feel free to let us know at our discord.\n - https://dsc.gg/the-shit-show\n\nUse `[p]help Logger` to get the list of commands and how to use them.",
 	"short": "Logging cog for use by bot owners",
