@@ -46,6 +46,13 @@ class Logger(commands.Cog):
         
         await self.config.logger_channel.clear()
         await ctx.send('Logger has been disabled.')
+
+    @logger.command()
+    async def test(self, ctx):
+        """
+        Dummy command to test the error handlers
+        """
+        await ctx.send(dummy)
         
     @logger.command()
     async def settings(self, ctx):
