@@ -111,7 +111,7 @@ class Logger(commands.Cog):
         await logs_channel.send(embed=embed)
 
     @commands.Cog.listener()
-    async def on_command_error(self, error):
+    async def on_command_error(self, ctx: commands.Context, error: Exception):
         """
         Command error event 
         """
@@ -120,7 +120,7 @@ class Logger(commands.Cog):
         await logs_channel.send(box(traceback.format_exc(), py))
         
     @commands.Cog.listener()
-    async def on_app_command_error(self, error):
+    async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
         """
         Slash command error event 
         """
