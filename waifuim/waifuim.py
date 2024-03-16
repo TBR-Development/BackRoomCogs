@@ -61,7 +61,7 @@ class WaifuIM(commands.Cog):
             embed.color = await ctx.embed_color()
             embed.add_field(name='SFW Tags', value=box(versatile_tags))
             embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
-            embed.set_tumbnail(url=embed_icon)
+            embed.set_thumbnail(url=embed_icon)
             embed.set_image(url='https://cdn.waifu.im/7892.jpg')
             embed.set_footer(text=footer_text, icon_url=embed_icon)
             view = discord.ui.View()
