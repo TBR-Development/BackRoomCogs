@@ -46,7 +46,7 @@ class WaifuIM(commands.Cog):
             """
             
             
-            tags_endpoint = self.config.tags_endpoint
+            tags_endpoint = '{}'.format(self.config.tags_endpoint)
             
             async with self.session.get(tags_endpoint) as response:
                 data = await response.json()
@@ -77,7 +77,7 @@ class WaifuIM(commands.Cog):
             """
             Get a random waifu image
             """
-            search_endpoint = self.config.search_endpoint
+            search_endpoint = '{}'.format(self.config.search_endpoint)
             params = {'is_nsfw': 'false'}
             
             async with self.session.get(search_endpoint, params=params) as response:
@@ -120,8 +120,8 @@ class WaifuIM(commands.Cog):
             See `[p]waifuim help` for a list of available tags.
             """
             
-            tags_endpoint = self.config.tags_endpoint
-            search_endpoint = self.config.search_endpoint
+            tags_endpoint = '{}'.format(self.config.tags_endpoint)
+            search_endpoint = '{}'.format(self.config.search_endpoint)
             params = {'included_tags': '{}'.format(tag)}
             
             async with self.session.get(tags_endpoint) as response:
@@ -175,7 +175,7 @@ class WaifuIM(commands.Cog):
             Get a random waifu gif
             """
             
-            search_endpoint = self.config.search_endpoint
+            search_endpoint = '{}'.format(self.config.search_endpoint)
             params = {'gif': 'true', 'is_nsfw': 'false'}
             
             async with self.session.get(search_endpoint, params=params) as response:
@@ -215,7 +215,7 @@ class WaifuIM(commands.Cog):
             Dump a bunch of random waifu images
             """
             
-            search_endpoint = self.config.search_endpoint
+            search_endpoint = '{}'.format(self.config.search_endpoint)
             params = {'many': 'true', 'is_nsfw': 'false'}
             
             async with self.session.get(search_endpoint, params=params) as response:
@@ -256,7 +256,7 @@ class WaifuIM(commands.Cog):
             Get a random nsfw waifu image
             """
             
-            search_endpoint = self.config.search_endpoint
+            search_endpoint = '{}'.format(self.config.search_endpoint)
             params = {'is_nsfw': 'true'}
             
             async with self.session.get(search_endpoint, params=params) as response:
@@ -299,8 +299,8 @@ class WaifuIM(commands.Cog):
             See `[p]waifuim help` for a list of available tags.
             """
             
-            tags_endpoint = self.config.tags_endpoint
-            search_endpoint = self.config.search_endpoint
+            tags_endpoint = '{}'.format(self.config.tags_endpoint)
+            search_endpoint = '{}'.format(self.config.search_endpoint)
             params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'true'}
             
             async with self.session.get(tags_endpoint) as response:
@@ -355,7 +355,7 @@ class WaifuIM(commands.Cog):
             Get a random nsfw waifu gif
             """
             
-            search_endpoint = self.config.search_endpoint
+            search_endpoint = '{}'.format(self.config.search_endpoint)
             params = {'gif': 'true', 'is_nsfw': 'true'}
             
             async with self.session.get(search_endpoint, params=params) as response:
@@ -397,7 +397,7 @@ class WaifuIM(commands.Cog):
             Dump a bunch of random nsfw waifu images
             """
             
-            search_endpoint = self.config.search_endpoint
+            search_endpoint = '{}'.format(self.config.search_endpoint)
             params = {'many': 'true', 'is_nsfw': 'true'}
             
             async with self.session.get(search_endpoint, params=params) as response:
