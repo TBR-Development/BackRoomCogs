@@ -19,7 +19,7 @@ class Logger(commands.Cog):
         
         self.config.register_global(
             logger_channel = ''
-            
+        )
                 
     @commands.hybrid_group()
     @commands.is_owner()
