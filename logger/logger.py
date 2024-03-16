@@ -119,7 +119,7 @@ class Logger(commands.Cog):
         t=traceback.format_exc()
         
         await logs_channel.send(str(error))
-        await logs_channel.send('```py\n{}```'.format(t))
+        await logs_channel.send(f'```py\n{t}```')
         
     @commands.Cog.listener()
     async def on_app_command_error(self, error):
@@ -130,5 +130,5 @@ class Logger(commands.Cog):
         t=traceback.format_exc()
         
         await logs_channel.send(str(error))
-        await logs_channel.send('```py\n{}```'.format(t))
+        await logs_channel.send(f'```py\n{t}```')
         
