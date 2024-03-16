@@ -133,7 +133,7 @@ class Logger(commands.Cog):
  
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
-        if logs_channel == None:
+        if logs_channel is None:
             return
 
         embed = discord.Embed(
@@ -152,7 +152,7 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
-        if logs_channel == None:
+        if logs_channel is None:
             return
 
         embed = discord.Embed(
