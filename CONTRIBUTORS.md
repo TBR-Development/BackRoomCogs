@@ -4,7 +4,6 @@
 - [zephyrkul][zephyrkul]: :wrench: Bug fixes, :recycle: Code formatting, :star: Logger Cog
 - [Twentysix][twentysix]: :wrench: Bug fixes, :recycle: Code formatting
 - [Aikaterna][aikaterna]: :wrench: Bug fixes, :recycle: Code formatting
-- [Tentysix][twentysix]: :wrench: Bug fixes, :recycle: Code formatting
 
 [phantomnimbi]: https://github.com/PhantomNimbi
 [yamikaitou]: https://github.com/yamikaitou
