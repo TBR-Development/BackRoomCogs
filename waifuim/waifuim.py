@@ -73,6 +73,7 @@ class WaifuIM(commands.Cog):
     async def settoken(self, ctx, token):
             """
             Set your personal authorization bearer token.
+            This command should only be used in private message in order to keep your bearer token secure.
             
             Your bearer token can be found at:
             
@@ -80,7 +81,6 @@ class WaifuIM(commands.Cog):
             """
             
             await self.config.bearer_token.set(token)
-            await ctx.message.delete()
             
             await ctx.send('The token has been set.')
     
@@ -91,18 +91,17 @@ class WaifuIM(commands.Cog):
             """
             
             await self.config.bearer_token.clear()
-            await ctx.message.delete()
             
             await ctx.send('The token has been removed.')
             
     @waifuim.command()
-    async def delfav(self, ctx, id):
+    async def togglefav(self, ctx, id):
             """
-            Remove an image id from your favorites
+            Add or remove an image id from your favorites
             """
             
             token = self.config.bearer_token()
-            favorites_endpoint = 'https://api.waifu.im/fav/delete'
+            favorites_endpoint = 'https://api.waifu.im/toggle'
             headers = {
                     'Accept-Version': 'v5',
                     'Autorization': f'Bearer {token}',
@@ -117,34 +116,7 @@ class WaifuIM(commands.Cog):
                     async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
                             data = await response.json()
                     
-                    await ctx.send('Image added to guild favorites')
-            else:
-                    await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
-                    
-    @waifuim.command()
-    @commands.admin()
-    async def addfav(self, ctx, id):
-            """
-            Add an image id to your favorites
-            """
-            
-            token = self.config.bearer_token()
-            favorites_endpoint = 'https://api.waifu.im/fav/insert'
-            headers = {
-                    'Accept-Version': 'v5',
-                    'Autorization': f'Bearer {token}',
-                    'Content-Type': 'application/json'
-            }
-            
-            data = {
-                    'image_id': id
-            }
-
-            if token != None:
-                    async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
-                            data = await response.json()
-                    
-                    await ctx.send('Image added to guild favorites')
+                    await ctx.send('The image id has been toggled in your personal favorites.')
             else:
                     await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
                     
