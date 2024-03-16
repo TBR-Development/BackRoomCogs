@@ -121,7 +121,7 @@ class Logger(commands.Cog):
             return
         
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        embed = discord.Embed(title=f'Error encountered in slash command: {interaction.command}', description=str(error))
+        embed = discord.Embed(title=f'Error encountered in command: {ctx.command}', description=str(error))
         embed.color = await ctx.embed_color()
         await logs_channel.send(embed=embed)
         for page in pagify(traceback.format_exc(), shorten_by=10):
