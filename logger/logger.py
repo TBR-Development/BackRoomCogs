@@ -18,7 +18,7 @@ class Logger(commands.Cog):
         self.config = Config.get_conf(self, identifier=465228604721201158)
         
         self.config.register_global(
-            logger_channel = ''
+            logger_channel = 'xxxxc'
             )
                 
     @commands.hybrid_group()
@@ -56,7 +56,7 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
     
-        if logs_channel == '':
+        if logs_channel == 'xxxxx':
             logs_channel = 'No channel set'
             logger_enabled='False'
         else:
@@ -84,7 +84,7 @@ class Logger(commands.Cog):
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
-        if logs_channel == '':
+        if logs_channel == 'xxxxx':
            return
         
         descrpition = '{} has been added to a guild.'.format(self.bot.user.name)
@@ -110,7 +110,7 @@ class Logger(commands.Cog):
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
-        if logs_channel == '':
+        if logs_channel == 'xxxxx':
             return
 
         description = '{} has been removed from a guild.'.format(self.bot.user.name)
