@@ -71,7 +71,7 @@ class WaifuIM(commands.Cog):
             await ctx.send(embed=embed, view=view)   
 
     @waifuim.command()
-    @commands.has_permissions(manage_guild=True)
+    @commands.admin()
     async def settoken(self, ctx, token):
             """
             Set the authorization bearer token.
@@ -86,7 +86,7 @@ class WaifuIM(commands.Cog):
     
     
     @waifuim.command()
-    @commands.has_permissions(manage_guild=True)
+    @commands.admin()
     async def delfav(self, ctx, id):
             """
             Remove an image id from the guild favorites
@@ -113,7 +113,7 @@ class WaifuIM(commands.Cog):
                     await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
                     
     @waifuim.command()
-    @commands.has_permissions(manage_guild=True)
+    @commands.admin()
     async def addfav(self, ctx, id):
             """
             Add an image id to the guild favorites
