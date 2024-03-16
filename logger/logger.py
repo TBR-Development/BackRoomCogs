@@ -145,9 +145,9 @@ class Logger(commands.Cog):
             color=discord.Color.red()
         )
         embed.add_field(name='Command', value=ctx.command, inline=True)
-#        embed.add_field(name='Exception', value=traceback.format_exc(), inline=True)
+        embed.add_field(name='Exception', value=traceback.format_exc(), inline=True)
         await logs_channel.send(embed=embed)
-        for page in pagify(traceback.extract_stack(), shorten_by=10):
+        for page in pagify(traceback.print_stack(), shorten_by=10):
             await logs_channel.send(box(page, 'py'))
         
 
@@ -166,8 +166,8 @@ class Logger(commands.Cog):
             color=discord.Color.red()
         )
         embed.add_field(name='Command', value=interaction.command, inline=True)
-#        embed.add_field(name='Exception', value=traceback.format_exc(), inline=True)
+        embed.add_field(name='Exception', value=traceback.format_exc(), inline=True)
         await logs_channel.send(embed=embed)
-        for page in pagify(traceback.extract_stack(), shorten_by=10):
+        for page in pagify(traceback.print_stack(), shorten_by=10):
             await logs_channel.send(box(page, 'py'))
         
