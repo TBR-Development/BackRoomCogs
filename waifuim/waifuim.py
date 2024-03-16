@@ -4,7 +4,7 @@ from datetime import datetime
 import discord
 import aiohttp
 
-from redbot.core import Config, commands
+from redbot.core import commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
 
@@ -19,11 +19,6 @@ class WaifuIM(commands.Cog):
     def __init__(self, bot):
             self.bot = bot
             self.session = aiohttp.ClientSession()
-            self.config = Config.get_conf(self, identifier=465228604721201158)
-            
-            self.config.register_member(
-                    bearer_token = ''
-                    )
                      
     async def cog_unload(self):
             await self.session.close()
@@ -67,58 +62,7 @@ class WaifuIM(commands.Cog):
             website_button = discord.ui.Button(style=style, label='Waifu.IM', url='https://www.waifu.im/')
             view.add_item(item=website_button)
             
-            await ctx.send(embed=embed, view=view)   
-
-    @waifuim.command()
-    async def settoken(self, ctx, token):
-            """
-            Set your personal authorization bearer token.
-            This command should only be used in private message in order to keep your bearer token secure.
-            
-            Your bearer token can be found at:
-            
-            - https://www.waifu.im/dashboard
-            """
-            
-            await self.config.bearer_token.set(token)
-            
-            await ctx.send('The token has been set.')
-    
-    @waifuim.command()
-    async def deltoken(self, ctx):
-            """
-            Clear your personal authorization bearer token
-            """
-            
-            await self.config.bearer_token.clear()
-            
-            await ctx.send('The token has been removed.')
-            
-    @waifuim.command()
-    async def togglefav(self, ctx, id):
-            """
-            Add or remove an image id from your favorites
-            """
-            
-            token = self.config.bearer_token()
-            favorites_endpoint = 'https://api.waifu.im/toggle'
-            headers = {
-                    'Accept-Version': 'v5',
-                    'Autorization': f'Bearer {token}',
-                    'Content-Type': 'application/json'
-            }
-            
-            data = {
-                    'image_id': id
-            }
-
-            if token != None:
-                    async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
-                            data = await response.json()
-                    
-                    await ctx.send('The image id has been toggled in your personal favorites.')
-            else:
-                    await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
+            await ctx.send(embed=embed, view=view)
                     
     @waifuim.command()
     async def random(self, ctx):
