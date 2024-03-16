@@ -63,8 +63,8 @@ class Logger(commands.Cog):
             
         embed = discord.Embed(title='Logger Settings')
         embed.color = await ctx.embed_color()
-        embed.add_field(name='Enabled', value=logger_enabled)
-        embed.add_field(name='Channel', value=box(logs_channel))
+        embed.add_field(name='Enabled', value=logger_enabled, inline=True)
+        embed.add_field(name='Channel', value=logs_channel, inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         
         await ctx.send(embed=embed)
