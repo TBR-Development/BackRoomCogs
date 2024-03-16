@@ -1,9 +1,9 @@
 {
 	"author": ["ShitShowDevelopment"],
 	"name": "WaifuIM",
-	"install_msg": "Thank you for installing this cog!\nUse `[p]help <cog>` to get the list of commands and how to use them.",
-	"short": "Get random waifu images and gifs.",
-	"description": "Get random waifu images and gifs by tag using waifu.im api.",
+	"install_msg": "Thank you for installing this cog!\nUse `[p]help WaifuIM` to get the list of commands and how to use them.",
+	"short": "Get waifu images and gifs using waifu.im api.",
+	"description": "Get waifu images and gifs using waifu.im api.",
 	"permissions": ["send_messages", "embed_links"],
 	"tags": ["images", "nsfw", "sfw"],
 	"min_bot_version": "3.5.0",

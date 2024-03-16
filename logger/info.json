@@ -1,9 +1,9 @@
 {
 	"author": ["ShitShowDevelopment"],
 	"name": "Logger",
-	"install_msg": "Thank you for installing this cog!\nUse `[p]help <cog>` to get the list of commands and how to use them.",
+	"install_msg": "Thank you for installing this cog!\n\nFeatures are currently a tad limited. We plan to add more to this over time. If you have any feedback, feel free to let us know at our discord.\n - https://dsc.gg/the-shit-show\n\nUse `[p]help Logger` to get the list of commands and how to use them.",
 	"short": "Logging cog for use by bot owners",
-	"description": "Log events to specified channels in the bot owner's guild. Intended for debugging and support purposes.",
+	"description": "Log events to a specified channel in the bot owner's guild.",
 	"permissions": ["is_owner"],
 	"tags": ["debugging", "logging", "events", "info"],
 	"min_bot_version": "3.5.0",
