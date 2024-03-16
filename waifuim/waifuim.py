@@ -4,7 +4,7 @@ from datetime import datetime
 import discord
 import aiohttp
 
-from redbot.core import Config, commands
+from redbot.core import commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
 
