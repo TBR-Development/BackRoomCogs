@@ -75,20 +75,21 @@ class Logger(commands.Cog):
         """
         Guild add event
         """
-        
-        raw = datetime.now()
-        
-        date_time = raw.strftime('%B %d, %Y - %H:%M')
-        
-        logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        description = '{} has been added to a guild.'.format(self.bot.user.name)
+        if logs_channel == None:
+            return
+        else:
+            raw = datetime.now()
+            date_time = raw.strftime('%B %d, %Y - %H:%M')
             
-        embed = discord.Embed(description=description, color=discord.Color.blue())
-        embed.add_field(name='Guild', value=guild.name, inline=True),
-        embed.add_field(name='Date', value=date_time, inline=True)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-        
-        await logs_channel.send(embed=embed)
+            logs_channel = self.bot.get_channel(await self.config.logger_channel())
+            description = '{} has been added to a guild.'.format(self.bot.user.name)
+            
+            embed = discord.Embed(description=description, color=discord.Color.blue())
+            embed.add_field(name='Guild', value=guild.name, inline=True),
+            embed.add_field(name='Date', value=date_time, inline=True)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+            
+            await logs_channel.send(embed=embed)
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
