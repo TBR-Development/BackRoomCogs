@@ -8,7 +8,7 @@ from redbot.core import Config, commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
 
-footer_icon: Final[str] = 'https://avatars.githubusercontent.com/u/91619079?s=200&v=4'
+embed_icon: Final[str] = 'https://avatars.githubusercontent.com/u/91619079?s=200&v=4'
 footer_text = 'Powered by Waifu.IM API'
 
 class WaifuIM(commands.Cog):
@@ -61,8 +61,9 @@ class WaifuIM(commands.Cog):
             embed.color = await ctx.embed_color()
             embed.add_field(name='SFW Tags', value=box(versatile_tags))
             embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
+            embed.set_tumbnail(url=embed_icon)
             embed.set_image(url='https://cdn.waifu.im/7892.jpg')
-            embed.set_footer(text=footer_text, icon_url=footer_icon)
+            embed.set_footer(text=footer_text, icon_url=embed_icon)
             view = discord.ui.View()
             style = discord.ButtonStyle.grey
             website_button = discord.ui.Button(style=style, label='Website', url='https://www.waifu.im/')
@@ -97,7 +98,7 @@ class WaifuIM(commands.Cog):
                 embed = discord.Embed(timestamp=datetime.now())
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.set_footer(text=footer_text, icon_url=embed_icon)
                 embed.color = await ctx.embed_color()
                 view = discord.ui.View()
                 style = discord.ButtonStyle.grey
@@ -144,7 +145,7 @@ class WaifuIM(commands.Cog):
                     embed = discord.Embed(timestamp=datetime.now())
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
+                    embed.set_footer(text=footer_text, icon_url=embed_icon)
                     embed.color = await ctx.embed_color()
                     view = discord.ui.View()
                     style = discord.ButtonStyle.grey
@@ -184,7 +185,7 @@ class WaifuIM(commands.Cog):
                 embed = discord.Embed(timestamp=datetime.now())
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.set_footer(text=footer_text, icon_url=embed_icon)
                 embed.color = await ctx.embed_color()
                 view = discord.ui.View()
                 style = discord.ButtonStyle.grey
@@ -221,7 +222,7 @@ class WaifuIM(commands.Cog):
                 embed = discord.Embed(timestamp=datetime.now())
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.set_footer(text=footer_text, icon_url=embed_icon)
                 embed.color = await ctx.embed_color()
                 view = discord.ui.View()
                 style = discord.ButtonStyle.grey
@@ -259,7 +260,7 @@ class WaifuIM(commands.Cog):
                 embed = discord.Embed(timestamp=datetime.now())
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.set_footer(text=footer_text, icon_url=embed_icon)
                 embed.color = await ctx.embed_color()
                 view = discord.ui.View()
                 style = discord.ButtonStyle.grey
@@ -307,7 +308,7 @@ class WaifuIM(commands.Cog):
                     embed = discord.Embed(timestamp=datetime.now())
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
+                    embed.set_footer(text=footer_text, icon_url=embed_icon)
                     embed.color = await ctx.embed_color()
                     view = discord.ui.View()
                     style = discord.ButtonStyle.grey
@@ -336,7 +337,7 @@ class WaifuIM(commands.Cog):
                     embed = discord.Embed(timestamp=datetime.now())
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
-                    embed.set_footer(text=footer_text, icon_url=footer_icon)
+                    embed.set_footer(text=footer_text, icon_url=embed_icon)
                     embed.color = await ctx.embed_color()
                     view = discord.ui.View()
                     style = discord.ButtonStyle.grey
@@ -378,7 +379,7 @@ class WaifuIM(commands.Cog):
                 embed = discord.Embed(timestamp=datetime.now())
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.set_footer(text=footer_text, icon_url=embed_icon)
                 embed.color = await ctx.embed_color()
                 view = discord.ui.View()
                 style = discord.ButtonStyle.grey
@@ -417,7 +418,7 @@ class WaifuIM(commands.Cog):
                 embed = discord.Embed(timestamp=datetime.now())
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=footer_icon)
+                embed.set_footer(text=footer_text, icon_url=embed_icon)
                 embed.color = await ctx.embed_color()
                 view = discord.ui.View()
                 style = discord.ButtonStyle.grey
