@@ -137,10 +137,10 @@ class Logger(commands.Cog):
             return
 
         embed = discord.Embed(
-            title=f'Error encountered in command: {ctx.command}',
             description=str(error),
             color=discord.Color.red()
         )
+        embed.add_field(name='Command', value=ctx.command, inline=True)
         await logs_channel.send(embed=embed)
         for page in pagify(traceback.format_exc(), shorten_by=10):
             await logs_channel.send(box(page, 'py'))
@@ -156,10 +156,10 @@ class Logger(commands.Cog):
             return
 
         embed = discord.Embed(
-            title=f'Error encountered in slash command: {interaction.command}',
             description=str(error),
             color=discord.Color.red()
         )
+        embed.add_field(name='Hybrid Command', value=interaction.command, inline=True)
         await logs_channel.send(embed=embed)
         for page in pagify(traceback.format_exc(), shorten_by=10):
             await logs_channel.send(box(page, 'py'))
