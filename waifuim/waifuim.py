@@ -126,32 +126,33 @@ class WaifuIM(commands.Cog):
                 
             versatile_tags = data['versatile']
             
-            async with self.session.get(search_endpoint, params=params) as response:
-                        data = await response.json()
+            if tag in versatile_tags: 
                     
-            for image in data['images']:
-                        image_url = image['url']
-                        source_url = image['source']
-                        uploaded_at = image['uploaded_at']
+                    async with self.session.get(search_endpoint, params=params) as response:
+                            data = await response.json()
+                    
+                    for image in data['images']:
+                            image_url = image['url']
+                            source_url = image['source']
+                            uploaded_at = image['uploaded_at']
                         
-            raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+                    raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                         
-            date = '{}'.format(raw)
-            upload_date = date
+                    date = '{}'.format(raw)
+                    upload_date = date
                 
-            embed = discord.Embed(timestamp=datetime.now())
-            embed.add_field(name='Upload Date', value=upload_date, inline=True)
-            embed.set_image(url=image_url)
-            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-            embed.color = await ctx.embed_color()
-            view = discord.ui.View()
-            style = discord.ButtonStyle.grey
-            image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-            source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-            view.add_item(item=image_button)
-            view.add_item(item=source_button)
-            
-            if tag in versatile_tags:
+                    embed = discord.Embed(timestamp=datetime.now())
+                    embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                    embed.set_image(url=image_url)
+                    embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+                    embed.color = await ctx.embed_color()
+                    view = discord.ui.View()
+                    style = discord.ButtonStyle.grey
+                    image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                    source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                    view.add_item(item=image_button)
+                    view.add_item(item=source_button)
+                    
                     await ctx.send(embed=embed, view=view)
             
             else:
@@ -297,40 +298,67 @@ class WaifuIM(commands.Cog):
             versatile_tags = data['versatile']
             nsfw_tags = data['nsfw']
             
-            async with self.session.get(search_endpoint, params=params) as response:
-                        data = await response.json()
+            if tag in versatile_tags: 
                     
-            for image in data['images']:
-                        image_url = image['url']
-                        source_url = image['source']
-                        uploaded_at = image['uploaded_at']
+                    async with self.session.get(search_endpoint, params=params) as response:
+                            data = await response.json()
+                    
+                    for image in data['images']:
+                            image_url = image['url']
+                            source_url = image['source']
+                            uploaded_at = image['uploaded_at']
                         
-            raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+                    raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                         
-            date = '{}'.format(raw)
-            upload_date = date
+                    date = '{}'.format(raw)
+                    upload_date = date
                 
-            embed = discord.Embed(timestamp=datetime.now())
-            embed.add_field(name='Upload Date', value=upload_date, inline=True)
-            embed.set_image(url=image_url)
-            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-            embed.color = await ctx.embed_color()
-            view = discord.ui.View()
-            style = discord.ButtonStyle.grey
-            image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-            source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-            view.add_item(item=image_button)
-            view.add_item(item=source_button)
-            
-            if tag in versatile_tags:
+                    embed = discord.Embed(timestamp=datetime.now())
+                    embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                    embed.set_image(url=image_url)
+                    embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+                    embed.color = await ctx.embed_color()
+                    view = discord.ui.View()
+                    style = discord.ButtonStyle.grey
+                    image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                    source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                    view.add_item(item=image_button)
+                    view.add_item(item=source_button)
+                    
                     await ctx.send(embed=embed, view=view)
-            
-            elif tag in nsfw_tags:
+                    
+            elif tag in nsfw_tags: 
+                    
+                    async with self.session.get(search_endpoint, params=params) as response:
+                            data = await response.json()
+                    
+                    for image in data['images']:
+                            image_url = image['url']
+                            source_url = image['source']
+                            uploaded_at = image['uploaded_at']
+                        
+                    raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+                        
+                    date = '{}'.format(raw)
+                    upload_date = date
+                
+                    embed = discord.Embed(timestamp=datetime.now())
+                    embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                    embed.set_image(url=image_url)
+                    embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+                    embed.color = await ctx.embed_color()
+                    view = discord.ui.View()
+                    style = discord.ButtonStyle.grey
+                    image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                    source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                    view.add_item(item=image_button)
+                    view.add_item(item=source_button)
+                    
                     await ctx.send(embed=embed, view=view)
-            
+                    
             else:
                     await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help too see a list of available tags.'))
-    
+                    
     @waifuim.command()
     @commands.is_nsfw()
     async def ngif(self, ctx):
