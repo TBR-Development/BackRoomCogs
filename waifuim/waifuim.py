@@ -10,7 +10,7 @@ from redbot.core.utils.chat_formatting import box
 
 footer_icon: Final[str] = 'https://avatars.githubusercontent.com/u/91619079?s=200&v=4'
 footer_text = 'Powered by Waifu.IM API'
-banner_image: Final[str] = 'https://www.waifu.im/preview/7892'
+banner_image = 'https://www.waifu.im/preview/7892'
 
 class WaifuIM(commands.Cog):
     """
