@@ -154,7 +154,8 @@ class WaifuIM(commands.Cog):
                 if tag in versatile_tags:
                         await ctx.send(embed=embed, view=view)
                 else:
-                        await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help too see a list of available tags.'))
+                        if tag not in versatile_tags:
+                                await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help too see a list of available tags.'))
     
     @waifuim.command()
     async def gif(self, ctx):
