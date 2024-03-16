@@ -59,15 +59,18 @@ class WaifuIM(commands.Cog):
                 
             embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.', timestamp=datetime.now())
             embed.color = await ctx.embed_color()
+            embed.add_image(url='https://www.waifu.im/preview/7892/')
             embed.add_field(name='SFW Tags', value=box(versatile_tags))
             embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
             embed.set_footer(text=footer_text, icon_url=footer_icon)
-            embed.color = await ctx.embed_color()
-                
-            if response.status == 200:
-                    await ctx.send(embed=embed)
-            else:
-                    await ctx.send(':x: Request failed with status: ', response.status)   
+            view = discord.ui.View()
+            style = discord.ButtonStyle.grey
+            website_button = discord.ui.Button(style=style, label='Website', url='https://www.waifu.im/')
+            documentation_button = discord.ui.Button(style=style, label='Docs', url='https://docs.waifu.im/')
+            view.add_item(item=website_button)
+            view.add_item(item=documentation_button)
+            
+            await ctx.send(embed=embed, view=view)   
         
     @waifuim.command()
     async def random(self, ctx):
@@ -103,10 +106,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send(':x: Request failed with status: ', response.status)     
+                await ctx.send(embed=embed, view=view)   
                                 
         
     @waifuim.command()
@@ -193,10 +193,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send(':x: Request failed with status: ', response.status)     
+                await ctx.send(embed=embed, view=view) 
                                
     @waifuim.command()
     async def dump(self, ctx):
@@ -233,10 +230,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send(':x: Request failed with status: ', response.status)     
+                await ctx.send(embed=embed, view=view) 
                                
     @waifuim.command()
     @commands.is_nsfw()
@@ -274,10 +268,7 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send(':x: Request failed with status: ', response.status)     
+                await ctx.send(embed=embed, view=view)
                                 
     @waifuim.command()
     @commands.is_nsfw()
@@ -396,10 +387,8 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send(':x: Request failed with status: ', response.status)     
+                await ctx.send(embed=embed, view=view)
+                  
                                
     @waifuim.command()
     @commands.is_nsfw()
@@ -437,7 +426,4 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=image_button)
                 view.add_item(item=source_button)
                 
-                if response.status == 200:
-                        await ctx.send(embed=embed, view=view)
-                else:
-                        await ctx.send(':x: Request failed with status: ', response.status)       
+                await ctx.send(embed=embed, view=view) 
