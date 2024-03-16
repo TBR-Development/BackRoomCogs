@@ -52,13 +52,16 @@ class Logger(commands.Cog):
         """
         View the logger config
         """
+
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
-        if self.config.logger_channel == None:
+    
+        if logs_channel == 'x:
             logs_channel = 'No channel set'
             logger_enabled='False'
         else:
-            c = self.bot.get_channel(await self.config.logger_channel())
-            logs_channel = '{} ({})'.format(c, c.id)
+            channel = logs_channel 
+            logs_channel = f'<#{channel}>'
             logger_enabled='True'
             
         embed = discord.Embed(title='Logger Settings')
