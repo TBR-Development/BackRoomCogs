@@ -123,10 +123,10 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         embed = discord.Embed(title=f'Error encountered in slash command: {interaction.command}', description=str(error))
         embed.color = await ctx.embed_color()
-#        text = pagify(...)
+#        text = pagify(traceback.format_exc(), shorten_by=8, page_length=2000)
         await logs_channel.send(embed=embed)
         await logs_channel.send(box(traceback.format_exc(), 'py'))
-        
+
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
         """
@@ -138,6 +138,6 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         embed = discord.Embed(title=f'Error encountered in slash command: {interaction.command}', description=str(error))
         embed.color = await ctx.embed_color()
-#        text = pagify(...)
+#        text = pagify(traceback.format_exc(), shorten_by=8, page_length=2000)
         await logs_channel.send(embed=embed)
         await logs_channel.send(box(traceback.format_exc(), 'py'))
