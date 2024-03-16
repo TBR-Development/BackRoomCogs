@@ -30,7 +30,6 @@ class WaifuIM(commands.Cog):
             
             
     @commands.hybrid_group()
-    @commands.bot_has_permissions(send_messeges=True, embed_links=True)
     async def waifuim(self, ctx):
             """
             Get waifu images from waifu.im api.
