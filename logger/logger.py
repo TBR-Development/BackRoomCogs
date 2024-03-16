@@ -140,7 +140,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
 
-        description = f'{str(error)}\n**Command**: {ctx.command} **Exception**: {traceback.format_exc()}'
+        description = f'{str(error)}\n\n**Command**: {ctx.command}   **Exception**: {traceback.format_exc()}'
 
         embed = discord.Embed(
             description=description,
@@ -161,7 +161,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
 
-        description = f'{str(error)}\n**Command**: {interaction.command} **Exception**: {traceback.format_exc()}'
+        description = f'{str(error)}\n\n**Command**: {interaction.command}   **Exception**: {traceback.format_exc()}'
 
         embed = discord.Embed(
             description=description,
