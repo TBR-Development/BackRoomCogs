@@ -10,6 +10,7 @@ from redbot.core.utils.chat_formatting import box
 
 footer_icon: Final[str] = 'https://avatars.githubusercontent.com/u/91619079?s=200&v=4'
 footer_text = 'Powered by Waifu.IM API'
+banner_image: Final[str] = 'https://www.waifu.im/preview/7892'
 
 class WaifuIM(commands.Cog):
     """
@@ -59,9 +60,9 @@ class WaifuIM(commands.Cog):
                 
             embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.', timestamp=datetime.now())
             embed.color = await ctx.embed_color()
-            embed.add_image(url='https://www.waifu.im/preview/7892/')
             embed.add_field(name='SFW Tags', value=box(versatile_tags))
             embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
+            embed.set_image(url=banner_image)
             embed.set_footer(text=footer_text, icon_url=footer_icon)
             view = discord.ui.View()
             style = discord.ButtonStyle.grey
