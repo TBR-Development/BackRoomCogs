@@ -1,6 +1,7 @@
 from typing import Literal
 
 import discord
+import traceback
 
 from redbot.core import Config, commands
 from redbot.core.utils.chat_formatting import box
@@ -111,4 +112,14 @@ class Logger(commands.Cog):
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         
         await logs_channel.send(embed=embed)
+
+    @commands.Cog.listener()
+    async def on_command_error(self, error):
+        """
+        Command error event 
+        """
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        t=traceback.format_exc()
+        
+        await logs_channel.send('```py\n{}```'.format(t))
         
