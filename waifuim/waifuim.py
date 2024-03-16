@@ -131,7 +131,7 @@ class WaifuIM(commands.Cog):
                 
                 for tag in tags_endpoint:
                         available_tags = data['versatile']|data['nsfw']
-                        if available_tags == tag:
+                        if available_tags == '{}'.format(tag):
                                 tag_matched = True
                                 
                                 async with self.session.get(search_endpoint, params=params) as response:
