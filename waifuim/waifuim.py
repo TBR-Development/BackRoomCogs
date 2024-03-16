@@ -1,11 +1,10 @@
 from typing import Final
 from datetime import datetime
-from json import loads
 
 import discord
 import aiohttp
 
-from redbot.core import commands
+from redbot.core import Config, commands
 from redbot.core.bot import Red
 from redbot.core.utils.chat_formatting import box
 
@@ -20,6 +19,12 @@ class WaifuIM(commands.Cog):
     def __init__(self, bot):
             self.bot = bot
             self.session = aiohttp.ClientSession()
+            self.config = Config.get_conf(self, identifier=465228604721201158)
+            
+            self.config.register_global(
+                    tags_endpoint = 'https://api.waifu.im/tags',
+                    search_endpoint = 'https://api.waifu.im/search'
+            )
                      
     async def cog_unload(self):
             await self.session.close()
@@ -40,9 +45,10 @@ class WaifuIM(commands.Cog):
             Get a list of available tags for use with WaifuIM.
             """
             
-            url = 'https://api.waifu.im/tags'
             
-            async with self.session.get(url) as response:
+            tags_endpoint = self.config.tags_endpoint
+            
+            async with self.session.get(tags_endpoint) as response:
                 data = await response.json()
                     
                 versatile = data['versatile']
@@ -71,11 +77,10 @@ class WaifuIM(commands.Cog):
             """
             Get a random waifu image
             """
-            
-            url = 'https://api.waifu.im/search'
+            search_endpoint = self.config.search_endpoint
             params = {'is_nsfw': 'false'}
             
-            async with self.session.get(url, params=params) as response:
+            async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
                     
                 for image in data['images']:
@@ -115,52 +120,61 @@ class WaifuIM(commands.Cog):
             See `[p]waifuim help` for a list of available tags.
             """
             
-            
-            url = 'https://api.waifu.im/search'
+            tags_endpoint = self.config.tags_endpoint
+            search_endpoint = self.config.search_endpoint
             params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'false'}
             
             
-            async with self.session.get(url, params=params) as response:
+            async with self.session.get(tags_endpoint) as response:
                 data = await response.json()
                     
-                for image in data['images']:
-                        image_url = image['url']
-                        source_url = image['source']
-                        uploaded_at = image['uploaded_at']
+                versatile = data['versatile']
+                nsfw = data['nsfw']
+                
+                if tag in versatile|nsfw:
+                        async with self.session.get(search_endpoint, params=params) as response:
+                                data = await response.json()
+                    
+                        for image in data['images']:
+                                image_url = image['url']
+                                source_url = image['source']
+                                uploaded_at = image['uploaded_at']
                         
                         
-                raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+                        raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
-                date = '{}'.format(raw)
-                upload_date = date
+                        date = '{}'.format(raw)
+                        upload_date = date
                 
-                embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                embed.set_image(url=image_url)
-                embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-                embed.color = await ctx.embed_color()
-                view = discord.ui.View()
-                style = discord.ButtonStyle.grey
-                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                view.add_item(item=image_button)
-                view.add_item(item=source_button)
+                        embed = discord.Embed(timestamp=datetime.now())
+                        embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                        embed.set_image(url=image_url)
+                        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+                        embed.color = await ctx.embed_color()
+                        view = discord.ui.View()
+                        style = discord.ButtonStyle.grey
+                        image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                        source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                        view.add_item(item=image_button)
+                        view.add_item(item=source_button)
                 
-                if response.status == 200:
-                        await ctx.send(embed=embed, view=view)
+                        if response.status == 200:
+                                await ctx.send(embed=embed, view=view)
+                        else:
+                                await ctx.send(':x: Request failed with status: ', response.status)     
                 else:
-                        await ctx.send(':x: Request failed with status: ', response.status)     
-                               
+                        await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.')) 
+                        
     @waifuim.command()
     async def gif(self, ctx):
             """
             Get a random waifu gif
             """
             
-            url = 'https://api.waifu.im/search'
+            search_endpoint = self.config.search_endpoint
             params = {'gif': 'true', 'is_nsfw': 'false'}
             
-            async with self.session.get(url, params=params) as response:
+            async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
                     
                 for image in data['images']:
@@ -197,10 +211,10 @@ class WaifuIM(commands.Cog):
             Dump a bunch of random waifu images
             """
             
-            url = 'https://api.waifu.im/search'
+            search_endpoint = self.config.search_endpoint
             params = {'many': 'true', 'is_nsfw': 'false'}
             
-            async with self.session.get(url, params=params) as response:
+            async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
                     
                 for image in data['images']:
@@ -238,10 +252,10 @@ class WaifuIM(commands.Cog):
             Get a random nsfw waifu image
             """
             
-            url = 'https://api.waifu.im/search'
+            search_endpoint = self.config.search_endpoint
             params = {'is_nsfw': 'true'}
             
-            async with self.session.get(url, params=params) as response:
+            async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
                     
                 for image in data['images']:
@@ -281,40 +295,50 @@ class WaifuIM(commands.Cog):
             See `[p]waifuim help` for a list of available tags.
             """
             
-            url = 'https://api.waifu.im/search'
+            tags_endpoint = self.config.tags_endpoint
+            search_endpoint = self.config.search_endpoint
             params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'true'}
             
-            async with self.session.get(url, params=params) as response:
+            async with self.session.get(tags_endpoint) as response:
                 data = await response.json()
                     
-                for image in data['images']:
-                        image_url = image['url']
-                        source_url = image['source']
-                        uploaded_at = image['uploaded_at']
-#                        
+                versatile = data['versatile']
+                nsfw = data['nsfw']
+                
+                if tag in versatile|nsfw:
+                        async with self.session.get(search_endpoint, params=params) as response:
+                                data = await response.json()
                     
-                raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+                        for image in data['images']:
+                                image_url = image['url']
+                                source_url = image['source']
+                                uploaded_at = image['uploaded_at']
+                        
+                        
+                        raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
-                date = '{}'.format(raw)
-                upload_date = date
+                        date = '{}'.format(raw)
+                        upload_date = date
                 
-                embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                embed.set_image(url=image_url)
-                embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-                embed.color = await ctx.embed_color()
-                view = discord.ui.View()
-                style = discord.ButtonStyle.grey
-                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                view.add_item(item=image_button)
-                view.add_item(item=source_button)
+                        embed = discord.Embed(timestamp=datetime.now())
+                        embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                        embed.set_image(url=image_url)
+                        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+                        embed.color = await ctx.embed_color()
+                        view = discord.ui.View()
+                        style = discord.ButtonStyle.grey
+                        image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                        source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                        view.add_item(item=image_button)
+                        view.add_item(item=source_button)
                 
-                if response.status == 200:
-                        await ctx.send(embed=embed, view=view)
+                        if response.status == 200:
+                                await ctx.send(embed=embed, view=view)
+                        else:
+                                await ctx.send(':x: Request failed with status: ', response.status)     
                 else:
-                        await ctx.send(':x: Request failed with status: ', response.status)     
-                               
+                        await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
+         
     @waifuim.command()
     @commands.is_nsfw()
     async def ngif(self, ctx):
@@ -322,10 +346,10 @@ class WaifuIM(commands.Cog):
             Get a random nsfw waifu gif
             """
             
-            url = 'https://api.waifu.im/search'
+            search_endpoint = self.config.search_endpoint
             params = {'gif': 'true', 'is_nsfw': 'true'}
             
-            async with self.session.get(url, params=params) as response:
+            async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
                     
                 for image in data['images']:
@@ -364,10 +388,10 @@ class WaifuIM(commands.Cog):
             Dump a bunch of random nsfw waifu images
             """
             
-            url = 'https://api.waifu.im/search'
+            search_endpoint = self.config.search_endpoint
             params = {'many': 'true', 'is_nsfw': 'true'}
             
-            async with self.session.get(url, params=params) as response:
+            async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
                     
                 for image in data['images']:
