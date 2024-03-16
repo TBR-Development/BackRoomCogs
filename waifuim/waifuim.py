@@ -21,7 +21,7 @@ class WaifuIM(commands.Cog):
             self.session = aiohttp.ClientSession()
             self.config = Config.get_conf(self, identifier=465228604721201158)
             
-            self.config.register_global(
+            self.config.register_member(
                     bearer_token = ''
                     )
                      
@@ -70,25 +70,37 @@ class WaifuIM(commands.Cog):
             await ctx.send(embed=embed, view=view)   
 
     @waifuim.command()
-    @commands.admin()
     async def settoken(self, ctx, token):
             """
-            Set the authorization bearer token.
+            Set your personal authorization bearer token.
             
             Your bearer token can be found at:
             
             - https://www.waifu.im/dashboard
             """
             
-            await self.config.logger_channel.set(token)
-            await ctx.send(':white_check_mark: The token has been set.')
-    
+            await self.config.bearer_token.set(token)
+            await ctx.messege.delete()
+            
+            await ctx.send('The token has been set.')
+            await ctx.messege.add_reaction(':white_check_mark:')
     
     @waifuim.command()
-    @commands.admin()
+    async def deltoken(self, ctx):
+            """
+            Clear your personal authorization bearer token
+            """
+            
+            await self.config.bearer_token.clear()
+            await ctx.messege.delete()
+            
+            await ctx.send('The token has been removed.')
+            await ctx.messege.add_reaction(':white_check_mark:')
+            
+    @waifuim.command()
     async def delfav(self, ctx, id):
             """
-            Remove an image id from the guild favorites
+            Remove an image id from your favorites
             """
             
             token = self.config.bearer_token()
@@ -115,7 +127,7 @@ class WaifuIM(commands.Cog):
     @commands.admin()
     async def addfav(self, ctx, id):
             """
-            Add an image id to the guild favorites
+            Add an image id to your favorites
             """
             
             token = self.config.bearer_token()
@@ -137,57 +149,6 @@ class WaifuIM(commands.Cog):
                     await ctx.send('Image added to guild favorites')
             else:
                     await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
-                    
-                    
-                    
-    @waifuim.command()
-    async def fav(self, ctx):
-            """
-            Get a random image from the guild favorites.
-            """
-            token = self.config.bearer_token()
-            favorites_endpoint = 'https://api.waifu.im/fav'
-            headers = {
-                    'Accept-Version': 'v5',
-                    'Autorization': f'Bearer {token}'
-            }
-            params= {
-                    'is_nsfw': 'false'
-            }
-            
-            
-            if token != None:
-                    
-                    async with self.session.get(favorites_endpoint, headers=headers, params=params) as response:
-                            data = await response.json()
-                    
-                    for image in data['images']:
-                            image_url = image['url']
-                            image_id = image['image_id']
-                            source_url = image['source']
-                            uploaded_at = image['uploaded_at']
-                
-                    raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
-                    
-                    date = '{}'.format(raw)
-                    upload_date = date
-                
-                    embed = discord.Embed(timestamp=datetime.now())
-                    embed.add_field(name='Image Id', value=image_id, inline=True)
-                    embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                    embed.set_image(url=image_url)
-                    embed.set_footer(text=footer_text, icon_url=embed_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                    source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                    view.add_item(item=image_button)
-                    view.add_item(item=source_button)
-                    
-                    await ctx.send(embed=embed, view=view)
-            else:
-                    await ctx.send('Authorization token not found. If you are an admin, please use `[p]waifuim settoken [token]` to use this command.')
                     
     @waifuim.command()
     async def random(self, ctx):
