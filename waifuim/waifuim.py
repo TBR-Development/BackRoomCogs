@@ -126,6 +126,8 @@ class WaifuIM(commands.Cog):
                 
                 versatile_tags = data['versatile']
                 
+                tag_matched = False
+                
                 for tag in tags_endpoint:
                         if versatile_tags == tag:
                                 tag_matched = True                                
@@ -300,6 +302,8 @@ class WaifuIM(commands.Cog):
                 
                 versatile_tags = data['versatile']
                 nsfw_tags = data['nsfw']
+                
+                tag_matched = False
                 
                 for tag in tags_endpoint:
                         
