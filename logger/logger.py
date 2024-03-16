@@ -72,8 +72,8 @@ class Logger(commands.Cog):
         
         await ctx.send(embed=embed)
 
-    @logger.command(name='test')
-    async def test_error(self, ctx):
+    @logger.command()
+    async def test(self, ctx):
         """
         Dummy command to test the error handler(s)
         """
