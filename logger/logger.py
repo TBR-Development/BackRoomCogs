@@ -95,8 +95,7 @@ class Logger(commands.Cog):
         )
         embed.add_field(name='Guild', value=guild.name, inline=True),
         embed.add_field(name='Date', value=date_time, inline=True)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-            
+         
         await logs_channel.send(embed=embed)
         
     @commands.Cog.listener()
@@ -121,8 +120,7 @@ class Logger(commands.Cog):
         )
         embed.add_field(name='Guild', value=guild.name, inline=True),
         embed.add_field(name='Date', value=date_time, inline=True)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-            
+        
         await logs_channel.send(embed=embed)
 
     @commands.Cog.listener()
