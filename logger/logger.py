@@ -18,10 +18,7 @@ class Logger(commands.Cog):
         self.config = Config.get_conf(self, identifier=465228604721201158)
         
         self.config.register_global(
-            logger_channel = '',
-            guild_logs = '',
-            error_logs = '',
-            console_logs = ''
+            logger_channel = ''
             )
                 
     @commands.hybrid_group()
