@@ -151,10 +151,14 @@ class WaifuIM(commands.Cog):
                     'Accept-Version': 'v5',
                     'Autorization': f'Bearer {token}'
             }
+            params= {
+                    'is_nsfw': 'false'
+            }
+            
             
             if token != None:
                     
-                    async with self.session.get(favorites_endpoint, headers=headers) as response:
+                    async with self.session.get(favorites_endpoint, headers=headers, params=params) as response:
                             data = await response.json()
                     
                     for image in data['images']:
