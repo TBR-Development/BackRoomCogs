@@ -147,7 +147,8 @@ class WaifuIM(commands.Cog):
             favorites_endpoint = 'https://api.waifu.im/fav'
             headers = {
                     'Accept-Version': 'v5',
-                    'Autorization': f'Bearer {token}'
+                    'Autorization': f'Bearer {token}',
+                    'Content-Type': 'application/json'
             }
             
             if token != None:
