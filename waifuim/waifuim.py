@@ -161,8 +161,8 @@ class WaifuIM(commands.Cog):
                         if tag_matched == True:
                                 await ctx.send(embed=embed, view=view)
                         else:
-                                await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
-             
+                                if tag_matched == False:
+                                        return
     @waifuim.command()
     async def gif(self, ctx):
             """
@@ -342,8 +342,8 @@ class WaifuIM(commands.Cog):
                         if tag_matched == True:
                                 await ctx.send(embed=embed, view=view)
                         else:
-                                await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
-             
+                                if tag_matched == False:
+                                        return
     @waifuim.command()
     @commands.is_nsfw()
     async def ngif(self, ctx):
