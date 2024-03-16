@@ -124,7 +124,7 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_app_command_error(self, error):
         """
-        Command error event 
+        Slash command error event 
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         t=traceback.format_exc()
