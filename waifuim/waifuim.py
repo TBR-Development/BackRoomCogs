@@ -130,9 +130,10 @@ class WaifuIM(commands.Cog):
                 tag_matched = False
                 
                 for tag in tags_endpoint:
-                        sfw_tags = data['versatile']
-                        nsfw_tags = data['nsfw']
-                        if sfw_tags|nsfw_tags == '{}'.format(tag):
+                        data = data['versatile']
+                        tags = ', '.join(data)
+                        list = '{}'.join(tags)
+                        if list == tag:
                                 tag_matched = True
                                 
                                 async with self.session.get(search_endpoint, params=params) as response:
@@ -310,9 +311,12 @@ class WaifuIM(commands.Cog):
                 tag_matched = False
                 
                 for tag in tags_endpoint:
-                        sfw_tags = data['versatile']
-                        nsfw_tags = data['nsfw']
-                        if sfw_tags|nsfw_tags == '{}'.format(tag):
+                        sfw_data = data['versatile']
+                        nsfw_data = data['nsfw']
+                        sfw_tags = ', '.join(sfw_data)
+                        nsfw_tags = ', '.join(nsfw_data)
+                        list = '{}, {}'.join(sfw_tags, nsfw_tags)
+                        if list == tag:
                                 tag_matched = True
                                 
                                 async with self.session.get(search_endpoint, params=params) as response:
