@@ -124,8 +124,6 @@ class WaifuIM(commands.Cog):
             async with self.session.get(tags_endpoint) as response:
                 data = await response.json()
                 
-                tag_matched = False
-                
                 versatile_tags = data['versatile']
                 
                 for tag in tags_endpoint:
@@ -159,14 +157,10 @@ class WaifuIM(commands.Cog):
                         view.add_item(item=source_button)
                                 
                         if tag_matched == True:
-                                if response.status == 200:
-                                        await ctx.send(embed=embed, view=view)
-                                else:
-                                        await ctx.send(':x: Request failed with status: ', response.status)     
+                                await ctx.send(embed=embed, view=view)
                         else:
-                                if tag_matched == False:
-                                        await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
-         
+                                await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
+             
     @waifuim.command()
     async def gif(self, ctx):
             """
@@ -301,10 +295,8 @@ class WaifuIM(commands.Cog):
             search_endpoint = 'https://api.waifu.im/search'
             params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'true'}
             
-            async with self.session.get(tags_endpoint) as response:
-                data = await response.json()
-                
-                tag_matched = False
+            async with self.session.get(tags_endpoint) as res:
+                data = await res.json()
                 
                 versatile_tags = data['versatile']
                 nsfw_tags = data['nsfw']
@@ -315,7 +307,7 @@ class WaifuIM(commands.Cog):
                                 tag_matched = True
                                 
                         if nsfw_tags == tag:
-                                tag_matched = True                              
+                                tag_matched = True
                                 
                         async with self.session.get(search_endpoint, params=params) as response:
                                 data = await response.json()
@@ -344,14 +336,10 @@ class WaifuIM(commands.Cog):
                         view.add_item(item=source_button)
                                 
                         if tag_matched == True:
-                                if response.status == 200:
-                                        await ctx.send(embed=embed, view=view)
-                                else:
-                                        await ctx.send(':x: Request failed with status: ', response.status)     
+                                await ctx.send(embed=embed, view=view)
                         else:
-                                if tag_matched == False:
-                                        await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
-         
+                                await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
+             
     @waifuim.command()
     @commands.is_nsfw()
     async def ngif(self, ctx):
