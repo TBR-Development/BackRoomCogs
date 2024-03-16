@@ -147,7 +147,7 @@ class Logger(commands.Cog):
         embed.add_field(name='Command', value=ctx.command, inline=True)
         embed.add_field(name='Exception', value=box(traceback.format_exc(), 'py'))
         await logs_channel.send(embed=embed)
-        for page in pagify(traceback.print_stack(), shorten_by=10):
+        for page in pagify(traceback.format_stack(), shorten_by=10):
             await logs_channel.send(box(page, 'py'))
         
 
@@ -168,6 +168,6 @@ class Logger(commands.Cog):
         embed.add_field(name='Command', value=interaction.command, inline=True)
         embed.add_field(name='Exception', value=box(traceback.format_exc(), 'py'))
         await logs_channel.send(embed=embed)
-        for page in pagify(traceback.print_stack(), shorten_by=10):
+        for page in pagify(traceback.format_stack(), shorten_by=10):
             await logs_channel.send(box(page, 'py'))
         
