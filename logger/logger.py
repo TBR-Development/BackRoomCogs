@@ -95,35 +95,42 @@ class Logger(commands.Cog):
         """
         Guild remove event
         """
-        
-        raw = datetime.now()
-        
-        date_time = raw.strftime('%B %d, %Y - %H:%M')
-        
-        logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        description = '{} has been removed from a guild.'.format(self.bot.user.name)
+        if logs_channel == None:
+            return
+        else:
+            raw = datetime.now()
+            date_time = raw.strftime('%B %d, %Y - %H:%M')
             
-        embed = discord.Embed(description=description, color=discord.Color.red())
-        embed.add_field(name='Guild', value=guild.name, inline=True),
-        embed.add_field(name='Date', value=date_time, inline=True)
-        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-        
-        await logs_channel.send(embed=embed)
+            logs_channel = self.bot.get_channel(await self.config.logger_channel())
+            description = '{} has been removed from a guild.'.format(self.bot.user.name)
+            
+            embed = discord.Embed(description=description, color=discord.Color.red())
+            embed.add_field(name='Guild', value=guild.name, inline=True),
+            embed.add_field(name='Date', value=date_time, inline=True)
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+            
+            await logs_channel.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
         """
         Command error event 
         """
-        logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        await logs_channel.send(str(error))
-        await logs_channel.send(box(traceback.format_exc(), 'py'))
+        if logs_channel == None:
+            return
+        else:
+            logs_channel = self.bot.get_channel(await self.config.logger_channel())
+            await logs_channel.send(str(error))
+            await logs_channel.send(box(traceback.format_exc(), 'py'))
         
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
         """
         Slash command error event 
         """
-        logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        await logs_channel.send(str(error))
-        await logs_channel.send(box(traceback.format_exc(), 'py'))
+        if logs_channel == None:
+            return
+        else:
+            logs_channel = self.bot.get_channel(await self.config.logger_channel())
+            await logs_channel.send(str(error))
+            await logs_channel.send(box(traceback.format_exc(), 'py'))
