@@ -19,12 +19,6 @@ class WaifuIM(commands.Cog):
     def __init__(self, bot):
             self.bot = bot
             self.session = aiohttp.ClientSession()
-            self.config = Config.get_conf(self, identifier=465228604721201158)
-            
-            self.config.register_global(
-                    tags_endpoint = 'https://api.waifu.im/tags',
-                    search_endpoint = 'https://api.waifu.im/search'
-            )
                      
     async def cog_unload(self):
             await self.session.close()
