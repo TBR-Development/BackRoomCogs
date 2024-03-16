@@ -129,7 +129,7 @@ class WaifuIM(commands.Cog):
                 tag_matched = False
                 
                 for tag in tags_endpoint:
-                        if versatile_tags == tag:
+                        if tag in versatile_tags:
                                 tag_matched = True                                
                                 
                         async with self.session.get(search_endpoint, params=params) as response:
@@ -307,10 +307,10 @@ class WaifuIM(commands.Cog):
                 
                 for tag in tags_endpoint:
                         
-                        if versatile_tags == tag:
+                        if tag in versatile_tags:
                                 tag_matched = True
                                 
-                        if nsfw_tags == tag:
+                        if tag in nsfw_tags:
                                 tag_matched = True
                                 
                         async with self.session.get(search_endpoint, params=params) as response:
