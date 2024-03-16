@@ -80,10 +80,10 @@ class WaifuIM(commands.Cog):
             """
             
             await self.config.bearer_token.set(token)
-            await ctx.messege.delete()
+            await ctx.message.delete()
             
             await ctx.send('The token has been set.')
-            await ctx.messege.add_reaction(':white_check_mark:')
+            await ctx.message.add_reaction(':white_check_mark:')
     
     @waifuim.command()
     async def deltoken(self, ctx):
@@ -92,10 +92,10 @@ class WaifuIM(commands.Cog):
             """
             
             await self.config.bearer_token.clear()
-            await ctx.messege.delete()
+            await ctx.message.delete()
             
             await ctx.send('The token has been removed.')
-            await ctx.messege.add_reaction(':white_check_mark:')
+            await ctx.message.add_reaction(':white_check_mark:')
             
     @waifuim.command()
     async def delfav(self, ctx, id):
