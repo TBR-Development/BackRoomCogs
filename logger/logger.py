@@ -116,10 +116,8 @@ class Logger(commands.Cog):
         Command error event 
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        t=traceback.format_exc()
         
-        await logs_channel.send(str(error))
-        await logs_channel.send(f'```py\n{t}```')
+        await logs_channel.send(f'{str(error)}\n```py\n{traceback.format_exc()}```')
         
     @commands.Cog.listener()
     async def on_app_command_error(self, error):
@@ -127,8 +125,5 @@ class Logger(commands.Cog):
         Slash command error event 
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        t=traceback.format_exc()
         
-        await logs_channel.send(str(error))
-        await logs_channel.send(f'```py\n{t}```')
-        
+        await logs_channel.send(f'{str(error)}\n```py\n{traceback.format_exc()}```')
