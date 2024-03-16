@@ -45,32 +45,29 @@ class WaifuIM(commands.Cog):
             Get a list of available tags for use with WaifuIM.
             """
             
-            
             tags_endpoint = 'https://api.waifu.im/tags'
             
             async with self.session.get(tags_endpoint) as response:
                 data = await response.json()
-                    
-                versatile = data['versatile']
-                nsfw = data['nsfw']
+            
+            versatile = data['versatile']
+            nsfw = data['nsfw']
+            versatile_array = ', '.join(versatile)
+            nsfw_array = ', '.join(nsfw)
+            versatile_tags = '{}'.format(versatile_array)
+            nsfw_tags = '{}, {}'.format(versatile_array, nsfw_array)
                 
-                versatile_array = ', '.join(versatile)
-                nsfw_array = ', '.join(nsfw)
+            embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.', timestamp=datetime.now())
+            embed.color = await ctx.embed_color()
+            embed.add_field(name='SFW Tags', value=box(versatile_tags))
+            embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
+            embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+            embed.color = await ctx.embed_color()
                 
-                sfw_tags = '{}'.format(versatile_array)
-                nsfw_tags = '{}, {}'.format(versatile_array, nsfw_array)
-                
-                embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.', timestamp=datetime.now())
-                embed.color = await ctx.embed_color()
-                embed.add_field(name='SFW Tags', value=box(sfw_tags))
-                embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
-                embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-                embed.color = await ctx.embed_color()
-                
-                if response.status == 200:
-                        await ctx.send(embed=embed)
-                else:
-                        await ctx.send(':x: Request failed with status: ', response.status)   
+            if response.status == 200:
+                    await ctx.send(embed=embed)
+            else:
+                    await ctx.send(':x: Request failed with status: ', response.status)   
         
     @waifuim.command()
     async def random(self, ctx):
@@ -130,43 +127,42 @@ class WaifuIM(commands.Cog):
                 tag_matched = False
                 
                 for tag in tags_endpoint:
-                        data = data['versatile']
-                        tags = ', '.join(data)
-                        list = '{}'.join(tags)
-                        if list == tag:
-                                tag_matched = True
+                        sfw_tags = data['versatile']
+                        
+                        if sfw_tags == tag:
+                                tag_matched = True                                
                                 
-                                async with self.session.get(search_endpoint, params=params) as response:
-                                        data = await response.json()
+                        async with self.session.get(search_endpoint, params=params) as response:
+                                data = await response.json()
                     
-                                for image in data['images']:
-                                        image_url = image['url']
-                                        source_url = image['source']
-                                        uploaded_at = image['uploaded_at']
+                        for image in data['images']:
+                                image_url = image['url']
+                                source_url = image['source']
+                                uploaded_at = image['uploaded_at']
                         
                         
-                                raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+                        raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
-                                date = '{}'.format(raw)
-                                upload_date = date
+                        date = '{}'.format(raw)
+                        upload_date = date
                 
-                                embed = discord.Embed(timestamp=datetime.now())
-                                embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                                embed.set_image(url=image_url)
-                                embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-                                embed.color = await ctx.embed_color()
-                                view = discord.ui.View()
-                                style = discord.ButtonStyle.grey
-                                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                                view.add_item(item=image_button)
-                                view.add_item(item=source_button)
+                        embed = discord.Embed(timestamp=datetime.now())
+                        embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                        embed.set_image(url=image_url)
+                        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+                        embed.color = await ctx.embed_color()
+                        view = discord.ui.View()
+                        style = discord.ButtonStyle.grey
+                        image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                        source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                        view.add_item(item=image_button)
+                        view.add_item(item=source_button)
                                 
-                                if tag_matched == True:
-                                        if response.status == 200:
-                                                await ctx.send(embed=embed, view=view)
-                                        else:
-                                                await ctx.send(':x: Request failed with status: ', response.status)     
+                        if tag_matched == True:
+                                if response.status == 200:
+                                        await ctx.send(embed=embed, view=view)
+                                else:
+                                        await ctx.send(':x: Request failed with status: ', response.status)     
                 else:
                         if tag_matched == False:
                                 await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
@@ -311,45 +307,45 @@ class WaifuIM(commands.Cog):
                 tag_matched = False
                 
                 for tag in tags_endpoint:
-                        sfw_data = data['versatile']
-                        nsfw_data = data['nsfw']
-                        sfw_tags = ', '.join(sfw_data)
-                        nsfw_tags = ', '.join(nsfw_data)
-                        list = '{}, {}'.join(sfw_tags, nsfw_tags)
-                        if list == tag:
+                        nsfw_tags = data['nsfw']
+                        sfw_tags = data['versatile']
+                        
+                        if nsfw_tags == tag:
                                 tag_matched = True
+                        if sfw_tags == tag:
+                                tag_matched = True                                
                                 
-                                async with self.session.get(search_endpoint, params=params) as response:
-                                        data = await response.json()
+                        async with self.session.get(search_endpoint, params=params) as response:
+                                data = await response.json()
                     
-                                for image in data['images']:
-                                        image_url = image['url']
-                                        source_url = image['source']
-                                        uploaded_at = image['uploaded_at']
+                        for image in data['images']:
+                                image_url = image['url']
+                                source_url = image['source']
+                                uploaded_at = image['uploaded_at']
                         
                         
-                                raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+                        raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
-                                date = '{}'.format(raw)
-                                upload_date = date
+                        date = '{}'.format(raw)
+                        upload_date = date
                 
-                                embed = discord.Embed(timestamp=datetime.now())
-                                embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                                embed.set_image(url=image_url)
-                                embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
-                                embed.color = await ctx.embed_color()
-                                view = discord.ui.View()
-                                style = discord.ButtonStyle.grey
-                                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                                view.add_item(item=image_button)
-                                view.add_item(item=source_button)
+                        embed = discord.Embed(timestamp=datetime.now())
+                        embed.add_field(name='Upload Date', value=upload_date, inline=True)
+                        embed.set_image(url=image_url)
+                        embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
+                        embed.color = await ctx.embed_color()
+                        view = discord.ui.View()
+                        style = discord.ButtonStyle.grey
+                        image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+                        source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+                        view.add_item(item=image_button)
+                        view.add_item(item=source_button)
                                 
-                                if tag_matched == True:
-                                        if response.status == 200:
-                                                await ctx.send(embed=embed, view=view)
-                                        else:
-                                                await ctx.send(':x: Request failed with status: ', response.status)     
+                        if tag_matched == True:
+                                if response.status == 200:
+                                        await ctx.send(embed=embed, view=view)
+                                else:
+                                        await ctx.send(':x: Request failed with status: ', response.status)     
                 else:
                         if tag_matched == False:
                                 await ctx.send(box('This tag does not exist on the waifu.im api. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of valid tags.'))       
