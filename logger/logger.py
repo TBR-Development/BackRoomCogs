@@ -71,7 +71,13 @@ class Logger(commands.Cog):
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         
         await ctx.send(embed=embed)
-                
+
+    @logger.command(name='test')
+    async def test_error(self, ctx):
+        """
+        Dummy command to test the error handler(s)
+        """
+        await ctx.send(test)
         
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
@@ -139,10 +145,12 @@ class Logger(commands.Cog):
             color=discord.Color.red()
         )
         embed.add_field(name='Command', value=ctx.command, inline=True)
+        embed.add_field(name='Exception', value traceback.format_exc(), inline=True)
         await logs_channel.send(embed=embed)
-        for page in pagify(traceback.format_exc(), shorten_by=10):
+        for page in pagify(traceback.extract_tb(), shorten_by=10):
             await logs_channel.send(box(page, 'py'))
         
+
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
         """
@@ -157,8 +165,9 @@ class Logger(commands.Cog):
             description=str(error),
             color=discord.Color.red()
         )
-        embed.add_field(name='Hybrid Command', value=interaction.command, inline=True)
+        embed.add_field(name='Command', value=interaction.command, inline=True)
+        embed.add_field(name='Exception', value traceback.format_exc(), inline=True)
         await logs_channel.send(embed=embed)
-        for page in pagify(traceback.format_exc(), shorten_by=10):
+        for page in pagify(traceback.extract_tb(), shorten_by=10):
             await logs_channel.send(box(page, 'py'))
         
