@@ -131,7 +131,10 @@ class WaifuIM(commands.Cog):
                 versatile = data['versatile']
                 nsfw = data['nsfw']
                 
-                if tag in versatile|nsfw:
+                sfw_tags = '{}'.format(versatile)
+                nsfw_tags = '{}'.format(nsfw)
+                
+                if tag in sfw_tags|nsfw_tags:
                         async with self.session.get(search_endpoint, params=params) as response:
                                 data = await response.json()
                     
@@ -305,7 +308,10 @@ class WaifuIM(commands.Cog):
                 versatile = data['versatile']
                 nsfw = data['nsfw']
                 
-                if tag in versatile|nsfw:
+                sfw_tags = '{}'.format(versatile)
+                nsfw_tags = '{}'.format(nsfw)
+                
+                if tag in sfw_tags|nsfw_tags:
                         async with self.session.get(search_endpoint, params=params) as response:
                                 data = await response.json()
                     
