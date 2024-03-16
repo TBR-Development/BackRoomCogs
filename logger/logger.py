@@ -15,9 +15,10 @@ class Logger(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=465228604721201158)
-        logger_channel = ''
         
-        self.config.register_global(logger_channel)
+        self.config.register_global(
+            logger_channel = ''
+            )
                 
     @commands.hybrid_group()
     @commands.is_owner()

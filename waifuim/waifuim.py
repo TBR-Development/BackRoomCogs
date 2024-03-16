@@ -20,16 +20,16 @@ class WaifuIM(commands.Cog):
             self.bot = bot
             self.session = aiohttp.ClientSession()
             self.config = Config.get_conf(self, identifier=465228604721201158)
-            waifuim_api =  ''
             
-            self.config.register_global(waifuim_api)
+            self.config.register_global(
+                    bearer_token = ''
+                    )
                      
     async def cog_unload(self):
             await self.session.close()
             
             
     @commands.hybrid_group()
-    @commands.bot_has_permissionss(send_messages=True, embed_links=True)
     async def waifuim(self, ctx):
             """
             Get waifu images from waifu.im api.
@@ -70,7 +70,7 @@ class WaifuIM(commands.Cog):
             await ctx.send(embed=embed, view=view)   
 
     @waifuim.command()
-    @commands.has_permissionss(administrator=True)
+    @commands.is_administrator()
     async def settoken(self, ctx, token):
             """
             Set the authorization bearer token.
@@ -85,13 +85,13 @@ class WaifuIM(commands.Cog):
     
     
     @waifuim.command()
-    @commands.has_permissions(administrator=True)
+    @commands.is_administrator()
     async def delfav(self, ctx, id):
             """
-            Remove an image by id from the guild's favorites
+            Remove an image id from the guild favorites
             """
             
-            token = self.bot.get_channel(await self.config.waifuim.api())
+            token = self.config.bearer_token()
             favorites_endpoint = 'https://api.waifu.im/fav/delete'
             headers = {
                     'Accept-Version': 'v5',
@@ -106,19 +106,19 @@ class WaifuIM(commands.Cog):
             if token != None:
                     async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
                             data = await response.json()
-                            
-                    await ctx.send('Image removed from guild favorites')
+                    
+                    await ctx.send('Image added to guild favorites')
             else:
                     await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
                     
     @waifuim.command()
-    @commands.has_permissions(administrator=True)
+    @commands.is_administrator()
     async def addfav(self, ctx, id):
             """
-            Add an image by id to the guild's favorites
+            Add an image id to the guild favorites
             """
             
-            token = self.bot.get_channel(await self.config.waifuim.api())
+            token = self.config.bearer_token()
             favorites_endpoint = 'https://api.waifu.im/fav/insert'
             headers = {
                     'Accept-Version': 'v5',
@@ -133,7 +133,7 @@ class WaifuIM(commands.Cog):
             if token != None:
                     async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
                             data = await response.json()
-                            
+                    
                     await ctx.send('Image added to guild favorites')
             else:
                     await ctx.send('Authorization token not found. Please use `[p]waifuim settoken [token]` to use this command.')
@@ -143,18 +143,17 @@ class WaifuIM(commands.Cog):
     @waifuim.command()
     async def fav(self, ctx):
             """
-            Get a random image from the guild's favorites.
+            Get a random image from the guild favorites.
             """
-            token = self.bot.get_channel(await self.config.waifuim.api())
+            token = self.config.bearer_token()
             favorites_endpoint = 'https://api.waifu.im/fav'
             headers = {
                     'Accept-Version': 'v5',
-                    'Autorization': f'Bearer {token}',
-                    'Content-Type': 'application/json'
+                    'Autorization': f'Bearer {token}'
             }
             
             if token != None:
-                    async with self.session.get(favorites_endpoint, headers=headers, json=data) as response:
+                    async with self.session.get(favorites_endpoint, headers=headers) as response:
                             data = await response.json()
                     
                     for image in data['images']:
