@@ -143,7 +143,7 @@ class Logger(commands.Cog):
         )
         await logs_channel.send(embed=embed)
         for page in pagify(traceback.format_exc(), shorten_by=10):
-            await logs_channel.send(box(page), 'py')
+            await logs_channel.send(box(page, 'py'))
         
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
@@ -162,5 +162,5 @@ class Logger(commands.Cog):
         )
         await logs_channel.send(embed=embed)
         for page in pagify(traceback.format_exc(), shorten_by=10):
-            await logs_channel.send(box(page), 'py')
+            await logs_channel.send(box(page, 'py'))
         
