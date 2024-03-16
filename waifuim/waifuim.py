@@ -57,7 +57,7 @@ class WaifuIM(commands.Cog):
             versatile_tags = '{}'.format(versatile_array)
             nsfw_tags = '{}, {}'.format(versatile_array, nsfw_array)
                 
-            embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.', timestamp=datetime.now())
+            embed = discord.Embed(title='Tag Help', description='Here is a list of available tags from the waifu.im api.\n\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.', timestamp=datetime.now())
             embed.color = await ctx.embed_color()
             embed.add_field(name='SFW Tags', value=box(versatile_tags))
             embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
