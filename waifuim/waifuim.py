@@ -153,11 +153,13 @@ class WaifuIM(commands.Cog):
             }
             
             if token != None:
+                    
                     async with self.session.get(favorites_endpoint, headers=headers) as response:
                             data = await response.json()
                     
                     for image in data['images']:
                             image_url = image['url']
+                            image_id = image['image_id']
                             source_url = image['source']
                             uploaded_at = image['uploaded_at']
                 
@@ -167,6 +169,7 @@ class WaifuIM(commands.Cog):
                     upload_date = date
                 
                     embed = discord.Embed(timestamp=datetime.now())
+                    embed.add_field(name='Image Id', value=image_id, inline=True)
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
                     embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -205,6 +208,7 @@ class WaifuIM(commands.Cog):
                 upload_date = date
                 
                 embed = discord.Embed(timestamp=datetime.now())
+                embed.add_field(name='Image Id', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
                 embed.set_footer(text=footer_text, icon_url=embed_icon)
