@@ -75,14 +75,16 @@ class Logger(commands.Cog):
         """
         Guild add event
         """
-        if logs_channel == None:
-            return
         
         raw = datetime.now()
         date_time = raw.strftime('%B %d, %Y - %H:%M')
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        description = '{} has been added to a guild.'.format(self.bot.user.name)
+        
+        if logs_channel == '':
+           return
+        
+        descrpition = '{} has been added to a guild.'.format(self.bot.user.name)
             
         embed = discord.Embed(description=description, color=discord.Color.blue())
         embed.add_field(name='Guild', value=guild.name, inline=True),
@@ -96,13 +98,15 @@ class Logger(commands.Cog):
         """
         Guild remove event
         """
-        if logs_channel == None:
-            return
         
         raw = datetime.now()
         date_time = raw.strftime('%B %d, %Y - %H:%M')
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        
+        if logs_channel == '':
+            return
+
         description = '{} has been removed from a guild.'.format(self.bot.user.name)
             
         embed = discord.Embed(description=description, color=discord.Color.red())
@@ -117,10 +121,12 @@ class Logger(commands.Cog):
         """
         Command error event 
         """
-        if logs_channel == None:
-            return
-        
+ 
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        
+        if logs_channel == '':
+            return
+
         embed = discord.Embed(title=f'Error encountered in command: {ctx.command}', description=str(error))
         embed.color(disord.Color.red())
         await logs_channel.send(embed=embed)
@@ -132,11 +138,11 @@ class Logger(commands.Cog):
         """
         Slash command error event 
         """
-        if logs_channel == None:
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        
+        if logs_channel == '':
             return
 
-        
-        logs_channel = self.bot.get_channel(await self.config.logger_channel())
         embed = discord.Embed(title=f'Error encountered in slash command: {interaction.command}', description=str(error))
         embed.color(discord.Color.red())
         await logs_channel.send(embed=embed)
