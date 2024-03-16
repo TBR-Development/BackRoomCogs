@@ -1,7 +1,7 @@
 - [PhantomNimbi][phantomnimbi]: :star: WaifuIM Cog, :star: Logger Cog
 - [YamiKaitou][yamikaitou]: :wrench: Bug fixes, :recycle: Code formatting
-- [Flame422][flame442]: :wrench: Bug fixes, :recycle: Code formatting
-- [zephyrkul][zephyrkul]: :wrench: Bug fixes, :recycle: Code formatting
+- [Flame422][flame442]: :wrench: Bug fixes, :recycle: Code formatting, :star: Logger Cog
+- [zephyrkul][zephyrkul]: :wrench: Bug fixes, :recycle: Code formatting, :star: Logger Cog
 - [Twentysix][twentysix]: :wrench: Bug fixes, :recycle: Code formatting
 - [Aikaterna][aikaterna]: :wrench: Bug fixes, :recycle: Code formatting
 - [Tentysix][twentysix]: :wrench: Bug fixes, :recycle: Code formatting
