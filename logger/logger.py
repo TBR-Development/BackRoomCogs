@@ -89,7 +89,10 @@ class Logger(commands.Cog):
         
         descrpition = '{} has been added to a guild.'.format(self.bot.user.name)
             
-        embed = discord.Embed(description=description, color=discord.Color.blue())
+        embed = discord.Embed(
+            description=description,
+            color=discord.Color.blue()
+        )
         embed.add_field(name='Guild', value=guild.name, inline=True),
         embed.add_field(name='Date', value=date_time, inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
@@ -112,7 +115,10 @@ class Logger(commands.Cog):
 
         description = '{} has been removed from a guild.'.format(self.bot.user.name)
             
-        embed = discord.Embed(description=description, color=discord.Color.red())
+        embed = discord.Embed(
+            description=description,
+            color=discord.Color.red()
+        )
         embed.add_field(name='Guild', value=guild.name, inline=True),
         embed.add_field(name='Date', value=date_time, inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
@@ -130,8 +136,11 @@ class Logger(commands.Cog):
         if logs_channel == '':
             return
 
-        embed = discord.Embed(title=f'Error encountered in command: {ctx.command}', description=str(error))
-        embed.color(disord.Color.red())
+        embed = discord.Embed(
+            title=f'Error encountered in command: {ctx.command}',
+            description=str(error),
+            color=discord.Color.red()
+        )
         await logs_channel.send(embed=embed)
         for page in pagify(traceback.format_exc(), shorten_by=10):
             await logs_channel.send(box(page), 'py')
@@ -146,8 +155,11 @@ class Logger(commands.Cog):
         if logs_channel == '':
             return
 
-        embed = discord.Embed(title=f'Error encountered in slash command: {interaction.command}', description=str(error))
-        embed.color(discord.Color.red())
+        embed = discord.Embed(
+            title=f'Error encountered in slash command: {interaction.command}',
+            description=str(error),
+            color=discord.Color.red()
+        )
         await logs_channel.send(embed=embed)
         for page in pagify(traceback.format_exc(), shorten_by=10):
             await logs_channel.send(box(page), 'py')
