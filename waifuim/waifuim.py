@@ -156,7 +156,7 @@ class WaifuIM(commands.Cog):
                     await ctx.send(embed=embed, view=view)
             
             else:
-                    await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help too see a list of available tags.'))
+                    await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of available tags.'))
     
     @waifuim.command()
     async def gif(self, ctx):
@@ -357,7 +357,7 @@ class WaifuIM(commands.Cog):
                     await ctx.send(embed=embed, view=view)
                     
             else:
-                    await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help too see a list of available tags.'))
+                    await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of available tags.'))
                     
     @waifuim.command()
     @commands.is_nsfw()
