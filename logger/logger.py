@@ -121,3 +121,14 @@ class Logger(commands.Cog):
         await logs_channel.send(str(error))
         await logs_channel.send('```py\n{}```'.format(t))
         
+    @commands.Cog.listener()
+    async def on_app_command_error(self, error):
+        """
+        Command error event 
+        """
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        t=traceback.format_exc()
+        
+        await logs_channel.send(str(error))
+        await logs_channel.send('```py\n{}```'.format(t))
+        
