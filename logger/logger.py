@@ -61,7 +61,7 @@ class Logger(commands.Cog):
             logger_enabled='False'
         else:
             channel = logs_channel 
-            logs_channel = f'<#{channel}>'
+            logs_channel = f'{channel} ({channel.id})'
             logger_enabled='True'
             
         embed = discord.Embed(title='Logger Settings')
