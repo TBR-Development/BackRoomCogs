@@ -80,12 +80,11 @@ class Logger(commands.Cog):
         date_time = raw.strftime('%B %d, %Y - %H:%M')
         
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        guild_info = '{} ({})'.format(guild.name, guild.id),
-        description = ':white_check_mark: {} has been added to a guild.'.format(self.bot.user.name)
+        description = '{} has been added to a guild.'.format(self.bot.user.name)
             
         embed = discord.Embed(description=description, color=discord.Color.blue())
-        embed.add_field(name='Guild', value=box(guild_info)),
-        embed.add_field(name='Date', value=date_time)
+        embed.add_field(name='Guild', value=guild.name, inline=True),
+        embed.add_field(name='Date', value=date_time, inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         
         await logs_channel.send(embed=embed)
@@ -101,12 +100,11 @@ class Logger(commands.Cog):
         date_time = raw.strftime('%B %d, %Y - %H:%M')
         
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        guild_info = '{}'.format(guild.name),
-        description = ':x: {} has been removed from a guild.'.format(self.bot.user.name)
+        description = '{} has been removed from a guild.'.format(self.bot.user.name)
             
         embed = discord.Embed(description=description, color=discord.Color.red())
-        embed.add_field(name='Guild', value=box(guild_info)),
-        embed.add_field(name='Date', value=date_time)
+        embed.add_field(name='Guild', value=guild.name, inline=True),
+        embed.add_field(name='Date', value=date_time, inline=True)
         embed.set_footer(text=self.bot.user.name, icon_url=self.bot.user.display_avatar.url)
         
         await logs_channel.send(embed=embed)
