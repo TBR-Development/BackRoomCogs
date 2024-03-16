@@ -117,7 +117,7 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         await logs_channel.send(str(error))
-        await logs_channel.send(box(traceback.format_exc(), py))
+        await logs_channel.send(box(traceback.format_exc(), 'py'))
         
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
@@ -126,4 +126,4 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         await logs_channel.send(str(error))
-        await logs_channel.send(box(traceback.format_exc(), py))
+        await logs_channel.send(box(traceback.format_exc(), 'py'))
