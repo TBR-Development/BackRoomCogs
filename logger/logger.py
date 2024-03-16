@@ -49,7 +49,7 @@ class Logger(commands.Cog):
     @logger.command()
     async def settings(self, ctx):
         """
-        Remove the logger channel
+        View the logger config
         """
         
         if self.config.logger_channel == None:
