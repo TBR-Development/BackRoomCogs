@@ -66,10 +66,8 @@ class WaifuIM(commands.Cog):
             embed.set_footer(text=footer_text, icon_url=embed_icon)
             view = discord.ui.View()
             style = discord.ButtonStyle.grey
-            website_button = discord.ui.Button(style=style, label='Website', url='https://www.waifu.im/')
-            documentation_button = discord.ui.Button(style=style, label='Docs', url='https://docs.waifu.im/')
+            website_button = discord.ui.Button(style=style, label='Waifu.IM', url='https://www.waifu.im/')
             view.add_item(item=website_button)
-            view.add_item(item=documentation_button)
             
             await ctx.send(embed=embed, view=view)   
         
