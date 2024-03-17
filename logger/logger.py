@@ -96,11 +96,11 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        descripition = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
+        text = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
-            description = descripition,
-            color = discord.Color.blue()
+            description=text,
+            color=discord.Color.blue()
         )
         
         await logs_channel.send(embed=embed)
@@ -119,10 +119,10 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
 
-        description = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
+        text = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
-            description=description,
+            description=text,
             color=discord.Color.red()
         )
         
