@@ -83,9 +83,23 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
         if logs_channel is None:
-            ctx.send(box('You do not have the logger enabled.\nPlease use `[p]logger enable <#channel>` if you want to test the error handler.', 'py'))
+            try:
+                ctx.send(box('You do not have the logger enabled.\nPlease use `[p]logger enable <#channel>` if you want to test the error handler.', 'py'))
+            except:
+                error = discord.error()
+            
+                await logs_channel.send(embed=embed)
+                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(p, 'py'))
         else:
-            await ctx.send(test)
+            try:
+                await ctx.send(test)
+            except:
+                error = discord.error()
+            
+                await logs_channel.send(embed=embed)
+                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(p, 'py'))
         
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
@@ -101,14 +115,22 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        text = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
+        try:
+            text = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
-        embed = discord.Embed(
-            description=text,
-            color=discord.Color.blue()
-        )
+            embed = discord.Embed(
+                description=text,
+                color=discord.Color.blue()
+            )
         
-        await logs_channel.send(embed=embed)
+        
+            await logs_channel.send(embed=embed)
+        except:
+            error = discord.error()
+            
+            await logs_channel.send(embed=embed)
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
@@ -124,14 +146,22 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
 
-        text = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
+        try:
+            text = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
-        embed = discord.Embed(
-            description=text,
-            color=discord.Color.red()
-        )
+            embed = discord.Embed(
+                description=text,
+                color=discord.Color.red()
+            )
         
-        await logs_channel.send(embed=embed)
+        
+            await logs_channel.send(embed=embed)
+        except:
+            error = discord.error()
+            
+            await logs_channel.send(embed=embed)
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
@@ -141,20 +171,26 @@ class Logger(commands.Cog):
         
         raw = datetime.now()
         date_time = raw.strftime('%B %d, %Y - %H:%M')
+        text = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
 
         if logs_channel is None:
             return
         
-        text = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
-            
-        embed = discord.Embed(
-            description=text,
-            color=discord.Color.blue()
-        )
+        try:
+            embed = discord.Embed(
+                description=text,
+                color=discord.Color.blue()
+            )
         
-        await logs_channel.send(embed=embed)
+            await logs_channel.send(embed=embed)
+        except:
+            error = discord.error()
+            
+            await logs_channel.send(embed=embed)
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
 
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
@@ -164,20 +200,26 @@ class Logger(commands.Cog):
         
         raw = datetime.now()
         date_time = raw.strftime('%B %d, %Y - %H:%M')
+        text = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
 
         if logs_channel is None:
             return
         
-        text = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
-            
-        embed = discord.Embed(
-            description=text,
-            color=discord.Color.red()
-        )
+        try:
+            embed = discord.Embed(
+                description=text,
+                color=discord.Color.red()
+            )
         
-        await logs_channel.send(embed=embed)
+            await logs_channel.send(embed=embed)
+        except:
+            error = discord.error()
+            
+            await logs_channel.send(embed=embed)
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
         
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
