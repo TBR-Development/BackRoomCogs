@@ -93,7 +93,7 @@ class Logger(commands.Cog):
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
-        descrpition = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})   **Date**: {date_time}'
+        descrpition = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
             description = description,
@@ -113,7 +113,7 @@ class Logger(commands.Cog):
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
 
-        description = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})   **Date**: {date_time}'
+        description = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
             description=description,
