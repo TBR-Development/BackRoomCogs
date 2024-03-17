@@ -190,25 +190,13 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        invite_url_list = await ctx.guild.invites()
-        
-        for i in invite_url_list:
-            invite_url = i[0]
-        
-        
         description = f'{str(error)}\n\n**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Exception**: {traceback.format_exc()}'
         embed = discord.Embed(description=description, color=discord.Color.red())
         
         view = discord.ui.View()
         style = discord.ButtonStyle.grey
         message_button = discord.ui.Button(style=style, label='Jump to Message', url=ctx.message)
-        guild_button = discord.ui.Button(style=style, label='Guild Invite', url=invite_url)
-        
-        if invite_url is None:
-            view.add_item(item=message_button)
-        else:
-            view.add_item(item=message_button)
-            view.add_item(item=guild_button)
+        view.add_item(item=message_button)
         
         if isinstance(error, commands.MissingRequiredArgument):
             ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
@@ -245,23 +233,12 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        invite_url_list = await interaction.guild.invites()
-        
-        for i in invite_url_list:
-            invite_url = i[0]
-        
         description = f'{str(error)}\n\n**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Exception**: {traceback.format_exc()}'
         embed = discord.Embed(description=description, color=discord.Color.red())
         view = discord.ui.View()
         style = discord.ButtonStyle.grey
         message_button = discord.ui.Button(style=style, label='Jump to Message', url=interaction.message)
-        guild_button = discord.ui.Button(style=style, label='Guild Invite', url=invite_url)
-        
-        if invite_url is None:
-            view.add_item(item=message_button)
-        else:
-            view.add_item(item=message_button)
-            view.add_item(item=guild_button)
+        view.add_item(item=message_button)
         
         if isinstance(error, commands.MissingRequiredArgument):
             interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
