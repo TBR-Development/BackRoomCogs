@@ -80,7 +80,12 @@ class Logger(commands.Cog):
         """
         Dummy command to test the error handler(s)
         """
-        await ctx.send(test)
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        
+        if logs_channel is None:
+            ctx.send(box('You do not have the logger enabled.\nPlease use `[p]logger enable <#channel>` if you want to test the error handler.', 'py'))
+        else:
+            await ctx.send(test)
         
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
@@ -184,16 +189,30 @@ class Logger(commands.Cog):
         
         if logs_channel is None:
             return
-
-        description = f'{str(error)}\n\n**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Exception**: {traceback.format_exc()}'
-
-        embed = discord.Embed(
-            description=description,
-            color=discord.Color.red()
-        )
-        await logs_channel.send(embed=embed)
-        for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-            await logs_channel.send(box(page, 'py'))
+        
+        async def handle_error():
+            description = f'{str(error)}\n\n**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Exception**: {traceback.format_exc()}'
+            embed = discord.Embed(description=description, color=discord.Color.red())
+            
+            await logs_channel.send(embed=embed)
+            for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(page, 'py'))
+                
+        if isinstance(error, commands.MissingRequiredArgument):
+            ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
+            handle_error
+        elif isinstance(error, commands.MemberNotFound):
+            ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
+            handle_error
+        elif isinstance(error, commands.NoPrivateMessage):
+            try:
+                ctx.send(f"`The command: `{ctx.command}` cannot be used inprivate messages.")
+                handle_error
+            except:
+                handle_error
+            return
+        else:
+            handle_error
         
 
     @commands.Cog.listener()
@@ -205,13 +224,29 @@ class Logger(commands.Cog):
         
         if logs_channel is None:
             return
-
-        description = f'{str(error)}\n\n**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Exception**: {traceback.format_exc()}'
-        embed = discord.Embed(
-            description=description,
-            color=discord.Color.red()
-        )
-        await logs_channel.send(embed=embed)
-        for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-            await logs_channel.send(box(page, 'py'))
+        
+        async def handle_error():
+            description = f'{str(error)}\n\n**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Exception**: {traceback.format_exc()}'
+            embed = discord.Embed(description=description, color=discord.Color.red())
+            
+            await logs_channel.send(embed=embed)
+            for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(page, 'py'))
+        
+        
+        if isinstance(error, commands.MissingRequiredArgument):
+            interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
+            handle_error
+        elif isinstance(error, commands.MemberNotFound):
+            interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
+            handle_error
+        elif isinstance(error, commands.NoPrivateMessage):
+            try:
+                interaction.reply(f"`The command: `{interaction.command}` cannot be used inprivate messages.")
+                handle_error
+            except:
+                handle_error
+            return
+        else:
+            handle_error
         
