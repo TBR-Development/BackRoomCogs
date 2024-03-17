@@ -63,8 +63,10 @@ class Logger(commands.Cog):
             channel = logs_channel 
             logs_channel = f'{channel} ({channel.id})'
             logger_enabled='True'
+
+        description = f'Here are the current Logger settings.\n\n**Logger Enabled**: {logger_enabled}\n**Logger Channel**: {logs_channel}'
             
-        embed = discord.Embed(description='Here are the current Logger settings')
+        embed = discord.Embed(description=description)
         embed.color = await ctx.embed_color()
         embed.add_field(name='Enabled', value=logger_enabled, inline=True)
         embed.add_field(name='Channel', value=logs_channel, inline=True)
