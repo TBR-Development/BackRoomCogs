@@ -83,7 +83,7 @@ class Logger(commands.Cog):
         await ctx.send(test)
         
     @commands.Cog.listener()
-    async def on_guild_join(self, guild):
+    async def on_guild_add(self, guild):
         """
         Guild add event
         """
@@ -92,6 +92,9 @@ class Logger(commands.Cog):
         date_time = raw.strftime('%B %d, %Y - %H:%M')
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+
+        if logs_channel is None:
+            return
         
         descrpition = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
@@ -112,6 +115,9 @@ class Logger(commands.Cog):
         date_time = raw.strftime('%B %d, %Y - %H:%M')
             
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+
+        if logs_channel is None:
+            return
 
         description = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
