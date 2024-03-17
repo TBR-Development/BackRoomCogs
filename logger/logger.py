@@ -129,7 +129,7 @@ class Logger(commands.Cog):
         await logs_channel.send(embed=embed)
 
     @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member):
+    async def on_member_join(self, member: discord.Member, guild):
         """
         Member join event
         """
@@ -152,7 +152,7 @@ class Logger(commands.Cog):
         await logs_channel.send(embed=embed)
 
     @commands.Cog.listener()
-    async def on_member_remove(self, member: discord.Member):
+    async def on_member_remove(self, member: discord.Member, guild):
         """
         Member leave event
         """
