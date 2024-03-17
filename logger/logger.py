@@ -169,7 +169,7 @@ class Logger(commands.Cog):
             
         embed = discord.Embed(
             description=text,
-            color=discord.Color.blue()
+            color=discord.Color.red()
         )
         
         await logs_channel.send(embed=embed)
