@@ -139,7 +139,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
 
-        description = f'{str(error)}\n\n**Command**: {ctx.command}\n**Exception**: {traceback.format_exc()}\n**Guild**: {ctx.guild} ({ctx.guild.id})'
+        description = f'{str(error)}\n\n**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Exception**: {traceback.format_exc()}'
 
         embed = discord.Embed(
             description=description,
@@ -160,8 +160,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
 
-        description = f'{str(error)}\n\n**Command**: {interaction.command}\n**Exception**: {traceback.format_exc()}\n**Guild**: {interaction.guild} ({interaction.guild.id})'
-
+        description = f'{str(error)}\n\n**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Exception**: {traceback.format_exc()}'
         embed = discord.Embed(
             description=description,
             color=discord.Color.red()
