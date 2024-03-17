@@ -129,7 +129,7 @@ class Logger(commands.Cog):
         await logs_channel.send(embed=embed)
 
     @commands.Cog.listener()
-    async def on_member_join(self, ctx):
+    async def on_member_join(self, member: discord.Member):
         """
         Member join event
         """
@@ -142,7 +142,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        text = f'A user has joined a guild.\n\n**Member**: {ctx.user.name} ({ctx.user.id})\n**Guild**: {ctx.guild.name} ({ctx.guild.id})\n**Date**: {date_time}'
+        text = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
             description=text,
@@ -152,7 +152,7 @@ class Logger(commands.Cog):
         await logs_channel.send(embed=embed)
 
     @commands.Cog.listener()
-    async def on_member_remove(self, ctx):
+    async def on_member_remove(self, member: discord.Member):
         """
         Member leave event
         """
@@ -165,7 +165,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        text = f'A user has left a guild.\n\n**Member**: {ctx.user.name} ({ctx.user.id})\n**Guild**: {ctx.guild.name} ({ctx.guild.id})\n**Date**: {date_time}'
+        text = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
             description=text,
