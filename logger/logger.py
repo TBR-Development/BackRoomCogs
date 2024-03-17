@@ -142,7 +142,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        text = f'A user has joined the guild.\n\n**Member**: {member.name} ({member.id})\n**Date**: {date_time}'
+        text = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
             description=text,
@@ -165,7 +165,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        text = f'A user has left the guild.\n\n**Member**: {member.name} ({member.id})\n**Date**: {date_time}'
+        text = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
             description=text,
