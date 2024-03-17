@@ -99,7 +99,7 @@ class Logger(commands.Cog):
         descripition = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
-            description = description,
+            description = descripition,
             color = discord.Color.blue()
         )
         
