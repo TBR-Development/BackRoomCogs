@@ -83,9 +83,9 @@ class Logger(commands.Cog):
         await ctx.send(test)
         
     @commands.Cog.listener()
-    async def on_guild_add(self, guild):
+    async def on_guild_join(self, guild):
         """
-        Guild add event
+        Guild join event
         """
         
         raw = datetime.now()
