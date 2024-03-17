@@ -193,32 +193,27 @@ class Logger(commands.Cog):
         description = f'{str(error)}\n\n**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Exception**: {traceback.format_exc()}'
         embed = discord.Embed(description=description, color=discord.Color.red())
         
-        view = discord.ui.View()
-        style = discord.ButtonStyle.grey
-        message_button = discord.ui.Button(style=style, label='Jump to Message', url=ctx.message)
-        view.add_item(item=message_button)
-        
         if isinstance(error, commands.MissingRequiredArgument):
             ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
-            await logs_channel.send(embed=embed, view=view)
+            await logs_channel.send(embed=embed)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.MemberNotFound):
             ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
-            await logs_channel.send(embed=embed, view=view)
+            await logs_channel.send(embed=embed)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.NoPrivateMessage):
             try:
                 ctx.send(f"`The command: `{ctx.command}` cannot be used inprivate messages.")
-                await logs_channel.send(embed=embed, view=view)
+                await logs_channel.send(embed=embed)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
                 pass
             return
         else:
-            await logs_channel.send(embed=embed, view=view)
+            await logs_channel.send(embed=embed)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
@@ -235,32 +230,28 @@ class Logger(commands.Cog):
         
         description = f'{str(error)}\n\n**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Exception**: {traceback.format_exc()}'
         embed = discord.Embed(description=description, color=discord.Color.red())
-        view = discord.ui.View()
-        style = discord.ButtonStyle.grey
-        message_button = discord.ui.Button(style=style, label='Jump to Message', url=interaction.message)
-        view.add_item(item=message_button)
         
         if isinstance(error, commands.MissingRequiredArgument):
             interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
-            await logs_channel.send(embed=embed, view=view)
+            await logs_channel.send(embed=embed)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.MemberNotFound):
             interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
-            await logs_channel.send(embed=embed, view=view)
+            await logs_channel.send(embed=embed)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.NoPrivateMessage):
             try:
                 interaction.reply(f"`The command: `{interaction.command}` cannot be used inprivate messages.")
-                await logs_channel.send(embed=embed, view=view)
+                await logs_channel.send(embed=embed)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
                 pass
             return
         else:
-            await logs_channel.send(embed=embed, view=view)
+            await logs_channel.send(embed=embed)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
