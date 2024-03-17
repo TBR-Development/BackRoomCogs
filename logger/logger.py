@@ -96,7 +96,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        descrpition = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
+        descripition = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             
         embed = discord.Embed(
             description = description,
