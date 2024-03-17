@@ -129,6 +129,52 @@ class Logger(commands.Cog):
         await logs_channel.send(embed=embed)
 
     @commands.Cog.listener()
+    async def on_member_join(self, member: discord.Member):
+        """
+        Member join event
+        """
+        
+        raw = datetime.now()
+        date_time = raw.strftime('%B %d, %Y - %H:%M')
+            
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
+
+        if logs_channel is None:
+            return
+        
+        text = f'A new user has joined the guild.\n\n**Member**: {member.name} ({member.id})\n**Date**: {date_time}'
+            
+        embed = discord.Embed(
+            description=text,
+            color=discord.Color.blue()
+        )
+        
+        await logs_channel.send(embed=embed)
+
+    @commands.Cog.listener()
+    async def on_member_remove(self, member: discord.Member):
+        """
+        Member leave event
+        """
+        
+        raw = datetime.now()
+        date_time = raw.strftime('%B %d, %Y - %H:%M')
+            
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
+
+        if logs_channel is None:
+            return
+        
+        text = f'A new user has left the guild.\n\n**Member**: {member.name} ({member.id})\n**Date**: {date_time}'
+            
+        embed = discord.Embed(
+            description=text,
+            color=discord.Color.blue()
+        )
+        
+        await logs_channel.send(embed=embed)
+        
+    @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
         """
         Command error event 
