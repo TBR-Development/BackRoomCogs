@@ -58,17 +58,19 @@ class Logger(commands.Cog):
     
         if logs_channel is None:
             logs_channel = 'No channel set'
-            logger_enabled='False'
+            logger_enabled = 'False'
+            embed_color = await ctx.embed_color()
         else:
             channel = logs_channel 
             logs_channel = f'{channel} ({channel.id})'
-            logger_enabled='True'
+            logger_enabled = 'True'
+            embed_color = discord.Color.blue()
 
         description = f'Here are the current Logger settings.\n\n**Logger Enabled**: {logger_enabled}\n**Logger Channel**: {logs_channel}'
             
         embed = discord.Embed(
             description = description,
-            color = discord.Color.blue()
+            color = embed_color
         )
         
         await ctx.send(embed=embed)
