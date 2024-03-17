@@ -68,8 +68,6 @@ class Logger(commands.Cog):
             
         embed = discord.Embed(description=description)
         embed.color = await ctx.embed_color()
-        embed.add_field(name='Enabled', value=logger_enabled, inline=True)
-        embed.add_field(name='Channel', value=logs_channel, inline=True)
         
         await ctx.send(embed=embed)
 
