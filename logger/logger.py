@@ -66,8 +66,10 @@ class Logger(commands.Cog):
 
         description = f'Here are the current Logger settings.\n\n**Logger Enabled**: {logger_enabled}\n**Logger Channel**: {logs_channel}'
             
-        embed = discord.Embed(description=description)
-        embed.color = await ctx.embed_color()
+        embed = discord.Embed(
+            description = description,
+            color = discord.Color.blue()
+        )
         
         await ctx.send(embed=embed)
 
