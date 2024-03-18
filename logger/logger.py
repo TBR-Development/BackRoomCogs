@@ -118,8 +118,8 @@ class Logger(commands.Cog):
             text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}'
             embed_two = discord.Embed(description=text_two, color=discord.Color.red())
             await logs_channel.send(embed=embed_two)
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+            for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(page, 'py'))
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild: discord.Guild):
@@ -142,8 +142,8 @@ class Logger(commands.Cog):
             text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}'
             embed_two = discord.Embed(description=text_two, color=discord.Color.red())
             await logs_channel.send(embed=embed_two)
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+            for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(page, 'py'))
         
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
@@ -166,8 +166,8 @@ class Logger(commands.Cog):
             text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}'
             embed_two = discord.Embed(description=text_two, color=discord.Color.red())
             await logs_channel.send(embed=embed_two)
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+            for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(page, 'py'))
        
 
     @commands.Cog.listener()
@@ -191,8 +191,8 @@ class Logger(commands.Cog):
             text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}'
             embed_two = discord.Embed(description=text_two, color=discord.Color.red())
             await logs_channel.send(embed=embed_two)
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+            for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(page, 'py'))
             
         
     @commands.Cog.listener()
@@ -214,34 +214,34 @@ class Logger(commands.Cog):
                 ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
             except:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
         elif isinstance(error, commands.MemberNotFound):
             try:
                 ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
             except:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
         elif isinstance(error, commands.NoPrivateMessage):
             try:
                 ctx.send(f"`The command: `{ctx.command}` cannot be used inprivate messages.")
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
             except:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
         else:
             try:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
             except:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
         
 
     @commands.Cog.listener()
@@ -262,28 +262,28 @@ class Logger(commands.Cog):
                 interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
             except:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
         elif isinstance(error, commands.MemberNotFound):
             try:
                 interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
             except:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
         elif isinstance(error, commands.NoPrivateMessage):
             try:
                 interaction.reply(f"`The command: `{interaction.command}` cannot be used inprivate messages.")
             except:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
         else:
             try:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
             except:
                 await logs_channel.send(embed=embed)
-                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                    await logs_channel.send(box(p, 'py'))
+                for page in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(page, 'py'))
