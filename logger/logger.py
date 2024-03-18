@@ -97,10 +97,14 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
         
+        if logs_channel is None:
+            return
+        
+        async def handle_error():
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
+                
         try:
-            if logs_channel is None:
-                return
-    
             now = datetime.now()
             date_time = now.strftime('%B %d, %Y - %I:%M %p')
             
@@ -109,8 +113,7 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+            await handle_error()
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild: discord.Guild):
@@ -121,10 +124,14 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
         
-        try:
-            if logs_channel is None:
-                return
+        if logs_channel is None:
+            return
         
+        async def handle_error():
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
+        
+        try:
             now = datetime.now()
             date_time = now.strftime('%B %d, %Y - %I:%M %p')
             
@@ -133,8 +140,7 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+            await handle_error()
         
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
@@ -144,6 +150,15 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
+        
+        async def handle_error():
+            d = f"{box(str(error), 'py')}\n**Guild**: {member.guild.name} ({member.guild.id})"
+            e = discord.Embed(description=d, color=discord.Color.red())
+            await logs_channel.send(embed=e)
+            await logs_channel.send(embed=e)
+                
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
 
         try:
             if logs_channel is None:
@@ -165,11 +180,7 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            d = f"**Guild**: {member.guild.name} ({member.guild.id})\n{box(str(error), 'py')}"
-            e = discord.Embed(description=d, color=discord.Color.red())
-            await logs_channel.send(embed=e)
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+            await handle_error()
        
 
     @commands.Cog.listener()
@@ -180,6 +191,15 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
+        
+        async def handle_error():
+            d = f"{box(str(error), 'py')}\n**Guild**: {member.guild.name} ({member.guild.id})"
+            e = discord.Embed(description=d, color=discord.Color.red())
+            await logs_channel.send(embed=e)
+            await logs_channel.send(embed=e)
+                
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
 
         try:
             if logs_channel is None:
@@ -201,11 +221,7 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            d = f"{box(str(error), 'py')}\n**Guild**: {member.guild.name} ({member.guild.id})"
-            e = discord.Embed(description=d, color=discord.Color.red())
-            await logs_channel.send(embed=e)
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+            await handle_error()
         
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
@@ -221,7 +237,7 @@ class Logger(commands.Cog):
         
         async def handle_error():
             if ctx.command == None:
-                d = f"{box(str(error), 'py')}\n*Guild**: {ctx.guild.name} ({ctx.guild.id})"
+                d = f"{box(str(error), 'py')}\n**Guild**: {ctx.guild.name} ({ctx.guild.id})"
             else:
                 d = f"{box(str(error), 'py')}\n***Commands**: {ctx.command}\n*Guild**: {ctx.guild.name} ({ctx.guild.id})"
             e = discord.Embed(description=d, color=discord.Color.red())
@@ -268,7 +284,7 @@ class Logger(commands.Cog):
         
         async def handle_error():
             if interaction.command == None:
-                d = f"{box(str(error), 'py')}\n*Guild**: {interaction.guild.name} ({interaction.guild.id})"
+                d = f"{box(str(error), 'py')}\n**Guild**: {interaction.guild.name} ({interaction.guild.id})"
             else:
                 d = f"{box(str(error), 'py')}\n***Commands**: {interaction.command}\n*Guild**: {interaction.guild.name} ({interaction.guild.id})"
             e = discord.Embed(description=d, color=discord.Color.red())
