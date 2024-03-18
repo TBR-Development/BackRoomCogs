@@ -40,12 +40,17 @@ class Logger(commands.Cog):
         """
         error = Exception
         
+        async def handle_error():
+            e = discord.Embed(description=str(error), color=discord.Color.red())
+            ctx.send(embed=e)
+            for p in pagify(traceback.format_exc(), shorten_by=10):
+                ctx.send(box(p, 'py'))
+        
         try:
             await self.config.logger_channel.set(channel.id)
             await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
         except:
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await ctx.send(box(p, 'py'))
+            await handle_error()
         
     @logger.command()
     async def disable(self, ctx):
@@ -54,12 +59,17 @@ class Logger(commands.Cog):
         """
         error = Exception
         
+        async def handle_error():
+            e = discord.Embed(description=str(error), color=discord.Color.red())
+            ctx.send(embed=e)
+            for p in pagify(traceback.format_exc(), shorten_by=10):
+                ctx.send(box(p, 'py'))
+        
         try:
             await self.config.logger_channel.clear()
             await ctx.send('Logger has been disabled.')
         except:
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await ctx.send(box(p, 'py'))
+            await handle_error()
         
     @logger.command()
     async def settings(self, ctx):
@@ -68,7 +78,12 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
-    
+        
+        async def handle_error():
+            e = discord.Embed(description=str(error), color=discord.Color.red())
+            ctx.send(embed=e)
+            for p in pagify(traceback.format_exc(), shorten_by=10):
+                ctx.send(box(p, 'py'))
         try:
             if logs_channel is None:
                 logs_channel = 'No channel set'
@@ -81,12 +96,10 @@ class Logger(commands.Cog):
                 embed_color = discord.Color.blue()
 
             d = f'Here are the current Logger settings.\n\n**Logger Enabled**: {logger_enabled}\n**Logger Channel**: {logs_channel}'
-            
             e = discord.Embed(description=d, color=embed_color)
             await ctx.send(embed=e)
         except:
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await ctx.send(box(p, 'py'))
+            await handle_error()
              
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild):
@@ -155,7 +168,6 @@ class Logger(commands.Cog):
             d = f"**Guild**: {member.guild} ({member.guild.id})"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
-                
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
 
@@ -198,7 +210,6 @@ class Logger(commands.Cog):
             d = f"**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
-                
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
 
@@ -246,7 +257,6 @@ class Logger(commands.Cog):
                 d = f"**Command**: {ctx.command}\n**Invoker**: {ctx.member.name} ({ctx.member.id})\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
-                
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
@@ -288,7 +298,6 @@ class Logger(commands.Cog):
                 d = f"**Command**: {interaction.command}\n**Invoker**: {interaction.member.name} ({interaction.member.id})\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
-                
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
