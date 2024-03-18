@@ -232,7 +232,7 @@ class Logger(commands.Cog):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.MemberNotFound):
             try:
-                ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
+                await ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
@@ -243,7 +243,7 @@ class Logger(commands.Cog):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.NoPrivateMessage):
             try:
-                ctx.send(f"`The command: `{ctx.command}` cannot be used inprivate messages.")
+                await ctx.send(f"`The command: `{ctx.command}` cannot be used inprivate messages.")
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
@@ -282,7 +282,7 @@ class Logger(commands.Cog):
         
         if isinstance(error, commands.MissingRequiredArgument):
             try:
-                interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
+                await interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
@@ -293,7 +293,7 @@ class Logger(commands.Cog):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.MemberNotFound):
             try:
-                interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
+                await interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
@@ -304,7 +304,7 @@ class Logger(commands.Cog):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.NoPrivateMessage):
             try:
-                interaction.reply(f"`The command: `{interaction.command}` cannot be used in private messages.")
+                await interaction.reply(f"`The command: `{interaction.command}` cannot be used in private messages.")
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
