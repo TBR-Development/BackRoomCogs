@@ -87,7 +87,7 @@ class Logger(commands.Cog):
         else:
              await ctx.send(test)
     @commands.Cog.listener()
-    async def on_guild_join(self, guild: discord.Guild, error: Exception):
+    async def on_guild_join(self, error: Exception, guild: discord.Guild):
         """
         Guild join event
         """
@@ -111,7 +111,7 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
         
     @commands.Cog.listener()
-    async def on_guild_remove(self, guild: discord.Guild, error: Exception):
+    async def on_guild_remove(self, error: Exception, guild: discord.Guild):
         """
         Guild remove event
         """
@@ -135,7 +135,7 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
         
     @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member, error: Exception):
+    async def on_member_join(self, error: Exception, member: discord.Member):
         """
         Member join event
         """
@@ -159,7 +159,7 @@ class Logger(commands.Cog):
        
 
     @commands.Cog.listener()
-    async def on_member_remove(self, member: discord.Member, error: Exception):
+    async def on_member_remove(self, error: Exception, member: discord.Member):
         """
         Member leave event
         """
