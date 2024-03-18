@@ -33,10 +33,9 @@ class Logger(commands.Cog):
     async def enable(self, ctx, channel: discord.TextChannel):
         """
         Set the Logger channel
-        
+
         ```
-        Args:
-            channel: discord.TextChannel
+        channel (discord.TextChannel): The channel to send the logs to
         ```
         """
         error = Exception
