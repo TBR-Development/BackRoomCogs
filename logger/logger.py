@@ -40,7 +40,7 @@ class Logger(commands.Cog):
             await self.config.logger_channel.set(channel.id)
             await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
         except:
-            text = f'There was an error with that command.\n{box(str(error), 'py')}'
+            text = f"There was an error with that command.\n{box(str(error), 'py')}"
             await ctx.send(text)
         
     @logger.command()
@@ -53,7 +53,7 @@ class Logger(commands.Cog):
             await self.config.logger_channel.clear()
             await ctx.send('Logger has been disabled.')
         except:
-            text = f'There was an error with that command.\n{box(str(error), 'py')}'
+            text = f"There was an error with that command.\n{box(str(error), 'py')}"
             await ctx.send(text)
         
     @logger.command()
