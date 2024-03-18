@@ -60,7 +60,7 @@ class Logger(commands.Cog):
     @logger.command()
     async def settings(self, ctx):
         """
-        View the logger config\n```[p]logger settings```
+        View the logger config
         """
 
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
