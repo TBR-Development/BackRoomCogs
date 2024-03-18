@@ -264,7 +264,7 @@ class Logger(commands.Cog):
                 await handle_error()
         elif isinstance(error, commands.NoPrivateMessage):
             try:
-                await ctx.send(f"`The command: `{ctx.command}` cannot be used inprivate messages.")
+                await ctx.send(f"`The command: `{ctx.command}` cannot be used in private messages.")
                 await handle_error()
             except:
                 await handle_error()
