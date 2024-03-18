@@ -48,11 +48,11 @@ class WaifuIM(commands.Cog):
             versatile = data['versatile']
             nsfw = data['nsfw']
             
-            versatile_array = '\n'.join(versatile)
-            nsfw_array = '\n'.join(nsfw)
+            versatile_array = f'- {versatile}\n'
+            nsfw_array = f'- {nsfw}\n'
             
-            versatile_tags = f' - {versatile_array}'
-            nsfw_tags = f' - {nsfw_array}'
+            versatile_tags = versatile_array
+            nsfw_tags = nsfw_array
             
             if ctx.channel.is_nsfw():
                     t = f'{versatile_tags}, {nsfw_tags}'
@@ -61,7 +61,7 @@ class WaifuIM(commands.Cog):
                 
             embed = discord.Embed(description='Here is a list of available tags from the waifu.im api.')
             embed.color = await ctx.embed_color()
-            embed.add_field(name='Tags', value=box(t, 'yml'))
+            embed.add_field(name='Tags', value=box(t, 'py'))
             embed.set_thumbnail(url=embed_icon)
             embed.set_image(url='https://cdn.waifu.im/7892.jpg')
             embed.set_footer(text=footer_text, icon_url=embed_icon)
