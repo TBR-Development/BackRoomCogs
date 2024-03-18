@@ -250,35 +250,12 @@ class Logger(commands.Cog):
             return
         
         async def handle_error():
-            d = f"**Date**: {date_time}"
-            e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
+            e = discord.Embed(description=str(error), color=discord.Color.red())
             await logs_channel.send(embed=e)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
                 
-        if isinstance(error, TypeError):
-            # await logs_channel.send('...') 
-            await handle_error()
-        elif isinstance(error, AttributeError):
-            # await logs_channel.send('...') 
-            await handle_error()
-        elif isinstance(error, IndexError):
-            # await logs_channel.send('...') 
-            await handle_error()
-        elif isinstance(error, SystemError):
-            # await logs_channel.send('...') 
-            await handle_error()
-        elif isinstance(error, MemoryError):
-            # await logs_channel.send('...') 
-            await handle_error()
-        elif isinstance(error, ConnectionError):
-            # await logs_channel.send('...') 
-            await handle_error()
-        elif isinstance(error, SyntaxError):
-            # await logs_channel.send('...') 
-            await handle_error()
-        else:
-            await handle_error()
+        await handle_error()
         
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
