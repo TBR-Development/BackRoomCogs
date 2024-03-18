@@ -66,7 +66,6 @@ class Logger(commands.Cog):
         """
         View the logger config
         """
-
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
     
@@ -92,9 +91,9 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild):
         """
-        Guild join event
+        Args:
+            guild (discord.Guild)
         """
-        
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
         
@@ -116,7 +115,8 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_remove(self, guild: discord.Guild):
         """
-        Guild remove event
+        Args:
+            guild (discord.Guild)
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
@@ -139,7 +139,8 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         """
-        Member join event
+        Args:
+            member (discord.Member)
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
@@ -174,7 +175,8 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
         """
-        Member leave event
+        Args:
+            member (discord.Member)
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
@@ -208,9 +210,10 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
         """
-        Command error event 
+        Args:
+            ctx (commands.Context)
+            error (Exception)
         """
- 
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
         if logs_channel is None:
@@ -277,7 +280,9 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
         """
-        Slash command error event 
+        Args:
+            interaction (discord.Interaction)
+            error (Exception)
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
