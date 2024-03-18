@@ -29,7 +29,7 @@ class Logger(commands.Cog):
         
         -------------------------------
         
-        [p]logger <subcommand>
+        `[p]logger <subcommand>`
         """
         return
     
@@ -40,7 +40,7 @@ class Logger(commands.Cog):
         
         -------------------------------
         
-        [p]logger enable <channel: discord.TextChannel>
+        `[p]logger enable <channel: discord.TextChannel>`
         """
         error = Exception
         
@@ -58,7 +58,7 @@ class Logger(commands.Cog):
         
         -------------------------------
         
-        [p]logger disable
+        `[p]logger disable`
         """
         error = Exception
         
