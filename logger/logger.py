@@ -35,7 +35,7 @@ class Logger(commands.Cog):
         Set the Logger channel
 
         ```
-        channel (discord.TextChannel): The channel to send the logs to
+        channel: The channel to send the logs to
         ```
         """
         error = Exception
