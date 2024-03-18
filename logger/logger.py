@@ -104,7 +104,7 @@ class Logger(commands.Cog):
     async def on_guild_join(self, guild: discord.Guild):
         """
         Args:
-            guild (discord.Guild)
+            guild: discord.Guild
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
@@ -130,8 +130,8 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_remove(self, guild: discord.Guild):
         """
-        Args:
-            guild (discord.Guild)
+        Params:
+            guild: discord.Guild
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
@@ -157,8 +157,8 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         """
-        Args:
-            member (discord.Member)
+        Params:
+            member: discord.Member
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
@@ -196,8 +196,8 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
         """
-        Args:
-            member (discord.Member)
+        Params:
+            member: discord.Member
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
@@ -237,7 +237,7 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_error(self, error: Exception):
         """
-        Args:
+        Params:
             error: Exception
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
@@ -256,7 +256,7 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
         """
-        Args:
+        Params:
             ctx: commands.Context
             error: Exception
         """
@@ -297,7 +297,7 @@ class Logger(commands.Cog):
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
         """
-        Args:
+        Params:
             interaction: discord.Interaction
             error: Exception
         """
