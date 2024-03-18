@@ -1,11 +1,11 @@
 {
 	"author": ["ShitShowDevelopment", "Flame422", "TwentySix", "aikaterna", "zephyrkul", "yamikaito"],
 	"name": "Logger",
-	"install_msg": "Thank you for installing this cog!\n\nFeatures are currently a tad limited. We plan to add more to this over time. If you have any feedback, feel free to let us know at our discord.\n - https://dsc.gg/the-shit-show\n\nUse `[p]help Logger` to get the list of commands and how to use them.",
-	"short": "Logging cog for use by bot owners",
-	"description": "Log events to a specified channel in the bot owner's guild.",
+	"install_msg": "Thank you for installing this cog!\nUse `[p]help Logger` to see a list of available command(s) in this cog.\n\nIf you have any feedback, feel free to let us know at our discord.\n - https://dsc.gg/the-shit-show\n\n",
+	"short": "Logger cog to aid in debugging and support.",
+	"description": "Logger cog to aid in debugging and support. Logs events from every guild the bot is in to a set channel in the bot owner's guild.",
 	"permissions": ["is_owner"],
-	"tags": ["debugging", "logging", "events", "info"],
+	"tags": ["logging"],
 	"min_bot_version": "3.5.0",
-	"end_user_data_statement": "This cog does not persistantly store data or metadata about users."
+	"end_user_data_statement": "This cog logs information about users, guilds, and errors to a set logger channel for use with debugging and support purposes. This cog does not persistantly store data or metadata about users or guilds."
 }
