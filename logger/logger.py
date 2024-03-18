@@ -84,18 +84,7 @@ class Logger(commands.Cog):
         except:
             for p in pagify(traceback.format_exc(), 'py'):
                 await ctx.send(box(p, 'py'))
-
-    @logger.command()
-    async def test(self, ctx):
-        """
-        Dummy command to test the error handler(s)
-        """
-        logs_channel = self.bot.get_channel(await self.config.logger_channel())
-        
-        if logs_channel is None:
-            ctx.send(box('You do not have the logger enabled.\nPlease use `[p]logger enable <#channel>` if you want to test the error handler.', 'py'))
-        else:
-             await ctx.send(test)
+             
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild):
         """
