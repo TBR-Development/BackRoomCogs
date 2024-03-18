@@ -48,12 +48,16 @@ class WaifuIM(commands.Cog):
             versatile_array = ', '.join(versatile)
             nsfw_array = ', '.join(nsfw)
             versatile_tags = '{}'.format(versatile_array)
-            nsfw_tags = '{}, {}'.format(versatile_array, nsfw_array)
+            nsfw_tags = '{}, {}'.format(nsfw_array)
+            
+            if ctx.channel.is_nsfw():
+                    tags = f'{versatile_tags}, {nsfw_tags}'
+            else:
+                    tags = f'{versatile_tags}'
                 
-            embed = discord.Embed(description='Here is a list of available tags from the waifu.im api.\n\nThe `[p]tag` and `[p]ntag` commands are the only ones that require a tag. All other commands do not accapt a tag.', timestamp=datetime.now())
+            embed = discord.Embed(description='Here is a list of available tags from the waifu.im api.')
             embed.color = await ctx.embed_color()
-            embed.add_field(name='SFW Tags', value=box(versatile_tags))
-            embed.add_field(name='NSFW Tags', value=box(nsfw_tags))
+            embed.add_field(name='Tags', value=box(tags))
             embed.set_thumbnail(url=embed_icon)
             embed.set_image(url='https://cdn.waifu.im/7892.jpg')
             embed.set_footer(text=footer_text, icon_url=embed_icon)
@@ -70,7 +74,11 @@ class WaifuIM(commands.Cog):
             Get a random waifu image
             """
             search_endpoint = 'https://api.waifu.im/search'
-            params = {'is_nsfw': 'false'}
+            
+            if ctx.channel.is_nsfw():
+                    params = {'is_nsfw': 'true'}
+            else:
+                    params = {'is_nsfw': 'false'}
                         
             async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
@@ -86,7 +94,7 @@ class WaifuIM(commands.Cog):
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                embed = discord.Embed(timestamp=datetime.now())
+                embed = discord.Embed()
                 embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
@@ -112,15 +120,19 @@ class WaifuIM(commands.Cog):
             
             tags_endpoint = 'https://api.waifu.im/tags'
             search_endpoint = 'https://api.waifu.im/search'
-            params = {'included_tags': '{}'.format(tag)}
             
+            if ctx.channel.is_nsfw():
+                    params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'true'}
+            else:
+                    params = {'included_tags': '{}'.format(tag), 'is_nsfw': 'false'}
+                    
             async with self.session.get(tags_endpoint) as response:
                 data = await response.json()
                 
             versatile_tags = data['versatile']
-            
-            if tag in versatile_tags: 
-                    
+            nsfw_tags = data['nsfw']
+        
+            async def send_image():
                     async with self.session.get(search_endpoint, params=params) as response:
                             data = await response.json()
                     
@@ -135,7 +147,7 @@ class WaifuIM(commands.Cog):
                     date = '{}'.format(raw)
                     upload_date = date
                 
-                    embed = discord.Embed(timestamp=datetime.now())
+                    embed = discord.Embed()
                     embed.add_field(name='Image ID', value=image_id, inline=True)
                     embed.add_field(name='Upload Date', value=upload_date, inline=True)
                     embed.set_image(url=image_url)
@@ -150,6 +162,10 @@ class WaifuIM(commands.Cog):
                     
                     await ctx.send(embed=embed, view=view)
             
+            if tag in versatile_tags: 
+                    await send_image()
+            elif tag in nsfw_tags: 
+                    await send_image()
             else:
                     await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of available tags.'))
     
@@ -160,7 +176,12 @@ class WaifuIM(commands.Cog):
             """
             
             search_endpoint = 'https://api.waifu.im/search'
-            params = {'gif': 'true', 'is_nsfw': 'false'}
+            
+            
+            if ctx.channel.is_nsfw():
+                    params = {'gif': 'true', 'is_nsfw': 'true'}
+            else:
+                    params = {'gif': 'true', 'is_nsfw': 'false'}
             
             async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
@@ -171,13 +192,12 @@ class WaifuIM(commands.Cog):
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
                         
-                        
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                embed = discord.Embed(timestamp=datetime.now())
+                embed = discord.Embed()
                 embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
@@ -199,171 +219,11 @@ class WaifuIM(commands.Cog):
             """
             
             search_endpoint = 'https://api.waifu.im/search'
-            params = {'many': 'true', 'is_nsfw': 'false'}
             
-            async with self.session.get(search_endpoint, params=params) as response:
-                data = await response.json()
-                    
-                for image in data['images']:
-                        image_url = image['url']
-                        image_id = image['image_id']
-                        source_url = image['source']
-                        uploaded_at = image['uploaded_at']
-                        
-                        
-                raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
-                
-                date = '{}'.format(raw)
-                upload_date = date
-                
-                embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image ID', value=image_id, inline=True)
-                embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=embed_icon)
-                embed.color = await ctx.embed_color()
-                view = discord.ui.View()
-                style = discord.ButtonStyle.grey
-                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                view.add_item(item=image_button)
-                view.add_item(item=source_button)
-                
-                await ctx.send(embed=embed, view=view) 
-                               
-    @waifuim.command()
-    @commands.is_nsfw()
-    async def nrandom(self, ctx):
-            """
-            Get a random nsfw waifu image
-            """
-            
-            search_endpoint = 'https://api.waifu.im/search'
-            params = {'is_nsfw': 'true'}
-            
-            async with self.session.get(search_endpoint, params=params) as response:
-                data = await response.json()
-                    
-                for image in data['images']:
-                        image_url = image['url']
-                        image_id = image['image_id']
-                        source_url = image['source']
-                        uploaded_at = image['uploaded_at']
-#                        
-                        
-                raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
-                
-                date = '{}'.format(raw)
-                upload_date = date
-                
-                embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image ID', value=image_id, inline=True)
-                embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=embed_icon)
-                embed.color = await ctx.embed_color()
-                view = discord.ui.View()
-                style = discord.ButtonStyle.grey
-                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                view.add_item(item=image_button)
-                view.add_item(item=source_button)
-                
-                await ctx.send(embed=embed, view=view)
-                                
-    @waifuim.command()
-    @commands.is_nsfw()
-    async def ntag(self, ctx, tag):
-            """
-            Get a random nsfw waifu image by tag.
-            
-            See `[p]waifuim help` for a list of available tags.
-            """
-            
-            tags_endpoint = 'https://api.waifu.im/tags'
-            search_endpoint = 'https://api.waifu.im/search'
-            params = {'included_tags': '{}'.format(tag)}
-            
-            async with self.session.get(tags_endpoint) as response:
-                data = await response.json()
-                
-            versatile_tags = data['versatile']
-            nsfw_tags = data['nsfw']
-            
-            if tag in versatile_tags: 
-                    
-                    async with self.session.get(search_endpoint, params=params) as response:
-                            data = await response.json()
-                    
-                    for image in data['images']:
-                            image_url = image['url']
-                            image_id = image['image_id']
-                            source_url = image['source']
-                            uploaded_at = image['uploaded_at']
-                        
-                    raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
-                        
-                    date = '{}'.format(raw)
-                    upload_date = date
-                
-                    embed = discord.Embed(timestamp=datetime.now())
-                    embed.add_field(name='Image ID', value=image_id, inline=True)
-                    embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                    embed.set_image(url=image_url)
-                    embed.set_footer(text=footer_text, icon_url=embed_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                    source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                    view.add_item(item=image_button)
-                    view.add_item(item=source_button)
-                    
-                    await ctx.send(embed=embed, view=view)
-                    
-            elif tag in nsfw_tags: 
-                    
-                    async with self.session.get(search_endpoint, params=params) as response:
-                            data = await response.json()
-                    
-                    for image in data['images']:
-                            image_url = image['url']
-                            image_id = image['image_id']
-                            source_url = image['source']
-                            uploaded_at = image['uploaded_at']
-                        
-                    raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
-                        
-                    date = '{}'.format(raw)
-                    upload_date = date
-                
-                    embed = discord.Embed(timestamp=datetime.now())
-                    embed.add_field(name='Image ID', value=image_id, inline=True)
-                    embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                    embed.set_image(url=image_url)
-                    embed.set_footer(text=footer_text, icon_url=embed_icon)
-                    embed.color = await ctx.embed_color()
-                    view = discord.ui.View()
-                    style = discord.ButtonStyle.grey
-                    image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                    source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                    view.add_item(item=image_button)
-                    view.add_item(item=source_button)
-                    
-                    await ctx.send(embed=embed, view=view)
-                    
+            if ctx.channel.is_nsfw():
+                    params = {'many': 'true', 'is_nsfw': 'true'}
             else:
-                    await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of available tags.'))
-                    
-    @waifuim.command()
-    @commands.is_nsfw()
-    async def ngif(self, ctx):
-            """
-            Get a random nsfw waifu gif
-            """
-            
-            search_endpoint = 'https://api.waifu.im/search'
-            params = {'gif': 'true', 'is_nsfw': 'true'}
+                    params = {'many': 'true', 'is_nsfw': 'false'}
             
             async with self.session.get(search_endpoint, params=params) as response:
                 data = await response.json()
@@ -373,56 +233,14 @@ class WaifuIM(commands.Cog):
                         image_id = image['image_id']
                         source_url = image['source']
                         uploaded_at = image['uploaded_at']
-#                        
+                        
                         
                 raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
                 
                 date = '{}'.format(raw)
                 upload_date = date
                 
-                
-                embed = discord.Embed(timestamp=datetime.now())
-                embed.add_field(name='Image ID', value=image_id, inline=True)
-                embed.add_field(name='Upload Date', value=upload_date, inline=True)
-                embed.set_image(url=image_url)
-                embed.set_footer(text=footer_text, icon_url=embed_icon)
-                embed.color = await ctx.embed_color()
-                view = discord.ui.View()
-                style = discord.ButtonStyle.grey
-                image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
-                source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
-                view.add_item(item=image_button)
-                view.add_item(item=source_button)
-                
-                await ctx.send(embed=embed, view=view)
-                  
-                               
-    @waifuim.command()
-    @commands.is_nsfw()
-    async def ndump(self, ctx):
-            """
-            Dump a bunch of random nsfw waifu images
-            """
-            
-            search_endpoint = 'https://api.waifu.im/search'
-            params = {'many': 'true', 'is_nsfw': 'true'}
-            
-            async with self.session.get(search_endpoint, params=params) as response:
-                data = await response.json()
-                    
-                for image in data['images']:
-                        image_url = image['url']
-                        image_id = image['image_id']
-                        source_url = image['source']
-                        uploaded_at = image['uploaded_at']
-#                        
-                        
-                raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
-                
-                date = '{}'.format(raw)
-                upload_date = date
-                
-                embed = discord.Embed(timestamp=datetime.now())
+                embed = discord.Embed()
                 embed.add_field(name='Image ID', value=image_id, inline=True)
                 embed.add_field(name='Upload Date', value=upload_date, inline=True)
                 embed.set_image(url=image_url)
@@ -436,3 +254,209 @@ class WaifuIM(commands.Cog):
                 view.add_item(item=source_button)
                 
                 await ctx.send(embed=embed, view=view) 
+                               
+ #   @waifuim.command()
+ #   @commands.is_nsfw()
+ #   async def nrandom(self, ctx):
+ #           """
+ #           Get a random nsfw waifu image
+ #           """
+ #           
+ #           search_endpoint = 'https://api.waifu.im/search'
+ #           params = {'is_nsfw': 'true'}
+ #           
+ #           async with self.session.get(search_endpoint, params=params) as response:
+ #               data = await response.json()
+ #                   
+ #               for image in data['images']:
+ #                       image_url = image['url']
+ #                       image_id = image['image_id']
+ #                       source_url = image['source']
+ #                       uploaded_at = image['uploaded_at']
+ #                        
+ #                       
+ #               raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+ #               
+ #               date = '{}'.format(raw)
+ #               upload_date = date
+ #               
+ #               embed = discord.Embed()
+ #               embed.add_field(name='Image ID', value=image_id, inline=True)
+ #               embed.add_field(name='Upload Date', value=upload_date, inline=True)
+ #               embed.set_image(url=image_url)
+ #               embed.set_footer(text=footer_text, icon_url=embed_icon)
+ #               embed.color = await ctx.embed_color()
+ #               view = discord.ui.View()
+ #               style = discord.ButtonStyle.grey
+ #               image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+ #               source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+ #               view.add_item(item=image_button)
+ #               view.add_item(item=source_button)
+ #               
+ #               await ctx.send(embed=embed, view=view)
+ #                               
+ #   @waifuim.command()
+ #   @commands.is_nsfw()
+ #   async def ntag(self, ctx, tag):
+ #           """
+ #           Get a random nsfw waifu image by tag.
+ #           
+ #           See `[p]waifuim help` for a list of available tags.
+ #           """
+ #           
+ #           tags_endpoint = 'https://api.waifu.im/tags'
+ #           search_endpoint = 'https://api.waifu.im/search'
+ #           params = {'included_tags': '{}'.format(tag)}
+ #           
+ #           async with self.session.get(tags_endpoint) as response:
+ #               data = await response.json()
+ #               
+ #           versatile_tags = data['versatile']
+ #           nsfw_tags = data['nsfw']
+ #           
+ #           if tag in versatile_tags: 
+ #                   
+ #                   async with self.session.get(search_endpoint, params=params) as response:
+ #                           data = await response.json()
+ #                   
+ #                   for image in data['images']:
+ #                           image_url = image['url']
+ #                           image_id = image['image_id']
+ #                           source_url = image['source']
+ #                           uploaded_at = image['uploaded_at']
+ #                       
+ #                   raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+ #                       
+ #                   date = '{}'.format(raw)
+ #                   upload_date = date
+ #               
+ #                   embed = discord.Embed()
+ #                   embed.add_field(name='Image ID', value=image_id, inline=True)
+ #                   embed.add_field(name='Upload Date', value=upload_date, inline=True)
+ #                   embed.set_image(url=image_url)
+ #                   embed.set_footer(text=footer_text, icon_url=embed_icon)
+ #                   embed.color = await ctx.embed_color()
+ #                   view = discord.ui.View()
+ #                   style = discord.ButtonStyle.grey
+ #                   image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+ #                   source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+ #                   view.add_item(item=image_button)
+ #                   view.add_item(item=source_button)
+ #                   
+ #                   await ctx.send(embed=embed, view=view)
+ #                   
+ #           elif tag in nsfw_tags: 
+ #                   
+ #                   async with self.session.get(search_endpoint, params=params) as response:
+ #                           data = await response.json()
+ #                   
+ #                   for image in data['images']:
+ #                           image_url = image['url']
+ #                           image_id = image['image_id']
+ #                           source_url = image['source']
+ #                           uploaded_at = image['uploaded_at']
+ #                       
+ #                   raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+ #                       
+ #                   date = '{}'.format(raw)
+ #                   upload_date = date
+ #               
+ #                   embed = discord.Embed()
+ #                   embed.add_field(name='Image ID', value=image_id, inline=True)
+ #                   embed.add_field(name='Upload Date', value=upload_date, inline=True)
+ #                   embed.set_image(url=image_url)
+ #                   embed.set_footer(text=footer_text, icon_url=embed_icon)
+ #                   embed.color = await ctx.embed_color()
+ #                   view = discord.ui.View()
+ #                   style = discord.ButtonStyle.grey
+ #                   image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+ #                   source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+ #                   view.add_item(item=image_button)
+ #                   view.add_item(item=source_button)
+ #                   
+ #                   await ctx.send(embed=embed, view=view)
+ #                   
+ #           else:
+ #                   await ctx.send(box('Invalid tag passed. Please pass a valid tag.\n\nUse [p]waifuim help to see a list of available tags.'))
+ #                   
+ #   @waifuim.command()
+ #   @commands.is_nsfw()
+ #   async def ngif(self, ctx):
+ #           """
+ #           Get a random nsfw waifu gif
+ #           """
+ #           
+ #           search_endpoint = 'https://api.waifu.im/search'
+ #           params = {'gif': 'true', 'is_nsfw': 'true'}
+ #           
+ #           async with self.session.get(search_endpoint, params=params) as response:
+ #               data = await response.json()
+ #                   
+ #               for image in data['images']:
+ #                       image_url = image['url']
+ #                       image_id = image['image_id']
+ #                       source_url = image['source']
+ #                       uploaded_at = image['uploaded_at']
+ #                        
+ #                       
+ #               raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+ #               
+ #               date = '{}'.format(raw)
+ #               upload_date = date
+ #               
+ #               
+ #               embed = discord.Embed()
+ #               embed.add_field(name='Image ID', value=image_id, inline=True)
+ #               embed.add_field(name='Upload Date', value=upload_date, inline=True)
+ #               embed.set_image(url=image_url)
+ #               embed.set_footer(text=footer_text, icon_url=embed_icon)
+ #               embed.color = await ctx.embed_color()
+ #               view = discord.ui.View()
+ #               style = discord.ButtonStyle.grey
+ #               image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+ #               source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+ #               view.add_item(item=image_button)
+ #               view.add_item(item=source_button)
+ #               
+ #               await ctx.send(embed=embed, view=view)
+ #                 
+ #                              
+ #   @waifuim.command()
+ #   @commands.is_nsfw()
+ #   async def ndump(self, ctx):
+ #           """
+ #           Dump a bunch of random nsfw waifu images
+ #           """
+ #           
+ #           search_endpoint = 'https://api.waifu.im/search'
+ #           params = {'many': 'true', 'is_nsfw': 'true'}
+ #           
+ #           async with self.session.get(search_endpoint, params=params) as response:
+ #               data = await response.json()
+ #                   
+ #               for image in data['images']:
+ #                       image_url = image['url']
+ #                       image_id = image['image_id']
+ #                       source_url = image['source']
+ #                       uploaded_at = image['uploaded_at']
+ #                        
+ #                       
+ #               raw = datetime.fromisoformat(uploaded_at).date().strftime("%B %d, %Y")
+ #               
+ #               date = '{}'.format(raw)
+ #               upload_date = date
+ #               
+ #               embed = discord.Embed()
+ #               embed.add_field(name='Image ID', value=image_id, inline=True)
+ #               embed.add_field(name='Upload Date', value=upload_date, inline=True)
+ #               embed.set_image(url=image_url)
+ #               embed.set_footer(text=footer_text, icon_url=embed_icon)
+ #               embed.color = await ctx.embed_color()
+ #               view = discord.ui.View()
+ #               style = discord.ButtonStyle.grey
+ #               image_button = discord.ui.Button(style=style, label='Open Image', url=image_url)
+ #               source_button = discord.ui.Button(style=style, label='Image Source', url=source_url)
+ #               view.add_item(item=image_button)
+ #               view.add_item(item=source_button)
+ #               
+ #               await ctx.send(embed=embed, view=view) 

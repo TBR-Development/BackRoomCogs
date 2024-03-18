@@ -261,7 +261,7 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
         
         if isinstance(error, commands.MissingRequiredArgument):
-            ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
+            await ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
             await handle_error()
         elif isinstance(error, commands.MemberNotFound):
             await ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
