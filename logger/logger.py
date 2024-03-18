@@ -40,7 +40,7 @@ class Logger(commands.Cog):
             await self.config.logger_channel.set(channel.id)
             await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
         except:
-            for p in pagify(traceback.format_exc(), 'py'):
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await ctx.send(box(p, 'py'))
         
     @logger.command()
@@ -54,7 +54,7 @@ class Logger(commands.Cog):
             await self.config.logger_channel.clear()
             await ctx.send('Logger has been disabled.')
         except:
-            for p in pagify(traceback.format_exc(), 'py'):
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await ctx.send(box(p, 'py'))
         
     @logger.command()
@@ -79,10 +79,10 @@ class Logger(commands.Cog):
 
             d = f'Here are the current Logger settings.\n\n**Logger Enabled**: {logger_enabled}\n**Logger Channel**: {logs_channel}'
             
-            e = discord.Embed(description=d, color = embed_color)
+            e = discord.Embed(description=d, color=embed_color)
             await ctx.send(embed=e)
         except:
-            for p in pagify(traceback.format_exc(), 'py'):
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await ctx.send(box(p, 'py'))
              
     @commands.Cog.listener()
