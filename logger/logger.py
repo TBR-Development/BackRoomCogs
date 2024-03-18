@@ -202,9 +202,26 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
         
-        now = datetime.now()
-        date_time = now.strftime('%B %d, %Y - %I:%M %p')
+        if logs_channel is None:
+                return
         
+        now = datetime.now()
+        created_at = member.created_at
+        
+        date_time = now.strftime('%B %d, %Y - %I:%M %p')
+        created_date = created_at.strftime('%B %d, %Y - %I:%M %p')
+        
+        if member.bot == True:
+            is_bot = 'True'
+        else:
+            is_bot = 'False'
+        
+        async def send_message():
+            d = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Bot**: {is_bot}\n**Created**: {created_date}\n**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}'
+            e = discord.Embed(description=d, color=discord.Color.red())
+            
+            await logs_channel.send(embed=e)
+            
         async def send_error():
             d = f"**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
@@ -213,24 +230,7 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
 
         try:
-            if logs_channel is None:
-                return
-            
-            if member.bot == True:
-                is_bot = 'True'
-            else:
-                is_bot = 'False'
-            
-            now = datetime.now()
-            created_at = member.created_at
-            
-            date_time = now.strftime('%B %d, %Y - %I:%M %p')
-            created_date = created_at.strftime('%B %d, %Y - %I:%M %p')
-            
-            d = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Bot**: {is_bot}\n**Created**: {created_date}\n**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}'
-            e = discord.Embed(description=d, color=discord.Color.red())
-            
-            await logs_channel.send(embed=e)
+            await send_message()
         except:
             await send_error()
             
@@ -251,7 +251,7 @@ class Logger(commands.Cog):
         
         async def send_message():
             d = f"A message has been deleted in a guild.\n\n**Guild**: {message.guild} ({message.guild.id})\n**Date**: {date_time}\n\n**__Message Content__**\n{box(message.content)}"
-            e = discord.Embed(description=d, color=discord.Color.red())
+            e = discord.Embed(description=d, color=discord.Color.orange())
             await logs_channel.send(embed=e)
             
         async def send_error():
