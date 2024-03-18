@@ -219,50 +219,40 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        async def pagify_error():
+        async def handle_error():
+            if ctx.command == None:
+                d = f"{box(str(error), 'py')}\n*Guild**: {ctx.guild.name} ({ctx.guild.id})"
+            else:
+                d = f"{box(str(error), 'py')}\n***Commands**: {ctx.command}\n*Guild**: {ctx.guild.name} ({ctx.guild.id})"
+            e = discord.Embed(description=d, color=discord.Color.red())
+            await logs_channel.send(embed=e)
+            await logs_channel.send(embed=e)
+                
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
         if isinstance(error, commands.MissingRequiredArgument):
             try:
                 ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
-                await pagify_error()
+                await handle_error()
             except:
-                d = f"{box(str(error), 'py')}\n**Guild**: {ctx.guild.name} ({ctx.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
+                await handle_error()
         elif isinstance(error, commands.MemberNotFound):
             try:
                 await ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
-                await pagify_error()
+                await handle_error()
             except:
-                d = f"{box(str(error), 'py')}\n**Guild**: {ctx.guild.name} ({ctx.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
+                await handle_error()
         elif isinstance(error, commands.NoPrivateMessage):
             try:
                 await ctx.send(f"`The command: `{ctx.command}` cannot be used inprivate messages.")
-                await pagify_error()
+                await handle_error()
             except:
-                d = f"{box(str(error), 'py')}\n**Guild**: {ctx.guild.name} ({ctx.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
-        elif isinstance(error, commands.CommandNotFound):
-            pass
+                await handle_error()
+#        elif isinstance(error, commands.CommandNotFound):
+#            pass
         else:
-            try:
-                d = f"{box(str(error), 'py')}\n***Commands**: {ctx.command}\n*Guild**: {ctx.guild.name} ({ctx.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
-            except:
-                d = f"{box(str(error), 'py')}\n**Guild**: {ctx.guild.name} ({ctx.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
+            await handle_error()
 
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
@@ -276,47 +266,37 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        async def pagify_error():
+        async def handle_error():
+            if interaction.command == None:
+                d = f"{box(str(error), 'py')}\n*Guild**: {interaction.guild.name} ({interaction.guild.id})"
+            else:
+                d = f"{box(str(error), 'py')}\n***Commands**: {interaction.command}\n*Guild**: {interaction.guild.name} ({interaction.guild.id})"
+            e = discord.Embed(description=d, color=discord.Color.red())
+            await logs_channel.send(embed=e)
+            await logs_channel.send(embed=e)
+                
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
         if isinstance(error, commands.MissingRequiredArgument):
             try:
                 await interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
-                await pagify_error()
+                await handle_error()
             except:
-                d = f"{box(str(error), 'py')}\n**Guild**: {interaction.guild.name} ({interaction.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
+                await handle_error()
         elif isinstance(error, commands.MemberNotFound):
             try:
                 await interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
-                await pagify_error()
+                await handle_error()
             except:
-                d = f"{box(str(error), 'py')}\n**Guild**: {interaction.guild.name} ({interaction.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
+                await handle_error()
         elif isinstance(error, commands.NoPrivateMessage):
             try:
                 await interaction.reply(f"`The command: `{interaction.command}` cannot be used in private messages.")
-                await pagify_error()
+                await handle_error()
             except:
-                d = f"{box(str(error), 'py')}\n**Guild**: {interaction.guild.name} ({interaction.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
-        elif isinstance(error, commands.CommandNotFound):
-            pass
+                await handle_error()
+#        elif isinstance(error, commands.CommandNotFound):
+#            pass
         else:
-            try:
-                d = f"{box(str(error), 'py')}\n**Command**: {interaction.command}\n**Guild**: {interaction.guild.name} ({interaction.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
-            except:
-                d = f"{box(str(error), 'py')}\n**Guild**: {interaction.guild.name} ({interaction.guild.id})"
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
-                await pagify_error()
+            await handle_error()
