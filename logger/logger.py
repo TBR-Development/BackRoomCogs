@@ -82,7 +82,8 @@ class Logger(commands.Cog):
             embed = discord.Embed(description = text, color = embed_color)
             await ctx.send(embed=embed)
         except:
-            await ctx.send(f'There was an error with that command.\n{box(str(error), 'py')}')
+            text = f"There was an error with that command.\n{box(str(error), 'py')}"
+            await ctx.send(text)
 
     @logger.command()
     async def test(self, ctx):
