@@ -243,7 +243,7 @@ class Logger(commands.Cog):
             if ctx.command == None:
                 d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n**Date**: {date_time}"
             else:
-                d = f"**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Date**: {date_time}"
+                d = f"**Command**: {ctx.command}\n**Invoker**: {ctx.member.name} ({ctx.member.id})\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
                 
@@ -292,7 +292,7 @@ class Logger(commands.Cog):
             if interaction.command == None:
                 d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n**Date**: {date_time}"
             else:
-                d = f"**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Date**: {date_time}"
+                d = f"**Command**: {interaction.command}\n**Invoker**: {interaction.member.name} ({interaction.member.id})\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
                 
