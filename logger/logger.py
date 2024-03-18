@@ -164,6 +164,9 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
+            d = f"**Guild**: {member.guild.name} ({member.guild.id})\n{box(str(error), 'py')}"
+            e = discord.Embed(description=d, color=discord.Color.red())
+            await logs_channel.send(embed=e)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
        
@@ -196,9 +199,11 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
+            d = f"**Guild**: {member.guild.name} ({member.guild.id})\n{box(str(error), 'py')}"
+            e = discord.Embed(description=d, color=discord.Color.red())
+            await logs_channel.send(embed=e)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
-            
         
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
@@ -217,20 +222,20 @@ class Logger(commands.Cog):
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {ctx.guild.name} ({ctx.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.CommandNotFound):
             try:
-                d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {ctx.guild.name} ({ctx.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {ctx.guild.name} ({ctx.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
@@ -239,7 +244,7 @@ class Logger(commands.Cog):
             try:
                 ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
             except:
-                d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {ctx.guild.name} ({ctx.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
@@ -250,20 +255,20 @@ class Logger(commands.Cog):
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {ctx.guild.name} ({ctx.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
         else:
             try:
-                d = f"**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Command**: {ctx.command}\n**Guild**: {ctx.guild.name} ({ctx.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {ctx.guild.name} ({ctx.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
@@ -285,20 +290,20 @@ class Logger(commands.Cog):
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {interaction.guild.name} ({interaction.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.CommandNotFound):
             try:
-                d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {interaction.guild.name} ({interaction.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {interaction.guild.name} ({interaction.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
@@ -309,7 +314,7 @@ class Logger(commands.Cog):
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {interaction.guild.name} ({interaction.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
@@ -320,20 +325,20 @@ class Logger(commands.Cog):
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {interaction.guild.name} ({interaction.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
         else:
             try:
-                d = f"**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Command**: {interaction.command}\n**Guild**: {interaction.guild.name} ({interaction.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
-                d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
+                d = f"**Guild**: {interaction.guild.name} ({interaction.guild.id})\n{box(str(error), 'py')}"
                 e = discord.Embed(description=d, color=discord.Color.red())
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
