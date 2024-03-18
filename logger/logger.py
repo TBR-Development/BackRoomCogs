@@ -40,7 +40,8 @@ class Logger(commands.Cog):
             await self.config.logger_channel.set(channel.id)
             await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
         except:
-            await ctx.send(f'There was an error with that command.\n{box(str(error), 'py')}')
+            text = f'There was an error with that command.\n{box(str(error), 'py')}'
+            await ctx.send(text)
         
     @logger.command()
     async def disable(self, ctx):
@@ -52,7 +53,8 @@ class Logger(commands.Cog):
             await self.config.logger_channel.clear()
             await ctx.send('Logger has been disabled.')
         except:
-            await ctx.send(f'There was an error with that command.\n{box(str(error), 'py')}')
+            text = f'There was an error with that command.\n{box(str(error), 'py')}'
+            await ctx.send(text)
         
     @logger.command()
     async def settings(self, ctx):
@@ -62,7 +64,6 @@ class Logger(commands.Cog):
 
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
-        
     
         try:
             if logs_channel is None:
@@ -125,7 +126,6 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
-        
         
         try:
             if logs_channel is None:
