@@ -55,7 +55,7 @@ class WaifuIM(commands.Cog):
             nsfw_tags = '{}'.format(nsfw_array)
             
             if ctx.channel.is_nsfw():
-                    tags = f'{versatile_tags}, {nsfw_tags}'
+                    tags = f'{versatile_tags}\n{nsfw_tags}'
             else:
                     tags = f'{versatile_tags}'
                 
