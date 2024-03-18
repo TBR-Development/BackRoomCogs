@@ -48,8 +48,8 @@ class WaifuIM(commands.Cog):
             versatile = data['versatile']
             nsfw = data['nsfw']
             
-            versatile_array = f'- {versatile}\n'
-            nsfw_array = f'- {nsfw}\n'
+            versatile_array = '\n'.join(f'- {versatile}')
+            nsfw_array = '\n'.join(f'- {nsfw}')
             
             
             versatile_tags = '{}'.format(versatile_array)
