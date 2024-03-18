@@ -166,7 +166,7 @@ class Logger(commands.Cog):
             date_time = now.strftime('%B %d, %Y - %I:%M %p')
             created_date = created_at.strftime('%B %d, %Y - %I:%M %p')
             
-            d = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Bot**: {is_bot}\n**Created At**: {created_date}\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
+            d = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Bot**: {is_bot}\n**Created**: {created_date}\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             e = discord.Embed(description=d, color=discord.Color.blue())
             
             await logs_channel.send(embed=e)
@@ -198,7 +198,7 @@ class Logger(commands.Cog):
             date_time = now.strftime('%B %d, %Y - %I:%M %p')
             created_date = created_at.strftime('%B %d, %Y - %I:%M %p')
             
-            d = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Bot**: {is_bot}\n**Created At**: {created_date}\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
+            d = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Bot**: {is_bot}\n**Created**: {created_date}\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             e = discord.Embed(description=d, color=discord.Color.red())
             
             await logs_channel.send(embed=e)
