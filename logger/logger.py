@@ -34,9 +34,13 @@ class Logger(commands.Cog):
         """
         Set the channel to send logs to
         """
+        error = Exception
         
-        await self.config.logger_channel.set(channel.id)
-        await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
+        try:
+            await self.config.logger_channel.set(channel.id)
+            await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
+        except:
+            await ctx.send(f'There was an error with that command.\n{box(str(error), 'py')}')
         
     @logger.command()
     async def disable(self, ctx):
@@ -44,8 +48,11 @@ class Logger(commands.Cog):
         Remove the logger channel
         """
         
-        await self.config.logger_channel.clear()
-        await ctx.send('Logger has been disabled.')
+        try:
+            await self.config.logger_channel.clear()
+            await ctx.send('Logger has been disabled.')
+        except:
+            await ctx.send(f'There was an error with that command.\n{box(str(error), 'py')}')
         
     @logger.command()
     async def settings(self, ctx):
@@ -54,26 +61,26 @@ class Logger(commands.Cog):
         """
 
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        error = Exception
         
     
-        if logs_channel is None:
-            logs_channel = 'No channel set'
-            logger_enabled = 'False'
-            embed_color = await ctx.embed_color()
-        else:
-            channel = logs_channel 
-            logs_channel = f'{channel} ({channel.id})'
-            logger_enabled = 'True'
-            embed_color = discord.Color.blue()
+        try:
+            if logs_channel is None:
+                logs_channel = 'No channel set'
+                logger_enabled = 'False'
+                embed_color = await ctx.embed_color()
+            else:
+                channel = logs_channel 
+                logs_channel = f'{channel} ({channel.id})'
+                logger_enabled = 'True'
+                embed_color = discord.Color.blue()
 
-        description = f'Here are the current Logger settings.\n\n**Logger Enabled**: {logger_enabled}\n**Logger Channel**: {logs_channel}'
+            text = f'Here are the current Logger settings.\n\n**Logger Enabled**: {logger_enabled}\n**Logger Channel**: {logs_channel}'
             
-        embed = discord.Embed(
-            description = description,
-            color = embed_color
-        )
-        
-        await ctx.send(embed=embed)
+            embed = discord.Embed(description = text, color = embed_color)
+            await ctx.send(embed=embed)
+        except:
+            await ctx.send(f'There was an error with that command.\n{box(str(error), 'py')}')
 
     @logger.command()
     async def test(self, ctx):
@@ -87,12 +94,13 @@ class Logger(commands.Cog):
         else:
              await ctx.send(test)
     @commands.Cog.listener()
-    async def on_guild_join(self, error: Exception, guild: discord.Guild):
+    async def on_guild_join(self, guild: discord.Guild):
         """
         Guild join event
         """
         
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        error = Exception
         
         try:
             if logs_channel is None:
@@ -111,11 +119,12 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
         
     @commands.Cog.listener()
-    async def on_guild_remove(self, error: Exception, guild: discord.Guild):
+    async def on_guild_remove(self, guild: discord.Guild):
         """
         Guild remove event
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        error = Exception
         
         
         try:
@@ -135,11 +144,12 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
         
     @commands.Cog.listener()
-    async def on_member_join(self, error: Exception, member: discord.Member):
+    async def on_member_join(self, member: discord.Member):
         """
         Member join event
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        error = Exception
 
         try:
             if logs_channel is None:
@@ -159,11 +169,12 @@ class Logger(commands.Cog):
        
 
     @commands.Cog.listener()
-    async def on_member_remove(self, error: Exception, member: discord.Member):
+    async def on_member_remove(self, member: discord.Member):
         """
         Member leave event
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        error = Exception
 
         try:
             if logs_channel is None:
