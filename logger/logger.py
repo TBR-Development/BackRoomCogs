@@ -279,14 +279,23 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
         
         if isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
-            await send_error()
+            try:
+                await ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
+                await send_error()
+            except:
+                await send_error()
         elif isinstance(error, commands.MemberNotFound):
-            await ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
-            await send_error()
+            try:
+                await ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
+                await send_error()
+            except:
+                await send_error()
         elif isinstance(error, commands.NoPrivateMessage):
-            await ctx.send(f"`The command: `{ctx.command}` cannot be used in private messages.")
-            await send_error()
+            try:
+                await ctx.send(f"`The command: `{ctx.command}` cannot be used in private messages.")
+                await send_error()
+            except:
+                await send_error()
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         elif isinstance(error, commands.CommandNotFound):
             pass
@@ -320,14 +329,23 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
         
         if isinstance(error, commands.MissingRequiredArgument):
-            await interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
-            await send_error()
+            try:
+                await interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
+                await send_error()
+            except:
+                await send_error()
         elif isinstance(error, commands.MemberNotFound):
-            await interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
-            await send_error()
+            try:
+                await interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
+                await send_error()
+            except:
+                await send_error()
         elif isinstance(error, commands.NoPrivateMessage):
-            await interaction.reply(f"`The command: `{interaction.command}` cannot be used in private messages.")
-            await send_error()
+            try:
+                await interaction.reply(f"`The command: `{interaction.command}` cannot be used in private messages.")
+                await send_error()
+            except:
+                await send_error()
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         elif isinstance(error, commands.CommandNotFound):
             pass
