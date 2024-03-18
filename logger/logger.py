@@ -235,6 +235,31 @@ class Logger(commands.Cog):
             await send_error()
             
     @commands.Cog.listener()
+    async def on_message_delete(self, message: discord.Message):
+        """
+        Params:
+            message: discord.Message
+        """
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        error = Exception
+        
+        now = datetime.now()
+        date_time = now.strftime('%B %d, %Y - %I:%M %p')
+        
+        async def send_error():
+            d = f"A message has been deleted in a guild.\n\n**Guild**: {message.guild} ({message.guild.id})\n**Date**: {date_time}"
+            e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
+            e.add_field(name='Message Content', value=box(message.content))
+            await logs_channel.send(embed=e)
+
+        try:
+            if logs_channel is None:
+                return
+        except:
+            await send_error()
+        
+            
+    @commands.Cog.listener()
     async def on_error(self, error: Exception):
         """
         Params:
@@ -303,7 +328,7 @@ class Logger(commands.Cog):
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         else:
             await send_error()
-
+    
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
         """
