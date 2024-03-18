@@ -251,7 +251,8 @@ class Logger(commands.Cog):
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
                 
-        await send_error()
+        if isinstance(error):
+            await send_error()
         
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
