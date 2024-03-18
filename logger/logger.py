@@ -191,8 +191,11 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
         
+        now = datetime.now()
+        date_time = now.strftime('%B %d, %Y - %I:%M %p')
+        
         async def handle_error():
-            d = f"**Guild**: {member.guild} ({member.guild.id})"
+            d = f"**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
                 
@@ -230,14 +233,17 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
+        now = datetime.now()
+        date_time = now.strftime('%B %d, %Y - %I:%M %p')
+        
         if logs_channel is None:
             return
         
         async def handle_error():
             if ctx.command == None:
-                d = f"**Guild**: {ctx.guild} ({ctx.guild.id})"
+                d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n**Date**: {date_time}"
             else:
-                d = f"**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})"
+                d = f"**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
                 
@@ -276,14 +282,17 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
+        now = datetime.now()
+        date_time = now.strftime('%B %d, %Y - %I:%M %p')
+        
         if logs_channel is None:
             return
         
         async def handle_error():
             if interaction.command == None:
-                d = f"**Guild**: {interaction.guild} ({interaction.guild.id})"
+                d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n**Date**: {date_time}"
             else:
-                d = f"**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})"
+                d = f"**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
                 
