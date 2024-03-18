@@ -25,14 +25,14 @@ class Logger(commands.Cog):
     @commands.is_owner()
     async def logger(self, ctx):
         """
-        Enable or disable Logger - `[p]logger <subcommand>`
+        Enable or disable Logger\n```[p]logger <subcommand>```
         """
         return
     
     @logger.command()
     async def enable(self, ctx, channel: discord.TextChannel):
         """
-        Set the logger channel - `[p]logger enable <channel>`
+        Set the logger channel\n```[p]logger enable <channel>```
         """
         error = Exception
         
@@ -46,7 +46,7 @@ class Logger(commands.Cog):
     @logger.command()
     async def disable(self, ctx):
         """
-        Remove the logger channel - `[p]logger disable`
+        Remove the logger channel\n```[p]logger disable```
         """
         error = Exception
         
@@ -60,7 +60,7 @@ class Logger(commands.Cog):
     @logger.command()
     async def settings(self, ctx):
         """
-        View the logger config - `[p]logger settings`
+        View the logger config\n```[p]logger settings```
         """
 
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
