@@ -246,15 +246,22 @@ class Logger(commands.Cog):
         now = datetime.now()
         date_time = now.strftime('%B %d, %Y - %I:%M %p')
         
-        async def send_error():
-            d = f"A message has been deleted in a guild.\n\n**Guild**: {message.guild} ({message.guild.id})\n**Date**: {date_time}"
-            e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
-            e.add_field(name='Message Content', value=box(message.content))
+        if logs_channel is None:
+                return
+        
+        async def send_message():
+            d = f"A message has been deleted in a guild.\n\n**Guild**: {message.guild} ({message.guild.id})\n**Date**: {date_time}\n\n**__Message Content__**\n{box(message.content)}"
+            e = discord.Embed(description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
+            
+        async def send_error():
+            e = discord.Embed(description=str(error), color=discord.Color.red())
+            await logs_channel.send(embed=e)
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
 
         try:
-            if logs_channel is None:
-                return
+            await send_message()
         except:
             await send_error()
         
