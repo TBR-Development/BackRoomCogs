@@ -268,8 +268,8 @@ class Logger(commands.Cog):
                 await handle_error()
             except:
                 await handle_error()
-#        elif isinstance(error, commands.CommandNotFound):
-#            pass
+        elif isinstance(error, commands.CommandNotFound):
+            pass
         else:
             await handle_error()
 
@@ -317,7 +317,7 @@ class Logger(commands.Cog):
                 await handle_error()
             except:
                 await handle_error()
-#        elif isinstance(error, commands.CommandNotFound):
-#            pass
+        elif isinstance(error, commands.CommandNotFound):
+            pass
         else:
             await handle_error()
