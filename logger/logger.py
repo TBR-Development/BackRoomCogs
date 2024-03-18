@@ -156,10 +156,15 @@ class Logger(commands.Cog):
         try:
             if logs_channel is None:
                 return
+            
+            if member is member.bot:
+                is_bot = 'True'
+            else:
+                is_bot = 'False'
         
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %I:%M %p')
-            text_one = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
+            text_one = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Bot**: {is_bot}\n**Created At**: {member.created_at()}\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.blue())
             await logs_channel.send(embed=embed_one)
         except:
@@ -182,9 +187,14 @@ class Logger(commands.Cog):
             if logs_channel is None:
                 return
             
+            if member is member.bot:
+                is_bot = 'True'
+            else:
+                is_bot = 'False'
+            
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %I:%M %p')
-            text_one = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
+            text_one = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Bot**: {is_bot}\n**Created At**: {member.created_at()}\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.red())
             await logs_channel.send(embed=embed_one)
         except:
