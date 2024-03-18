@@ -30,7 +30,7 @@ class Logger(commands.Cog):
         return
     
     @logger.command()
-    async def enable(self, ctx: commands.Context, channel: discord.TextChannel):
+    async def enable(self, ctx, channel: discord.TextChannel):
         """
         Set the channel to send logs to
         """
@@ -39,7 +39,7 @@ class Logger(commands.Cog):
         await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
         
     @logger.command()
-    async def disable(self, ctx: commands.Context):
+    async def disable(self, ctx):
         """
         Remove the logger channel
         """
@@ -76,7 +76,7 @@ class Logger(commands.Cog):
         await ctx.send(embed=embed)
 
     @logger.command()
-    async def test(self, error: Exception, ctx: commands.Context):
+    async def test(self, ctx, error: Exception):
         """
         Dummy command to test the error handler(s)
         """
