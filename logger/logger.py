@@ -48,7 +48,7 @@ class Logger(commands.Cog):
         
         try:
             await self.config.logger_channel.set(channel.id)
-            await ctx.send('Logger has been enabled in: {} ({}).'.format(channel, channel.id))
+            await ctx.send('Logger has been enabled in: `{} ({})`'.format(channel, channel.id))
         except:
             await handle_error()
         
