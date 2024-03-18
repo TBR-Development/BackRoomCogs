@@ -274,7 +274,7 @@ class Logger(commands.Cog):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.NoPrivateMessage):
             try:
-                interaction.reply(f"`The command: `{interaction.command}` cannot be used inprivate messages.")
+                interaction.reply(f"`The command: `{interaction.command}` cannot be used in private messages.")
             except:
                 await logs_channel.send(embed=e)
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
