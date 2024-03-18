@@ -155,7 +155,6 @@ class Logger(commands.Cog):
             d = f"{box(str(error), 'py')}\n**Guild**: {member.guild.name} ({member.guild.id})"
             e = discord.Embed(description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
-            await logs_channel.send(embed=e)
                 
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
@@ -195,7 +194,6 @@ class Logger(commands.Cog):
         async def handle_error():
             d = f"{box(str(error), 'py')}\n**Guild**: {member.guild.name} ({member.guild.id})"
             e = discord.Embed(description=d, color=discord.Color.red())
-            await logs_channel.send(embed=e)
             await logs_channel.send(embed=e)
                 
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
@@ -242,7 +240,6 @@ class Logger(commands.Cog):
                 d = f"{box(str(error), 'py')}\n***Commands**: {ctx.command}\n*Guild**: {ctx.guild.name} ({ctx.guild.id})"
             e = discord.Embed(description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
-            await logs_channel.send(embed=e)
                 
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
@@ -288,7 +285,6 @@ class Logger(commands.Cog):
             else:
                 d = f"{box(str(error), 'py')}\n***Commands**: {interaction.command}\n*Guild**: {interaction.guild.name} ({interaction.guild.id})"
             e = discord.Embed(description=d, color=discord.Color.red())
-            await logs_channel.send(embed=e)
             await logs_channel.send(embed=e)
                 
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
