@@ -88,6 +88,8 @@ class Logger(commands.Cog):
             else:
                 await ctx.send(test)
         except:
+            text = f'**Command**: {ctx.command}\n**Guild**:{ctx.guild} ({ctx.guild.id})\n**Exception**: {traceback.exc()}'
+            embed = discord.embed(title=str(error), description=text)
             await logs_channel.send(embed=embed)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
@@ -105,13 +107,13 @@ class Logger(commands.Cog):
     
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %H:%M')
-            text = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild} ({guild.id})\n**Date**: {date_time}'
-            
-            embed = discord.Embed(description=text, color=discord.Color.blue())
-            
-            await logs_channel.send(embed=embed)
+            text_one = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild} ({guild.id})\n**Date**: {date_time}'
+            embed_one = discord.Embed(description=text_one, color=discord.Color.blue())
+            await logs_channel.send(embed=embed_one)
         except:
-            await logs_channel.send(embed=embed)
+            text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}'
+            embed_two = discord.Embed(description=text_two, color=discord.Color.red())
+            await logs_channel.send(embed=embed_two)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
@@ -122,19 +124,20 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
+        
         try:
             if logs_channel is None:
                 return
         
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %H:%M')
-            text = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild} ({guild.id})\n**Date**: {date_time}'
-            
-            embed = discord.Embed(description=text, color=discord.Color.red())
-
-            await logs_channel.send(embed=embed)
+            text_one = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild} ({guild.id})\n**Date**: {date_time}'
+            embed_one = discord.Embed(description=text_one, color=discord.Color.red())
+            await logs_channel.send(embed=embed_one)
         except:
-            await logs_channel.send(embed=embed)
+            text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}')
+            embed_two = discord.Embed(description=text_two, color=discord.Color.red())
+            await logs_channel.send(embed=embed_two)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
@@ -151,12 +154,13 @@ class Logger(commands.Cog):
         
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %H:%M')
-            text = f'A user has joined a guild.\n\n**Member**: {member} ({member.id})\n**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}'
-        
-            embed = discord.Embed(description=text, color=discord.Color.blue())
-            await logs_channel.send(embed=embed)
+            text_one = f'A user has joined a guild.\n\n**Member**: {member} ({member.id})\n**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}'
+            embed_one = discord.Embed(description=text_one, color=discord.Color.blue())
+            await logs_channel.send(embed=embed_one)
         except:
-            await logs_channel.send(embed=embed)
+            text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}'
+            embed_two = discord.Embed(description=text_two, color=discord.Color.red())
+            await logs_channel.send(embed=embed_two)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
        
@@ -166,8 +170,6 @@ class Logger(commands.Cog):
         """
         Member leave event
         """
-        
-          
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
 
         try:
@@ -176,12 +178,13 @@ class Logger(commands.Cog):
             
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %H:%M')
-            text = f'A user has left a guild.\n\n**Member**: {member} ({member.id})\n**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}'
-            
-            embed = discord.Embed(description=text, color=discord.Color.red())
-            await logs_channel.send(embed=embed)
+            text_one = f'A user has left a guild.\n\n**Member**: {member} ({member.id})\n**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}'
+            embed_one = discord.Embed(description=text_one, color=discord.Color.red())
+            await logs_channel.send(embed=embed_one)
         except:
-            await logs_channel.send(embed=embed)
+            text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}'
+            embed_two = discord.Embed(description=text_two, color=discord.Color.red())
+            await logs_channel.send(embed=embed_two)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
             
