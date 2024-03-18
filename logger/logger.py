@@ -232,9 +232,7 @@ class Logger(commands.Cog):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.CommandNotFound):
             try:
-                d = f"I cannot find that command.\n\nUse `[p]help` for a list of available commands."
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
+                ctx.send(f"I cannot find that command. Use `[p]help` to see a list of available commands.")
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
@@ -246,6 +244,8 @@ class Logger(commands.Cog):
         elif isinstance(error, commands.MemberNotFound):
             try:
                 ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
+                for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                    await logs_channel.send(box(p, 'py'))
             except:
                 d = f"{box(str(error), 'py')}\n**Guild**: {ctx.guild.name} ({ctx.guild.id})"
                 e = discord.Embed(description=d, color=discord.Color.red())
@@ -302,9 +302,7 @@ class Logger(commands.Cog):
                     await logs_channel.send(box(p, 'py'))
         elif isinstance(error, commands.CommandNotFound):
             try:
-                d = f"I cannot find that command. Use `[p]help` to see a list of available commands."
-                e = discord.Embed(description=d, color=discord.Color.red())
-                await logs_channel.send(embed=e)
+                interaction.reply(f"I cannot find that command. Use `[p]help` to see a list of available commands.")
                 for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                     await logs_channel.send(box(p, 'py'))
             except:
