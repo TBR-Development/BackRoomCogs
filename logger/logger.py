@@ -40,7 +40,6 @@ class Logger(commands.Cog):
             await self.config.logger_channel.set(channel.id)
             await ctx.send('Logger has been enabled in: <#{}>.'.format(channel.id))
         except:
-            await ctx.send(box(error, 'py'))
             for p in pagify(traceback.format_exc(), 'py'):
                 await ctx.send(box(p, 'py'))
         
@@ -55,7 +54,6 @@ class Logger(commands.Cog):
             await self.config.logger_channel.clear()
             await ctx.send('Logger has been disabled.')
         except:
-            await ctx.send(box(str(error), 'py'))
             for p in pagify(traceback.format_exc(), 'py'):
                 await ctx.send(box(p, 'py'))
         
@@ -84,7 +82,6 @@ class Logger(commands.Cog):
             e = discord.Embed(description=d, color = embed_color)
             await ctx.send(embed=e)
         except:
-            await ctx.send(box(error, 'py'))
             for p in pagify(traceback.format_exc(), 'py'):
                 await ctx.send(box(p, 'py'))
 
@@ -120,7 +117,6 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            await logs_channel.send(box(error, 'py'))
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
@@ -144,7 +140,6 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            await logs_channel.send(box(error, 'py'))
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
@@ -166,7 +161,7 @@ class Logger(commands.Cog):
                 is_bot = 'False'
         
             now = datetime.now()
-            created_at : member.created_at
+            created_at = member.created_at
             
             date_time = now.strftime('%B %d, %Y - %I:%M %p')
             created_date = created_at.strftime('%B %d, %Y - %I:%M %p')
@@ -176,7 +171,6 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            await logs_channel.send(box(error, 'py'))
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
        
@@ -199,7 +193,7 @@ class Logger(commands.Cog):
                 is_bot = 'False'
             
             now = datetime.now()
-            created_at : member.created_at
+            created_at = member.created_at
             
             date_time = now.strftime('%B %d, %Y - %I:%M %p')
             created_date = created_at.strftime('%B %d, %Y - %I:%M %p')
@@ -209,7 +203,6 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            await logs_channel.send(box(error, 'py'))
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
             
