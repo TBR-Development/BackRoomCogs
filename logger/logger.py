@@ -211,7 +211,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        d = f"**Command**: {ctx.command}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
+        d = f"**Command**: {error.argument}\n**Guild**: {ctx.guild} ({ctx.guild.id})\n{box(str(error), 'py')}"
         e = discord.Embed(description=d, color=discord.Color.red())
         
         if isinstance(error, commands.MissingRequiredArgument):
@@ -259,7 +259,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        d = f"**Command**: {interaction.command}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
+        d = f"**Command**: {error.argument}\n**Guild**: {interaction.guild} ({interaction.guild.id})\n{box(str(error), 'py')}"
         e = discord.Embed(description=d, color=discord.Color.red())
         
         if isinstance(error, commands.MissingRequiredArgument):
