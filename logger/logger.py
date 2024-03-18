@@ -32,7 +32,12 @@ class Logger(commands.Cog):
     @logger.command()
     async def enable(self, ctx, channel: discord.TextChannel):
         """
-        Set the logger channel
+        Set the Logger channel
+        
+        ```
+        Args:
+            channel: discord.TextChannel
+        ```
         """
         error = Exception
         
