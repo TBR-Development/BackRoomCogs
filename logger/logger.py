@@ -10,7 +10,7 @@ from datetime import datetime
 
 class Logger(commands.Cog):
     """
-    Log events to a discord channel.
+    Logger cog for use with debugging and support.
     """
     
     def __init__(self, bot):
@@ -25,14 +25,22 @@ class Logger(commands.Cog):
     @commands.is_owner()
     async def logger(self, ctx):
         """
-        Base command for the Logger cog
+        Logger command group.
+        
+        -------------------------------
+        
+        [p]logger <subcommand>
         """
         return
     
     @logger.command()
     async def enable(self, ctx, channel: discord.TextChannel):
         """
-        Set the channel to send logs to
+        Set the logger channel.
+        
+        -------------------------------
+        
+        [p]logger enable <channel: discord.TextChannel>
         """
         error = Exception
         
@@ -46,7 +54,11 @@ class Logger(commands.Cog):
     @logger.command()
     async def disable(self, ctx):
         """
-        Remove the logger channel
+        Remove the logger channel.
+        
+        -------------------------------
+        
+        [p]logger disable
         """
         error = Exception
         
