@@ -236,7 +236,7 @@ class Logger(commands.Cog):
             await handle_error()
             
     @commands.Cog.listener()
-    async def on_error(self, guild: discord.Guild, error: Exception):
+    async def on_error(self, error: Exception):
         """
         Args:
             error: Exception
@@ -250,7 +250,7 @@ class Logger(commands.Cog):
             return
         
         async def handle_error():
-            d = f"**Guild**: {guild} ({guild.id})\n**Date**: {date_time}"
+            d = f"**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
@@ -258,7 +258,15 @@ class Logger(commands.Cog):
                 
         if isinstance(error, TypeError):
             await handle_error()
-        elif isinstance(AttributeError):
+        elif isinstance(error, AttributeError):
+            await handle_error()
+        elif isinstance(error, IndexError):
+            await handle_error()
+        elif isinstance(error, SystemError):
+            await handle_error()
+        elif isinstance(error, MemoryError):
+            await handle_error()
+        elif isinstance(error, ConnectionError):
             await handle_error()
         else:
             await handle_error()
