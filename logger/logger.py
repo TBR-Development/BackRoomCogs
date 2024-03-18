@@ -330,8 +330,8 @@ class Logger(commands.Cog):
             await interaction.reply(f"`The command: `{interaction.command}` cannot be used in private messages.")
             await handle_error()
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
-        elif isinstance(error, commands.CommandNotFound):
-            pass
+#        elif isinstance(error, commands.CommandNotFound):
+#            pass
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         else:
             await handle_error()
