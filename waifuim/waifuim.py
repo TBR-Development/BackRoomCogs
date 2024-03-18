@@ -48,18 +48,15 @@ class WaifuIM(commands.Cog):
             versatile = data['versatile']
             nsfw = data['nsfw']
             
-            versatile_strip = versatile.strip('[', ',', ']')
-            nsfw_strip = nsfw.strip('[', ',', ']')
-            
-            versatile_list = f'- {versatile_strip}\n'
-            nsfw_list = f'- {nsfw_strip}\n'
+            versatile_array = ', '.join(versatile)
+            nsfw_array = ', '.join(nsfw)
             
             
-            versatile_tags = '{}'.format(versatile_list)
-            nsfw_tags = '{}'.format(nsfw_list)
+            versatile_tags = '{}'.format(versatile_array)
+            nsfw_tags = '{}'.format(nsfw_array)
             
             if ctx.channel.is_nsfw():
-                    tags = f'{versatile_tags}\n{nsfw_tags}'
+                    tags = f'{versatile_tags}, {nsfw_tags}'
             else:
                     tags = f'{versatile_tags}'
                 
