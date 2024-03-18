@@ -242,6 +242,7 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
+        member = discord.Member
         
         now = datetime.now()
         date_time = now.strftime('%B %d, %Y - %I:%M %p')
@@ -250,7 +251,7 @@ class Logger(commands.Cog):
                 return
         
         async def send_message():
-            d = f"A message has been deleted in a guild.\n\n**Guild**: {message.guild} ({message.guild.id})\n**Deleted by**: {message.member.name}\n**Date**: {date_time}\n\n**__Message Content__**\n{box(message.content)}"
+            d = f"A message has been deleted in a guild.\n\n**Guild**: {message.guild} ({message.guild.id})\n**Deleted by**: {member.name} ({member.id})\n**Date**: {date_time}\n\n**__Message Content__**\n{box(message.content)}"
             e = discord.Embed(description=d, color=discord.Color.orange())
             await logs_channel.send(embed=e)
             
