@@ -289,8 +289,8 @@ class Logger(commands.Cog):
             await ctx.send(f"`The command: `{ctx.command}` cannot be used in private messages.")
             await handle_error()
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
-        elif isinstance(error, commands.CommandNotFound):
-            pass
+#        elif isinstance(error, commands.CommandNotFound):
+#            pass
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         else:
             await handle_error()
