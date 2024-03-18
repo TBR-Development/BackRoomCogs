@@ -257,16 +257,25 @@ class Logger(commands.Cog):
                 await logs_channel.send(box(p, 'py'))
                 
         if isinstance(error, TypeError):
+            # await logs_channel.send('...') 
             await handle_error()
         elif isinstance(error, AttributeError):
+            # await logs_channel.send('...') 
             await handle_error()
         elif isinstance(error, IndexError):
+            # await logs_channel.send('...') 
             await handle_error()
         elif isinstance(error, SystemError):
+            # await logs_channel.send('...') 
             await handle_error()
         elif isinstance(error, MemoryError):
+            # await logs_channel.send('...') 
             await handle_error()
         elif isinstance(error, ConnectionError):
+            # await logs_channel.send('...') 
+            await handle_error()
+        elif isinstance(error, SyntaxError):
+            # await logs_channel.send('...') 
             await handle_error()
         else:
             await handle_error()
