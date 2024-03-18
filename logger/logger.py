@@ -28,8 +28,9 @@ class Logger(commands.Cog):
         Logger command group.
         
         -------------------------------
-        
-        `[p]logger <subcommand>`
+        ```py
+        [p]logger <subcommand>
+        ```
         """
         return
     
@@ -57,8 +58,9 @@ class Logger(commands.Cog):
         Remove the logger channel.
         
         -------------------------------
-        
-        `[p]logger disable`
+        ```py
+        [p]logger disable
+        ```
         """
         error = Exception
         
@@ -73,6 +75,11 @@ class Logger(commands.Cog):
     async def settings(self, ctx):
         """
         View the logger config
+        
+        -------------------------------
+        ```py
+        [p]logger settings
+        ```
         """
 
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
