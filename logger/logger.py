@@ -28,7 +28,8 @@ class Logger(commands.Cog):
         Logger command group.
         
         -------------------------------
-        ```py
+        
+        ```
         [p]logger <subcommand>
         ```
         """
@@ -41,7 +42,9 @@ class Logger(commands.Cog):
         
         -------------------------------
         
-        `[p]logger enable <channel: discord.TextChannel>`
+        ```
+        [p]logger enable <channel: discord.TextChannel>
+        ```
         """
         error = Exception
         
@@ -58,7 +61,8 @@ class Logger(commands.Cog):
         Remove the logger channel.
         
         -------------------------------
-        ```py
+        
+        ```
         [p]logger disable
         ```
         """
@@ -77,7 +81,8 @@ class Logger(commands.Cog):
         View the logger config
         
         -------------------------------
-        ```py
+        
+        ```
         [p]logger settings
         ```
         """
