@@ -234,13 +234,41 @@ class Logger(commands.Cog):
             await logs_channel.send(embed=e)
         except:
             await handle_error()
+            
+    @commands.Cog.listener()
+    async def on_error(self, guild: discord.Guild, error: Exception):
+        """
+        Args:
+            error: Exception
+        """
+        logs_channel = self.bot.get_channel(await self.config.logger_channel())
+        
+        now = datetime.now()
+        date_time = now.strftime('%B %d, %Y - %I:%M %p')
+        
+        if logs_channel is None:
+            return
+        
+        async def handle_error():
+            d = f"**Guild**: {guild} ({guild.id})\n**Date**: {date_time}"
+            e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
+            await logs_channel.send(embed=e)
+            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
+                await logs_channel.send(box(p, 'py'))
+                
+        if isinstance(error, TypeError):
+            await handle_error()
+        elif isinstance(AttributeError):
+            await handle_error()
+        else:
+            await handle_error()
         
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
         """
         Args:
-            ctx (commands.Context)
-            error (Exception)
+            ctx: commands.Context
+            error: Exception
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
@@ -280,8 +308,8 @@ class Logger(commands.Cog):
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
         """
         Args:
-            interaction (discord.Interaction)
-            error (Exception)
+            interaction: discord.Interaction
+            error: Exception
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
