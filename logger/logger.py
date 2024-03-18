@@ -110,7 +110,7 @@ class Logger(commands.Cog):
                 return
     
             raw = datetime.now()
-            date_time = raw.strftime('%B %d, %Y - %h:%M %p')
+            date_time = raw.strftime('%B %d, %Y - %I:%M %p')
             text_one = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.blue())
             await logs_channel.send(embed=embed_one)
@@ -134,7 +134,7 @@ class Logger(commands.Cog):
                 return
         
             raw = datetime.now()
-            date_time = raw.strftime('%B %d, %Y - %h:%M %p')
+            date_time = raw.strftime('%B %d, %Y - %I:%M %p')
             text_one = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.red())
             await logs_channel.send(embed=embed_one)
@@ -158,7 +158,7 @@ class Logger(commands.Cog):
                 return
         
             raw = datetime.now()
-            date_time = raw.strftime('%B %d, %Y - %h:%M %p')
+            date_time = raw.strftime('%B %d, %Y - %I:%M %p')
             text_one = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.blue())
             await logs_channel.send(embed=embed_one)
@@ -183,7 +183,7 @@ class Logger(commands.Cog):
                 return
             
             raw = datetime.now()
-            date_time = raw.strftime('%B %d, %Y - %h:%M %p')
+            date_time = raw.strftime('%B %d, %Y - %I:%M %p')
             text_one = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.red())
             await logs_channel.send(embed=embed_one)
