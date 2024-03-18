@@ -135,7 +135,7 @@ class Logger(commands.Cog):
             embed_one = discord.Embed(description=text_one, color=discord.Color.red())
             await logs_channel.send(embed=embed_one)
         except:
-            text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}')
+            text_two = f'{str(error)}\n**Exception**: {traceback.format_exc()}'
             embed_two = discord.Embed(description=text_two, color=discord.Color.red())
             await logs_channel.send(embed=embed_two)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
