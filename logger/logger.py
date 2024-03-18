@@ -76,23 +76,16 @@ class Logger(commands.Cog):
         await ctx.send(embed=embed)
 
     @logger.command()
-    async def test(self, ctx, error: Exception):
+    async def test(self, ctx):
         """
         Dummy command to test the error handler(s)
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
-        try:
-            if logs_channel is None:
-                ctx.send(box('You do not have the logger enabled.\nPlease use `[p]logger enable <#channel>` if you want to test the error handler.', 'py'))
-            else:
-                await ctx.send(test)
-        except:
-            text = f'**Command**: {ctx.command}\n**Guild**:{ctx.guild} ({ctx.guild.id})\n**Exception**: {traceback.exc()}'
-            embed = discord.embed(title=str(error), description=text)
-            await logs_channel.send(embed=embed)
-            for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
-                await logs_channel.send(box(p, 'py'))
+        if logs_channel is None:
+            ctx.send(box('You do not have the logger enabled.\nPlease use `[p]logger enable <#channel>` if you want to test the error handler.', 'py'))
+        else:
+             await ctx.send(test)
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild, error: Exception):
         """
