@@ -144,7 +144,7 @@ class Logger(commands.Cog):
             if logs_channel is None:
                 return
             
-            if member is member.bot:
+            if member == member.bot:
                 is_bot = 'True'
             else:
                 is_bot = 'False'
@@ -176,7 +176,7 @@ class Logger(commands.Cog):
             if logs_channel is None:
                 return
             
-            if member is member.bot:
+            if member == member.bot:
                 is_bot = 'True'
             else:
                 is_bot = 'False'
