@@ -48,6 +48,7 @@ class Logger(commands.Cog):
         """
         Remove the logger channel
         """
+        error = Exception
         
         try:
             await self.config.logger_channel.clear()
