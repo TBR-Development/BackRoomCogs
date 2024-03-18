@@ -111,7 +111,7 @@ class Logger(commands.Cog):
     
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %H:%M')
-            text_one = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild} ({guild.id})\n**Date**: {date_time}'
+            text_one = f'{self.bot.user.name} has been added to a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.blue())
             await logs_channel.send(embed=embed_one)
         except:
@@ -135,7 +135,7 @@ class Logger(commands.Cog):
         
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %H:%M')
-            text_one = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild} ({guild.id})\n**Date**: {date_time}'
+            text_one = f'{self.bot.user.name} has been removed from a guild.\n\n**Guild**: {guild.name} ({guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.red())
             await logs_channel.send(embed=embed_one)
         except:
@@ -159,7 +159,7 @@ class Logger(commands.Cog):
         
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %H:%M')
-            text_one = f'A user has joined a guild.\n\n**Member**: {member} ({member.id})\n**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}'
+            text_one = f'A user has joined a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.blue())
             await logs_channel.send(embed=embed_one)
         except:
@@ -184,7 +184,7 @@ class Logger(commands.Cog):
             
             raw = datetime.now()
             date_time = raw.strftime('%B %d, %Y - %H:%M')
-            text_one = f'A user has left a guild.\n\n**Member**: {member} ({member.id})\n**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}'
+            text_one = f'A user has left a guild.\n\n**Member**: {member.name} ({member.id})\n**Guild**: {member.guild.name} ({member.guild.id})\n**Date**: {date_time}'
             embed_one = discord.Embed(description=text_one, color=discord.Color.red())
             await logs_channel.send(embed=embed_one)
         except:
