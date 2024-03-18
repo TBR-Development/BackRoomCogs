@@ -243,9 +243,6 @@ class Logger(commands.Cog):
         """
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         
-        now = datetime.now()
-        date_time = now.strftime('%B %d, %Y - %I:%M %p')
-        
         if logs_channel is None:
             return
         
