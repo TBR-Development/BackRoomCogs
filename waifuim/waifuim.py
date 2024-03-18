@@ -61,7 +61,7 @@ class WaifuIM(commands.Cog):
                 
             embed = discord.Embed(description='Here is a list of available tags from the waifu.im api.')
             embed.color = await ctx.embed_color()
-            embed.add_field(name='Tags', value=box(tags, 'cs'))
+            embed.add_field(name='Tags', value=box(tags))
             embed.set_thumbnail(url=embed_icon)
             embed.set_image(url='https://cdn.waifu.im/7892.jpg')
             embed.set_footer(text=footer_text, icon_url=embed_icon)
