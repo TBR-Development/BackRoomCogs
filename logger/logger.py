@@ -40,7 +40,7 @@ class Logger(commands.Cog):
         """
         error = Exception
         
-        async def handle_error():
+        async def send_error():
             e = discord.Embed(description=str(error), color=discord.Color.red())
             ctx.send(embed=e)
             for p in pagify(traceback.format_exc(), shorten_by=10):
@@ -50,7 +50,7 @@ class Logger(commands.Cog):
             await self.config.logger_channel.set(channel.id)
             await ctx.send('Logger has been enabled in: `{} ({})`'.format(channel, channel.id))
         except:
-            await handle_error()
+            await send_error()
         
     @logger.command()
     async def disable(self, ctx):
@@ -59,7 +59,7 @@ class Logger(commands.Cog):
         """
         error = Exception
         
-        async def handle_error():
+        async def send_error():
             e = discord.Embed(description=str(error), color=discord.Color.red())
             ctx.send(embed=e)
             for p in pagify(traceback.format_exc(), shorten_by=10):
@@ -69,7 +69,7 @@ class Logger(commands.Cog):
             await self.config.logger_channel.clear()
             await ctx.send('Logger has been disabled.')
         except:
-            await handle_error()
+            await send_error()
         
     @logger.command()
     async def settings(self, ctx):
@@ -79,7 +79,7 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
         
-        async def handle_error():
+        async def send_error():
             e = discord.Embed(description=str(error), color=discord.Color.red())
             ctx.send(embed=e)
             for p in pagify(traceback.format_exc(), shorten_by=10):
@@ -98,7 +98,7 @@ class Logger(commands.Cog):
             e = discord.Embed(description=d, color=color)
             await ctx.send(embed=e)
         except:
-            await handle_error()
+            await send_error()
              
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild):
@@ -112,7 +112,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        async def handle_error():
+        async def send_error():
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
                 
@@ -125,7 +125,7 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            await handle_error()
+            await send_error()
         
     @commands.Cog.listener()
     async def on_guild_remove(self, guild: discord.Guild):
@@ -139,7 +139,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        async def handle_error():
+        async def send_error():
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
         
@@ -152,7 +152,7 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            await handle_error()
+            await send_error()
         
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
@@ -163,7 +163,7 @@ class Logger(commands.Cog):
         logs_channel = self.bot.get_channel(await self.config.logger_channel())
         error = Exception
         
-        async def handle_error():
+        async def send_error():
             d = f"**Guild**: {member.guild} ({member.guild.id})"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
@@ -190,7 +190,7 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            await handle_error()
+            await send_error()
        
 
     @commands.Cog.listener()
@@ -205,7 +205,7 @@ class Logger(commands.Cog):
         now = datetime.now()
         date_time = now.strftime('%B %d, %Y - %I:%M %p')
         
-        async def handle_error():
+        async def send_error():
             d = f"**Guild**: {member.guild} ({member.guild.id})\n**Date**: {date_time}"
             e = discord.Embed(title=str(error), description=d, color=discord.Color.red())
             await logs_channel.send(embed=e)
@@ -232,7 +232,7 @@ class Logger(commands.Cog):
             
             await logs_channel.send(embed=e)
         except:
-            await handle_error()
+            await send_error()
             
     @commands.Cog.listener()
     async def on_error(self, error: Exception):
@@ -245,13 +245,13 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        async def handle_error():
+        async def send_error():
             e = discord.Embed(description=str(error), color=discord.Color.red())
             await logs_channel.send(embed=e)
             for p in pagify(''.join(traceback.TracebackException.from_exception(error).format()), shorten_by=10):
                 await logs_channel.send(box(p, 'py'))
                 
-        await handle_error()
+        await send_error()
         
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: Exception):
@@ -268,7 +268,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        async def handle_error():
+        async def send_error():
             if ctx.command == None:
                 d = f"**Guild**: {ctx.guild} ({ctx.guild.id})\n**Date**: {date_time}"
             else:
@@ -280,19 +280,19 @@ class Logger(commands.Cog):
         
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send(f"Missing required argument(s).\n\nUse `[p]help {ctx.command}` to learn how to use this command.")
-            await handle_error()
+            await send_error()
         elif isinstance(error, commands.MemberNotFound):
             await ctx.send(f"I could not find member: `{error.argument}`. Please try again.")
-            await handle_error()
+            await send_error()
         elif isinstance(error, commands.NoPrivateMessage):
             await ctx.send(f"`The command: `{ctx.command}` cannot be used in private messages.")
-            await handle_error()
+            await send_error()
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         elif isinstance(error, commands.CommandNotFound):
             pass
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         else:
-            await handle_error()
+            await send_error()
 
     @commands.Cog.listener()
     async def on_app_command_error(self, interaction: discord.Interaction, error: Exception):
@@ -309,7 +309,7 @@ class Logger(commands.Cog):
         if logs_channel is None:
             return
         
-        async def handle_error():
+        async def send_error():
             if interaction.command == None:
                 d = f"**Guild**: {interaction.guild} ({interaction.guild.id})\n**Date**: {date_time}"
             else:
@@ -321,16 +321,16 @@ class Logger(commands.Cog):
         
         if isinstance(error, commands.MissingRequiredArgument):
             await interaction.reply(f"Missing required argument(s).\n\nUse `[p]help {interaction.command}` to learn how to use this command.")
-            await handle_error()
+            await send_error()
         elif isinstance(error, commands.MemberNotFound):
             await interaction.reply(f"I could not find member: `{error.argument}`. Please try again.")
-            await handle_error()
+            await send_error()
         elif isinstance(error, commands.NoPrivateMessage):
             await interaction.reply(f"`The command: `{interaction.command}` cannot be used in private messages.")
-            await handle_error()
+            await send_error()
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         elif isinstance(error, commands.CommandNotFound):
             pass
 # --------------------------------------------------------------------------------------------------------------------------------------------- #
         else:
-            await handle_error()
+            await send_error()
