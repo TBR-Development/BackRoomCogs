@@ -248,7 +248,7 @@ class Logger(commands.Cog):
                 return
 
         async def send_message():
-            d = f"A message has been deleted in a guild.\n\n**Guild**: {message.guild} ({message.guild.id})\n**Date**: {date_time}\n\n**__Message Content__**\n{box(message.content)}"
+            d = f"A message has been deleted in a guild.\n\n**Guild**: {message.guild} ({message.guild.id})\n**Channel**: {message.channel} ({message.channel.id}\n**Date**: {date_time}"
             e = discord.Embed(description=d, color=discord.Color.orange())
             await logs_channel.send(embed=e)
 
